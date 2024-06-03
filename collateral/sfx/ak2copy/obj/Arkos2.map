@@ -1,0 +1,149 @@
+ASxxxx Linker V03.00 + NoICE + sdld,  page 1.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000000  .__.ABS.                           
+     00000000  l__CABS                         
+     00000000  l__DABS                         
+     00000000  l__GSFINAL                      
+     00000000  l__HOME                         
+     00000000  l__INITIALIZED                  
+     00000000  l__INITIALIZER                  
+     00000000  s__CABS                         
+     00000000  s__DABS                         
+     00000008  l__GSINIT                       
+     00000009  l__DATA                         
+     00000F88  l__CODE                         
+     00004000  s__CODE                         
+     00004F88  s__DATA                         
+     00004F91  s__GSINIT                       
+     00004F91  s__HOME                         
+     00004F91  s__INITIALIZED                  
+     00004F99  s__GSFINAL                      
+     00004F99  s__INITIALIZER                  
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00004000    00000F88 =        3976. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00004000  _sInterruptHandler                 main
+     00004019  _main                              main
+     0000410B  _InitSound                         sound
+     00004125  _InitSFX                           sound
+     0000412C  _InitMusic                         sound
+     0000413D  _PlaySFX                           sound
+     0000415B  _PlayMusic                         sound
+     00004169  _PlaySound                         sound
+     000041A5  _AHARMLESSGRENADE_START            arkos2
+     000045B8  _SOUNDEFFECTS_SOUNDEFFECTS         arkos2
+     0000469B  _PLY_AKM_INITSOUNDEFFECTS          arkos2
+     0000469F  _PLY_AKM_PLAYSOUNDEFFECT           arkos2
+     000046C7  _PLY_AKM_STOPSOUNDEFFECTFROMCHAN   arkos2
+     000047A0  _PLY_AKM_INIT                      arkos2
+     0000481E  _PLY_AKM_STOP                      arkos2
+     00004834  _PLY_AKM_PLAY                      arkos2
+     00004D9B  _PLAYER_ARKOS_INITSOUNDEFFECTS     arkos2
+     00004D9E  _PLAYER_ARKOS_PLAYSOUNDEFFECT      arkos2
+     00004DA6  _PLAYER_ARKOS_STOPSOUNDEFFECTFRO   arkos2
+     00004DAA  _PLAYER_ARKOS_INIT                 arkos2
+     00004DB2  _PLAYER_ARKOS_STOP                 arkos2
+     00004DB5  _PLAYER_ARKOS_PLAY                 arkos2
+     00004DB8  _asm_setInterruptHandler           assembly
+     00004DC9  safeInterruptHandlerHook           assembly
+     00004DEC  _cpct_isKeyPressed                 cpct_keyboard
+     00004DEC  cpct_isKeyPressed_asm              cpct_keyboard
+     00004DF8  _cpct_drawStringM1                 cpct_strings
+     00004E28  cpct_drawCharM1_inner_asm          cpct_strings
+     00004E68  cpct_char2pxM1                     cpct_strings
+     00004E78  _cpct_keyboardStatusBuffer         cpct_keyboard
+     00004E82  _cpct_scanKeyboard_if              cpct_keyboard
+     00004E82  cpct_scanKeyboard_if_asm           cpct_keyboard
+     00004EEA  _cpct_waitVSYNC                    cpct_video
+     00004EEA  cpct_waitVSYNC_asm                 cpct_video
+     00004EF2  _cpct_mode_rom_status              cpct_firmware
+     00004EF3  _cpct_getScreenPtr                 cpct_video
+     00004F09  _cpct_setDrawCharM1                cpct_strings
+     00004F5D  _cpct_setInterruptHandler          cpct_firmware
+     00004F5D  cpct_setInterruptHandler_asm       cpct_firmware
+     00004F6E  cpct_safeInterruptHandlerHook      cpct_firmware
+     00004F84  dc_mode1_ct                        
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_DATA                               00004F88    00000009 =           9. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00004F89  __currentMusic                     sound
+     00004F8B  __fxChanged                        sound
+     00004F8C  __fxNumber                         sound
+     00004F8D  __fxChannel                        sound
+     00004F8E  __fxVolume                         sound
+     00004F8F  __songChanged                      sound
+     00004F90  __songNumber                       sound
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_GSINIT                             00004F91    00000008 =           8. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
+
+Files Linked                              [ module(s) ]
+
+obj/main.rel                              [ main ]
+obj/sound.rel                             [ sound ]
+obj/arkos2/ArkosPlayer2_cbinding.rel      [ arkos2 ]
+obj/optional/setInterruptHandler.rel      [ assembly ]
+
+
+Libraries Linked                          [ object file ]
+
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_isKeyPressed.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_drawStringM1_cbindings.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_drawCharM1_inner.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ keyboard.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_scanKeyboard_if.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_waitVSYNC.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpc_mode_rom_status.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_getScreenPtr_cbindings.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_setDrawCharM1_cbindings.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_setInterruptHandler.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_dc_mode1_ct.rel ]
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
+
+User Base Address Definitions
+
+_CODE = 0x4000
+_DATA = 0x0000
+
+

@@ -1,0 +1,1 @@
+./Disark universal_at2_files.bin at2_files.asm --symbolFile universal_at2_files.sym --sourceProfile sdcc

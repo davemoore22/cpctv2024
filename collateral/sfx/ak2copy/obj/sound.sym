@@ -1,0 +1,45 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  2710 L
+    .__.ABS.                                                    =  0000 G
+    .__.CPU.                                                    =  0000 L
+    .__.H$L.                                                    =  0000 L
+    _AHARMLESSGRENADE_START                                        **** GX
+  0 _InitMusic                                                     0021 GR
+  0 _InitSFX                                                       001A GR
+  0 _InitSound                                                     0000 GR
+    _PLAYER_ARKOS_INIT                                             **** GX
+    _PLAYER_ARKOS_INITSOUNDEFFECTS                                 **** GX
+    _PLAYER_ARKOS_PLAY                                             **** GX
+    _PLAYER_ARKOS_PLAYSOUNDEFFECT                                  **** GX
+  0 _PlayMusic                                                     0050 GR
+  0 _PlaySFX                                                       0032 GR
+  0 _PlaySound                                                     005E GR
+    _SOUNDEFFECTS_SOUNDEFFECTS                                     **** GX
+  1 __currentMusic                                                 0000 GR
+  1 __fxChanged                                                    0002 GR
+  1 __fxChannel                                                    0004 GR
+  1 __fxNumber                                                     0003 GR
+  1 __fxVolume                                                     0005 GR
+  1 __songChanged                                                  0006 GR
+  1 __songNumber                                                   0007 GR
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE                                      size   9A   flags    0
+   1 _DATA                                      size    8   flags    0
+   2 _INITIALIZED                               size    0   flags    0
+   3 _DABS                                      size    0   flags    8
+   4 _HOME                                      size    0   flags    0
+   5 _GSINIT                                    size    0   flags    0
+   6 _GSFINAL                                   size    0   flags    0
+   7 _INITIALIZER                               size    0   flags    0
+   8 _CABS                                      size    0   flags    8
+

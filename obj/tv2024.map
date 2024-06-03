@@ -1,0 +1,842 @@
+ASxxxx Linker V03.00 + NoICE + sdld,  page 1.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000000  .__.ABS.                           
+     00000000  l__CABS                         
+     00000000  l__DABS                         
+     00000000  l__GSFINAL                      
+     00000000  s__CABS                         
+     00000000  s__DABS                         
+     00000008  l__GSINIT                       
+     00000010  l__INITIALIZED                  
+     00000010  l__INITIALIZER                  
+     00000040  s__CODE                         
+     0000007C  l__HOME                         
+     000004A2  l__DATA                         
+     00009B82  l__CODE                         
+     00009BC2  s__DATA                         
+     0000A064  s__INITIALIZED                  
+     0000A074  s__HOME                         
+     0000A0F0  s__GSINIT                       
+     0000A0F8  s__GSFINAL                      
+     0000A0F8  s__INITIALIZER                  
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000040  _b_scr_start                       between
+     00000205  _b_scr_stop                        between
+     0000021A  _g_setup                           game
+     0000034D  _g_start                           game
+     00000454  _g_stop                            game
+     00001A9E  _h_start                           hiscore
+     00001AE3  _h_enter_start                     hiscore
+     00001CC2  _h_stop                            hiscore
+     00001CD6  _h_insert                          hiscore
+     00001EEE  _i_start                           instruct
+     00001F2F  _i_stop                            instruct
+     00001FA6  _main                              main
+     0000205B  _r_start                           redefine
+     000021D1  _r_stop                            redefine
+     00002420  _t_start                           titles
+     00002509  _t_stop                            titles
+     000026AA  _c_scr_start                       victory
+     00002894  _c_can_continue                    victory
+     000028B1  _c_scr_stop                        victory
+     000028CC  _u_wait_kp                         utilities
+     000028DC  _u_power_2                         utilities
+     000028EE  _u_wait_for_key                    utilities
+     0000290B  _u_wait                            utilities
+     0000291C  _u_get_width                       utilities
+     00002958  _u_get_random                      utilities
+     00002978  _u_get_xy                          utilities
+     00002993  _u_map_char_to_key                 utilities
+     00002A72  _u_map_key_to_char                 utilities
+     00002C6A  _u_get_delta                       utilities
+     00002C9E  _u_bounds_delta_check              utilities
+     00002CFB  _u_bounds_check                    utilities
+     00002D44  _u_clear_input                     utilities
+     00002D54  _u_clock_interrupt                 utilities
+     00002D9E  _u_reset_clock                     utilities
+     00002DAA  _u_check_collide                   utilities
+     00002DD0  _u_sort_hiscores                   utilities
+     00003033  _v_draw_logo                       video
+     0000303F  _v_cells                           video
+     00003059  _v_init                            video
+     00003072  _v_blk_scr                         video
+     0000309B  _v_wipe_scr                        video
+     000030F2  _v_clr_scr                         video
+     00003103  _v_print_c                         video
+     00003135  _v_print_n                         video
+     0000318F  _v_print                           video
+     0000322D  _v_reset_pal                       video
+     00003253  _v_reset_pal_v                     video
+     00003279  _v_wait_VSYNC                      video
+     0000328F  _v_get_pos                         video
+     000032A5  _v_flash_brd                       video
+ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000032CB  _v_reset_timers                    video
+     000032DB  _v_interrupt                       video
+     000033E5  _v_draw_launch                     video
+     0000340C  _v_draw_player                     video
+     0000363B  _v_draw_enemies                    video
+     000038CF  _v_draw_bolts                      video
+     00003973  _v_draw_box                        video
+     00003BAE  _v_init_sprites                    video
+     00003BFE  _v_get_sprite_p                    video
+     00003C6D  _v_draw_player_bb                  video
+     00003F62  _v_draw_grid                       video
+     00003F91  _font_000                          fonts
+     00003F9D  _font_001                          fonts
+     00003FA9  _font_002                          fonts
+     00003FB5  _font_003                          fonts
+     00003FC1  _font_004                          fonts
+     00003FCD  _font_005                          fonts
+     00003FD9  _font_006                          fonts
+     00003FE5  _font_007                          fonts
+     00003FF1  _font_008                          fonts
+     00003FFD  _font_009                          fonts
+     00004009  _font_010                          fonts
+     00004015  _font_011                          fonts
+     00004021  _font_012                          fonts
+     0000402D  _font_013                          fonts
+     00004039  _font_014                          fonts
+     00004045  _font_015                          fonts
+     00004051  _font_016                          fonts
+     0000405D  _font_017                          fonts
+     00004069  _font_018                          fonts
+     00004075  _font_019                          fonts
+     00004081  _font_020                          fonts
+     0000408D  _font_021                          fonts
+     00004099  _font_022                          fonts
+     000040A5  _font_023                          fonts
+     000040B1  _font_024                          fonts
+     000040BD  _font_025                          fonts
+     000040C9  _font_026                          fonts
+     000040D5  _font_027                          fonts
+     000040E1  _font_028                          fonts
+     000040ED  _font_029                          fonts
+     000040F9  _font_030                          fonts
+     00004105  _font_031                          fonts
+     00004111  _font_032                          fonts
+     0000411D  _font_033                          fonts
+     00004129  _font_034                          fonts
+     00004135  _font_035                          fonts
+     00004141  _font_036                          fonts
+     0000414D  _font_037                          fonts
+     00004159  _font_038                          fonts
+     00004165  _font_039                          fonts
+ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00004171  _font_040                          fonts
+     0000417D  _font_041                          fonts
+     00004189  _font_042                          fonts
+     00004195  _font_043                          fonts
+     000041A1  _font_044                          fonts
+     000041AD  _font_045                          fonts
+     000041B9  _font_046                          fonts
+     000041C5  _font_047                          fonts
+     000041D1  _font_048                          fonts
+     000041DD  _font_049                          fonts
+     000041E9  _font_050                          fonts
+     000041F5  _font_051                          fonts
+     00004201  _font_052                          fonts
+     0000420D  _font_053                          fonts
+     00004219  _font_054                          fonts
+     00004225  _font_055                          fonts
+     00004231  _font_056                          fonts
+     0000423D  _font_057                          fonts
+     00004249  _font_058                          fonts
+     00004255  _font_059                          fonts
+     00004261  _font_060                          fonts
+     0000426D  _font_061                          fonts
+     00004279  _font_062                          fonts
+     00004285  _font_063                          fonts
+     00004291  _font_064                          fonts
+     0000429D  _font_065                          fonts
+     000042A9  _font_066                          fonts
+     000042B5  _font_067                          fonts
+     000042C1  _font_068                          fonts
+     000042CD  _font_069                          fonts
+     000042D9  _font_070                          fonts
+     000042E5  _font_071                          fonts
+     000042F1  _font_072                          fonts
+     000042FD  _font_073                          fonts
+     00004309  _font_074                          fonts
+     00004315  _font_075                          fonts
+     00004321  _font_076                          fonts
+     0000432D  _font_077                          fonts
+     00004339  _font_078                          fonts
+     00004345  _font_079                          fonts
+     00004351  _font_080                          fonts
+     0000435D  _font_081                          fonts
+     00004369  _font_082                          fonts
+     00004375  _font_083                          fonts
+     00004381  _font_084                          fonts
+     0000438D  _font_085                          fonts
+     00004399  _font_086                          fonts
+     000043A5  _font_087                          fonts
+     000043B1  _font_088                          fonts
+     000043BD  _font_089                          fonts
+     000043C9  _font_090                          fonts
+ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000043D5  _font_091                          fonts
+     000043E1  _font_092                          fonts
+     000043ED  _font_093                          fonts
+     000043F9  _font_094                          fonts
+     00004405  _font_095                          fonts
+     00004411  _font_096                          fonts
+     0000441D  _font_097                          fonts
+     00004429  _font_098                          fonts
+     00004435  _font_099                          fonts
+     00004441  _font_100                          fonts
+     0000444D  _font_101                          fonts
+     00004459  _font_102                          fonts
+     00004465  _font_103                          fonts
+     00004471  _font_104                          fonts
+     0000447D  _font_105                          fonts
+     00004489  _font_106                          fonts
+     00004495  _font_107                          fonts
+     000044A1  _font_108                          fonts
+     000044AD  _font_109                          fonts
+     000044B9  _font_110                          fonts
+     000044C5  _font_111                          fonts
+     000044D1  _font_112                          fonts
+     000044DD  _font_113                          fonts
+     000044E9  _font_114                          fonts
+     000044F5  _font_115                          fonts
+     00004501  _font_116                          fonts
+     0000450D  _font_117                          fonts
+     00004519  _font_118                          fonts
+     00004525  _font_119                          fonts
+     00004531  _font_120                          fonts
+     0000453D  _font_121                          fonts
+     00004549  _font_122                          fonts
+     00004555  _font_123                          fonts
+     00004561  _font_124                          fonts
+     0000456D  _font_125                          fonts
+     00004579  _font_126                          fonts
+     00004585  _font_127                          fonts
+     00004591  _font_128                          fonts
+     0000459D  _font_129                          fonts
+     000045A9  _font_130                          fonts
+     000045B5  _font_131                          fonts
+     000045C1  _font_132                          fonts
+     000045CD  _font_133                          fonts
+     000045D9  _font_134                          fonts
+     000045E5  _font_135                          fonts
+     000045F1  _font_136                          fonts
+     000045FD  _font_137                          fonts
+     00004609  _font_138                          fonts
+     00004615  _font_139                          fonts
+     00004621  _font_140                          fonts
+     0000462D  _font_141                          fonts
+ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00004639  _font_142                          fonts
+     00004645  _font_143                          fonts
+     00004651  _font_144                          fonts
+     0000465D  _font_145                          fonts
+     00004669  _font_146                          fonts
+     00004675  _font_147                          fonts
+     00004681  _font_148                          fonts
+     0000468D  _font_149                          fonts
+     00004699  _font_150                          fonts
+     000046A5  _font_151                          fonts
+     000046B1  _font_152                          fonts
+     000046BD  _font_153                          fonts
+     000046C9  _font_154                          fonts
+     000046D5  _font_155                          fonts
+     000046E1  _font_156                          fonts
+     000046ED  _font_157                          fonts
+     000046F9  _font_158                          fonts
+     00004705  _font_159                          fonts
+     00004711  _font_160                          fonts
+     0000471D  _font_161                          fonts
+     00004729  _font_162                          fonts
+     00004735  _font_163                          fonts
+     00004741  _font_164                          fonts
+     0000474D  _font_165                          fonts
+     00004759  _font_166                          fonts
+     00004765  _font_167                          fonts
+     00004771  _font_168                          fonts
+     0000477D  _font_169                          fonts
+     00004789  _font_170                          fonts
+     00004795  _font_171                          fonts
+     000047A1  _font_172                          fonts
+     000047AD  _font_173                          fonts
+     000047B9  _font_174                          fonts
+     000047C5  _font_175                          fonts
+     000047D1  _font_176                          fonts
+     000047DD  _font_177                          fonts
+     000047E9  _font_178                          fonts
+     000047F5  _font_179                          fonts
+     00004801  _font_180                          fonts
+     0000480D  _font_181                          fonts
+     00004819  _font_182                          fonts
+     00004825  _font_183                          fonts
+     00004831  _font_184                          fonts
+     0000483D  _font_185                          fonts
+     00004849  _font_186                          fonts
+     00004855  _font_187                          fonts
+     00004861  _font_188                          fonts
+     0000486D  _font_189                          fonts
+     00004879  _font_190                          fonts
+     00004885  _font_191                          fonts
+     00004891  _font_192                          fonts
+ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000489D  _font_193                          fonts
+     000048A9  _font_194                          fonts
+     000048B5  _font_195                          fonts
+     000048C1  _font_196                          fonts
+     000048CD  _font_197                          fonts
+     000048D9  _font_198                          fonts
+     000048E5  _font_199                          fonts
+     000048F1  _font_200                          fonts
+     000048FD  _font_201                          fonts
+     00004909  _font_202                          fonts
+     00004915  _font_203                          fonts
+     00004921  _font_204                          fonts
+     0000492D  _font_205                          fonts
+     00004939  _font_206                          fonts
+     00004945  _font_207                          fonts
+     00004951  _font_208                          fonts
+     0000495D  _font_209                          fonts
+     00004969  _font_210                          fonts
+     00004975  _font_211                          fonts
+     00004981  _font_212                          fonts
+     0000498D  _font_213                          fonts
+     00004999  _font_214                          fonts
+     000049A5  _font_215                          fonts
+     000049B1  _font_216                          fonts
+     000049BD  _font_217                          fonts
+     000049C9  _font_218                          fonts
+     000049D5  _font_219                          fonts
+     000049E1  _font_220                          fonts
+     000049ED  _font_221                          fonts
+     000049F9  _font_222                          fonts
+     00004A05  _font_223                          fonts
+     00004A11  _font_224                          fonts
+     00004A1D  _font_225                          fonts
+     00004A29  _font_226                          fonts
+     00004A35  _font_227                          fonts
+     00004A41  _font_228                          fonts
+     00004A4D  _font_229                          fonts
+     00004A59  _font_230                          fonts
+     00004A65  _font_231                          fonts
+     00004A71  _font_232                          fonts
+     00004A7D  _font_233                          fonts
+     00004A89  _font_234                          fonts
+     00004A95  _font_235                          fonts
+     00004AA1  _font_236                          fonts
+     00004AAD  _font_237                          fonts
+     00004AB9  _font_238                          fonts
+     00004AC5  _font_239                          fonts
+     00004AD1  _font_240                          fonts
+     00004ADD  _font_241                          fonts
+     00004AE9  _font_242                          fonts
+     00004AF5  _font_243                          fonts
+ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00004B01  _font_244                          fonts
+     00004B0D  _font_245                          fonts
+     00004B19  _font_246                          fonts
+     00004B25  _font_247                          fonts
+     00004B31  _font_248                          fonts
+     00004B3D  _font_249                          fonts
+     00004B49  _font_250                          fonts
+     00004B55  _font_251                          fonts
+     00004B61  _font_252                          fonts
+     00004B6D  _font_253                          fonts
+     00004B79  _font_254                          fonts
+     00004B85  _font_255                          fonts
+     00004B91  _font_256                          fonts
+     00004B9D  _font_257                          fonts
+     00004BA9  _font_258                          fonts
+     00004BB5  _font_259                          fonts
+     00004BC1  _font_260                          fonts
+     00004BCD  _font_261                          fonts
+     00004BD9  _font_262                          fonts
+     00004BE5  _font_263                          fonts
+     00004BF1  _font_264                          fonts
+     00004BFD  _font_265                          fonts
+     00004C09  _font_266                          fonts
+     00004C15  _font_267                          fonts
+     00004C21  _font_268                          fonts
+     00004C2D  _font_269                          fonts
+     00004C39  _font_270                          fonts
+     00004C45  _font_271                          fonts
+     00004C51  _font_272                          fonts
+     00004C5D  _font_273                          fonts
+     00004C69  _font_274                          fonts
+     00004C75  _font_275                          fonts
+     00004C81  _font_276                          fonts
+     00004C8D  _font_277                          fonts
+     00004C99  _font_278                          fonts
+     00004CA5  _font_279                          fonts
+     00004CB1  _font_280                          fonts
+     00004CBD  _font_281                          fonts
+     00004CC9  _font_282                          fonts
+     00004CD5  _font_283                          fonts
+     00004CE1  _font_284                          fonts
+     00004CED  _font_285                          fonts
+     00004CF9  _font_286                          fonts
+     00004D05  _font_287                          fonts
+     00004D11  _font_ts                           fonts
+     00004F51  _img_transition                    images
+     000051B5  _img_titles                        images
+     000052F3  _img_victory                       images
+     00006444  _img_launch                        images
+     0000655C  _g_game_grid_bg                    levels
+     00006564  _g_game_grid_fg                    levels
+ASxxxx Linker V03.00 + NoICE + sdld,  page 9.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000656C  _g_game_grid_bt                    levels
+     00006574  _g_game_grid_1                     levels
+     000065AA  _g_game_grid_2                     levels
+     000065E0  _g_game_grid_3                     levels
+     00006616  _g_game_grid_5                     levels
+     0000664C  _g_game_grid_7                     levels
+     00006682  _g_game_grids                      levels
+     00006692  _InitSound                         sound
+     000066AC  _InitSFX                           sound
+     000066B3  _InitMusic                         sound
+     000066C4  _PlaySFX                           sound
+     000066E2  _PlayMusic                         sound
+     000066E8  _PlaySound                         sound
+     00006724  _StopMusic                         sound
+     00006727  _g_strings                         strings
+     00006D18  _grid_bg_ts                        tiles
+     00006D26  _grid_bg_00                        tiles
+     00006D44  _grid_bg_01                        tiles
+     00006D62  _grid_bg_02                        tiles
+     00006D80  _grid_bg_03                        tiles
+     00006D9E  _grid_bg_04                        tiles
+     00006DBC  _grid_bg_05                        tiles
+     00006DDA  _grid_bg_06                        tiles
+     00006DF8  _grid_fg_ts                        tiles
+     00006E14  _grid_fg_00                        tiles
+     00006E50  _grid_fg_01                        tiles
+     00006E8C  _grid_fg_02                        tiles
+     00006EC8  _grid_fg_03                        tiles
+     00006F04  _grid_fg_04                        tiles
+     00006F40  _grid_fg_05                        tiles
+     00006F7C  _grid_fg_06                        tiles
+     00006FB8  _grid_fg_07                        tiles
+     00006FF4  _grid_fg_08                        tiles
+     00007030  _grid_fg_09                        tiles
+     0000706C  _grid_fg_10                        tiles
+     000070A8  _grid_fg_11                        tiles
+     000070E4  _grid_fg_12                        tiles
+     00007120  _grid_fg_13                        tiles
+     0000715C  _player_ts                         tiles
+     0000716E  _player_00                         tiles
+     00007236  _player_01                         tiles
+     000072FE  _player_02                         tiles
+     000073C6  _player_03                         tiles
+     0000748E  _player_04                         tiles
+     00007556  _player_05                         tiles
+     0000761E  _player_06                         tiles
+     000076E6  _player_07                         tiles
+     000077AE  _player_08                         tiles
+     00007876  _gui_ts                            tiles
+     00007888  _gui_0                             tiles
+     000078C4  _gui_1                             tiles
+ASxxxx Linker V03.00 + NoICE + sdld,  page 10.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00007900  _gui_2                             tiles
+     0000793C  _gui_3                             tiles
+     00007978  _gui_4                             tiles
+     000079B4  _gui_5                             tiles
+     000079F0  _gui_6                             tiles
+     00007A2C  _gui_7                             tiles
+     00007A68  _gui_8                             tiles
+     00007AA4  _explode_ts                        tiles
+     00007AAE  _explode_0                         tiles
+     00007AEA  _explode_1                         tiles
+     00007B26  _explode_2                         tiles
+     00007B62  _explode_3                         tiles
+     00007B9E  _explode_4                         tiles
+     00007BDA  _enemies_v_ts                      tiles
+     00007BF2  _enemies_h_ts                      tiles
+     00007C0A  _enemies_v_00                      tiles
+     00007C22  _enemies_v_01                      tiles
+     00007C3A  _enemies_v_02                      tiles
+     00007C52  _enemies_v_03                      tiles
+     00007C6A  _enemies_v_04                      tiles
+     00007C82  _enemies_v_05                      tiles
+     00007C9A  _enemies_v_06                      tiles
+     00007CB2  _enemies_v_07                      tiles
+     00007CCA  _enemies_v_08                      tiles
+     00007CE2  _enemies_v_09                      tiles
+     00007CFA  _enemies_v_10                      tiles
+     00007D12  _enemies_v_11                      tiles
+     00007D2A  _enemies_h_00                      tiles
+     00007D42  _enemies_h_01                      tiles
+     00007D5A  _enemies_h_02                      tiles
+     00007D72  _enemies_h_03                      tiles
+     00007D8A  _enemies_h_04                      tiles
+     00007DA2  _enemies_h_05                      tiles
+     00007DBA  _enemies_h_06                      tiles
+     00007DD2  _enemies_h_07                      tiles
+     00007DEA  _enemies_h_08                      tiles
+     00007E02  _enemies_h_09                      tiles
+     00007E1A  _enemies_h_10                      tiles
+     00007E32  _enemies_h_11                      tiles
+     00007E4A  _AHARMLESSGRENADE_START            arkos2
+     0000825D  _SOUNDEFFECTS_SOUNDEFFECTS         arkos2
+     00008340  _PLY_AKM_INITSOUNDEFFECTS          arkos2
+     00008344  _PLY_AKM_PLAYSOUNDEFFECT           arkos2
+     0000836C  _PLY_AKM_STOPSOUNDEFFECTFROMCHAN   arkos2
+     00008445  _PLY_AKM_INIT                      arkos2
+     000084C3  _PLY_AKM_STOP                      arkos2
+     000084D9  _PLY_AKM_PLAY                      arkos2
+     00008A40  _PLAYER_ARKOS_INITSOUNDEFFECTS     arkos2
+     00008A43  _PLAYER_ARKOS_PLAYSOUNDEFFECT      arkos2
+     00008A4B  _PLAYER_ARKOS_STOPSOUNDEFFECTFRO   arkos2
+     00008A4F  _PLAYER_ARKOS_INIT                 arkos2
+ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00008A57  _PLAYER_ARKOS_STOP                 arkos2
+     00008A5A  _PLAYER_ARKOS_PLAY                 arkos2
+     00008A5D  _cpct_disableFirmware              cpct_firmware
+     00008A5D  _cpct_removeInterruptHandler       cpct_firmware
+     00008A5D  cpct_disableFirmware_asm           cpct_firmware
+     00008A5D  cpct_removeInterruptHandler_asm    cpct_firmware
+     00008A6D  _cpct_setPalette                   cpct_video
+     00008A84  _cpct_scanKeyboard_f               cpct_keyboard
+     00008A84  cpct_scanKeyboard_f_asm            cpct_keyboard
+     00008AEE  _cpct_isKeyPressed                 cpct_keyboard
+     00008AEE  cpct_isKeyPressed_asm              cpct_keyboard
+     00008AFA  __modsuchar                        
+     00008B09  __moduschar                        
+     00008B1B  _cpct_setPALColour                 cpct_video
+     00008B27  __divsint                          
+     00008B30  __divschar                         
+     00008B37  __div8                             
+     00008B3B  __div_signexte                     
+     00008B3F  __div16                            
+     00008B65  __get_remainder                    
+     00008B6F  _cpct_drawSprite                   cpct_sprites
+     00008C14  __moduchar                         
+     00008C20  __moduint                          
+     00008C2B  _cpct_keyboardStatusBuffer         cpct_keyboard
+     00008C35  __mulint                           
+     00008C3B  __mul16                            
+     00008C4F  __divuint                          
+     00008C57  __divuchar                         
+     00008C5E  __divu8                            
+     00008C61  __divu16                           
+     00008C90  _cpct_drawSpriteMasked             cpct_sprites
+     00008CBF  _cpct_memset_f64                   cpct_memutils
+     00008D0A  _cpct_getKeypressedAsASCII         cpct_keyboard
+     00008D18  _cpct_keyID_to_ASCII_table         cpct_keyboard
+     00008D9F  _vsprintf                          sprintf
+     00008DD4  _sprintf                           sprintf
+     00008E09  _cpct_drawToSpriteBuffer           cpct_sprites
+     00008E27  _cpct_getRandom_lcg_u8             cpct_random
+     00008E27  cpct_getRandom_lcg_u8_asm          cpct_random
+     00008E28  cpct_randlcgu8_seed                cpct_random
+     00008E38  _cpct_isAnyKeyPressed              cpct_keyboard
+     00008E38  cpct_isAnyKeyPressed_asm           cpct_keyboard
+     00008E45  _cpct_scanKeyboard_if              cpct_keyboard
+     00008E45  cpct_scanKeyboard_if_asm           cpct_keyboard
+     00008EAD  _cpct_setVideoMode                 cpct_video
+     00008EBB  _cpct_waitVSYNC                    cpct_video
+     00008EBB  cpct_waitVSYNC_asm                 cpct_video
+     00008EC3  _cpct_zx7b_decrunch_s              cpct_compression
+     00008F06  _cpct_memset                       cpct_memutils
+     00008F14  _strlen                            
+     00008F23  _cpct_getRandom_glfsr16_u16        cpct_random
+ASxxxx Linker V03.00 + NoICE + sdld,  page 12.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00008F23  _cpct_getRandom_glfsr16_u8         cpct_random
+     00008F23  cpct_getRandom_glfsr16_u16_asm     cpct_random
+     00008F23  cpct_getRandom_glfsr16_u8_asm      cpct_random
+     00008F24  cpct_randUnif_glfsr16_seed         cpct_random
+     00008F2F  cpct_randUnif_glfsr16_hightaps     cpct_random
+     00008F33  cpct_randUnif_glfsr16_lowtaps      cpct_random
+     00008F39  _cpct_drawSolidBox                 cpct_sprites
+     00008FE0  _cpct_mode_rom_status              cpct_firmware
+     00008FE1  _cpct_getScreenPtr                 cpct_video
+     00008FF7  _cpct_waitVSYNCStart               cpct_video
+     00008FF7  cpct_waitVSYNCStart_asm            cpct_video
+     00009004  _cpct_scanKeyboard                 cpct_keyboard
+     00009004  cpct_scanKeyboard_asm              cpct_keyboard
+     00009035  _cpct_drawToSpriteBufferMasked     cpct_sprites
+     00009059  _cpct_setInterruptHandler          cpct_firmware
+     00009059  cpct_setInterruptHandler_asm       cpct_firmware
+     0000906A  cpct_safeInterruptHandlerHook      cpct_firmware
+     0000917F  __print_format                     printf_large
+     00009BC1  ___sdcc_call_hl                    
+ASxxxx Linker V03.00 + NoICE + sdld,  page 13.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_DATA                               00009BC2    000004A2 =        1186. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00009BC2  _g_music_sfx                       game
+     00009BC3  _g_enemies                         game
+     00009BE3  _g_bolts                           game
+     00009C1B  _g_level                           game
+     00009DC4  _g_pods_left                       game
+     00009DC5  _g_current_level                   game
+     00009DC6  _g_current_round                   game
+     00009DC7  _g_lives_left                      game
+     00009DC8  _g_player                          game
+     00009DD2  _g_hiscores                        game
+     00009E2C  _g_controls                        game
+     00009E3E  _g_current_score                   game
+     00009E48  _controls                          redefine
+     00009E5A  _t_in_titles                       titles
+     00009E5C  _g_clock_on                        utilities
+     00009E5E  _v_player_buf                      video
+     0000A05C  __currentMusic                     sound
+     0000A05E  __fxChanged                        sound
+     0000A05F  __fxNumber                         sound
+     0000A060  __fxChannel                        sound
+     0000A061  __fxVolume                         sound
+     0000A062  __songChanged                      sound
+     0000A063  __songNumber                       sound
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 14.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_INITIALIZED                        0000A064    00000010 =          16. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000A064  _g_int_idx                         game
+     0000A065  _g_frame_c                         game
+     0000A066  _g_bolt_count                      game
+     0000A06B  _g_clock                           utilities
+     0000A06F  _v_int_idx                         video
+     0000A070  _v_pal_idx                         video
+     0000A071  _v_frame_c                         video
+     0000A072  _v_cycle_c                         video
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 15.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HOME                               0000A074    0000007C =         124. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000A074  __divulong                         _divulong
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 16.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_GSINIT                             0000A0F0    00000008 =           8. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 17.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_INITIALIZER                        0000A0F8    00000010 =          16. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 18.
+
+Files Linked                              [ module(s) ]
+
+obj/between.rel                           [ between ]
+obj/game.rel                              [ game ]
+obj/hiscore.rel                           [ hiscore ]
+obj/instruct.rel                          [ instruct ]
+obj/main.rel                              [ main ]
+obj/redefine.rel                          [ redefine ]
+obj/titles.rel                            [ titles ]
+obj/victory.rel                           [ victory ]
+obj/lib/utilities.rel                     [ utilities ]
+obj/lib/video.rel                         [ video ]
+obj/data/fonts.rel                        [ fonts ]
+obj/data/images.rel                       [ images ]
+obj/data/levels.rel                       [ levels ]
+obj/data/sound.rel                        [ sound ]
+obj/data/strings.rel                      [ strings ]
+obj/data/tiles.rel                        [ tiles ]
+obj/arkos2/ArkosPlayer2_cbinding.rel      [ arkos2 ]
+
+
+Libraries Linked                          [ object file ]
+
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_removeInterruptHandler.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_setPalette_cbindings.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_scanKeyboard_f.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_isKeyPressed.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/bin/../share/sdcc/lib/z80/z80.lib
+                                          [ modmixed.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_setPALColour_cbindings.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/bin/../share/sdcc/lib/z80/z80.lib
+                                          [ divsigned.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_drawSprite_cbindings.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/bin/../share/sdcc/lib/z80/z80.lib
+                                          [ modunsigned.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ keyboard.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/bin/../share/sdcc/lib/z80/z80.lib
+                                          [ mul.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/bin/../share/sdcc/lib/z80/z80.lib
+                                          [ divunsigned.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_drawSpriteMasked_cbindings. ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_memset_f64_cbinding.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_getKeypressedAsASCII_cbindi ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/bin/../share/sdcc/lib/z80/z80.lib
+                                          [ sprintf.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/bin/../share/sdcc/lib/z80/z80.lib
+                                          [ _divulong.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_drawToSpriteBuffer_cbinding ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_getRandom_lcg_u8.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_isAnyKeyPressed.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_scanKeyboard_if.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_setVideoMode_cbindings.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_waitVSYNC.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_zx7b_decrunch_s_cbindings.r ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_memset_cbinding.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/bin/../share/sdcc/lib/z80/z80.lib
+                                          [ strlen.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_getRandom_glfsr.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_drawSolidBox_cbindings.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpc_mode_rom_status.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_getScreenPtr_cbindings.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_waitVSYNCStart.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_scanKeyboard.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_drawToSpriteBufferMasked_cb ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_setInterruptHandler.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/bin/../share/sdcc/lib/z80/z80.lib
+                                          [ printf_large.rel ]
+/home/dave/Development/Amstrad/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/bin/../share/sdcc/lib/z80/z80.lib
+                                          [ __sdcc_call_hl.rel ]
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 19.
+
+User Base Address Definitions
+
+_CODE = 0x0040
+_DATA = 0x0000
+
+

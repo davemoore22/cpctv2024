@@ -1,0 +1,106 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  2710 L
+    .__.ABS.                                                    =  0000 G
+    .__.CPU.                                                    =  0000 L
+    .__.H$L.                                                    =  0000 L
+  0 _enemies_h_00                                                  1012 GR
+  0 _enemies_h_01                                                  102A GR
+  0 _enemies_h_02                                                  1042 GR
+  0 _enemies_h_03                                                  105A GR
+  0 _enemies_h_04                                                  1072 GR
+  0 _enemies_h_05                                                  108A GR
+  0 _enemies_h_06                                                  10A2 GR
+  0 _enemies_h_07                                                  10BA GR
+  0 _enemies_h_08                                                  10D2 GR
+  0 _enemies_h_09                                                  10EA GR
+  0 _enemies_h_10                                                  1102 GR
+  0 _enemies_h_11                                                  111A GR
+  0 _enemies_h_ts                                                  0EDA GR
+  0 _enemies_v_00                                                  0EF2 GR
+  0 _enemies_v_01                                                  0F0A GR
+  0 _enemies_v_02                                                  0F22 GR
+  0 _enemies_v_03                                                  0F3A GR
+  0 _enemies_v_04                                                  0F52 GR
+  0 _enemies_v_05                                                  0F6A GR
+  0 _enemies_v_06                                                  0F82 GR
+  0 _enemies_v_07                                                  0F9A GR
+  0 _enemies_v_08                                                  0FB2 GR
+  0 _enemies_v_09                                                  0FCA GR
+  0 _enemies_v_10                                                  0FE2 GR
+  0 _enemies_v_11                                                  0FFA GR
+  0 _enemies_v_ts                                                  0EC2 GR
+  0 _explode_0                                                     0D96 GR
+  0 _explode_1                                                     0DD2 GR
+  0 _explode_2                                                     0E0E GR
+  0 _explode_3                                                     0E4A GR
+  0 _explode_4                                                     0E86 GR
+  0 _explode_ts                                                    0D8C GR
+  0 _grid_bg_00                                                    000E GR
+  0 _grid_bg_01                                                    002C GR
+  0 _grid_bg_02                                                    004A GR
+  0 _grid_bg_03                                                    0068 GR
+  0 _grid_bg_04                                                    0086 GR
+  0 _grid_bg_05                                                    00A4 GR
+  0 _grid_bg_06                                                    00C2 GR
+  0 _grid_bg_ts                                                    0000 GR
+  0 _grid_fg_00                                                    00FC GR
+  0 _grid_fg_01                                                    0138 GR
+  0 _grid_fg_02                                                    0174 GR
+  0 _grid_fg_03                                                    01B0 GR
+  0 _grid_fg_04                                                    01EC GR
+  0 _grid_fg_05                                                    0228 GR
+  0 _grid_fg_06                                                    0264 GR
+  0 _grid_fg_07                                                    02A0 GR
+  0 _grid_fg_08                                                    02DC GR
+  0 _grid_fg_09                                                    0318 GR
+  0 _grid_fg_10                                                    0354 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+  0 _grid_fg_11                                                    0390 GR
+  0 _grid_fg_12                                                    03CC GR
+  0 _grid_fg_13                                                    0408 GR
+  0 _grid_fg_ts                                                    00E0 GR
+  0 _gui_0                                                         0B70 GR
+  0 _gui_1                                                         0BAC GR
+  0 _gui_2                                                         0BE8 GR
+  0 _gui_3                                                         0C24 GR
+  0 _gui_4                                                         0C60 GR
+  0 _gui_5                                                         0C9C GR
+  0 _gui_6                                                         0CD8 GR
+  0 _gui_7                                                         0D14 GR
+  0 _gui_8                                                         0D50 GR
+  0 _gui_ts                                                        0B5E GR
+  0 _player_00                                                     0456 GR
+  0 _player_01                                                     051E GR
+  0 _player_02                                                     05E6 GR
+  0 _player_03                                                     06AE GR
+  0 _player_04                                                     0776 GR
+  0 _player_05                                                     083E GR
+  0 _player_06                                                     0906 GR
+  0 _player_07                                                     09CE GR
+  0 _player_08                                                     0A96 GR
+  0 _player_ts                                                     0444 GR
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE                                      size 1132   flags    0
+   1 _DATA                                      size    0   flags    0
+   2 _INITIALIZED                               size    0   flags    0
+   3 _DABS                                      size    0   flags    8
+   4 _HOME                                      size    0   flags    0
+   5 _GSINIT                                    size    0   flags    0
+   6 _GSFINAL                                   size    0   flags    0
+   7 _INITIALIZER                               size    0   flags    0
+   8 _CABS                                      size    0   flags    8
+

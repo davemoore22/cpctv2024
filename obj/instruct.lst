@@ -1,0 +1,215 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.6.8 #9946 (Linux)
+                              4 ;--------------------------------------------------------
+                              5 	.module instruct
+                              6 	.optsdcc -mz80
+                              7 	
+                              8 ;--------------------------------------------------------
+                              9 ; Public variables in this module
+                             10 ;--------------------------------------------------------
+                             11 	.globl _v_reset_timers
+                             12 	.globl _v_interrupt
+                             13 	.globl _v_draw_logo
+                             14 	.globl _v_print_c
+                             15 	.globl _v_wipe_scr
+                             16 	.globl _v_clr_scr
+                             17 	.globl _v_reset_pal
+                             18 	.globl _v_blk_scr
+                             19 	.globl _cpct_waitVSYNC
+                             20 	.globl _cpct_isAnyKeyPressed
+                             21 	.globl _cpct_removeInterruptHandler
+                             22 	.globl _cpct_setInterruptHandler
+                             23 	.globl _i_start
+                             24 	.globl _i_stop
+                             25 ;--------------------------------------------------------
+                             26 ; special function registers
+                             27 ;--------------------------------------------------------
+                             28 ;--------------------------------------------------------
+                             29 ; ram data
+                             30 ;--------------------------------------------------------
+                             31 	.area _DATA
+                             32 ;--------------------------------------------------------
+                             33 ; ram data
+                             34 ;--------------------------------------------------------
+                             35 	.area _INITIALIZED
+                             36 ;--------------------------------------------------------
+                             37 ; absolute external ram data
+                             38 ;--------------------------------------------------------
+                             39 	.area _DABS (ABS)
+                             40 ;--------------------------------------------------------
+                             41 ; global & static initialisations
+                             42 ;--------------------------------------------------------
+                             43 	.area _HOME
+                             44 	.area _GSINIT
+                             45 	.area _GSFINAL
+                             46 	.area _GSINIT
+                             47 ;--------------------------------------------------------
+                             48 ; Home
+                             49 ;--------------------------------------------------------
+                             50 	.area _HOME
+                             51 	.area _HOME
+                             52 ;--------------------------------------------------------
+                             53 ; code
+                             54 ;--------------------------------------------------------
+                             55 	.area _CODE
+                             56 ;src/instruct.c:27: void i_start(void) {
+                             57 ;	---------------------------------
+                             58 ; Function i_start
+                             59 ; ---------------------------------
+   0000                      60 _i_start::
+   0000 3B            [ 6]   61 	dec	sp
+                             62 ;src/instruct.c:29: bool kp = false;
+   0001 FD 21 00 00   [14]   63 	ld	iy, #0
+   0005 FD 39         [15]   64 	add	iy, sp
+   0007 FD 36 00 00   [19]   65 	ld	0 (iy), #0x00
+                             66 ;src/instruct.c:32: v_blk_scr();
+   000B CDr00r00      [17]   67 	call	_v_blk_scr
+                             68 ;src/instruct.c:33: v_clr_scr();
+   000E CDr00r00      [17]   69 	call	_v_clr_scr
+                             70 ;src/instruct.c:36: v_draw_logo();
+   0011 CDr00r00      [17]   71 	call	_v_draw_logo
+                             72 ;src/instruct.c:37: i_draw_instructions();
+   0014 CDr55r00      [17]   73 	call	_i_draw_instructions
+                             74 ;src/instruct.c:38: v_reset_pal();
+   0017 CDr00r00      [17]   75 	call	_v_reset_pal
+                             76 ;src/instruct.c:40: v_reset_timers();
+   001A CDr00r00      [17]   77 	call	_v_reset_timers
+                             78 ;src/instruct.c:41: cpct_waitVSYNC();
+   001D CDr00r00      [17]   79 	call	_cpct_waitVSYNC
+                             80 ;src/instruct.c:42: cpct_setInterruptHandler(v_interrupt);
+   0020 21r00r00      [10]   81 	ld	hl, #_v_interrupt
+   0023 CDr00r00      [17]   82 	call	_cpct_setInterruptHandler
+                             83 ;src/instruct.c:45: while (!kp)
+   0026                      84 00101$:
+   0026 21 00 00      [10]   85 	ld	hl, #0+0
+   0029 39            [11]   86 	add	hl, sp
+   002A CB 46         [12]   87 	bit	0, (hl)
+   002C 20 0B         [12]   88 	jr	NZ,00104$
+                             89 ;src/instruct.c:46: kp = cpct_isAnyKeyPressed();
+   002E CDr00r00      [17]   90 	call	_cpct_isAnyKeyPressed
+   0031 AF            [ 4]   91 	xor	a, a
+   0032 BD            [ 4]   92 	cp	a, l
+   0033 17            [ 4]   93 	rla
+   0034 33            [ 6]   94 	inc	sp
+   0035 F5            [11]   95 	push	af
+   0036 33            [ 6]   96 	inc	sp
+   0037 18 ED         [12]   97 	jr	00101$
+   0039                      98 00104$:
+   0039 33            [ 6]   99 	inc	sp
+   003A C9            [10]  100 	ret
+   003B                     101 _title_loc:
+   003B 01                  102 	.db #0x01	; 1
+   003C 08                  103 	.db #0x08	; 8
+   003D                     104 _text_loc:
+   003D 01                  105 	.db #0x01	; 1
+   003E 0B                  106 	.db #0x0b	; 11
+   003F                     107 _key_loc:
+   003F 01                  108 	.db #0x01	; 1
+   0040 20                  109 	.db #0x20	; 32
+                            110 ;src/instruct.c:50: void i_stop(void) {
+                            111 ;	---------------------------------
+                            112 ; Function i_stop
+                            113 ; ---------------------------------
+   0041                     114 _i_stop::
+                            115 ;src/instruct.c:52: v_wipe_scr(true);
+   0041 3E 01         [ 7]  116 	ld	a, #0x01
+   0043 F5            [11]  117 	push	af
+   0044 33            [ 6]  118 	inc	sp
+   0045 CDr00r00      [17]  119 	call	_v_wipe_scr
+   0048 33            [ 6]  120 	inc	sp
+                            121 ;src/instruct.c:53: v_blk_scr();
+   0049 CDr00r00      [17]  122 	call	_v_blk_scr
+                            123 ;src/instruct.c:54: v_clr_scr();
+   004C CDr00r00      [17]  124 	call	_v_clr_scr
+                            125 ;src/instruct.c:55: cpct_removeInterruptHandler();
+   004F CDr00r00      [17]  126 	call	_cpct_removeInterruptHandler
+                            127 ;src/instruct.c:56: v_reset_timers();
+   0052 C3r00r00      [10]  128 	jp  _v_reset_timers
+                            129 ;src/instruct.c:60: static void i_draw_instructions() {
+                            130 ;	---------------------------------
+                            131 ; Function i_draw_instructions
+                            132 ; ---------------------------------
+   0055                     133 _i_draw_instructions:
+                            134 ;src/instruct.c:62: v_print_c(g_strings[48], title_loc.y * LINE_P_H, FONT_RED);
+   0055 3Ar3Cr00      [13]  135 	ld	a, (#(_title_loc + 0x0001) + 0)
+   0058 4F            [ 4]  136 	ld	c, a
+   0059 87            [ 4]  137 	add	a, a
+   005A 81            [ 4]  138 	add	a, c
+   005B 87            [ 4]  139 	add	a, a
+   005C 57            [ 4]  140 	ld	d, a
+   005D ED 4Br60r00   [20]  141 	ld	bc, (#_g_strings + 96)
+   0061 AF            [ 4]  142 	xor	a, a
+   0062 F5            [11]  143 	push	af
+   0063 33            [ 6]  144 	inc	sp
+   0064 D5            [11]  145 	push	de
+   0065 33            [ 6]  146 	inc	sp
+   0066 C5            [11]  147 	push	bc
+   0067 CDr00r00      [17]  148 	call	_v_print_c
+   006A F1            [10]  149 	pop	af
+   006B F1            [10]  150 	pop	af
+                            151 ;src/instruct.c:64: for (u8 y = 0; y < 14; y++)
+   006C 0E 00         [ 7]  152 	ld	c, #0x00
+   006E                     153 00103$:
+   006E 79            [ 4]  154 	ld	a, c
+   006F D6 0E         [ 7]  155 	sub	a, #0x0e
+   0071 30 2D         [12]  156 	jr	NC,00101$
+                            157 ;src/instruct.c:66: ((y + text_loc.y) * LINE_P_H) + (y * 2), FONT_BLUE);
+   0073 21r3Er00      [10]  158 	ld	hl, #(_text_loc + 0x0001) + 0
+   0076 6E            [ 7]  159 	ld	l, (hl)
+   0077 09            [11]  160 	add	hl, bc
+   0078 5D            [ 4]  161 	ld	e, l
+   0079 29            [11]  162 	add	hl, hl
+   007A 19            [11]  163 	add	hl, de
+   007B 29            [11]  164 	add	hl, hl
+   007C 79            [ 4]  165 	ld	a, c
+   007D 87            [ 4]  166 	add	a, a
+   007E 85            [ 4]  167 	add	a,l
+   007F 47            [ 4]  168 	ld	b, a
+                            169 ;src/instruct.c:65: v_print_c(g_strings[y + 30],
+   0080 59            [ 4]  170 	ld	e, c
+   0081 16 00         [ 7]  171 	ld	d, #0x00
+   0083 21 1E 00      [10]  172 	ld	hl, #0x001e
+   0086 19            [11]  173 	add	hl, de
+   0087 29            [11]  174 	add	hl, hl
+   0088 11r00r00      [10]  175 	ld	de, #_g_strings
+   008B 19            [11]  176 	add	hl, de
+   008C 5E            [ 7]  177 	ld	e, (hl)
+   008D 23            [ 6]  178 	inc	hl
+   008E 56            [ 7]  179 	ld	d, (hl)
+   008F C5            [11]  180 	push	bc
+   0090 3E 01         [ 7]  181 	ld	a, #0x01
+   0092 F5            [11]  182 	push	af
+   0093 33            [ 6]  183 	inc	sp
+   0094 C5            [11]  184 	push	bc
+   0095 33            [ 6]  185 	inc	sp
+   0096 D5            [11]  186 	push	de
+   0097 CDr00r00      [17]  187 	call	_v_print_c
+   009A F1            [10]  188 	pop	af
+   009B F1            [10]  189 	pop	af
+   009C C1            [10]  190 	pop	bc
+                            191 ;src/instruct.c:64: for (u8 y = 0; y < 14; y++)
+   009D 0C            [ 4]  192 	inc	c
+   009E 18 CE         [12]  193 	jr	00103$
+   00A0                     194 00101$:
+                            195 ;src/instruct.c:68: v_print_c(g_strings[49], key_loc.y * LINE_P_H, FONT_RED);
+   00A0 3Ar40r00      [13]  196 	ld	a, (#(_key_loc + 0x0001) + 0)
+   00A3 4F            [ 4]  197 	ld	c, a
+   00A4 87            [ 4]  198 	add	a, a
+   00A5 81            [ 4]  199 	add	a, c
+   00A6 87            [ 4]  200 	add	a, a
+   00A7 47            [ 4]  201 	ld	b, a
+   00A8 ED 5Br62r00   [20]  202 	ld	de, (#_g_strings + 98)
+   00AC AF            [ 4]  203 	xor	a, a
+   00AD F5            [11]  204 	push	af
+   00AE 33            [ 6]  205 	inc	sp
+   00AF C5            [11]  206 	push	bc
+   00B0 33            [ 6]  207 	inc	sp
+   00B1 D5            [11]  208 	push	de
+   00B2 CDr00r00      [17]  209 	call	_v_print_c
+   00B5 F1            [10]  210 	pop	af
+   00B6 F1            [10]  211 	pop	af
+   00B7 C9            [10]  212 	ret
+                            213 	.area _CODE
+                            214 	.area _INITIALIZER
+                            215 	.area _CABS (ABS)

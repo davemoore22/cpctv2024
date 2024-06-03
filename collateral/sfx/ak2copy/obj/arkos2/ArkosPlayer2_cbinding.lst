@@ -1,0 +1,2539 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+
+
+                              1 ;;-----------------------------LICENSE NOTICE------------------------------------
+                              2 ;;  ArkosTracker 2 for CPCTelera
+                              3 ;;  Copyright (C) 2020 Arnaud Bouche (@Arnaud6128)
+                              4 ;;
+                              5 ;;  This program is free software: you can redistribute it and/or modify
+                              6 ;;  it under the terms of the GNU Lesser General Public License as published by
+                              7 ;;  the Free Software Foundation, either version 3 of the License, or
+                              8 ;;  (at your option) any later version.
+                              9 ;;
+                             10 ;;  This program is distributed in the hope that it will be useful,
+                             11 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             12 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             13 ;;  GNU Lesser General Public License for more details.
+                             14 ;;
+                             15 ;;  You should have received a copy of the GNU Lesser General Public License
+                             16 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                             17 ;;-------------------------------------------------------------------------------
+                             18 
+                             19 .module arkos2
+                             20 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+
+
+                             21 .include "PlayerAkm.asm"
+                     0001     1 PLY_AKM_REGISTERS_OFFSETVOLUME = .+1
+                     0001     2 PLY_AKM_DATA_OFFSETTRANSPOSITION = .+1
+                     0001     3 PLY_AKM_OFFSET1B = .+1
+                     0001     4 PLY_AKM_STOP_SOUNDS = .+1
+                     0001     5 PLY_AKM_USE_HOOKS = .+1
+   0000                       6 AHARMLESSGRENADE_START:
+   0000                       7 _AHARMLESSGRENADE_START::
+   0000 08 00                 8 PLY_AKM_DATA_OFFSETWAITEMPTYCELL: .dw AHARMLESSGRENADE_INSTRUMENTINDEXES
+                     0003     9 PLY_AKM_SOUNDEFFECTDATA_OFFSETCURRENTSTEP = .+1
+   0002                      10 PLY_AKM_SOUNDEFFECTDATA_OFFSETINVERTEDVOLUME:
+   0002                      11 PLY_AKM_OFFSET2B:
+   0002 21 01                12 PLY_AKM_DATA_OFFSETPTSTARTTRACK: .dw AHARMLESSGRENADE_ARPEGGIOINDEXES-2
+                     0005    13 PLY_AKM_REGISTERS_OFFSETSOFTWAREPERIODLSB = .+1
+   0004                      14 PLY_AKM_SOUNDEFFECTDATA_OFFSETSPEED:
+   0004 35 01                15 PLY_AKM_DATA_OFFSETPTTRACK: .dw AHARMLESSGRENADE_PITCHINDEXES-2
+                     0007    16 PLY_AKM_DATA_OFFSETESCAPENOTE = .+1
+   0006 41 01                17 PLY_AKM_DATA_OFFSETBASENOTE: .dw AHARMLESSGRENADE_SUBSONG0
+                     0009    18 PLY_AKM_DATA_OFFSETESCAPEWAIT = .+1
+                     0009    19 PLY_AKM_DATA_OFFSETSECONDARYINSTRUMENT = .+1
+                     0009    20 PLY_AKM_REGISTERS_OFFSETSOFTWAREPERIODMSB = .+1
+   0008                      21 AHARMLESSGRENADE_INSTRUMENTINDEXES:
+   0008                      22 PLY_AKM_CHANNEL_SOUNDEFFECTDATASIZE:
+   0008 30 00                23 PLY_AKM_DATA_OFFSETESCAPEINSTRUMENT: .dw AHARMLESSGRENADE_INSTRUMENT0
+   000A 35 00                24 PLY_AKM_DATA_OFFSETPTINSTRUMENT: .dw AHARMLESSGRENADE_INSTRUMENT1
+                     000D    25 PLY_AKM_DATA_OFFSETINSTRUMENTSPEED = .+1
+   000C 47 00                26 PLY_AKM_DATA_OFFSETINSTRUMENTCURRENTSTEP: .dw AHARMLESSGRENADE_INSTRUMENT2
+                     000F    27 PLY_AKM_DATA_OFFSETISPITCHUPDOWNUSED = .+1
+   000E 65 00                28 PLY_AKM_DATA_OFFSETTRACKINVERTEDVOLUME: .dw AHARMLESSGRENADE_INSTRUMENT3
+   0010 6F 00                29 PLY_AKM_DATA_OFFSETTRACKPITCHINTEGER: .dw AHARMLESSGRENADE_INSTRUMENT4
+                     0013    30 PLY_AKM_DATA_OFFSETTRACKPITCHSPEED = .+1
+   0012 77 00                31 PLY_AKM_DATA_OFFSETTRACKPITCHDECIMAL: .dw AHARMLESSGRENADE_INSTRUMENT5
+                     0015    32 PLY_AKM_DATA_OFFSETISARPEGGIOTABLEUSED = .+1
+   0014 81 00                33     .dw AHARMLESSGRENADE_INSTRUMENT6
+   0016 87 00                34 PLY_AKM_DATA_OFFSETPTARPEGGIOTABLE: .dw AHARMLESSGRENADE_INSTRUMENT7
+                     0019    35 PLY_AKM_DATA_OFFSETARPEGGIOCURRENTSTEP = .+1
+   0018 99 00                36 PLY_AKM_DATA_OFFSETPTARPEGGIOOFFSET: .dw AHARMLESSGRENADE_INSTRUMENT8
+                     001B    37 PLY_AKM_DATA_OFFSETCURRENTARPEGGIOVALUE = .+1
+   001A 9E 00                38 PLY_AKM_DATA_OFFSETARPEGGIOORIGINALSPEED: .dw AHARMLESSGRENADE_INSTRUMENT9
+                     001D    39 PLY_AKM_DATA_OFFSETPTPITCHTABLE = .+1
+   001C B7 00                40 PLY_AKM_DATA_OFFSETISPITCHTABLEUSED: .dw AHARMLESSGRENADE_INSTRUMENT10
+                     001F    41 PLY_AKM_DATA_OFFSETPTPITCHOFFSET = .+1
+   001E BC 00                42     .dw AHARMLESSGRENADE_INSTRUMENT11
+                     0021    43 PLY_AKM_DATA_OFFSETPITCHORIGINALSPEED = .+1
+   0020 C5 00                44 PLY_AKM_DATA_OFFSETPITCHCURRENTSTEP: .dw AHARMLESSGRENADE_INSTRUMENT12
+   0022 CA 00                45 PLY_AKM_DATA_OFFSETCURRENTPITCHTABLEVALUE: .dw AHARMLESSGRENADE_INSTRUMENT13
+   0024 CF 00                46 PLY_AKM_TRACK1_DATA_SIZE: .dw AHARMLESSGRENADE_INSTRUMENT14
+   0026 D4 00                47     .dw AHARMLESSGRENADE_INSTRUMENT15
+   0028 EB 00                48     .dw AHARMLESSGRENADE_INSTRUMENT16
+   002A F9 00                49     .dw AHARMLESSGRENADE_INSTRUMENT17
+   002C 07 01                50     .dw AHARMLESSGRENADE_INSTRUMENT18
+   002E 15 01                51     .dw AHARMLESSGRENADE_INSTRUMENT19
+   0030 FF                   52 AHARMLESSGRENADE_INSTRUMENT0: .db 255
+   0031 00                   53 AHARMLESSGRENADE_INSTRUMENT0LOOP: .db 0
+   0032 04                   54     .db 4
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
+Hexadecimal [16-Bits]
+
+
+
+   0033 31 00                55     .dw AHARMLESSGRENADE_INSTRUMENT0LOOP
+   0035 01                   56 AHARMLESSGRENADE_INSTRUMENT1: .db 1
+   0036 D2                   57     .db 210
+   0037 0C                   58     .db 12
+   0038 B2                   59     .db 178
+   0039 0C                   60     .db 12
+   003A B2                   61     .db 178
+   003B 0C                   62     .db 12
+   003C 52                   63     .db 82
+   003D A9                   64     .db 169
+   003E 18                   65     .db 24
+   003F 29                   66     .db 41
+   0040 A9                   67     .db 169
+   0041 18                   68     .db 24
+   0042 25                   69     .db 37
+   0043 21                   70     .db 33
+   0044 04                   71     .db 4
+   0045 31 00                72     .dw AHARMLESSGRENADE_INSTRUMENT0LOOP
+   0047 00                   73 AHARMLESSGRENADE_INSTRUMENT2: .db 0
+   0048 BD                   74     .db 189
+   0049 01                   75     .db 1
+   004A 02                   76     .db 2
+   004B FD                   77     .db 253
+   004C 01                   78     .db 1
+   004D 01                   79     .db 1
+   004E 20                   80     .db 32
+   004F 00                   81     .db 0
+   0050 7D                   82     .db 125
+   0051 30                   83     .db 48
+   0052 00                   84     .db 0
+   0053 7D                   85     .db 125
+   0054 44                   86     .db 68
+   0055 00                   87     .db 0
+   0056 7D                   88     .db 125
+   0057 74                   89     .db 116
+   0058 00                   90     .db 0
+   0059 7D                   91     .db 125
+   005A E4                   92     .db 228
+   005B 00                   93     .db 0
+   005C 79                   94     .db 121
+   005D B4                   95     .db 180
+   005E 00                   96     .db 0
+   005F 75                   97     .db 117
+   0060 24                   98     .db 36
+   0061 01                   99     .db 1
+   0062 04                  100     .db 4
+   0063 31 00               101     .dw AHARMLESSGRENADE_INSTRUMENT0LOOP
+   0065 00                  102 AHARMLESSGRENADE_INSTRUMENT3: .db 0
+   0066 F8                  103     .db 248
+   0067 01                  104     .db 1
+   0068 D8                  105     .db 216
+   0069 01                  106     .db 1
+   006A B8                  107     .db 184
+   006B 01                  108     .db 1
+   006C 04                  109     .db 4
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 4.
+Hexadecimal [16-Bits]
+
+
+
+   006D 31 00               110     .dw AHARMLESSGRENADE_INSTRUMENT0LOOP
+   006F 00                  111 AHARMLESSGRENADE_INSTRUMENT4: .db 0
+   0070 F8                  112     .db 248
+   0071 04                  113     .db 4
+   0072 C8                  114     .db 200
+   0073 01                  115     .db 1
+   0074 04                  116     .db 4
+   0075 31 00               117     .dw AHARMLESSGRENADE_INSTRUMENT0LOOP
+   0077 00                  118 AHARMLESSGRENADE_INSTRUMENT5: .db 0
+   0078 F8                  119 AHARMLESSGRENADE_INSTRUMENT5LOOP: .db 248
+   0079 01                  120     .db 1
+   007A C8                  121     .db 200
+   007B 01                  122     .db 1
+   007C B0                  123     .db 176
+   007D 01                  124     .db 1
+   007E 04                  125     .db 4
+   007F 78 00               126     .dw AHARMLESSGRENADE_INSTRUMENT5LOOP
+   0081 03                  127 AHARMLESSGRENADE_INSTRUMENT6: .db 3
+   0082 F8                  128     .db 248
+   0083 01                  129     .db 1
+   0084 04                  130     .db 4
+   0085 31 00               131     .dw AHARMLESSGRENADE_INSTRUMENT0LOOP
+   0087 02                  132 AHARMLESSGRENADE_INSTRUMENT7: .db 2
+   0088 3D                  133     .db 61
+   0089 35                  134     .db 53
+   008A 31                  135     .db 49
+   008B 2D                  136     .db 45
+   008C 29                  137     .db 41
+   008D 25                  138     .db 37
+   008E 21                  139     .db 33
+   008F 1D                  140     .db 29
+   0090 19                  141     .db 25
+   0091 15                  142     .db 21
+   0092 11                  143     .db 17
+   0093 0D                  144     .db 13
+   0094 09                  145     .db 9
+   0095 05                  146     .db 5
+   0096 04                  147     .db 4
+   0097 31 00               148     .dw AHARMLESSGRENADE_INSTRUMENT0LOOP
+   0099 00                  149 AHARMLESSGRENADE_INSTRUMENT8: .db 0
+   009A 4A                  150 AHARMLESSGRENADE_INSTRUMENT8LOOP: .db 74
+   009B 04                  151     .db 4
+   009C 9A 00               152     .dw AHARMLESSGRENADE_INSTRUMENT8LOOP
+   009E 00                  153 AHARMLESSGRENADE_INSTRUMENT9: .db 0
+   009F F8                  154     .db 248
+   00A0 02                  155     .db 2
+   00A1 39                  156     .db 57
+   00A2 F5                  157     .db 245
+   00A3 01                  158     .db 1
+   00A4 01                  159     .db 1
+   00A5 D0                  160     .db 208
+   00A6 00                  161     .db 0
+   00A7 ED                  162     .db 237
+   00A8 01                  163     .db 1
+   00A9 01                  164     .db 1
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 5.
+Hexadecimal [16-Bits]
+
+
+
+   00AA 90                  165     .db 144
+   00AB 01                  166     .db 1
+   00AC D8                  167     .db 216
+   00AD 01                  168     .db 1
+   00AE D8                  169     .db 216
+   00AF 03                  170     .db 3
+   00B0 D0                  171     .db 208
+   00B1 04                  172     .db 4
+   00B2 C8                  173     .db 200
+   00B3 01                  174     .db 1
+   00B4 04                  175     .db 4
+   00B5 31 00               176     .dw AHARMLESSGRENADE_INSTRUMENT0LOOP
+   00B7 04                  177 AHARMLESSGRENADE_INSTRUMENT10: .db 4
+   00B8 52                  178 AHARMLESSGRENADE_INSTRUMENT10LOOP: .db 82
+   00B9 04                  179     .db 4
+   00BA B8 00               180     .dw AHARMLESSGRENADE_INSTRUMENT10LOOP
+   00BC 01                  181 AHARMLESSGRENADE_INSTRUMENT11: .db 1
+   00BD C2                  182 AHARMLESSGRENADE_INSTRUMENT11LOOP: .db 194
+   00BE 0C                  183     .db 12
+   00BF C2                  184     .db 194
+   00C0 0C                  185     .db 12
+   00C1 78                  186     .db 120
+   00C2 04                  187     .db 4
+   00C3 BD 00               188     .dw AHARMLESSGRENADE_INSTRUMENT11LOOP
+   00C5 00                  189 AHARMLESSGRENADE_INSTRUMENT12: .db 0
+   00C6 3D                  190 AHARMLESSGRENADE_INSTRUMENT12LOOP: .db 61
+   00C7 04                  191     .db 4
+   00C8 C6 00               192     .dw AHARMLESSGRENADE_INSTRUMENT12LOOP
+   00CA 00                  193 AHARMLESSGRENADE_INSTRUMENT13: .db 0
+   00CB 3D                  194     .db 61
+   00CC 04                  195     .db 4
+   00CD 31 00               196     .dw AHARMLESSGRENADE_INSTRUMENT0LOOP
+   00CF 00                  197 AHARMLESSGRENADE_INSTRUMENT14: .db 0
+   00D0 3A                  198 AHARMLESSGRENADE_INSTRUMENT14LOOP: .db 58
+   00D1 04                  199     .db 4
+   00D2 D0 00               200     .dw AHARMLESSGRENADE_INSTRUMENT14LOOP
+   00D4 01                  201 AHARMLESSGRENADE_INSTRUMENT15: .db 1
+   00D5 3D                  202     .db 61
+   00D6 79                  203 AHARMLESSGRENADE_INSTRUMENT15LOOP: .db 121
+   00D7 FB                  204     .db 251
+   00D8 FF                  205     .db 255
+   00D9 31                  206     .db 49
+   00DA 6D                  207     .db 109
+   00DB 05                  208     .db 5
+   00DC 00                  209     .db 0
+   00DD 3D                  210     .db 61
+   00DE 75                  211     .db 117
+   00DF F9                  212     .db 249
+   00E0 FF                  213     .db 255
+   00E1 25                  214     .db 37
+   00E2 69                  215     .db 105
+   00E3 20                  216     .db 32
+   00E4 00                  217     .db 0
+   00E5 2D                  218     .db 45
+   00E6 31                  219     .db 49
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 6.
+Hexadecimal [16-Bits]
+
+
+
+   00E7 39                  220     .db 57
+   00E8 04                  221     .db 4
+   00E9 D6 00               222     .dw AHARMLESSGRENADE_INSTRUMENT15LOOP
+   00EB 00                  223 AHARMLESSGRENADE_INSTRUMENT16: .db 0
+   00EC E8                  224     .db 232
+   00ED 05                  225     .db 5
+   00EE D8                  226     .db 216
+   00EF 05                  227     .db 5
+   00F0 D0                  228     .db 208
+   00F1 05                  229     .db 5
+   00F2 C8                  230     .db 200
+   00F3 05                  231     .db 5
+   00F4 B8                  232     .db 184
+   00F5 05                  233     .db 5
+   00F6 04                  234     .db 4
+   00F7 31 00               235     .dw AHARMLESSGRENADE_INSTRUMENT0LOOP
+   00F9 00                  236 AHARMLESSGRENADE_INSTRUMENT17: .db 0
+   00FA E8                  237     .db 232
+   00FB 09                  238     .db 9
+   00FC D8                  239     .db 216
+   00FD 09                  240     .db 9
+   00FE D0                  241     .db 208
+   00FF 09                  242     .db 9
+   0100 C8                  243     .db 200
+   0101 09                  244     .db 9
+   0102 B8                  245     .db 184
+   0103 09                  246     .db 9
+   0104 04                  247     .db 4
+   0105 31 00               248     .dw AHARMLESSGRENADE_INSTRUMENT0LOOP
+   0107 00                  249 AHARMLESSGRENADE_INSTRUMENT18: .db 0
+   0108 E8                  250     .db 232
+   0109 11                  251     .db 17
+   010A D8                  252     .db 216
+   010B 11                  253     .db 17
+   010C D0                  254     .db 208
+   010D 11                  255     .db 17
+   010E C8                  256     .db 200
+   010F 11                  257     .db 17
+   0110 B8                  258     .db 184
+   0111 11                  259     .db 17
+   0112 04                  260     .db 4
+   0113 31 00               261     .dw AHARMLESSGRENADE_INSTRUMENT0LOOP
+   0115 00                  262 AHARMLESSGRENADE_INSTRUMENT19: .db 0
+   0116 E8                  263     .db 232
+   0117 19                  264     .db 25
+   0118 D8                  265     .db 216
+   0119 19                  266     .db 25
+   011A D0                  267     .db 208
+   011B 19                  268     .db 25
+   011C C8                  269     .db 200
+   011D 19                  270     .db 25
+   011E B8                  271     .db 184
+   011F 19                  272     .db 25
+   0120 04                  273     .db 4
+   0121 31 00               274     .dw AHARMLESSGRENADE_INSTRUMENT0LOOP
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 7.
+Hexadecimal [16-Bits]
+
+
+
+   0123 27 01               275 AHARMLESSGRENADE_ARPEGGIOINDEXES: .dw AHARMLESSGRENADE_ARPEGGIO1
+   0125 2E 01               276     .dw AHARMLESSGRENADE_ARPEGGIO2
+   0127 00                  277 AHARMLESSGRENADE_ARPEGGIO1: .db 0
+   0128 00                  278     .db 0
+   0129 18                  279     .db 24
+   012A 12                  280     .db 18
+   012B E8                  281     .db 232
+   012C 24                  282     .db 36
+   012D 01                  283     .db 1
+   012E 00                  284 AHARMLESSGRENADE_ARPEGGIO2: .db 0
+   012F 00                  285     .db 0
+   0130 0C                  286     .db 12
+   0131 FA                  287     .db 250
+   0132 E8                  288     .db 232
+   0133 F4                  289     .db 244
+   0134 00                  290     .db 0
+   0135 18                  291     .db 24
+   0136 01                  292     .db 1
+   0137 39 01               293 AHARMLESSGRENADE_PITCHINDEXES: .dw AHARMLESSGRENADE_PITCH1
+   0139 01                  294 AHARMLESSGRENADE_PITCH1: .db 1
+   013A 00                  295     .db 0
+   013B 00                  296     .db 0
+   013C 00                  297     .db 0
+   013D FE                  298     .db 254
+   013E F8                  299     .db 248
+   013F 04                  300     .db 4
+   0140 05                  301     .db 5
+   0141 07 04               302 AHARMLESSGRENADE_SUBSONG0: .dw AHARMLESSGRENADE_SUBSONG0_NOTEINDEXES
+   0143 BF 01               303     .dw AHARMLESSGRENADE_SUBSONG0_TRACKINDEXES
+   0145 06                  304     .db 6
+   0146 01                  305     .db 1
+   0147 02                  306     .db 2
+   0148 00                  307     .db 0
+   0149 01                  308     .db 1
+   014A 15                  309     .db 21
+   014B 0A                  310     .db 10
+   014C 00                  311     .db 0
+   014D 0C                  312     .db 12
+   014E FA                  313 AHARMLESSGRENADE_SUBSONG0_LOOP: .db 250
+   014F 1F                  314     .db 31
+   0150 84                  315     .db 132
+   0151 00                  316     .db 0
+   0152 80                  317     .db 128
+   0153 00                  318     .db 0
+   0154 80                  319     .db 128
+   0155 A0                  320     .db 160
+   0156 85                  321     .db 133
+   0157 85                  322     .db 133
+   0158 80                  323     .db 128
+   0159 00                  324     .db 0
+   015A 9A                  325     .db 154
+   015B 00                  326     .db 0
+   015C A8                  327     .db 168
+   015D 01                  328     .db 1
+   015E 09                  329     .db 9
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 8.
+Hexadecimal [16-Bits]
+
+
+
+   015F 01                  330     .db 1
+   0160 27                  331     .db 39
+   0161 01                  332     .db 1
+   0162 13                  333     .db 19
+   0163 AA                  334     .db 170
+   0164 17                  335     .db 23
+   0165 88                  336     .db 136
+   0166 87                  337     .db 135
+   0167 89                  338     .db 137
+   0168 AA                  339     .db 170
+   0169 07                  340     .db 7
+   016A 01                  341     .db 1
+   016B 8F                  342     .db 143
+   016C 01                  343     .db 1
+   016D 90                  344     .db 144
+   016E 01                  345     .db 1
+   016F 95                  346     .db 149
+   0170 AA                  347     .db 170
+   0171 17                  348     .db 23
+   0172 88                  349     .db 136
+   0173 87                  350     .db 135
+   0174 89                  351     .db 137
+   0175 AA                  352     .db 170
+   0176 07                  353     .db 7
+   0177 01                  354     .db 1
+   0178 90                  355     .db 144
+   0179 01                  356     .db 1
+   017A 97                  357     .db 151
+   017B 01                  358     .db 1
+   017C A7                  359     .db 167
+   017D AA                  360     .db 170
+   017E 17                  361     .db 23
+   017F 88                  362     .db 136
+   0180 87                  363     .db 135
+   0181 89                  364     .db 137
+   0182 AA                  365     .db 170
+   0183 07                  366     .db 7
+   0184 01                  367     .db 1
+   0185 75                  368     .db 117
+   0186 01                  369     .db 1
+   0187 76                  370     .db 118
+   0188 01                  371     .db 1
+   0189 7B                  372     .db 123
+   018A AA                  373     .db 170
+   018B 1F                  374     .db 31
+   018C 8A                  375     .db 138
+   018D 8B                  376     .db 139
+   018E 01                  377     .db 1
+   018F BD                  378     .db 189
+   0190 80                  379     .db 128
+   0191 02                  380     .db 2
+   0192 0A                  381     .db 10
+   0193 82                  382     .db 130
+   0194 1B                  383     .db 27
+   0195 01                  384     .db 1
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 9.
+Hexadecimal [16-Bits]
+
+
+
+   0196 B6                  385     .db 182
+   0197 AA                  386     .db 170
+   0198 03                  387     .db 3
+   0199 80                  388     .db 128
+   019A 81                  389     .db 129
+   019B 80                  390     .db 128
+   019C AA                  391     .db 170
+   019D 1F                  392     .db 31
+   019E 01                  393     .db 1
+   019F C7                  394     .db 199
+   01A0 82                  395     .db 130
+   01A1 83                  396     .db 131
+   01A2 00                  397     .db 0
+   01A3 08                  398     .db 8
+   01A4 8C                  399     .db 140
+   01A5 00                  400     .db 0
+   01A6 46                  401     .db 70
+   01A7 0F                  402     .db 15
+   01A8 02                  403     .db 2
+   01A9 02                  404     .db 2
+   01AA FE                  405     .db 254
+   01AB 03                  406     .db 3
+   01AC 00                  407     .db 0
+   01AD 80                  408     .db 128
+   01AE 02                  409     .db 2
+   01AF 81                  410     .db 129
+   01B0 00                  411     .db 0
+   01B1 86                  412     .db 134
+   01B2 50                  413     .db 80
+   01B3 0A                  414     .db 10
+   01B4 04                  415     .db 4
+   01B5 50                  416     .db 80
+   01B6 14                  417     .db 20
+   01B7 08                  418     .db 8
+   01B8 50                  419     .db 80
+   01B9 24                  420     .db 36
+   01BA 0E                  421     .db 14
+   01BB 01                  422     .db 1
+   01BC 00                  423     .db 0
+   01BD 4E 01               424     .dw AHARMLESSGRENADE_SUBSONG0_LOOP
+   01BF C8 03               425 AHARMLESSGRENADE_SUBSONG0_TRACKINDEXES: .dw AHARMLESSGRENADE_SUBSONG0_TRACK22
+   01C1 CB 03               426     .dw AHARMLESSGRENADE_SUBSONG0_TRACK23
+   01C3 72 03               427     .dw AHARMLESSGRENADE_SUBSONG0_TRACK19
+   01C5 B1 03               428     .dw AHARMLESSGRENADE_SUBSONG0_TRACK21
+   01C7 D9 01               429     .dw AHARMLESSGRENADE_SUBSONG0_TRACK0
+   01C9 F3 01               430     .dw AHARMLESSGRENADE_SUBSONG0_TRACK1
+   01CB FD 03               431     .dw AHARMLESSGRENADE_SUBSONG0_TRACK25
+   01CD DA 02               432     .dw AHARMLESSGRENADE_SUBSONG0_TRACK8
+   01CF 8B 02               433     .dw AHARMLESSGRENADE_SUBSONG0_TRACK6
+   01D1 B1 02               434     .dw AHARMLESSGRENADE_SUBSONG0_TRACK7
+   01D3 2E 03               435     .dw AHARMLESSGRENADE_SUBSONG0_TRACK15
+   01D5 39 03               436     .dw AHARMLESSGRENADE_SUBSONG0_TRACK16
+   01D7 D2 03               437     .dw AHARMLESSGRENADE_SUBSONG0_TRACK24
+   01D9 92                  438 AHARMLESSGRENADE_SUBSONG0_TRACK0: .db 146
+   01DA 52                  439     .db 82
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 10.
+Hexadecimal [16-Bits]
+
+
+
+   01DB 92                  440     .db 146
+   01DC 92                  441     .db 146
+   01DD 52                  442     .db 82
+   01DE 92                  443     .db 146
+   01DF 92                  444     .db 146
+   01E0 92                  445     .db 146
+   01E1 92                  446     .db 146
+   01E2 92                  447     .db 146
+   01E3 52                  448     .db 82
+   01E4 92                  449     .db 146
+   01E5 92                  450     .db 146
+   01E6 52                  451     .db 82
+   01E7 52                  452     .db 82
+   01E8 5A                  453     .db 90
+   01E9 5E                  454     .db 94
+   01EA 1D                  455     .db 29
+   01EB 5E                  456     .db 94
+   01EC 20                  457     .db 32
+   01ED 55                  458     .db 85
+   01EE 5E                  459     .db 94
+   01EF 1D                  460     .db 29
+   01F0 50                  461     .db 80
+   01F1 DA                  462     .db 218
+   01F2 7F                  463     .db 127
+   01F3 CD                  464 AHARMLESSGRENADE_SUBSONG0_TRACK1: .db 205
+   01F4 7F                  465     .db 127
+   01F5 0C                  466 AHARMLESSGRENADE_SUBSONG0_TRACK2: .db 12
+   01F6 60                  467     .db 96
+   01F7 00                  468     .db 0
+   01F8 0C                  469     .db 12
+   01F9 70                  470     .db 112
+   01FA 03                  471     .db 3
+   01FB 32                  472     .db 50
+   01FC 0C                  473     .db 12
+   01FD 40                  474     .db 64
+   01FE 02                  475     .db 2
+   01FF 0C                  476     .db 12
+   0200 40                  477     .db 64
+   0201 32                  478     .db 50
+   0202 0C                  479     .db 12
+   0203 60                  480     .db 96
+   0204 02                  481     .db 2
+   0205 0C                  482     .db 12
+   0206 70                  483     .db 112
+   0207 04                  484     .db 4
+   0208 12                  485     .db 18
+   0209 0C                  486     .db 12
+   020A 70                  487     .db 112
+   020B 03                  488     .db 3
+   020C 22                  489     .db 34
+   020D 0C                  490     .db 12
+   020E 40                  491     .db 64
+   020F 32                  492     .db 50
+   0210 0C                  493     .db 12
+   0211 60                  494     .db 96
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 11.
+Hexadecimal [16-Bits]
+
+
+
+   0212 02                  495     .db 2
+   0213 0C                  496     .db 12
+   0214 70                  497     .db 112
+   0215 05                  498     .db 5
+   0216 12                  499     .db 18
+   0217 0C                  500     .db 12
+   0218 70                  501     .db 112
+   0219 03                  502     .db 3
+   021A 22                  503     .db 34
+   021B 0C                  504     .db 12
+   021C 70                  505     .db 112
+   021D 04                  506     .db 4
+   021E 32                  507     .db 50
+   021F 0C                  508     .db 12
+   0220 60                  509     .db 96
+   0221 02                  510     .db 2
+   0222 0C                  511     .db 12
+   0223 70                  512     .db 112
+   0224 06                  513     .db 6
+   0225 32                  514     .db 50
+   0226 0C                  515     .db 12
+   0227 70                  516     .db 112
+   0228 04                  517     .db 4
+   0229 52                  518     .db 82
+   022A 0C                  519     .db 12
+   022B 70                  520     .db 112
+   022C 06                  521     .db 6
+   022D 22                  522     .db 34
+   022E 0C                  523     .db 12
+   022F 60                  524     .db 96
+   0230 02                  525     .db 2
+   0231 0C                  526     .db 12
+   0232 70                  527     .db 112
+   0233 03                  528     .db 3
+   0234 22                  529     .db 34
+   0235 0C                  530     .db 12
+   0236 70                  531     .db 112
+   0237 04                  532     .db 4
+   0238 12                  533     .db 18
+   0239 0C                  534     .db 12
+   023A 70                  535     .db 112
+   023B 03                  536     .db 3
+   023C 32                  537     .db 50
+   023D 0C                  538     .db 12
+   023E 60                  539     .db 96
+   023F 02                  540     .db 2
+   0240 0C                  541     .db 12
+   0241 70                  542     .db 112
+   0242 04                  543     .db 4
+   0243 22                  544     .db 34
+   0244 0C                  545     .db 12
+   0245 70                  546     .db 112
+   0246 05                  547     .db 5
+   0247 32                  548     .db 50
+   0248 0C                  549     .db 12
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 12.
+Hexadecimal [16-Bits]
+
+
+
+   0249 70                  550     .db 112
+   024A 04                  551     .db 4
+   024B 12                  552     .db 18
+   024C 0C                  553     .db 12
+   024D 60                  554     .db 96
+   024E 02                  555     .db 2
+   024F 0C                  556     .db 12
+   0250 70                  557     .db 112
+   0251 03                  558     .db 3
+   0252 12                  559     .db 18
+   0253 0C                  560     .db 12
+   0254 70                  561     .db 112
+   0255 05                  562     .db 5
+   0256 32                  563     .db 50
+   0257 0C                  564     .db 12
+   0258 40                  565     .db 64
+   0259 42                  566     .db 66
+   025A 0C                  567     .db 12
+   025B 60                  568     .db 96
+   025C 02                  569     .db 2
+   025D 0C                  570     .db 12
+   025E 70                  571     .db 112
+   025F 03                  572     .db 3
+   0260 42                  573     .db 66
+   0261 0C                  574     .db 12
+   0262 70                  575     .db 112
+   0263 04                  576     .db 4
+   0264 22                  577     .db 34
+   0265 F0                  578     .db 240
+   0266 06                  579     .db 6
+   0267 7F                  580     .db 127
+   0268 0C                  581 AHARMLESSGRENADE_SUBSONG0_TRACK3: .db 12
+   0269 FE                  582     .db 254
+   026A 4F                  583     .db 79
+   026B 07                  584     .db 7
+   026C 07                  585     .db 7
+   026D 21                  586     .db 33
+   026E 18                  587     .db 24
+   026F 0E                  588     .db 14
+   0270 4D                  589     .db 77
+   0271 0E                  590     .db 14
+   0272 48                  591     .db 72
+   0273 CE                  592     .db 206
+   0274 4C                  593     .db 76
+   0275 7F                  594     .db 127
+   0276 0C                  595 AHARMLESSGRENADE_SUBSONG0_TRACK4: .db 12
+   0277 E0                  596     .db 224
+   0278 03                  597     .db 3
+   0279 00                  598     .db 0
+   027A 0C                  599     .db 12
+   027B FE                  600     .db 254
+   027C 4B                  601     .db 75
+   027D 07                  602     .db 7
+   027E 07                  603     .db 7
+   027F 23                  604     .db 35
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 13.
+Hexadecimal [16-Bits]
+
+
+
+   0280 18                  605     .db 24
+   0281 0E                  606     .db 14
+   0282 47                  607     .db 71
+   0283 0E                  608     .db 14
+   0284 4D                  609     .db 77
+   0285 CE                  610     .db 206
+   0286 4F                  611     .db 79
+   0287 7F                  612     .db 127
+   0288 F2                  613 AHARMLESSGRENADE_SUBSONG0_TRACK5: .db 242
+   0289 08                  614     .db 8
+   028A 7F                  615     .db 127
+   028B 0C                  616 AHARMLESSGRENADE_SUBSONG0_TRACK6: .db 12
+   028C 45                  617     .db 69
+   028D 00                  618     .db 0
+   028E 9D                  619     .db 157
+   028F F4                  620     .db 244
+   0290 00                  621     .db 0
+   0291 20                  622     .db 32
+   0292 45                  623     .db 69
+   0293 9D                  624     .db 157
+   0294 F4                  625     .db 244
+   0295 00                  626     .db 0
+   0296 20                  627     .db 32
+   0297 45                  628     .db 69
+   0298 5D                  629     .db 93
+   0299 F4                  630     .db 244
+   029A 00                  631     .db 0
+   029B 20                  632     .db 32
+   029C F1                  633     .db 241
+   029D 00                  634     .db 0
+   029E 06                  635     .db 6
+   029F 72                  636     .db 114
+   02A0 0A                  637     .db 10
+   02A1 45                  638     .db 69
+   02A2 9D                  639     .db 157
+   02A3 F4                  640     .db 244
+   02A4 00                  641     .db 0
+   02A5 20                  642     .db 32
+   02A6 45                  643     .db 69
+   02A7 9D                  644     .db 157
+   02A8 F4                  645     .db 244
+   02A9 00                  646     .db 0
+   02AA 20                  647     .db 32
+   02AB 45                  648     .db 69
+   02AC DD                  649     .db 221
+   02AD 7F                  650     .db 127
+   02AE F4                  651     .db 244
+   02AF 00                  652     .db 0
+   02B0 20                  653     .db 32
+   02B1 0C                  654 AHARMLESSGRENADE_SUBSONG0_TRACK7: .db 12
+   02B2 72                  655     .db 114
+   02B3 0C                  656     .db 12
+   02B4 00                  657     .db 0
+   02B5 9D                  658     .db 157
+   02B6 F4                  659     .db 244
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 14.
+Hexadecimal [16-Bits]
+
+
+
+   02B7 00                  660     .db 0
+   02B8 20                  661     .db 32
+   02B9 42                  662     .db 66
+   02BA 9D                  663     .db 157
+   02BB F4                  664     .db 244
+   02BC 00                  665     .db 0
+   02BD 20                  666     .db 32
+   02BE 42                  667     .db 66
+   02BF 5D                  668     .db 93
+   02C0 F4                  669     .db 244
+   02C1 00                  670     .db 0
+   02C2 20                  671     .db 32
+   02C3 F1                  672     .db 241
+   02C4 00                  673     .db 0
+   02C5 06                  674     .db 6
+   02C6 72                  675     .db 114
+   02C7 0C                  676     .db 12
+   02C8 0C                  677     .db 12
+   02C9 42                  678     .db 66
+   02CA 02                  679     .db 2
+   02CB 9D                  680     .db 157
+   02CC F4                  681     .db 244
+   02CD 00                  682     .db 0
+   02CE 20                  683     .db 32
+   02CF 42                  684     .db 66
+   02D0 9D                  685     .db 157
+   02D1 F4                  686     .db 244
+   02D2 00                  687     .db 0
+   02D3 20                  688     .db 32
+   02D4 42                  689     .db 66
+   02D5 DD                  690     .db 221
+   02D6 7F                  691     .db 127
+   02D7 F4                  692     .db 244
+   02D8 00                  693     .db 0
+   02D9 20                  694     .db 32
+   02DA 0C                  695 AHARMLESSGRENADE_SUBSONG0_TRACK8: .db 12
+   02DB E0                  696     .db 224
+   02DC 02                  697     .db 2
+   02DD 00                  698     .db 0
+   02DE 20                  699     .db 32
+   02DF A0                  700     .db 160
+   02E0 76                  701     .db 118
+   02E1 09                  702     .db 9
+   02E2 0C                  703     .db 12
+   02E3 46                  704     .db 70
+   02E4 12                  705     .db 18
+   02E5 0C                  706     .db 12
+   02E6 46                  707     .db 70
+   02E7 22                  708     .db 34
+   02E8 0C                  709     .db 12
+   02E9 46                  710     .db 70
+   02EA 32                  711     .db 50
+   02EB 0C                  712     .db 12
+   02EC 46                  713     .db 70
+   02ED 42                  714     .db 66
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 15.
+Hexadecimal [16-Bits]
+
+
+
+   02EE 0C                  715     .db 12
+   02EF 46                  716     .db 70
+   02F0 52                  717     .db 82
+   02F1 0C                  718     .db 12
+   02F2 46                  719     .db 70
+   02F3 62                  720     .db 98
+   02F4 0C                  721     .db 12
+   02F5 60                  722     .db 96
+   02F6 02                  723     .db 2
+   02F7 20                  724     .db 32
+   02F8 20                  725     .db 32
+   02F9 E0                  726     .db 224
+   02FA 7F                  727     .db 127
+   02FB 8F                  728 AHARMLESSGRENADE_SUBSONG0_TRACK9: .db 143
+   02FC CA                  729     .db 202
+   02FD 7F                  730     .db 127
+   02FE F3                  731 AHARMLESSGRENADE_SUBSONG0_TRACK10: .db 243
+   02FF 09                  732     .db 9
+   0300 03                  733     .db 3
+   0301 A0                  734     .db 160
+   0302 43                  735     .db 67
+   0303 E0                  736     .db 224
+   0304 7F                  737     .db 127
+   0305 BF                  738 AHARMLESSGRENADE_SUBSONG0_TRACK11: .db 191
+   0306 0C                  739     .db 12
+   0307 CA                  740     .db 202
+   0308 7F                  741     .db 127
+   0309 8E                  742 AHARMLESSGRENADE_SUBSONG0_TRACK12: .db 142
+   030A 13                  743     .db 19
+   030B 9D                  744     .db 157
+   030C F4                  745     .db 244
+   030D 00                  746     .db 0
+   030E 10                  747     .db 16
+   030F CE                  748     .db 206
+   0310 10                  749     .db 16
+   0311 7F                  750     .db 127
+   0312 0C                  751 AHARMLESSGRENADE_SUBSONG0_TRACK13: .db 12
+   0313 E0                  752     .db 224
+   0314 03                  753     .db 3
+   0315 00                  754     .db 0
+   0316 60                  755     .db 96
+   0317 0C                  756     .db 12
+   0318 73                  757     .db 115
+   0319 04                  758     .db 4
+   031A 32                  759     .db 50
+   031B 0C                  760     .db 12
+   031C 73                  761     .db 115
+   031D 06                  762     .db 6
+   031E 12                  763     .db 18
+   031F 0C                  764     .db 12
+   0320 F3                  765     .db 243
+   0321 03                  766     .db 3
+   0322 7F                  767     .db 127
+   0323 22                  768     .db 34
+   0324 BE                  769 AHARMLESSGRENADE_SUBSONG0_TRACK14: .db 190
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 16.
+Hexadecimal [16-Bits]
+
+
+
+   0325 13                  770     .db 19
+   0326 0C                  771     .db 12
+   0327 9D                  772     .db 157
+   0328 F4                  773     .db 244
+   0329 00                  774     .db 0
+   032A 10                  775     .db 16
+   032B CE                  776     .db 206
+   032C 10                  777     .db 16
+   032D 7F                  778     .db 127
+   032E FE                  779 AHARMLESSGRENADE_SUBSONG0_TRACK15: .db 254
+   032F 27                  780     .db 39
+   0330 0E                  781     .db 14
+   0331 05                  782     .db 5
+   0332 C3                  783     .db 195
+   0333 09                  784     .db 9
+   0334 F7                  785     .db 247
+   0335 08                  786     .db 8
+   0336 05                  787     .db 5
+   0337 C4                  788     .db 196
+   0338 7F                  789     .db 127
+   0339 E0                  790 AHARMLESSGRENADE_SUBSONG0_TRACK16: .db 224
+   033A 02                  791     .db 2
+   033B A0                  792     .db 160
+   033C 60                  793     .db 96
+   033D F3                  794     .db 243
+   033E 09                  795     .db 9
+   033F 03                  796     .db 3
+   0340 E0                  797     .db 224
+   0341 02                  798     .db 2
+   0342 20                  799     .db 32
+   0343 20                  800     .db 32
+   0344 A0                  801     .db 160
+   0345 60                  802     .db 96
+   0346 C3                  803     .db 195
+   0347 03                  804     .db 3
+   0348 A0                  805     .db 160
+   0349 43                  806     .db 67
+   034A A0                  807     .db 160
+   034B E0                  808     .db 224
+   034C 7F                  809     .db 127
+   034D 0C                  810 AHARMLESSGRENADE_SUBSONG0_TRACK17: .db 12
+   034E B1                  811     .db 177
+   034F 0D                  812     .db 13
+   0350 40                  813     .db 64
+   0351 88                  814     .db 136
+   0352 8E                  815     .db 142
+   0353 37                  816     .db 55
+   0354 8B                  817     .db 139
+   0355 89                  818     .db 137
+   0356 0C                  819     .db 12
+   0357 81                  820     .db 129
+   0358 32                  821     .db 50
+   0359 81                  822     .db 129
+   035A 88                  823     .db 136
+   035B 8E                  824     .db 142
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 17.
+Hexadecimal [16-Bits]
+
+
+
+   035C 36                  825     .db 54
+   035D 8B                  826     .db 139
+   035E 0C                  827     .db 12
+   035F 89                  828     .db 137
+   0360 22                  829     .db 34
+   0361 81                  830     .db 129
+   0362 81                  831     .db 129
+   0363 88                  832     .db 136
+   0364 8F                  833     .db 143
+   0365 C9                  834     .db 201
+   0366 7F                  835     .db 127
+   0367 F4                  836 AHARMLESSGRENADE_SUBSONG0_TRACK18: .db 244
+   0368 0B                  837     .db 11
+   0369 05                  838     .db 5
+   036A C0                  839     .db 192
+   036B 09                  840     .db 9
+   036C CE                  841     .db 206
+   036D 12                  842     .db 18
+   036E 05                  843     .db 5
+   036F CE                  844     .db 206
+   0370 0F                  845     .db 15
+   0371 7F                  846     .db 127
+   0372 60                  847 AHARMLESSGRENADE_SUBSONG0_TRACK19: .db 96
+   0373 71                  848     .db 113
+   0374 10                  849     .db 16
+   0375 41                  850     .db 65
+   0376 60                  851     .db 96
+   0377 41                  852     .db 65
+   0378 60                  853     .db 96
+   0379 73                  854     .db 115
+   037A 09                  855     .db 9
+   037B 71                  856     .db 113
+   037C 10                  857     .db 16
+   037D 41                  858     .db 65
+   037E 41                  859     .db 65
+   037F 60                  860     .db 96
+   0380 71                  861     .db 113
+   0381 11                  862     .db 17
+   0382 41                  863     .db 65
+   0383 60                  864     .db 96
+   0384 41                  865     .db 65
+   0385 41                  866     .db 65
+   0386 60                  867     .db 96
+   0387 41                  868     .db 65
+   0388 71                  869     .db 113
+   0389 12                  870     .db 18
+   038A 60                  871     .db 96
+   038B 41                  872     .db 65
+   038C 60                  873     .db 96
+   038D 73                  874     .db 115
+   038E 09                  875     .db 9
+   038F 71                  876     .db 113
+   0390 12                  877     .db 18
+   0391 71                  878     .db 113
+   0392 13                  879     .db 19
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 18.
+Hexadecimal [16-Bits]
+
+
+
+   0393 41                  880     .db 65
+   0394 60                  881     .db 96
+   0395 41                  882     .db 65
+   0396 73                  883     .db 115
+   0397 09                  884     .db 9
+   0398 60                  885     .db 96
+   0399 71                  886     .db 113
+   039A 13                  887     .db 19
+   039B E0                  888     .db 224
+   039C 7F                  889     .db 127
+   039D 0C                  890 AHARMLESSGRENADE_SUBSONG0_TRACK20: .db 12
+   039E B1                  891     .db 177
+   039F 0F                  892     .db 15
+   03A0 20                  893     .db 32
+   03A1 8D                  894     .db 141
+   03A2 8D                  895     .db 141
+   03A3 8D                  896     .db 141
+   03A4 8D                  897     .db 141
+   03A5 8D                  898     .db 141
+   03A6 8D                  899     .db 141
+   03A7 8D                  900     .db 141
+   03A8 8D                  901     .db 141
+   03A9 8D                  902     .db 141
+   03AA 8D                  903     .db 141
+   03AB 8D                  904     .db 141
+   03AC 8D                  905     .db 141
+   03AD 8D                  906     .db 141
+   03AE 8D                  907     .db 141
+   03AF CD                  908     .db 205
+   03B0 7F                  909     .db 127
+   03B1 0C                  910 AHARMLESSGRENADE_SUBSONG0_TRACK21: .db 12
+   03B2 B1                  911     .db 177
+   03B3 07                  912     .db 7
+   03B4 21                  913     .db 33
+   03B5 16                  914     .db 22
+   03B6 88                  915     .db 136
+   03B7 8E                  916     .db 142
+   03B8 37                  917     .db 55
+   03B9 8B                  918     .db 139
+   03BA 89                  919     .db 137
+   03BB 81                  920     .db 129
+   03BC 81                  921     .db 129
+   03BD 88                  922     .db 136
+   03BE 8E                  923     .db 142
+   03BF 36                  924     .db 54
+   03C0 8B                  925     .db 139
+   03C1 89                  926     .db 137
+   03C2 81                  927     .db 129
+   03C3 81                  928     .db 129
+   03C4 88                  929     .db 136
+   03C5 8F                  930     .db 143
+   03C6 C9                  931     .db 201
+   03C7 7F                  932     .db 127
+   03C8 F1                  933 AHARMLESSGRENADE_SUBSONG0_TRACK22: .db 241
+   03C9 00                  934     .db 0
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 19.
+Hexadecimal [16-Bits]
+
+
+
+   03CA 7F                  935     .db 127
+   03CB 0C                  936 AHARMLESSGRENADE_SUBSONG0_TRACK23: .db 12
+   03CC CE                  937     .db 206
+   03CD 3C                  938     .db 60
+   03CE 7F                  939     .db 127
+   03CF F4                  940     .db 244
+   03D0 00                  941     .db 0
+   03D1 50                  942     .db 80
+   03D2 0C                  943 AHARMLESSGRENADE_SUBSONG0_TRACK24: .db 12
+   03D3 54                  944     .db 84
+   03D4 00                  945     .db 0
+   03D5 54                  946     .db 84
+   03D6 5E                  947     .db 94
+   03D7 1C                  948     .db 28
+   03D8 5F                  949     .db 95
+   03D9 57                  950     .db 87
+   03DA 5E                  951     .db 94
+   03DB 1F                  952     .db 31
+   03DC 50                  953     .db 80
+   03DD 50                  954     .db 80
+   03DE 50                  955     .db 80
+   03DF 50                  956     .db 80
+   03E0 50                  957     .db 80
+   03E1 50                  958     .db 80
+   03E2 5E                  959     .db 94
+   03E3 1C                  960     .db 28
+   03E4 50                  961     .db 80
+   03E5 5E                  962     .db 94
+   03E6 1F                  963     .db 31
+   03E7 50                  964     .db 80
+   03E8 57                  965     .db 87
+   03E9 57                  966     .db 87
+   03EA 57                  967     .db 87
+   03EB 57                  968     .db 87
+   03EC 5E                  969     .db 94
+   03ED 20                  970     .db 32
+   03EE 5E                  971     .db 94
+   03EF 21                  972     .db 33
+   03F0 54                  973     .db 84
+   03F1 54                  974     .db 84
+   03F2 54                  975     .db 84
+   03F3 54                  976     .db 84
+   03F4 54                  977     .db 84
+   03F5 5A                  978     .db 90
+   03F6 5E                  979     .db 94
+   03F7 19                  980     .db 25
+   03F8 50                  981     .db 80
+   03F9 52                  982     .db 82
+   03FA DE                  983     .db 222
+   03FB 16                  984     .db 22
+   03FC 7F                  985     .db 127
+   03FD 0C                  986 AHARMLESSGRENADE_SUBSONG0_TRACK25: .db 12
+   03FE FE                  987     .db 254
+   03FF 48                  988     .db 72
+   0400 0C                  989     .db 12
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 20.
+Hexadecimal [16-Bits]
+
+
+
+   0401 7F                  990     .db 127
+   0402 51                  991     .db 81
+   0403 F5                  992     .db 245
+   0404 00                  993     .db 0
+   0405 02                  994     .db 2
+   0406 26                  995     .db 38
+   0407 18                  996 AHARMLESSGRENADE_SUBSONG0_NOTEINDEXES: .db 24
+   0408 30                  997     .db 48
+   0409 17                  998     .db 23
+   040A 24                  999     .db 36
+   040B 1B                 1000     .db 27
+   040C 23                 1001     .db 35
+   040D 28                 1002     .db 40
+   040E 1E                 1003     .db 30
+   040F 33                 1004     .db 51
+   0410 39                 1005     .db 57
+   0411 1A                 1006     .db 26
+   0412 3A                 1007     .db 58
+   0413                    1008 SOUNDEFFECTS_SOUNDEFFECTS:
+   0413 1D 04              1009 _SOUNDEFFECTS_SOUNDEFFECTS:: .dw SOUNDEFFECTS_SOUNDEFFECTS_SOUND1
+   0415 2F 04              1010     .dw SOUNDEFFECTS_SOUNDEFFECTS_SOUND2
+   0417 55 04              1011     .dw SOUNDEFFECTS_SOUNDEFFECTS_SOUND3
+   0419 94 04              1012     .dw SOUNDEFFECTS_SOUNDEFFECTS_SOUND4
+   041B AA 04              1013     .dw SOUNDEFFECTS_SOUNDEFFECTS_SOUND5
+   041D 00                 1014 SOUNDEFFECTS_SOUNDEFFECTS_SOUND1: .db 0
+   041E BD                 1015 SOUNDEFFECTS_SOUNDEFFECTS_SOUND1_LOOP: .db 189
+   041F 01                 1016     .db 1
+   0420 5F                 1017     .db 95
+   0421 00                 1018     .db 0
+   0422 BD                 1019     .db 189
+   0423 01                 1020     .db 1
+   0424 63                 1021     .db 99
+   0425 00                 1022     .db 0
+   0426 B1                 1023     .db 177
+   0427 01                 1024     .db 1
+   0428 66                 1025     .db 102
+   0429 00                 1026     .db 0
+   042A AD                 1027     .db 173
+   042B 01                 1028     .db 1
+   042C 6A                 1029     .db 106
+   042D 00                 1030     .db 0
+   042E 04                 1031     .db 4
+   042F 01                 1032 SOUNDEFFECTS_SOUNDEFFECTS_SOUND2: .db 1
+   0430 BD                 1033 SOUNDEFFECTS_SOUNDEFFECTS_SOUND2_LOOP: .db 189
+   0431 01                 1034     .db 1
+   0432 2D                 1035     .db 45
+   0433 01                 1036     .db 1
+   0434 BD                 1037     .db 189
+   0435 08                 1038     .db 8
+   0436 3F                 1039     .db 63
+   0437 01                 1040     .db 1
+   0438 B9                 1041     .db 185
+   0439 02                 1042     .db 2
+   043A 92                 1043     .db 146
+   043B 01                 1044     .db 1
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 21.
+Hexadecimal [16-Bits]
+
+
+
+   043C B5                 1045     .db 181
+   043D 10                 1046     .db 16
+   043E D5                 1047     .db 213
+   043F 00                 1048     .db 0
+   0440 B1                 1049     .db 177
+   0441 02                 1050     .db 2
+   0442 E1                 1051     .db 225
+   0443 00                 1052     .db 0
+   0444 AD                 1053     .db 173
+   0445 02                 1054     .db 2
+   0446 EF                 1055     .db 239
+   0447 00                 1056     .db 0
+   0448 A5                 1057     .db 165
+   0449 10                 1058     .db 16
+   044A 66                 1059     .db 102
+   044B 01                 1060     .db 1
+   044C 9D                 1061     .db 157
+   044D 1F                 1062     .db 31
+   044E 77                 1063     .db 119
+   044F 00                 1064     .db 0
+   0450 99                 1065     .db 153
+   0451 07                 1066     .db 7
+   0452 50                 1067     .db 80
+   0453 00                 1068     .db 0
+   0454 04                 1069     .db 4
+   0455 01                 1070 SOUNDEFFECTS_SOUNDEFFECTS_SOUND3: .db 1
+   0456 BD                 1071 SOUNDEFFECTS_SOUNDEFFECTS_SOUND3_LOOP: .db 189
+   0457 01                 1072     .db 1
+   0458 77                 1073     .db 119
+   0459 00                 1074     .db 0
+   045A 39                 1075     .db 57
+   045B 3C                 1076     .db 60
+   045C 00                 1077     .db 0
+   045D B5                 1078     .db 181
+   045E 01                 1079     .db 1
+   045F 5F                 1080     .db 95
+   0460 00                 1081     .db 0
+   0461 31                 1082     .db 49
+   0462 2F                 1083     .db 47
+   0463 00                 1084     .db 0
+   0464 B9                 1085     .db 185
+   0465 01                 1086     .db 1
+   0466 50                 1087     .db 80
+   0467 00                 1088     .db 0
+   0468 3D                 1089     .db 61
+   0469 28                 1090     .db 40
+   046A 00                 1091     .db 0
+   046B 03                 1092     .db 3
+   046C 0F                 1093     .db 15
+   046D 00                 1094     .db 0
+   046E DE                 1095     .db 222
+   046F 01                 1096     .db 1
+   0470 3D                 1097     .db 61
+   0471 EF                 1098     .db 239
+   0472 00                 1099     .db 0
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 22.
+Hexadecimal [16-Bits]
+
+
+
+   0473 03                 1100     .db 3
+   0474 0F                 1101     .db 15
+   0475 00                 1102     .db 0
+   0476 DE                 1103     .db 222
+   0477 01                 1104     .db 1
+   0478 3D                 1105     .db 61
+   0479 EF                 1106     .db 239
+   047A 00                 1107     .db 0
+   047B 03                 1108     .db 3
+   047C 0F                 1109     .db 15
+   047D 00                 1110     .db 0
+   047E DE                 1111     .db 222
+   047F 01                 1112     .db 1
+   0480 3D                 1113     .db 61
+   0481 EF                 1114     .db 239
+   0482 00                 1115     .db 0
+   0483 03                 1116     .db 3
+   0484 1E                 1117     .db 30
+   0485 00                 1118     .db 0
+   0486 BC                 1119     .db 188
+   0487 03                 1120     .db 3
+   0488 3D                 1121     .db 61
+   0489 EF                 1122     .db 239
+   048A 00                 1123     .db 0
+   048B 03                 1124     .db 3
+   048C 1E                 1125     .db 30
+   048D 00                 1126     .db 0
+   048E BC                 1127     .db 188
+   048F 03                 1128     .db 3
+   0490 3D                 1129     .db 61
+   0491 EF                 1130     .db 239
+   0492 00                 1131     .db 0
+   0493 04                 1132     .db 4
+   0494 01                 1133 SOUNDEFFECTS_SOUNDEFFECTS_SOUND4: .db 1
+   0495 BD                 1134 SOUNDEFFECTS_SOUNDEFFECTS_SOUND4_LOOP: .db 189
+   0496 01                 1135     .db 1
+   0497 77                 1136     .db 119
+   0498 00                 1137     .db 0
+   0499 3D                 1138     .db 61
+   049A 38                 1139     .db 56
+   049B 00                 1140     .db 0
+   049C BD                 1141     .db 189
+   049D 01                 1142     .db 1
+   049E 6A                 1143     .db 106
+   049F 00                 1144     .db 0
+   04A0 3D                 1145     .db 61
+   04A1 35                 1146     .db 53
+   04A2 00                 1147     .db 0
+   04A3 3D                 1148     .db 61
+   04A4 64                 1149     .db 100
+   04A5 00                 1150     .db 0
+   04A6 3D                 1151     .db 61
+   04A7 32                 1152     .db 50
+   04A8 00                 1153     .db 0
+   04A9 04                 1154     .db 4
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 23.
+Hexadecimal [16-Bits]
+
+
+
+   04AA 01                 1155 SOUNDEFFECTS_SOUNDEFFECTS_SOUND5: .db 1
+   04AB 03                 1156 SOUNDEFFECTS_SOUNDEFFECTS_SOUND5_LOOP: .db 3
+   04AC 02                 1157     .db 2
+   04AD 00                 1158     .db 0
+   04AE 1B                 1159     .db 27
+   04AF 00                 1160     .db 0
+   04B0 03                 1161     .db 3
+   04B1 03                 1162     .db 3
+   04B2 00                 1163     .db 0
+   04B3 2F                 1164     .db 47
+   04B4 00                 1165     .db 0
+   04B5 03                 1166     .db 3
+   04B6 02                 1167     .db 2
+   04B7 00                 1168     .db 0
+   04B8 1E                 1169     .db 30
+   04B9 00                 1170     .db 0
+   04BA 03                 1171     .db 3
+   04BB 05                 1172     .db 5
+   04BC 00                 1173     .db 0
+   04BD 4B                 1174     .db 75
+   04BE 00                 1175     .db 0
+   04BF 03                 1176     .db 3
+   04C0 03                 1177     .db 3
+   04C1 00                 1178     .db 0
+   04C2 2F                 1179     .db 47
+   04C3 00                 1180     .db 0
+   04C4 03                 1181     .db 3
+   04C5 07                 1182     .db 7
+   04C6 00                 1183     .db 0
+   04C7 77                 1184     .db 119
+   04C8 00                 1185     .db 0
+   04C9 03                 1186     .db 3
+   04CA 05                 1187     .db 5
+   04CB 00                 1188     .db 0
+   04CC 4B                 1189     .db 75
+   04CD 00                 1190     .db 0
+   04CE 03                 1191     .db 3
+   04CF 0C                 1192     .db 12
+   04D0 00                 1193     .db 0
+   04D1 BE                 1194     .db 190
+   04D2 00                 1195     .db 0
+   04D3 03                 1196     .db 3
+   04D4 07                 1197     .db 7
+   04D5 00                 1198     .db 0
+   04D6 77                 1199     .db 119
+   04D7 00                 1200     .db 0
+   04D8 03                 1201     .db 3
+   04D9 13                 1202     .db 19
+   04DA 00                 1203     .db 0
+   04DB 2D                 1204     .db 45
+   04DC 01                 1205     .db 1
+   04DD 03                 1206     .db 3
+   04DE 0C                 1207     .db 12
+   04DF 00                 1208     .db 0
+   04E0 BE                 1209     .db 190
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 24.
+Hexadecimal [16-Bits]
+
+
+
+   04E1 00                 1210     .db 0
+   04E2 03                 1211     .db 3
+   04E3 22                 1212     .db 34
+   04E4 00                 1213     .db 0
+   04E5 18                 1214     .db 24
+   04E6 02                 1215     .db 2
+   04E7 03                 1216     .db 3
+   04E8 32                 1217     .db 50
+   04E9 00                 1218     .db 0
+   04EA 24                 1219     .db 36
+   04EB 03                 1220     .db 3
+   04EC 04                 1221     .db 4
+   04ED C3 FB 05      [10] 1222 PLY_AKM_START: jp PLY_AKM_INIT
+   04F0 C3 8F 06      [10] 1223     jp PLY_AKM_PLAY
+   04F3 C3 79 06      [10] 1224     jp PLY_AKM_INITVARS_END
+   04F6                    1225 _PLY_AKM_INITSOUNDEFFECTS::
+   04F6 22 FC 04      [16] 1226 PLY_AKM_INITSOUNDEFFECTS: ld (PLY_AKM_PTSOUNDEFFECTTABLE+1),hl
+   04F9 C9            [10] 1227     ret 
+   04FA                    1228 _PLY_AKM_PLAYSOUNDEFFECT::
+   04FA 3D            [ 4] 1229 PLY_AKM_PLAYSOUNDEFFECT: dec a
+   04FB 21 00 00      [10] 1230 PLY_AKM_PTSOUNDEFFECTTABLE: ld hl,#0
+   04FE 5F            [ 4] 1231     ld e,a
+   04FF 16 00         [ 7] 1232     ld d,#0
+   0501 19            [11] 1233     add hl,de
+   0502 19            [11] 1234     add hl,de
+   0503 5E            [ 7] 1235     ld e,(hl)
+   0504 23            [ 6] 1236     inc hl
+   0505 56            [ 7] 1237     ld d,(hl)
+   0506 1A            [ 7] 1238     ld a,(de)
+   0507 13            [ 6] 1239     inc de
+   0508 08            [ 4] 1240     ex af,af'
+   0509 78            [ 4] 1241     ld a,b
+   050A 21 E3 05      [10] 1242     ld hl,#PLY_AKM_CHANNEL1_SOUNDEFFECTDATA
+   050D 06 00         [ 7] 1243     ld b,#0
+   050F CB 21         [ 8] 1244     sla c
+   0511 CB 21         [ 8] 1245     sla c
+   0513 CB 21         [ 8] 1246     sla c
+   0515 09            [11] 1247     add hl,bc
+   0516 73            [ 7] 1248     ld (hl),e
+   0517 23            [ 6] 1249     inc hl
+   0518 72            [ 7] 1250     ld (hl),d
+   0519 23            [ 6] 1251     inc hl
+   051A 77            [ 7] 1252     ld (hl),a
+   051B 23            [ 6] 1253     inc hl
+   051C 36 00         [10] 1254     ld (hl),#0
+   051E 23            [ 6] 1255     inc hl
+   051F 08            [ 4] 1256     ex af,af'
+   0520 77            [ 7] 1257     ld (hl),a
+   0521 C9            [10] 1258     ret 
+   0522                    1259 _PLY_AKM_STOPSOUNDEFFECTFROMCHANNEL::
+   0522 87            [ 4] 1260 PLY_AKM_STOPSOUNDEFFECTFROMCHANNEL: add a,a
+   0523 87            [ 4] 1261     add a,a
+   0524 87            [ 4] 1262     add a,a
+   0525 5F            [ 4] 1263     ld e,a
+   0526 16 00         [ 7] 1264     ld d,#0
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 25.
+Hexadecimal [16-Bits]
+
+
+
+   0528 21 E3 05      [10] 1265     ld hl,#PLY_AKM_CHANNEL1_SOUNDEFFECTDATA
+   052B 19            [11] 1266     add hl,de
+   052C 72            [ 7] 1267     ld (hl),d
+   052D 23            [ 6] 1268     inc hl
+   052E 72            [ 7] 1269     ld (hl),d
+   052F C9            [10] 1270     ret 
+   0530 17            [ 4] 1271 PLY_AKM_PLAYSOUNDEFFECTSSTREAM: rla 
+   0531 17            [ 4] 1272     rla 
+   0532 DD 21 E3 05   [14] 1273     ld ix,#PLY_AKM_CHANNEL1_SOUNDEFFECTDATA
+   0536 FD 21 A6 0B   [14] 1274     ld iy,#PLY_AKM_TRACK3_DATA_END
+   053A 4F            [ 4] 1275     ld c,a
+   053B CD 5D 05      [17] 1276     call PLY_AKM_PSES_PLAY
+   053E DD 21 EB 05   [14] 1277     ld ix,#PLY_AKM_CHANNEL2_SOUNDEFFECTDATA
+   0542 FD 21 B2 0B   [14] 1278     ld iy,#PLY_AKM_TRACK2_REGISTERS
+   0546 CB 39         [ 8] 1279     srl c
+   0548 CD 5D 05      [17] 1280     call PLY_AKM_PSES_PLAY
+   054B DD 21 F3 05   [14] 1281     ld ix,#PLY_AKM_CHANNEL3_SOUNDEFFECTDATA
+   054F FD 21 BE 0B   [14] 1282     ld iy,#PLY_AKM_TRACK3_REGISTERS
+   0553 CB 19         [ 8] 1283     rr c
+   0555 CD 5D 05      [17] 1284     call PLY_AKM_PSES_PLAY
+   0558 79            [ 4] 1285     ld a,c
+   0559 32 CF 0B      [13] 1286     ld (PLY_AKM_MIXERREGISTER),a
+   055C C9            [10] 1287     ret 
+   055D DD 6E 00      [19] 1288 PLY_AKM_PSES_PLAY: ld l,+0(ix)
+   0560 DD 66 01      [19] 1289     ld h,+1(ix)
+   0563 7D            [ 4] 1290     ld a,l
+   0564 B4            [ 4] 1291     or h
+   0565 C8            [11] 1292     ret z
+   0566 7E            [ 7] 1293 PLY_AKM_PSES_READFIRSTBYTE: ld a,(hl)
+   0567 23            [ 6] 1294     inc hl
+   0568 47            [ 4] 1295     ld b,a
+   0569 1F            [ 4] 1296     rra 
+   056A 38 21         [12] 1297     jr c,PLY_AKM_PSES_SOFTWAREORSOFTWAREANDHARDWARE
+   056C 1F            [ 4] 1298     rra 
+   056D 1F            [ 4] 1299     rra 
+   056E AF            [ 4] 1300 PLY_AKM_PSES_S_ENDORLOOP: xor a
+   056F DD 77 00      [19] 1301     ld +0(ix),a
+   0572 DD 77 01      [19] 1302     ld +1(ix),a
+   0575 C9            [10] 1303     ret 
+   0576 DD 7E 03      [19] 1304 PLY_AKM_PSES_SAVEPOINTERANDEXIT: ld a,+3(ix)
+   0579 DD BE 04      [19] 1305     cp +4(ix)
+   057C 38 0B         [12] 1306     jr c,PLY_AKM_PSES_NOTREACHED
+   057E DD 36 03 00   [19] 1307     ld +3(ix),#0
+   0582 DD                 1308     .db 221
+   0583 75                 1309     .db 117
+   0584 00                 1310     .db +0
+   0585 DD                 1311     .db 221
+   0586 74                 1312     .db 116
+   0587 01                 1313     .db +1
+   0588 C9            [10] 1314     ret 
+   0589 DD 34 03      [23] 1315 PLY_AKM_PSES_NOTREACHED: inc +3(ix)
+   058C C9            [10] 1316     ret 
+   058D 1F            [ 4] 1317 PLY_AKM_PSES_SOFTWAREORSOFTWAREANDHARDWARE: rra 
+   058E 38 0F         [12] 1318     jr c,PLY_AKM_PSES_SOFTWAREANDHARDWARE
+   0590 CD D7 05      [17] 1319     call PLY_AKM_PSES_MANAGEVOLUMEFROMA_FILTER4BITS
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 26.
+Hexadecimal [16-Bits]
+
+
+
+   0593 CB 10         [ 8] 1320     rl b
+   0595 DC B9 05      [17] 1321     call c,PLY_AKM_PSES_READNOISEANDOPENNOISECHANNEL
+   0598 CB 91         [ 8] 1322     res 2,c
+   059A CD CC 05      [17] 1323     call PLY_AKM_PSES_READSOFTWAREPERIOD
+   059D 18 D7         [12] 1324     jr PLY_AKM_PSES_SAVEPOINTERANDEXIT
+   059F CD A9 05      [17] 1325 PLY_AKM_PSES_SOFTWAREANDHARDWARE: call PLY_AKM_PSES_SHARED_READRETRIGHARDWAREENVPERIODNOISE
+   05A2 CD CC 05      [17] 1326     call PLY_AKM_PSES_READSOFTWAREPERIOD
+   05A5 CB 91         [ 8] 1327     res 2,c
+   05A7 18 CD         [12] 1328     jr PLY_AKM_PSES_SAVEPOINTERANDEXIT
+   05A9 1F            [ 4] 1329 PLY_AKM_PSES_SHARED_READRETRIGHARDWAREENVPERIODNOISE: rra 
+   05AA E6 07         [ 7] 1330     and #7
+   05AC C6 08         [ 7] 1331     add a,#8
+   05AE 32 84 07      [13] 1332     ld (PLY_AKM_SENDPSGREGISTERR13+1),a
+   05B1 CD C1 05      [17] 1333     call PLY_AKM_PSES_READHARDWAREPERIOD
+   05B4 3E 10         [ 7] 1334     ld a,#16
+   05B6 C3 D9 05      [10] 1335     jp PLY_AKM_PSES_MANAGEVOLUMEFROMA_HARD
+   05B9 7E            [ 7] 1336 PLY_AKM_PSES_READNOISEANDOPENNOISECHANNEL: ld a,(hl)
+   05BA 32 CB 0B      [13] 1337     ld (PLY_AKM_NOISEREGISTER),a
+   05BD 23            [ 6] 1338     inc hl
+   05BE CB A9         [ 8] 1339     res 5,c
+   05C0 C9            [10] 1340     ret 
+   05C1 7E            [ 7] 1341 PLY_AKM_PSES_READHARDWAREPERIOD: ld a,(hl)
+   05C2 32 D3 0B      [13] 1342     ld (PLY_AKM_REG11),a
+   05C5 23            [ 6] 1343     inc hl
+   05C6 7E            [ 7] 1344     ld a,(hl)
+   05C7 32 D7 0B      [13] 1345     ld (PLY_AKM_REG12),a
+   05CA 23            [ 6] 1346     inc hl
+   05CB C9            [10] 1347     ret 
+   05CC 7E            [ 7] 1348 PLY_AKM_PSES_READSOFTWAREPERIOD: ld a,(hl)
+   05CD FD 77 05      [19] 1349     ld +5(iy),a
+   05D0 23            [ 6] 1350     inc hl
+   05D1 7E            [ 7] 1351     ld a,(hl)
+   05D2 FD 77 09      [19] 1352     ld +9(iy),a
+   05D5 23            [ 6] 1353     inc hl
+   05D6 C9            [10] 1354     ret 
+   05D7 E6 0F         [ 7] 1355 PLY_AKM_PSES_MANAGEVOLUMEFROMA_FILTER4BITS: and #15
+   05D9 DD 96 02      [19] 1356 PLY_AKM_PSES_MANAGEVOLUMEFROMA_HARD: sub +2(ix)
+   05DC 30 01         [12] 1357     jr nc,PLY_AKM_PSES_MVFA_NOOVERFLOW
+   05DE AF            [ 4] 1358     xor a
+   05DF FD 77 01      [19] 1359 PLY_AKM_PSES_MVFA_NOOVERFLOW: ld +1(iy),a
+   05E2 C9            [10] 1360     ret 
+   05E3 00 00              1361 PLY_AKM_CHANNEL1_SOUNDEFFECTDATA: .dw 0
+   05E5 00                 1362 PLY_AKM_CHANNEL1_SOUNDEFFECTINVERTEDVOLUME: .db 0
+   05E6 00                 1363 PLY_AKM_CHANNEL1_SOUNDEFFECTCURRENTSTEP: .db 0
+   05E7 00                 1364 PLY_AKM_CHANNEL1_SOUNDEFFECTSPEED: .db 0
+   05E8 00                 1365     .db 0
+   05E9 00                 1366     .db 0
+   05EA 00                 1367     .db 0
+   05EB 00                 1368 PLY_AKM_CHANNEL2_SOUNDEFFECTDATA: .db 0
+   05EC 00                 1369     .db 0
+   05ED 00                 1370     .db 0
+   05EE 00                 1371     .db 0
+   05EF 00                 1372     .db 0
+   05F0 00                 1373     .db 0
+   05F1 00                 1374     .db 0
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 27.
+Hexadecimal [16-Bits]
+
+
+
+   05F2 00                 1375     .db 0
+   05F3 00                 1376 PLY_AKM_CHANNEL3_SOUNDEFFECTDATA: .db 0
+   05F4 00                 1377     .db 0
+   05F5 00                 1378     .db 0
+   05F6 00                 1379     .db 0
+   05F7 00                 1380     .db 0
+   05F8 00                 1381     .db 0
+   05F9 00                 1382     .db 0
+   05FA 00                 1383     .db 0
+   05FB                    1384 _PLY_AKM_INIT::
+   05FB 11 0F 07      [10] 1385 PLY_AKM_INIT: ld de,#PLY_AKM_READLINE+1
+   05FE ED A0         [16] 1386     ldi
+   0600 ED A0         [16] 1387     ldi
+   0602 11 E5 0A      [10] 1388     ld de,#PLY_AKM_PTARPEGGIOS+1
+   0605 ED A0         [16] 1389     ldi
+   0607 ED A0         [16] 1390     ldi
+   0609 11 17 0B      [10] 1391     ld de,#PLY_AKM_PTPITCHES+1
+   060C ED A0         [16] 1392     ldi
+   060E ED A0         [16] 1393     ldi
+   0610 87            [ 4] 1394     add a,a
+   0611 5F            [ 4] 1395     ld e,a
+   0612 16 00         [ 7] 1396     ld d,#0
+   0614 19            [11] 1397     add hl,de
+   0615 7E            [ 7] 1398     ld a,(hl)
+   0616 23            [ 6] 1399     inc hl
+   0617 66            [ 7] 1400     ld h,(hl)
+   0618 6F            [ 4] 1401     ld l,a
+   0619 DD 21 5F 06   [14] 1402     ld ix,#PLY_AKM_INITVARS_START
+   061D 3E 0D         [ 7] 1403     ld a,#13
+   061F DD 5E 00      [19] 1404 PLY_AKM_INITVARS_LOOP: ld e,+0(ix)
+   0622 DD 56 01      [19] 1405     ld d,+1(ix)
+   0625 DD 23         [10] 1406     inc ix
+   0627 DD 23         [10] 1407     inc ix
+   0629 ED A0         [16] 1408     ldi
+   062B 3D            [ 4] 1409     dec a
+   062C 20 F1         [12] 1410     jr nz,PLY_AKM_INITVARS_LOOP
+   062E 32 9C 06      [13] 1411     ld (PLY_AKM_PATTERNREMAININGHEIGHT+1),a
+   0631 EB            [ 4] 1412     ex de,hl
+   0632 21 AB 06      [10] 1413     ld hl,#PLY_AKM_PTLINKER+1
+   0635 73            [ 7] 1414     ld (hl),e
+   0636 23            [ 6] 1415     inc hl
+   0637 72            [ 7] 1416     ld (hl),d
+   0638 21 3A 0B      [10] 1417     ld hl,#PLY_AKM_TRACK1_DATA
+   063B 11 3B 0B      [10] 1418     ld de,#PLY_AKM_TRACK1_TRANSPOSITION
+   063E 01 23 00      [10] 1419     ld bc,#35
+   0641 77            [ 7] 1420     ld (hl),a
+   0642 ED B0         [21] 1421     ldir
+   0644 3A 97 06      [13] 1422     ld a,(PLY_AKM_SPEED+1)
+   0647 3D            [ 4] 1423     dec a
+   0648 32 94 06      [13] 1424     ld (PLY_AKM_TICKCOUNTER+1),a
+   064B 2A 0F 07      [16] 1425     ld hl,(PLY_AKM_READLINE+1)
+   064E 5E            [ 7] 1426     ld e,(hl)
+   064F 23            [ 6] 1427     inc hl
+   0650 56            [ 7] 1428     ld d,(hl)
+   0651 13            [ 6] 1429     inc de
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 28.
+Hexadecimal [16-Bits]
+
+
+
+   0652 ED 53 44 0B   [20] 1430     ld (PLY_AKM_TRACK1_PTINSTRUMENT),de
+   0656 ED 53 68 0B   [20] 1431     ld (PLY_AKM_TRACK2_PTINSTRUMENT),de
+   065A ED 53 8C 0B   [20] 1432     ld (PLY_AKM_TRACK3_PTINSTRUMENT),de
+   065E C9            [10] 1433     ret 
+   065F 12 07              1434 PLY_AKM_INITVARS_START: .dw PLY_AKM_NOTEINDEXTABLE+1
+   0661 13 07              1435     .dw PLY_AKM_NOTEINDEXTABLE+2
+   0663 A7 06              1436     .dw PLY_AKM_LINKER+1
+   0665 A8 06              1437     .dw PLY_AKM_LINKER+2
+   0667 97 06              1438     .dw PLY_AKM_SPEED+1
+   0669 4D 08              1439     .dw PLY_AKM_RT_PRIMARYINSTRUMENT+1
+   066B 49 08              1440     .dw PLY_AKM_RT_SECONDARYINSTRUMENT+1
+   066D 97 08              1441     .dw PLY_AKM_RT_PRIMARYWAIT+1
+   066F 9B 08              1442     .dw PLY_AKM_RT_SECONDARYWAIT+1
+   0671 B8 06              1443     .dw PLY_AKM_DEFAULTSTARTNOTEINTRACKS+1
+   0673 C3 06              1444     .dw PLY_AKM_DEFAULTSTARTINSTRUMENTINTRACKS+1
+   0675 CE 06              1445     .dw PLY_AKM_DEFAULTSTARTWAITINTRACKS+1
+   0677 F9 07              1446     .dw PLY_AKM_FLAGNOTEANDEFFECTINCELL+1
+   0679                    1447 PLY_AKM_INITVARS_END:
+   0679                    1448 _PLY_AKM_STOP::
+   0679 ED 73 93 07   [20] 1449 PLY_AKM_STOP: ld (PLY_AKM_SENDPSGREGISTEREND+1),sp
+   067D AF            [ 4] 1450     xor a
+   067E 32 A7 0B      [13] 1451     ld (PLY_AKM_TRACK1_VOLUME),a
+   0681 32 B3 0B      [13] 1452     ld (PLY_AKM_TRACK2_VOLUME),a
+   0684 32 BF 0B      [13] 1453     ld (PLY_AKM_TRACK3_VOLUME),a
+   0687 3E 3F         [ 7] 1454     ld a,#63
+   0689 32 CF 0B      [13] 1455     ld (PLY_AKM_MIXERREGISTER),a
+   068C C3 66 07      [10] 1456     jp PLY_AKM_SENDPSG
+   068F                    1457 _PLY_AKM_PLAY::
+   068F ED 73 93 07   [20] 1458 PLY_AKM_PLAY: ld (PLY_AKM_SENDPSGREGISTEREND+1),sp
+   0693 3E 00         [ 7] 1459 PLY_AKM_TICKCOUNTER: ld a,#0
+   0695 3C            [ 4] 1460     inc a
+   0696 FE 01         [ 7] 1461 PLY_AKM_SPEED: cp #1
+   0698 C2 2B 07      [10] 1462     jp nz,PLY_AKM_TICKCOUNTERMANAGED
+   069B 3E 00         [ 7] 1463 PLY_AKM_PATTERNREMAININGHEIGHT: ld a,#0
+   069D D6 01         [ 7] 1464     sub #1
+   069F 38 05         [12] 1465     jr c,PLY_AKM_LINKER
+   06A1 32 9C 06      [13] 1466     ld (PLY_AKM_PATTERNREMAININGHEIGHT+1),a
+   06A4 18 68         [12] 1467     jr PLY_AKM_READLINE
+   06A6                    1468 PLY_AKM_LINKER:
+   06A6 11 00 00      [10] 1469 PLY_AKM_TRACKINDEX: ld de,#0
+   06A9 D9            [ 4] 1470     exx
+   06AA 21 00 00      [10] 1471 PLY_AKM_PTLINKER: ld hl,#0
+   06AD AF            [ 4] 1472 PLY_AKM_LINKERPOSTPT: xor a
+   06AE 32 3A 0B      [13] 1473     ld (PLY_AKM_TRACK1_DATA),a
+   06B1 32 5E 0B      [13] 1474     ld (PLY_AKM_TRACK1_DATA_END),a
+   06B4 32 82 0B      [13] 1475     ld (PLY_AKM_TRACK2_DATA_END),a
+   06B7 3E 00         [ 7] 1476 PLY_AKM_DEFAULTSTARTNOTEINTRACKS: ld a,#0
+   06B9 32 41 0B      [13] 1477     ld (PLY_AKM_TRACK1_ESCAPENOTE),a
+   06BC 32 65 0B      [13] 1478     ld (PLY_AKM_TRACK2_ESCAPENOTE),a
+   06BF 32 89 0B      [13] 1479     ld (PLY_AKM_TRACK3_ESCAPENOTE),a
+   06C2 3E 00         [ 7] 1480 PLY_AKM_DEFAULTSTARTINSTRUMENTINTRACKS: ld a,#0
+   06C4 32 42 0B      [13] 1481     ld (PLY_AKM_TRACK1_ESCAPEINSTRUMENT),a
+   06C7 32 66 0B      [13] 1482     ld (PLY_AKM_TRACK2_ESCAPEINSTRUMENT),a
+   06CA 32 8A 0B      [13] 1483     ld (PLY_AKM_TRACK3_ESCAPEINSTRUMENT),a
+   06CD 3E 00         [ 7] 1484 PLY_AKM_DEFAULTSTARTWAITINTRACKS: ld a,#0
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 29.
+Hexadecimal [16-Bits]
+
+
+
+   06CF 32 43 0B      [13] 1485     ld (PLY_AKM_TRACK1_ESCAPEWAIT),a
+   06D2 32 67 0B      [13] 1486     ld (PLY_AKM_TRACK2_ESCAPEWAIT),a
+   06D5 32 8B 0B      [13] 1487     ld (PLY_AKM_TRACK3_ESCAPEWAIT),a
+   06D8 46            [ 7] 1488     ld b,(hl)
+   06D9 23            [ 6] 1489     inc hl
+   06DA CB 18         [ 8] 1490     rr b
+   06DC 30 08         [12] 1491     jr nc,PLY_AKM_LINKERAFTERSPEEDCHANGE
+   06DE 7E            [ 7] 1492     ld a,(hl)
+   06DF 23            [ 6] 1493     inc hl
+   06E0 7E            [ 7] 1494     ld a,(hl)
+   06E1 23            [ 6] 1495     inc hl
+   06E2 66            [ 7] 1496     ld h,(hl)
+   06E3 6F            [ 4] 1497     ld l,a
+   06E4 18 C7         [12] 1498     jr PLY_AKM_LINKERPOSTPT
+   06E6 CB 18         [ 8] 1499 PLY_AKM_LINKERAFTERSPEEDCHANGE: rr b
+   06E8 30 07         [12] 1500     jr nc,PLY_AKM_LINKERUSEPREVIOUSHEIGHT
+   06EA 7E            [ 7] 1501     ld a,(hl)
+   06EB 23            [ 6] 1502     inc hl
+   06EC 32 F2 06      [13] 1503     ld (PLY_AKM_LINKERUSEPREVIOUSHEIGHT+1),a
+   06EF 18 02         [12] 1504     jr PLY_AKM_LINKERSETREMAININGHEIGHT
+   06F1                    1505 PLY_AKM_LINKERUSEPREVIOUSHEIGHT:
+   06F1 3E 00         [ 7] 1506 PLY_AKM_LINKERPREVIOUSREMAININGHEIGHT: ld a,#0
+   06F3 32 9C 06      [13] 1507 PLY_AKM_LINKERSETREMAININGHEIGHT: ld (PLY_AKM_PATTERNREMAININGHEIGHT+1),a
+   06F6 DD 21 3A 0B   [14] 1508     ld ix,#PLY_AKM_TRACK1_DATA
+   06FA CD 96 07      [17] 1509     call PLY_AKM_CHECKTRANSPOSITIONANDTRACK
+   06FD DD 21 5E 0B   [14] 1510     ld ix,#PLY_AKM_TRACK1_DATA_END
+   0701 CD 96 07      [17] 1511     call PLY_AKM_CHECKTRANSPOSITIONANDTRACK
+   0704 DD 21 82 0B   [14] 1512     ld ix,#PLY_AKM_TRACK2_DATA_END
+   0708 CD 96 07      [17] 1513     call PLY_AKM_CHECKTRANSPOSITIONANDTRACK
+   070B 22 AB 06      [16] 1514     ld (PLY_AKM_PTLINKER+1),hl
+   070E                    1515 PLY_AKM_READLINE:
+   070E 11 00 00      [10] 1516 PLY_AKM_PTINSTRUMENTS: ld de,#0
+   0711 01 00 00      [10] 1517 PLY_AKM_NOTEINDEXTABLE: ld bc,#0
+   0714 D9            [ 4] 1518     exx
+   0715 DD 21 3A 0B   [14] 1519     ld ix,#PLY_AKM_TRACK1_DATA
+   0719 CD E2 07      [17] 1520     call PLY_AKM_READTRACK
+   071C DD 21 5E 0B   [14] 1521     ld ix,#PLY_AKM_TRACK1_DATA_END
+   0720 CD E2 07      [17] 1522     call PLY_AKM_READTRACK
+   0723 DD 21 82 0B   [14] 1523     ld ix,#PLY_AKM_TRACK2_DATA_END
+   0727 CD E2 07      [17] 1524     call PLY_AKM_READTRACK
+   072A AF            [ 4] 1525     xor a
+   072B 32 94 06      [13] 1526 PLY_AKM_TICKCOUNTERMANAGED: ld (PLY_AKM_TICKCOUNTER+1),a
+   072E 11 DE 0B      [10] 1527     ld de,#PLY_AKM_PERIODTABLE
+   0731 D9            [ 4] 1528     exx
+   0732 0E E0         [ 7] 1529     ld c,#224
+   0734 DD 21 3A 0B   [14] 1530     ld ix,#PLY_AKM_TRACK1_DATA
+   0738 CD E2 08      [17] 1531     call PLY_AKM_MANAGEEFFECTS
+   073B FD 21 A6 0B   [14] 1532     ld iy,#PLY_AKM_TRACK3_DATA_END
+   073F CD 81 09      [17] 1533     call PLY_AKM_PLAYSOUNDSTREAM
+   0742 CB 39         [ 8] 1534     srl c
+   0744 DD 21 5E 0B   [14] 1535     ld ix,#PLY_AKM_TRACK1_DATA_END
+   0748 CD E2 08      [17] 1536     call PLY_AKM_MANAGEEFFECTS
+   074B FD 21 B2 0B   [14] 1537     ld iy,#PLY_AKM_TRACK2_REGISTERS
+   074F CD 81 09      [17] 1538     call PLY_AKM_PLAYSOUNDSTREAM
+   0752 CB 19         [ 8] 1539     rr c
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 30.
+Hexadecimal [16-Bits]
+
+
+
+   0754 DD 21 82 0B   [14] 1540     ld ix,#PLY_AKM_TRACK2_DATA_END
+   0758 CD E2 08      [17] 1541     call PLY_AKM_MANAGEEFFECTS
+   075B FD 21 BE 0B   [14] 1542     ld iy,#PLY_AKM_TRACK3_REGISTERS
+   075F CD 81 09      [17] 1543     call PLY_AKM_PLAYSOUNDSTREAM
+   0762 79            [ 4] 1544     ld a,c
+   0763 CD 30 05      [17] 1545     call PLY_AKM_PLAYSOUNDEFFECTSSTREAM
+   0766 31 A6 0B      [10] 1546 PLY_AKM_SENDPSG: ld sp,#PLY_AKM_TRACK3_DATA_END
+   0769 01 80 F6      [10] 1547     ld bc,#63104
+   076C 3E C0         [ 7] 1548     ld a,#192
+   076E 11 F6 F4      [10] 1549     ld de,#62710
+   0771 ED 79         [12] 1550     out (c),a
+   0773 E1            [10] 1551 PLY_AKM_SENDPSGREGISTER: pop hl
+   0774 42            [ 4] 1552 PLY_AKM_SENDPSGREGISTERAFTERPOP: ld b,d
+   0775 ED 69         [12] 1553     out (c),l
+   0777 43            [ 4] 1554     ld b,e
+   0778 ED                 1555     .db 237
+   0779 71                 1556     .db 113
+   077A 42            [ 4] 1557     ld b,d
+   077B ED 61         [12] 1558     out (c),h
+   077D 43            [ 4] 1559     ld b,e
+   077E ED 49         [12] 1560     out (c),c
+   0780 ED 79         [12] 1561     out (c),a
+   0782 C9            [10] 1562     ret 
+   0783                    1563 PLY_AKM_SENDPSGREGISTERR13:
+   0783 3E 00         [ 7] 1564 PLY_AKM_SETREG13: ld a,#0
+   0785 FE 00         [ 7] 1565 PLY_AKM_SETREG13OLD: cp #0
+   0787 28 09         [12] 1566     jr z,PLY_AKM_SENDPSGREGISTEREND
+   0789 32 86 07      [13] 1567     ld (PLY_AKM_SETREG13OLD+1),a
+   078C 67            [ 4] 1568     ld h,a
+   078D 2E 0D         [ 7] 1569     ld l,#13
+   078F 3E C0         [ 7] 1570     ld a,#192
+   0791 C9            [10] 1571     ret 
+   0792                    1572 PLY_AKM_SENDPSGREGISTEREND:
+   0792 31 00 00      [10] 1573 PLY_AKM_SAVESP: ld sp,#0
+   0795 C9            [10] 1574     ret 
+   0796 CB 18         [ 8] 1575 PLY_AKM_CHECKTRANSPOSITIONANDTRACK: rr b
+   0798 30 05         [12] 1576     jr nc,PLY_AKM_CHECKTRANSPOSITIONANDTRACK_AFTERTRANSPOSITION
+   079A 7E            [ 7] 1577     ld a,(hl)
+   079B DD 77 01      [19] 1578     ld +1(ix),a
+   079E 23            [ 6] 1579     inc hl
+   079F CB 18         [ 8] 1580 PLY_AKM_CHECKTRANSPOSITIONANDTRACK_AFTERTRANSPOSITION: rr b
+   07A1 30 32         [12] 1581     jr nc,PLY_AKM_CHECKTRANSPOSITIONANDTRACK_NONEWTRACK
+   07A3 7E            [ 7] 1582     ld a,(hl)
+   07A4 23            [ 6] 1583     inc hl
+   07A5 CB 27         [ 8] 1584     sla a
+   07A7 30 16         [12] 1585     jr nc,PLY_AKM_CHECKTRANSPOSITIONANDTRACK_TRACKOFFSET
+   07A9 D9            [ 4] 1586     exx
+   07AA 6F            [ 4] 1587     ld l,a
+   07AB 26 00         [ 7] 1588     ld h,#0
+   07AD 19            [11] 1589     add hl,de
+   07AE 7E            [ 7] 1590     ld a,(hl)
+   07AF DD 77 02      [19] 1591     ld +2(ix),a
+   07B2 DD 77 04      [19] 1592     ld +4(ix),a
+   07B5 23            [ 6] 1593     inc hl
+   07B6 7E            [ 7] 1594     ld a,(hl)
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 31.
+Hexadecimal [16-Bits]
+
+
+
+   07B7 DD 77 03      [19] 1595     ld +3(ix),a
+   07BA DD 77 05      [19] 1596     ld +5(ix),a
+   07BD D9            [ 4] 1597     exx
+   07BE C9            [10] 1598     ret 
+   07BF 1F            [ 4] 1599 PLY_AKM_CHECKTRANSPOSITIONANDTRACK_TRACKOFFSET: rra 
+   07C0 57            [ 4] 1600     ld d,a
+   07C1 5E            [ 7] 1601     ld e,(hl)
+   07C2 23            [ 6] 1602     inc hl
+   07C3 4D            [ 4] 1603     ld c,l
+   07C4 7C            [ 4] 1604     ld a,h
+   07C5 19            [11] 1605     add hl,de
+   07C6 DD                 1606     .db 221
+   07C7 75                 1607     .db 117
+   07C8 02                 1608     .db +2
+   07C9 DD                 1609     .db 221
+   07CA 74                 1610     .db 116
+   07CB 03                 1611     .db +3
+   07CC DD                 1612     .db 221
+   07CD 75                 1613     .db 117
+   07CE 04                 1614     .db +4
+   07CF DD                 1615     .db 221
+   07D0 74                 1616     .db 116
+   07D1 05                 1617     .db +5
+   07D2 69            [ 4] 1618     ld l,c
+   07D3 67            [ 4] 1619     ld h,a
+   07D4 C9            [10] 1620     ret 
+   07D5 DD 7E 02      [19] 1621 PLY_AKM_CHECKTRANSPOSITIONANDTRACK_NONEWTRACK: ld a,+2(ix)
+   07D8 DD 77 04      [19] 1622     ld +4(ix),a
+   07DB DD 7E 03      [19] 1623     ld a,+3(ix)
+   07DE DD 77 05      [19] 1624     ld +5(ix),a
+   07E1 C9            [10] 1625     ret 
+   07E2 DD 7E 00      [19] 1626 PLY_AKM_READTRACK: ld a,+0(ix)
+   07E5 D6 01         [ 7] 1627     sub #1
+   07E7 38 04         [12] 1628     jr c,PLY_AKM_RT_NOEMPTYCELL
+   07E9 DD 77 00      [19] 1629     ld +0(ix),a
+   07EC C9            [10] 1630     ret 
+   07ED DD 6E 04      [19] 1631 PLY_AKM_RT_NOEMPTYCELL: ld l,+4(ix)
+   07F0 DD 66 05      [19] 1632     ld h,+5(ix)
+   07F3 46            [ 7] 1633 PLY_AKM_RT_GETDATABYTE: ld b,(hl)
+   07F4 23            [ 6] 1634     inc hl
+   07F5 78            [ 4] 1635     ld a,b
+   07F6 E6 0F         [ 7] 1636     and #15
+   07F8 FE 0C         [ 7] 1637 PLY_AKM_FLAGNOTEANDEFFECTINCELL: cp #12
+   07FA 38 26         [12] 1638     jr c,PLY_AKM_RT_NOTEREFERENCE
+   07FC D6 0C         [ 7] 1639     sub #12
+   07FE 28 12         [12] 1640     jr z,PLY_AKM_RT_NOTEANDEFFECTS
+   0800 3D            [ 4] 1641     dec a
+   0801 28 15         [12] 1642     jr z,PLY_AKM_RT_NONOTEMAYBEEFFECTS
+   0803 3D            [ 4] 1643     dec a
+   0804 28 05         [12] 1644     jr z,PLY_AKM_RT_NEWESCAPENOTE
+   0806 DD 7E 07      [19] 1645     ld a,+7(ix)
+   0809 18 1E         [12] 1646     jr PLY_AKM_RT_AFTERNOTEREAD
+   080B 7E            [ 7] 1647 PLY_AKM_RT_NEWESCAPENOTE: ld a,(hl)
+   080C DD 77 07      [19] 1648     ld +7(ix),a
+   080F 23            [ 6] 1649     inc hl
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 32.
+Hexadecimal [16-Bits]
+
+
+
+   0810 18 17         [12] 1650     jr PLY_AKM_RT_AFTERNOTEREAD
+   0812 3D            [ 4] 1651 PLY_AKM_RT_NOTEANDEFFECTS: dec a
+   0813 32 A0 08      [13] 1652     ld (PLY_AKM_RT_READEFFECTSFLAG+1),a
+   0816 18 DB         [12] 1653     jr PLY_AKM_RT_GETDATABYTE
+   0818 CB 60         [ 8] 1654 PLY_AKM_RT_NONOTEMAYBEEFFECTS: bit 4,b
+   081A 28 61         [12] 1655     jr z,PLY_AKM_RT_READWAITFLAGS
+   081C 78            [ 4] 1656     ld a,b
+   081D 32 A0 08      [13] 1657     ld (PLY_AKM_RT_READEFFECTSFLAG+1),a
+   0820 18 5B         [12] 1658     jr PLY_AKM_RT_READWAITFLAGS
+   0822 D9            [ 4] 1659 PLY_AKM_RT_NOTEREFERENCE: exx
+   0823 6F            [ 4] 1660     ld l,a
+   0824 26 00         [ 7] 1661     ld h,#0
+   0826 09            [11] 1662     add hl,bc
+   0827 7E            [ 7] 1663     ld a,(hl)
+   0828 D9            [ 4] 1664     exx
+   0829 DD 86 01      [19] 1665 PLY_AKM_RT_AFTERNOTEREAD: add a,+1(ix)
+   082C DD 77 06      [19] 1666     ld +6(ix),a
+   082F 78            [ 4] 1667     ld a,b
+   0830 E6 30         [ 7] 1668     and #48
+   0832 28 0F         [12] 1669     jr z,PLY_AKM_RT_SAMEESCAPEINSTRUMENT
+   0834 FE 10         [ 7] 1670     cp #16
+   0836 28 14         [12] 1671     jr z,PLY_AKM_RT_PRIMARYINSTRUMENT
+   0838 FE 20         [ 7] 1672     cp #32
+   083A 28 0C         [12] 1673     jr z,PLY_AKM_RT_SECONDARYINSTRUMENT
+   083C 7E            [ 7] 1674     ld a,(hl)
+   083D 23            [ 6] 1675     inc hl
+   083E DD 77 08      [19] 1676     ld +8(ix),a
+   0841 18 0B         [12] 1677     jr PLY_AKM_RT_STORECURRENTINSTRUMENT
+   0843 DD 7E 08      [19] 1678 PLY_AKM_RT_SAMEESCAPEINSTRUMENT: ld a,+8(ix)
+   0846 18 06         [12] 1679     jr PLY_AKM_RT_STORECURRENTINSTRUMENT
+   0848                    1680 PLY_AKM_RT_SECONDARYINSTRUMENT:
+   0848 3E 00         [ 7] 1681 PLY_AKM_SECONDARYINSTRUMENT: ld a,#0
+   084A 18 02         [12] 1682     jr PLY_AKM_RT_STORECURRENTINSTRUMENT
+   084C                    1683 PLY_AKM_RT_PRIMARYINSTRUMENT:
+   084C 3E 00         [ 7] 1684 PLY_AKM_PRIMARYINSTRUMENT: ld a,#0
+   084E D9            [ 4] 1685 PLY_AKM_RT_STORECURRENTINSTRUMENT: exx
+   084F 87            [ 4] 1686     add a,a
+   0850 6F            [ 4] 1687     ld l,a
+   0851 26 00         [ 7] 1688     ld h,#0
+   0853 19            [11] 1689     add hl,de
+   0854 7E            [ 7] 1690     ld a,(hl)
+   0855 23            [ 6] 1691     inc hl
+   0856 66            [ 7] 1692     ld h,(hl)
+   0857 6F            [ 4] 1693     ld l,a
+   0858 7E            [ 7] 1694     ld a,(hl)
+   0859 23            [ 6] 1695     inc hl
+   085A DD 77 0D      [19] 1696     ld +13(ix),a
+   085D DD                 1697     .db 221
+   085E 75                 1698     .db 117
+   085F 0A                 1699     .db +10
+   0860 DD                 1700     .db 221
+   0861 74                 1701     .db 116
+   0862 0B                 1702     .db +11
+   0863 D9            [ 4] 1703     exx
+   0864 AF            [ 4] 1704     xor a
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 33.
+Hexadecimal [16-Bits]
+
+
+
+   0865 DD 77 0C      [19] 1705     ld +12(ix),a
+   0868 DD 77 0F      [19] 1706     ld +15(ix),a
+   086B DD 77 10      [19] 1707     ld +16(ix),a
+   086E DD 77 11      [19] 1708     ld +17(ix),a
+   0871 DD 77 18      [19] 1709     ld +24(ix),a
+   0874 DD 77 19      [19] 1710     ld +25(ix),a
+   0877 DD 77 1F      [19] 1711     ld +31(ix),a
+   087A DD 77 20      [19] 1712     ld +32(ix),a
+   087D 78            [ 4] 1713 PLY_AKM_RT_READWAITFLAGS: ld a,b
+   087E E6 C0         [ 7] 1714     and #192
+   0880 28 0F         [12] 1715     jr z,PLY_AKM_RT_SAMEESCAPEWAIT
+   0882 FE 40         [ 7] 1716     cp #64
+   0884 28 10         [12] 1717     jr z,PLY_AKM_RT_PRIMARYWAIT
+   0886 FE 80         [ 7] 1718     cp #128
+   0888 28 10         [12] 1719     jr z,PLY_AKM_RT_SECONDARYWAIT
+   088A 7E            [ 7] 1720     ld a,(hl)
+   088B 23            [ 6] 1721     inc hl
+   088C DD 77 09      [19] 1722     ld +9(ix),a
+   088F 18 0B         [12] 1723     jr PLY_AKM_RT_STORECURRENTWAIT
+   0891 DD 7E 09      [19] 1724 PLY_AKM_RT_SAMEESCAPEWAIT: ld a,+9(ix)
+   0894 18 06         [12] 1725     jr PLY_AKM_RT_STORECURRENTWAIT
+   0896                    1726 PLY_AKM_RT_PRIMARYWAIT:
+   0896 3E 00         [ 7] 1727 PLY_AKM_PRIMARYWAIT: ld a,#0
+   0898 18 02         [12] 1728     jr PLY_AKM_RT_STORECURRENTWAIT
+   089A                    1729 PLY_AKM_RT_SECONDARYWAIT:
+   089A 3E 00         [ 7] 1730 PLY_AKM_SECONDARYWAIT: ld a,#0
+   089C DD 77 00      [19] 1731 PLY_AKM_RT_STORECURRENTWAIT: ld +0(ix),a
+   089F 3E 00         [ 7] 1732 PLY_AKM_RT_READEFFECTSFLAG: ld a,#0
+   08A1 B7            [ 4] 1733     or a
+   08A2 20 07         [12] 1734     jr nz,PLY_AKM_RT_READEFFECTS
+   08A4 DD                 1735 PLY_AKM_RT_AFTEREFFECTS: .db 221
+   08A5 75                 1736     .db 117
+   08A6 04                 1737     .db +4
+   08A7 DD                 1738     .db 221
+   08A8 74                 1739     .db 116
+   08A9 05                 1740     .db +5
+   08AA C9            [10] 1741     ret 
+   08AB AF            [ 4] 1742 PLY_AKM_RT_READEFFECTS: xor a
+   08AC 32 A0 08      [13] 1743     ld (PLY_AKM_RT_READEFFECTSFLAG+1),a
+   08AF FD 21 AE 0A   [14] 1744 PLY_AKM_RT_READEFFECT: ld iy,#PLY_AKM_EFFECTTABLE
+   08B3 46            [ 7] 1745     ld b,(hl)
+   08B4 78            [ 4] 1746     ld a,b
+   08B5 23            [ 6] 1747     inc hl
+   08B6 E6 0E         [ 7] 1748     and #14
+   08B8 5F            [ 4] 1749     ld e,a
+   08B9 16 00         [ 7] 1750     ld d,#0
+   08BB FD 19         [15] 1751     add iy,de
+   08BD 78            [ 4] 1752     ld a,b
+   08BE 1F            [ 4] 1753     rra 
+   08BF 1F            [ 4] 1754     rra 
+   08C0 1F            [ 4] 1755     rra 
+   08C1 1F            [ 4] 1756     rra 
+   08C2 E6 0F         [ 7] 1757     and #15
+   08C4 FD E9         [ 8] 1758     jp (iy)
+   08C6 CB 40         [ 8] 1759 PLY_AKM_RT_READEFFECT_RETURN: bit 0,b
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 34.
+Hexadecimal [16-Bits]
+
+
+
+   08C8 20 E5         [12] 1760     jr nz,PLY_AKM_RT_READEFFECT
+   08CA 18 D8         [12] 1761     jr PLY_AKM_RT_AFTEREFFECTS
+   08CC 7E            [ 7] 1762 PLY_AKM_RT_WAITLONG: ld a,(hl)
+   08CD 23            [ 6] 1763     inc hl
+   08CE DD 77 00      [19] 1764     ld +0(ix),a
+   08D1 18 08         [12] 1765     jr PLY_AKM_RT_CELLREAD
+   08D3 78            [ 4] 1766 PLY_AKM_RT_WAITSHORT: ld a,b
+   08D4 07            [ 4] 1767     rlca 
+   08D5 07            [ 4] 1768     rlca 
+   08D6 E6 03         [ 7] 1769     and #3
+   08D8 DD 77 00      [19] 1770     ld +0(ix),a
+   08DB DD                 1771 PLY_AKM_RT_CELLREAD: .db 221
+   08DC 75                 1772     .db 117
+   08DD 04                 1773     .db +4
+   08DE DD                 1774     .db 221
+   08DF 74                 1775     .db 116
+   08E0 05                 1776     .db +5
+   08E1 C9            [10] 1777     ret 
+   08E2 DD 7E 0F      [19] 1778 PLY_AKM_MANAGEEFFECTS: ld a,+15(ix)
+   08E5 B7            [ 4] 1779     or a
+   08E6 28 28         [12] 1780     jr z,PLY_AKM_ME_PITCHUPDOWNFINISHED
+   08E8 DD 6E 12      [19] 1781     ld l,+18(ix)
+   08EB DD 66 10      [19] 1782     ld h,+16(ix)
+   08EE DD 5E 13      [19] 1783     ld e,+19(ix)
+   08F1 DD 56 14      [19] 1784     ld d,+20(ix)
+   08F4 DD 7E 11      [19] 1785     ld a,+17(ix)
+   08F7 CB 7A         [ 8] 1786     bit 7,d
+   08F9 20 05         [12] 1787     jr nz,PLY_AKM_ME_PITCHUPDOWN_NEGATIVESPEED
+   08FB 19            [11] 1788 PLY_AKM_ME_PITCHUPDOWN_POSITIVESPEED: add hl,de
+   08FC CE 00         [ 7] 1789     adc a,#0
+   08FE 18 07         [12] 1790     jr PLY_AKM_ME_PITCHUPDOWN_SAVE
+   0900 CB BA         [ 8] 1791 PLY_AKM_ME_PITCHUPDOWN_NEGATIVESPEED: res 7,d
+   0902 B7            [ 4] 1792     or a
+   0903 ED 52         [15] 1793     sbc hl,de
+   0905 DE 00         [ 7] 1794     sbc a,#0
+   0907 DD 77 11      [19] 1795 PLY_AKM_ME_PITCHUPDOWN_SAVE: ld +17(ix),a
+   090A DD                 1796     .db 221
+   090B 75                 1797     .db 117
+   090C 12                 1798     .db +18
+   090D DD                 1799     .db 221
+   090E 74                 1800     .db 116
+   090F 10                 1801     .db +16
+   0910 DD 7E 15      [19] 1802 PLY_AKM_ME_PITCHUPDOWNFINISHED: ld a,+21(ix)
+   0913 B7            [ 4] 1803     or a
+   0914 28 30         [12] 1804     jr z,PLY_AKM_ME_ARPEGGIOTABLEFINISHED
+   0916 DD 5E 16      [19] 1805     ld e,+22(ix)
+   0919 DD 56 17      [19] 1806     ld d,+23(ix)
+   091C DD 6E 18      [19] 1807     ld l,+24(ix)
+   091F 26 00         [ 7] 1808     ld h,#0
+   0921 19            [11] 1809     add hl,de
+   0922 7E            [ 7] 1810     ld a,(hl)
+   0923 CB 2F         [ 8] 1811     sra a
+   0925 DD 77 1B      [19] 1812     ld +27(ix),a
+   0928 DD 7E 19      [19] 1813     ld a,+25(ix)
+   092B DD BE 1A      [19] 1814     cp +26(ix)
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 35.
+Hexadecimal [16-Bits]
+
+
+
+   092E 38 12         [12] 1815     jr c,PLY_AKM_ME_ARPEGGIOTABLE_SPEEDNOTREACHED
+   0930 DD 36 19 00   [19] 1816     ld +25(ix),#0
+   0934 DD 34 18      [23] 1817     inc +24(ix)
+   0937 23            [ 6] 1818     inc hl
+   0938 7E            [ 7] 1819     ld a,(hl)
+   0939 1F            [ 4] 1820     rra 
+   093A 30 0A         [12] 1821     jr nc,PLY_AKM_ME_ARPEGGIOTABLEFINISHED
+   093C 6F            [ 4] 1822     ld l,a
+   093D DD 77 18      [19] 1823     ld +24(ix),a
+   0940 18 04         [12] 1824     jr PLY_AKM_ME_ARPEGGIOTABLEFINISHED
+   0942 3C            [ 4] 1825 PLY_AKM_ME_ARPEGGIOTABLE_SPEEDNOTREACHED: inc a
+   0943 DD 77 19      [19] 1826     ld +25(ix),a
+   0946 DD 7E 1C      [19] 1827 PLY_AKM_ME_ARPEGGIOTABLEFINISHED: ld a,+28(ix)
+   0949 B7            [ 4] 1828     or a
+   094A C8            [11] 1829     ret z
+   094B DD 6E 1D      [19] 1830     ld l,+29(ix)
+   094E DD 66 1E      [19] 1831     ld h,+30(ix)
+   0951 DD 5E 1F      [19] 1832     ld e,+31(ix)
+   0954 16 00         [ 7] 1833     ld d,#0
+   0956 19            [11] 1834     add hl,de
+   0957 7E            [ 7] 1835     ld a,(hl)
+   0958 CB 2F         [ 8] 1836     sra a
+   095A F2 5E 09      [10] 1837     jp p,PLY_AKM_ME_PITCHTABLEENDNOTREACHED_POSITIVE
+   095D 15            [ 4] 1838     dec d
+   095E DD 77 22      [19] 1839 PLY_AKM_ME_PITCHTABLEENDNOTREACHED_POSITIVE: ld +34(ix),a
+   0961 DD                 1840     .db 221
+   0962 72                 1841     .db 114
+   0963 23                 1842     .db +35
+   0964 DD 7E 20      [19] 1843     ld a,+32(ix)
+   0967 DD BE 21      [19] 1844     cp +33(ix)
+   096A 38 10         [12] 1845     jr c,PLY_AKM_ME_PITCHTABLE_SPEEDNOTREACHED
+   096C DD 36 20 00   [19] 1846     ld +32(ix),#0
+   0970 DD 34 1F      [23] 1847     inc +31(ix)
+   0973 23            [ 6] 1848     inc hl
+   0974 7E            [ 7] 1849     ld a,(hl)
+   0975 1F            [ 4] 1850     rra 
+   0976 D0            [11] 1851     ret nc
+   0977 6F            [ 4] 1852     ld l,a
+   0978 DD 77 1F      [19] 1853     ld +31(ix),a
+   097B C9            [10] 1854     ret 
+   097C 3C            [ 4] 1855 PLY_AKM_ME_PITCHTABLE_SPEEDNOTREACHED: inc a
+   097D DD 77 20      [19] 1856     ld +32(ix),a
+   0980 C9            [10] 1857     ret 
+   0981 DD 6E 0A      [19] 1858 PLY_AKM_PLAYSOUNDSTREAM: ld l,+10(ix)
+   0984 DD 66 0B      [19] 1859     ld h,+11(ix)
+   0987 7E            [ 7] 1860 PLY_AKM_PSS_READFIRSTBYTE: ld a,(hl)
+   0988 47            [ 4] 1861     ld b,a
+   0989 23            [ 6] 1862     inc hl
+   098A 1F            [ 4] 1863     rra 
+   098B 38 21         [12] 1864     jr c,PLY_AKM_PSS_SOFTORSOFTANDHARD
+   098D 1F            [ 4] 1865     rra 
+   098E 38 6C         [12] 1866     jr c,PLY_AKM_PSS_SOFTWARETOHARDWARE
+   0990 1F            [ 4] 1867     rra 
+   0991 30 0C         [12] 1868     jr nc,PLY_AKM_PSS_NSNH_NOTENDOFSOUND
+   0993 7E            [ 7] 1869     ld a,(hl)
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 36.
+Hexadecimal [16-Bits]
+
+
+
+   0994 23            [ 6] 1870     inc hl
+   0995 66            [ 7] 1871     ld h,(hl)
+   0996 6F            [ 4] 1872     ld l,a
+   0997 DD                 1873     .db 221
+   0998 75                 1874     .db 117
+   0999 0A                 1875     .db +10
+   099A DD                 1876     .db 221
+   099B 74                 1877     .db 116
+   099C 0B                 1878     .db +11
+   099D 18 E8         [12] 1879     jr PLY_AKM_PSS_READFIRSTBYTE
+   099F CB D1         [ 8] 1880 PLY_AKM_PSS_NSNH_NOTENDOFSOUND: set 2,c
+   09A1 CD 3C 0A      [17] 1881     call PLY_AKM_PSS_SHARED_ADJUSTVOLUME
+   09A4 FD 77 01      [19] 1882     ld +1(iy),a
+   09A7 CB 10         [ 8] 1883     rl b
+   09A9 DC 44 0A      [17] 1884     call c,PLY_AKM_PSS_READNOISE
+   09AC 18 28         [12] 1885     jr PLY_AKM_PSS_SHARED_STOREINSTRUMENTPOINTER
+   09AE 1F            [ 4] 1886 PLY_AKM_PSS_SOFTORSOFTANDHARD: rra 
+   09AF 38 3C         [12] 1887     jr c,PLY_AKM_PSS_SOFTANDHARD
+   09B1 CD 3C 0A      [17] 1888     call PLY_AKM_PSS_SHARED_ADJUSTVOLUME
+   09B4 FD 77 01      [19] 1889     ld +1(iy),a
+   09B7 16 00         [ 7] 1890     ld d,#0
+   09B9 CB 10         [ 8] 1891     rl b
+   09BB 30 08         [12] 1892     jr nc,PLY_AKM_PSS_S_AFTERARPANDORNOISE
+   09BD 7E            [ 7] 1893     ld a,(hl)
+   09BE 23            [ 6] 1894     inc hl
+   09BF CB 2F         [ 8] 1895     sra a
+   09C1 57            [ 4] 1896     ld d,a
+   09C2 DC 44 0A      [17] 1897     call c,PLY_AKM_PSS_READNOISE
+   09C5 7A            [ 4] 1898 PLY_AKM_PSS_S_AFTERARPANDORNOISE: ld a,d
+   09C6 CD 4C 0A      [17] 1899     call PLY_AKM_CALCULATEPERIODFORBASENOTE
+   09C9 CB 10         [ 8] 1900     rl b
+   09CB DC 89 0A      [17] 1901     call c,PLY_AKM_READPITCHANDADDTOPERIOD
+   09CE D9            [ 4] 1902     exx
+   09CF FD 75 05      [19] 1903     ld +5(iy),l
+   09D2 FD 74 09      [19] 1904     ld +9(iy),h
+   09D5 D9            [ 4] 1905     exx
+   09D6 DD 7E 0C      [19] 1906 PLY_AKM_PSS_SHARED_STOREINSTRUMENTPOINTER: ld a,+12(ix)
+   09D9 DD BE 0D      [19] 1907     cp +13(ix)
+   09DC 30 04         [12] 1908     jr nc,PLY_AKM_PSS_S_SPEEDREACHED
+   09DE DD 34 0C      [23] 1909     inc +12(ix)
+   09E1 C9            [10] 1910     ret 
+   09E2 DD                 1911 PLY_AKM_PSS_S_SPEEDREACHED: .db 221
+   09E3 75                 1912     .db 117
+   09E4 0A                 1913     .db +10
+   09E5 DD                 1914     .db 221
+   09E6 74                 1915     .db 116
+   09E7 0B                 1916     .db +11
+   09E8 DD 36 0C 00   [19] 1917     ld +12(ix),#0
+   09EC C9            [10] 1918     ret 
+   09ED CD 1E 0A      [17] 1919 PLY_AKM_PSS_SOFTANDHARD: call PLY_AKM_PSS_SHARED_READENVBITPITCHARP_SOFTPERIOD_HARDVOL_HARDENV
+   09F0 7E            [ 7] 1920     ld a,(hl)
+   09F1 32 D3 0B      [13] 1921     ld (PLY_AKM_REG11),a
+   09F4 23            [ 6] 1922     inc hl
+   09F5 7E            [ 7] 1923     ld a,(hl)
+   09F6 32 D7 0B      [13] 1924     ld (PLY_AKM_REG12),a
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 37.
+Hexadecimal [16-Bits]
+
+
+
+   09F9 23            [ 6] 1925     inc hl
+   09FA 18 DA         [12] 1926     jr PLY_AKM_PSS_SHARED_STOREINSTRUMENTPOINTER
+   09FC CD 1E 0A      [17] 1927 PLY_AKM_PSS_SOFTWARETOHARDWARE: call PLY_AKM_PSS_SHARED_READENVBITPITCHARP_SOFTPERIOD_HARDVOL_HARDENV
+   09FF 78            [ 4] 1928     ld a,b
+   0A00 07            [ 4] 1929     rlca 
+   0A01 07            [ 4] 1930     rlca 
+   0A02 07            [ 4] 1931     rlca 
+   0A03 07            [ 4] 1932     rlca 
+   0A04 E6 07         [ 7] 1933     and #7
+   0A06 D9            [ 4] 1934     exx
+   0A07 28 0A         [12] 1935     jr z,PLY_AKM_PSS_STH_RATIOEND
+   0A09 CB 3C         [ 8] 1936 PLY_AKM_PSS_STH_RATIOLOOP: srl h
+   0A0B CB 1D         [ 8] 1937     rr l
+   0A0D 3D            [ 4] 1938     dec a
+   0A0E 20 F9         [12] 1939     jr nz,PLY_AKM_PSS_STH_RATIOLOOP
+   0A10 30 01         [12] 1940     jr nc,PLY_AKM_PSS_STH_RATIOEND
+   0A12 23            [ 6] 1941     inc hl
+   0A13 7D            [ 4] 1942 PLY_AKM_PSS_STH_RATIOEND: ld a,l
+   0A14 32 D3 0B      [13] 1943     ld (PLY_AKM_REG11),a
+   0A17 7C            [ 4] 1944     ld a,h
+   0A18 32 D7 0B      [13] 1945     ld (PLY_AKM_REG12),a
+   0A1B D9            [ 4] 1946     exx
+   0A1C 18 B8         [12] 1947     jr PLY_AKM_PSS_SHARED_STOREINSTRUMENTPOINTER
+   0A1E E6 02         [ 7] 1948 PLY_AKM_PSS_SHARED_READENVBITPITCHARP_SOFTPERIOD_HARDVOL_HARDENV: and #2
+   0A20 C6 08         [ 7] 1949     add a,#8
+   0A22 32 84 07      [13] 1950     ld (PLY_AKM_SENDPSGREGISTERR13+1),a
+   0A25 FD 36 01 10   [19] 1951     ld +1(iy),#16
+   0A29 AF            [ 4] 1952     xor a
+   0A2A CB 78         [ 8] 1953     bit 7,b
+   0A2C 28 02         [12] 1954     jr z,PLY_AKM_PSS_SHARED_RENVBAP_AFTERARPEGGIO
+   0A2E 7E            [ 7] 1955     ld a,(hl)
+   0A2F 23            [ 6] 1956     inc hl
+   0A30 CD 4C 0A      [17] 1957 PLY_AKM_PSS_SHARED_RENVBAP_AFTERARPEGGIO: call PLY_AKM_CALCULATEPERIODFORBASENOTE
+   0A33 D9            [ 4] 1958     exx
+   0A34 FD 75 05      [19] 1959     ld +5(iy),l
+   0A37 FD 74 09      [19] 1960     ld +9(iy),h
+   0A3A D9            [ 4] 1961     exx
+   0A3B C9            [10] 1962     ret 
+   0A3C E6 0F         [ 7] 1963 PLY_AKM_PSS_SHARED_ADJUSTVOLUME: and #15
+   0A3E DD 96 0E      [19] 1964     sub +14(ix)
+   0A41 D0            [11] 1965     ret nc
+   0A42 AF            [ 4] 1966     xor a
+   0A43 C9            [10] 1967     ret 
+   0A44 7E            [ 7] 1968 PLY_AKM_PSS_READNOISE: ld a,(hl)
+   0A45 23            [ 6] 1969     inc hl
+   0A46 32 CB 0B      [13] 1970     ld (PLY_AKM_NOISEREGISTER),a
+   0A49 CB A9         [ 8] 1971     res 5,c
+   0A4B C9            [10] 1972     ret 
+   0A4C D9            [ 4] 1973 PLY_AKM_CALCULATEPERIODFORBASENOTE: exx
+   0A4D 26 00         [ 7] 1974     ld h,#0
+   0A4F DD 86 06      [19] 1975     add a,+6(ix)
+   0A52 DD 86 1B      [19] 1976     add a,+27(ix)
+   0A55 01 0C FF      [10] 1977     ld bc,#65292
+   0A58 04            [ 4] 1978 PLY_AKM_FINDOCTAVE_LOOP: inc b
+   0A59 91            [ 4] 1979     sub c
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 38.
+Hexadecimal [16-Bits]
+
+
+
+   0A5A 30 FC         [12] 1980     jr nc,PLY_AKM_FINDOCTAVE_LOOP
+   0A5C 81            [ 4] 1981     add a,c
+   0A5D 87            [ 4] 1982     add a,a
+   0A5E 6F            [ 4] 1983     ld l,a
+   0A5F 26 00         [ 7] 1984     ld h,#0
+   0A61 19            [11] 1985     add hl,de
+   0A62 7E            [ 7] 1986     ld a,(hl)
+   0A63 23            [ 6] 1987     inc hl
+   0A64 66            [ 7] 1988     ld h,(hl)
+   0A65 6F            [ 4] 1989     ld l,a
+   0A66 78            [ 4] 1990     ld a,b
+   0A67 B7            [ 4] 1991     or a
+   0A68 28 06         [12] 1992     jr z,PLY_AKM_FINDOCTAVE_OCTAVESHIFTLOOP_FINISHED
+   0A6A CB 3C         [ 8] 1993 PLY_AKM_FINDOCTAVE_OCTAVESHIFTLOOP: srl h
+   0A6C CB 1D         [ 8] 1994     rr l
+   0A6E 10 FA         [13] 1995     djnz PLY_AKM_FINDOCTAVE_OCTAVESHIFTLOOP
+   0A70 30 01         [12] 1996 PLY_AKM_FINDOCTAVE_OCTAVESHIFTLOOP_FINISHED: jr nc,PLY_AKM_FINDOCTAVE_FINISHED
+   0A72 23            [ 6] 1997     inc hl
+   0A73 DD 7E 1C      [19] 1998 PLY_AKM_FINDOCTAVE_FINISHED: ld a,+28(ix)
+   0A76 B7            [ 4] 1999     or a
+   0A77 28 07         [12] 2000     jr z,PLY_AKM_CALCULATEPERIODFORBASENOTE_NOPITCHTABLE
+   0A79 DD 4E 22      [19] 2001     ld c,+34(ix)
+   0A7C DD 46 23      [19] 2002     ld b,+35(ix)
+   0A7F 09            [11] 2003     add hl,bc
+   0A80 DD 4E 10      [19] 2004 PLY_AKM_CALCULATEPERIODFORBASENOTE_NOPITCHTABLE: ld c,+16(ix)
+   0A83 DD 46 11      [19] 2005     ld b,+17(ix)
+   0A86 09            [11] 2006     add hl,bc
+   0A87 D9            [ 4] 2007     exx
+   0A88 C9            [10] 2008     ret 
+   0A89 7E            [ 7] 2009 PLY_AKM_READPITCHANDADDTOPERIOD: ld a,(hl)
+   0A8A 23            [ 6] 2010     inc hl
+   0A8B D9            [ 4] 2011     exx
+   0A8C 4F            [ 4] 2012     ld c,a
+   0A8D D9            [ 4] 2013     exx
+   0A8E 7E            [ 7] 2014     ld a,(hl)
+   0A8F 23            [ 6] 2015     inc hl
+   0A90 D9            [ 4] 2016     exx
+   0A91 47            [ 4] 2017     ld b,a
+   0A92 09            [11] 2018     add hl,bc
+   0A93 D9            [ 4] 2019     exx
+   0A94 C9            [10] 2020     ret 
+   0A95 DD 77 0E      [19] 2021 PLY_AKM_EFFECTRESETWITHVOLUME: ld +14(ix),a
+   0A98 AF            [ 4] 2022     xor a
+   0A99 DD 77 0F      [19] 2023     ld +15(ix),a
+   0A9C DD 77 15      [19] 2024     ld +21(ix),a
+   0A9F DD 77 1B      [19] 2025     ld +27(ix),a
+   0AA2 DD 77 1C      [19] 2026     ld +28(ix),a
+   0AA5 C3 C6 08      [10] 2027     jp PLY_AKM_RT_READEFFECT_RETURN
+   0AA8 DD 77 0E      [19] 2028 PLY_AKM_EFFECTVOLUME: ld +14(ix),a
+   0AAB C3 C6 08      [10] 2029     jp PLY_AKM_RT_READEFFECT_RETURN
+   0AAE 18 E5         [12] 2030 PLY_AKM_EFFECTTABLE: jr PLY_AKM_EFFECTRESETWITHVOLUME
+   0AB0 18 F6         [12] 2031     jr PLY_AKM_EFFECTVOLUME
+   0AB2 18 08         [12] 2032     jr PLY_AKM_EFFECTPITCHUPDOWN
+   0AB4 18 21         [12] 2033     jr PLY_AKM_EFFECTARPEGGIOTABLE
+   0AB6 18 50         [12] 2034     jr PLY_AKM_EFFECTPITCHTABLE
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 39.
+Hexadecimal [16-Bits]
+
+
+
+   0AB8 18 FE         [12] 2035     jr PLY_AKM_EFFECTPITCHUPDOWN-4
+   0ABA 18 FE         [12] 2036     jr PLY_AKM_EFFECTPITCHUPDOWN-2
+   0ABC 1F            [ 4] 2037 PLY_AKM_EFFECTPITCHUPDOWN: rra 
+   0ABD 30 11         [12] 2038     jr nc,PLY_AKM_EFFECTPITCHUPDOWN_DEACTIVATED
+   0ABF DD 36 0F FF   [19] 2039     ld +15(ix),#255
+   0AC3 7E            [ 7] 2040     ld a,(hl)
+   0AC4 23            [ 6] 2041     inc hl
+   0AC5 DD 77 13      [19] 2042     ld +19(ix),a
+   0AC8 7E            [ 7] 2043     ld a,(hl)
+   0AC9 23            [ 6] 2044     inc hl
+   0ACA DD 77 14      [19] 2045     ld +20(ix),a
+   0ACD C3 C6 08      [10] 2046     jp PLY_AKM_RT_READEFFECT_RETURN
+   0AD0 DD 36 0F 00   [19] 2047 PLY_AKM_EFFECTPITCHUPDOWN_DEACTIVATED: ld +15(ix),#0
+   0AD4 C3 C6 08      [10] 2048     jp PLY_AKM_RT_READEFFECT_RETURN
+   0AD7 CD 34 0B      [17] 2049 PLY_AKM_EFFECTARPEGGIOTABLE: call PLY_AKM_EFFECTREADIFESCAPE
+   0ADA DD 77 15      [19] 2050     ld +21(ix),a
+   0ADD 28 23         [12] 2051     jr z,PLY_AKM_EFFECTARPEGGIOTABLE_STOP
+   0ADF 87            [ 4] 2052     add a,a
+   0AE0 D9            [ 4] 2053     exx
+   0AE1 6F            [ 4] 2054     ld l,a
+   0AE2 26 00         [ 7] 2055     ld h,#0
+   0AE4 01 00 00      [10] 2056 PLY_AKM_PTARPEGGIOS: ld bc,#0
+   0AE7 09            [11] 2057     add hl,bc
+   0AE8 7E            [ 7] 2058     ld a,(hl)
+   0AE9 23            [ 6] 2059     inc hl
+   0AEA 66            [ 7] 2060     ld h,(hl)
+   0AEB 6F            [ 4] 2061     ld l,a
+   0AEC 7E            [ 7] 2062     ld a,(hl)
+   0AED 23            [ 6] 2063     inc hl
+   0AEE DD 77 1A      [19] 2064     ld +26(ix),a
+   0AF1 DD                 2065     .db 221
+   0AF2 75                 2066     .db 117
+   0AF3 16                 2067     .db +22
+   0AF4 DD                 2068     .db 221
+   0AF5 74                 2069     .db 116
+   0AF6 17                 2070     .db +23
+   0AF7 D9            [ 4] 2071     exx
+   0AF8 AF            [ 4] 2072     xor a
+   0AF9 DD 77 18      [19] 2073     ld +24(ix),a
+   0AFC DD 77 19      [19] 2074     ld +25(ix),a
+   0AFF C3 C6 08      [10] 2075     jp PLY_AKM_RT_READEFFECT_RETURN
+   0B02 DD 77 1B      [19] 2076 PLY_AKM_EFFECTARPEGGIOTABLE_STOP: ld +27(ix),a
+   0B05 C3 C6 08      [10] 2077     jp PLY_AKM_RT_READEFFECT_RETURN
+   0B08 CD 34 0B      [17] 2078 PLY_AKM_EFFECTPITCHTABLE: call PLY_AKM_EFFECTREADIFESCAPE
+   0B0B DD 77 1C      [19] 2079     ld +28(ix),a
+   0B0E CA C6 08      [10] 2080     jp z,PLY_AKM_RT_READEFFECT_RETURN
+   0B11 87            [ 4] 2081     add a,a
+   0B12 D9            [ 4] 2082     exx
+   0B13 6F            [ 4] 2083     ld l,a
+   0B14 26 00         [ 7] 2084     ld h,#0
+   0B16 01 00 00      [10] 2085 PLY_AKM_PTPITCHES: ld bc,#0
+   0B19 09            [11] 2086     add hl,bc
+   0B1A 7E            [ 7] 2087     ld a,(hl)
+   0B1B 23            [ 6] 2088     inc hl
+   0B1C 66            [ 7] 2089     ld h,(hl)
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 40.
+Hexadecimal [16-Bits]
+
+
+
+   0B1D 6F            [ 4] 2090     ld l,a
+   0B1E 7E            [ 7] 2091     ld a,(hl)
+   0B1F 23            [ 6] 2092     inc hl
+   0B20 DD 77 21      [19] 2093     ld +33(ix),a
+   0B23 DD                 2094     .db 221
+   0B24 75                 2095     .db 117
+   0B25 1D                 2096     .db +29
+   0B26 DD                 2097     .db 221
+   0B27 74                 2098     .db 116
+   0B28 1E                 2099     .db +30
+   0B29 D9            [ 4] 2100     exx
+   0B2A AF            [ 4] 2101     xor a
+   0B2B DD 77 1F      [19] 2102     ld +31(ix),a
+   0B2E DD 77 20      [19] 2103     ld +32(ix),a
+   0B31 C3 C6 08      [10] 2104     jp PLY_AKM_RT_READEFFECT_RETURN
+   0B34 FE 0F         [ 7] 2105 PLY_AKM_EFFECTREADIFESCAPE: cp #15
+   0B36 D8            [11] 2106     ret c
+   0B37 7E            [ 7] 2107     ld a,(hl)
+   0B38 23            [ 6] 2108     inc hl
+   0B39 C9            [10] 2109     ret 
+   0B3A                    2110 PLY_AKM_TRACK1_DATA:
+   0B3A 00                 2111 PLY_AKM_TRACK1_WAITEMPTYCELL: .db 0
+   0B3B 00                 2112 PLY_AKM_TRACK1_TRANSPOSITION: .db 0
+   0B3C 00 00              2113 PLY_AKM_TRACK1_PTSTARTTRACK: .dw 0
+   0B3E 00 00              2114 PLY_AKM_TRACK1_PTTRACK: .dw 0
+   0B40 00                 2115 PLY_AKM_TRACK1_BASENOTE: .db 0
+   0B41 00                 2116 PLY_AKM_TRACK1_ESCAPENOTE: .db 0
+   0B42 00                 2117 PLY_AKM_TRACK1_ESCAPEINSTRUMENT: .db 0
+   0B43 00                 2118 PLY_AKM_TRACK1_ESCAPEWAIT: .db 0
+   0B44 00 00              2119 PLY_AKM_TRACK1_PTINSTRUMENT: .dw 0
+   0B46 00                 2120 PLY_AKM_TRACK1_INSTRUMENTCURRENTSTEP: .db 0
+   0B47 00                 2121 PLY_AKM_TRACK1_INSTRUMENTSPEED: .db 0
+   0B48 00                 2122 PLY_AKM_TRACK1_TRACKINVERTEDVOLUME: .db 0
+   0B49 00                 2123 PLY_AKM_TRACK1_ISPITCHUPDOWNUSED: .db 0
+   0B4A 00 00              2124 PLY_AKM_TRACK1_TRACKPITCHINTEGER: .dw 0
+   0B4C 00                 2125 PLY_AKM_TRACK1_TRACKPITCHDECIMAL: .db 0
+   0B4D 00 00              2126 PLY_AKM_TRACK1_TRACKPITCHSPEED: .dw 0
+   0B4F 00                 2127 PLY_AKM_TRACK1_ISARPEGGIOTABLEUSED: .db 0
+   0B50 00 00              2128 PLY_AKM_TRACK1_PTARPEGGIOTABLE: .dw 0
+   0B52 00                 2129 PLY_AKM_TRACK1_PTARPEGGIOOFFSET: .db 0
+   0B53 00                 2130 PLY_AKM_TRACK1_ARPEGGIOCURRENTSTEP: .db 0
+   0B54 00                 2131 PLY_AKM_TRACK1_ARPEGGIOORIGINALSPEED: .db 0
+   0B55 00                 2132 PLY_AKM_TRACK1_CURRENTARPEGGIOVALUE: .db 0
+   0B56 00                 2133 PLY_AKM_TRACK1_ISPITCHTABLEUSED: .db 0
+   0B57 00 00              2134 PLY_AKM_TRACK1_PTPITCHTABLE: .dw 0
+   0B59 00                 2135 PLY_AKM_TRACK1_PTPITCHOFFSET: .db 0
+   0B5A 00                 2136 PLY_AKM_TRACK1_PITCHCURRENTSTEP: .db 0
+   0B5B 00                 2137 PLY_AKM_TRACK1_PITCHORIGINALSPEED: .db 0
+   0B5C 00 00              2138 PLY_AKM_TRACK1_CURRENTPITCHTABLEVALUE: .dw 0
+   0B5E                    2139 PLY_AKM_TRACK1_DATA_END:
+   0B5E                    2140 PLY_AKM_TRACK2_DATA:
+   0B5E 00                 2141 PLY_AKM_TRACK2_WAITEMPTYCELL: .db 0
+   0B5F 00                 2142     .db 0
+   0B60 00                 2143     .db 0
+   0B61 00                 2144     .db 0
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 41.
+Hexadecimal [16-Bits]
+
+
+
+   0B62 00                 2145 PLY_AKM_TRACK2_PTTRACK: .db 0
+   0B63 00                 2146     .db 0
+   0B64 00                 2147     .db 0
+   0B65 00                 2148 PLY_AKM_TRACK2_ESCAPENOTE: .db 0
+   0B66 00                 2149 PLY_AKM_TRACK2_ESCAPEINSTRUMENT: .db 0
+   0B67 00                 2150 PLY_AKM_TRACK2_ESCAPEWAIT: .db 0
+   0B68 00                 2151 PLY_AKM_TRACK2_PTINSTRUMENT: .db 0
+   0B69 00                 2152     .db 0
+   0B6A 00                 2153     .db 0
+   0B6B 00                 2154     .db 0
+   0B6C 00                 2155     .db 0
+   0B6D 00                 2156     .db 0
+   0B6E 00                 2157     .db 0
+   0B6F 00                 2158     .db 0
+   0B70 00                 2159     .db 0
+   0B71 00                 2160     .db 0
+   0B72 00                 2161     .db 0
+   0B73 00                 2162     .db 0
+   0B74 00                 2163     .db 0
+   0B75 00                 2164     .db 0
+   0B76 00                 2165     .db 0
+   0B77 00                 2166     .db 0
+   0B78 00                 2167     .db 0
+   0B79 00                 2168     .db 0
+   0B7A 00                 2169     .db 0
+   0B7B 00                 2170     .db 0
+   0B7C 00                 2171     .db 0
+   0B7D 00                 2172     .db 0
+   0B7E 00                 2173     .db 0
+   0B7F 00                 2174     .db 0
+   0B80 00                 2175     .db 0
+   0B81 00                 2176     .db 0
+   0B82                    2177 PLY_AKM_TRACK2_DATA_END:
+   0B82                    2178 PLY_AKM_TRACK3_DATA:
+   0B82 00                 2179 PLY_AKM_TRACK3_WAITEMPTYCELL: .db 0
+   0B83 00                 2180     .db 0
+   0B84 00                 2181     .db 0
+   0B85 00                 2182     .db 0
+   0B86 00                 2183 PLY_AKM_TRACK3_PTTRACK: .db 0
+   0B87 00                 2184     .db 0
+   0B88 00                 2185     .db 0
+   0B89 00                 2186 PLY_AKM_TRACK3_ESCAPENOTE: .db 0
+   0B8A 00                 2187 PLY_AKM_TRACK3_ESCAPEINSTRUMENT: .db 0
+   0B8B 00                 2188 PLY_AKM_TRACK3_ESCAPEWAIT: .db 0
+   0B8C 00                 2189 PLY_AKM_TRACK3_PTINSTRUMENT: .db 0
+   0B8D 00                 2190     .db 0
+   0B8E 00                 2191     .db 0
+   0B8F 00                 2192     .db 0
+   0B90 00                 2193     .db 0
+   0B91 00                 2194     .db 0
+   0B92 00                 2195     .db 0
+   0B93 00                 2196     .db 0
+   0B94 00                 2197     .db 0
+   0B95 00                 2198     .db 0
+   0B96 00                 2199     .db 0
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 42.
+Hexadecimal [16-Bits]
+
+
+
+   0B97 00                 2200     .db 0
+   0B98 00                 2201     .db 0
+   0B99 00                 2202     .db 0
+   0B9A 00                 2203     .db 0
+   0B9B 00                 2204     .db 0
+   0B9C 00                 2205     .db 0
+   0B9D 00                 2206     .db 0
+   0B9E 00                 2207     .db 0
+   0B9F 00                 2208     .db 0
+   0BA0 00                 2209     .db 0
+   0BA1 00                 2210     .db 0
+   0BA2 00                 2211     .db 0
+   0BA3 00                 2212     .db 0
+   0BA4 00                 2213     .db 0
+   0BA5 00                 2214     .db 0
+   0BA6                    2215 PLY_AKM_TRACK3_DATA_END:
+   0BA6                    2216 PLY_AKM_REGISTERS_RETTABLE:
+   0BA6 08                 2217 PLY_AKM_TRACK1_REGISTERS: .db 8
+   0BA7 00                 2218 PLY_AKM_TRACK1_VOLUME: .db 0
+   0BA8 73 07              2219     .dw PLY_AKM_SENDPSGREGISTER
+   0BAA 00                 2220     .db 0
+   0BAB 00                 2221 PLY_AKM_TRACK1_SOFTWAREPERIODLSB: .db 0
+   0BAC 73 07              2222     .dw PLY_AKM_SENDPSGREGISTER
+   0BAE 01                 2223     .db 1
+   0BAF 00                 2224 PLY_AKM_TRACK1_SOFTWAREPERIODMSB: .db 0
+   0BB0 73 07              2225     .dw PLY_AKM_SENDPSGREGISTER
+   0BB2 09                 2226 PLY_AKM_TRACK2_REGISTERS: .db 9
+   0BB3 00                 2227 PLY_AKM_TRACK2_VOLUME: .db 0
+   0BB4 73 07              2228     .dw PLY_AKM_SENDPSGREGISTER
+   0BB6 02                 2229     .db 2
+   0BB7 00                 2230 PLY_AKM_TRACK2_SOFTWAREPERIODLSB: .db 0
+   0BB8 73 07              2231     .dw PLY_AKM_SENDPSGREGISTER
+   0BBA 03                 2232     .db 3
+   0BBB 00                 2233 PLY_AKM_TRACK2_SOFTWAREPERIODMSB: .db 0
+   0BBC 73 07              2234     .dw PLY_AKM_SENDPSGREGISTER
+   0BBE 0A                 2235 PLY_AKM_TRACK3_REGISTERS: .db 10
+   0BBF 00                 2236 PLY_AKM_TRACK3_VOLUME: .db 0
+   0BC0 73 07              2237     .dw PLY_AKM_SENDPSGREGISTER
+   0BC2 04                 2238     .db 4
+   0BC3 00                 2239 PLY_AKM_TRACK3_SOFTWAREPERIODLSB: .db 0
+   0BC4 73 07              2240     .dw PLY_AKM_SENDPSGREGISTER
+   0BC6 05                 2241     .db 5
+   0BC7 00                 2242 PLY_AKM_TRACK3_SOFTWAREPERIODMSB: .db 0
+   0BC8 73 07              2243     .dw PLY_AKM_SENDPSGREGISTER
+   0BCA 06                 2244     .db 6
+   0BCB 00                 2245 PLY_AKM_NOISEREGISTER: .db 0
+   0BCC 73 07              2246     .dw PLY_AKM_SENDPSGREGISTER
+   0BCE 07                 2247     .db 7
+   0BCF 00                 2248 PLY_AKM_MIXERREGISTER: .db 0
+   0BD0 73 07              2249     .dw PLY_AKM_SENDPSGREGISTER
+   0BD2 0B                 2250     .db 11
+   0BD3 00                 2251 PLY_AKM_REG11: .db 0
+   0BD4 73 07              2252     .dw PLY_AKM_SENDPSGREGISTER
+   0BD6 0C                 2253     .db 12
+   0BD7 00                 2254 PLY_AKM_REG12: .db 0
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 43.
+Hexadecimal [16-Bits]
+
+
+
+   0BD8 83 07              2255     .dw PLY_AKM_SENDPSGREGISTERR13
+   0BDA 74 07              2256     .dw PLY_AKM_SENDPSGREGISTERAFTERPOP
+   0BDC 92 07              2257     .dw PLY_AKM_SENDPSGREGISTEREND
+   0BDE EE 0E              2258 PLY_AKM_PERIODTABLE: .dw 3822
+   0BE0 18 0E              2259     .dw 3608
+   0BE2 4D 0D              2260     .dw 3405
+   0BE4 8E 0C              2261     .dw 3214
+   0BE6 DA 0B              2262     .dw 3034
+   0BE8 2F 0B              2263     .dw 2863
+   0BEA 8F 0A              2264     .dw 2703
+   0BEC F7 09              2265     .dw 2551
+   0BEE 68 09              2266     .dw 2408
+   0BF0 E1 08              2267     .dw 2273
+   0BF2 61 08              2268     .dw 2145
+   0BF4 E9 07              2269     .dw 2025
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 44.
+Hexadecimal [16-Bits]
+
+
+
+                             22 
+   0BF6                      23 _PLAYER_ARKOS_INITSOUNDEFFECTS::
+   0BF6 C3 F6 04      [10]   24 	jp PLY_AKM_INITSOUNDEFFECTS
+                             25 
+   0BF9                      26 _PLAYER_ARKOS_PLAYSOUNDEFFECT::	
+   0BF9 F1            [10]   27 	pop  af          ;; AF = Return address
+   0BFA E1            [10]   28 	pop  hl          ;; H Rubbish / L = Sound effect
+   0BFB C1            [10]   29 	pop  bc          ;; B = Volume / C = Channel
+   0BFC F5            [11]   30 	push af          ;; Save back return address in the stack to fullfill __z88dk_callee convention	
+   0BFD 7D            [ 4]   31 	ld   a, l        ;; A = Subsong index	
+   0BFE C3 FA 04      [10]   32 	jp   PLY_AKM_PLAYSOUNDEFFECT
+                             33 	
+   0C01                      34 _PLAYER_ARKOS_STOPSOUNDEFFECTFROMCHANNEL::
+   0C01 7D            [ 4]   35 	ld   a, l
+   0C02 C3 22 05      [10]   36 	jp   PLY_AKM_STOPSOUNDEFFECTFROMCHANNEL
+                             37 	
+   0C05                      38 _PLAYER_ARKOS_INIT::
+   0C05 F1            [10]   39 	pop  af          ;; AF = Return address
+   0C06 E1            [10]   40 	pop  hl          ;; HL = Music address
+   0C07 C1            [10]   41 	pop  bc          ;; B Rubbish  / C = Subsong index (>=0)
+   0C08 F5            [11]   42 	push af          ;; Save back return address in the stack to fullfill __z88dk_callee convention
+   0C09 79            [ 4]   43 	ld   a, c        ;; A = Subsong index	
+   0C0A C3 FB 05      [10]   44 	jp   PLY_AKM_INIT
+                             45 	
+   0C0D                      46 _PLAYER_ARKOS_STOP::	
+   0C0D C3 79 06      [10]   47 	jp   PLY_AKM_STOP
+                             48 	
+   0C10                      49 _PLAYER_ARKOS_PLAY::	
+   0C10 C3 8F 06      [10]   50 	jp   PLY_AKM_PLAY

@@ -1,0 +1,340 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  2710 L
+    .__.ABS.                                                    =  0000 G
+    .__.CPU.                                                    =  0000 L
+    .__.H$L.                                                    =  0000 L
+  0 _font_000                                                      0000 GR
+  0 _font_001                                                      000C GR
+  0 _font_002                                                      0018 GR
+  0 _font_003                                                      0024 GR
+  0 _font_004                                                      0030 GR
+  0 _font_005                                                      003C GR
+  0 _font_006                                                      0048 GR
+  0 _font_007                                                      0054 GR
+  0 _font_008                                                      0060 GR
+  0 _font_009                                                      006C GR
+  0 _font_010                                                      0078 GR
+  0 _font_011                                                      0084 GR
+  0 _font_012                                                      0090 GR
+  0 _font_013                                                      009C GR
+  0 _font_014                                                      00A8 GR
+  0 _font_015                                                      00B4 GR
+  0 _font_016                                                      00C0 GR
+  0 _font_017                                                      00CC GR
+  0 _font_018                                                      00D8 GR
+  0 _font_019                                                      00E4 GR
+  0 _font_020                                                      00F0 GR
+  0 _font_021                                                      00FC GR
+  0 _font_022                                                      0108 GR
+  0 _font_023                                                      0114 GR
+  0 _font_024                                                      0120 GR
+  0 _font_025                                                      012C GR
+  0 _font_026                                                      0138 GR
+  0 _font_027                                                      0144 GR
+  0 _font_028                                                      0150 GR
+  0 _font_029                                                      015C GR
+  0 _font_030                                                      0168 GR
+  0 _font_031                                                      0174 GR
+  0 _font_032                                                      0180 GR
+  0 _font_033                                                      018C GR
+  0 _font_034                                                      0198 GR
+  0 _font_035                                                      01A4 GR
+  0 _font_036                                                      01B0 GR
+  0 _font_037                                                      01BC GR
+  0 _font_038                                                      01C8 GR
+  0 _font_039                                                      01D4 GR
+  0 _font_040                                                      01E0 GR
+  0 _font_041                                                      01EC GR
+  0 _font_042                                                      01F8 GR
+  0 _font_043                                                      0204 GR
+  0 _font_044                                                      0210 GR
+  0 _font_045                                                      021C GR
+  0 _font_046                                                      0228 GR
+  0 _font_047                                                      0234 GR
+  0 _font_048                                                      0240 GR
+  0 _font_049                                                      024C GR
+  0 _font_050                                                      0258 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+  0 _font_051                                                      0264 GR
+  0 _font_052                                                      0270 GR
+  0 _font_053                                                      027C GR
+  0 _font_054                                                      0288 GR
+  0 _font_055                                                      0294 GR
+  0 _font_056                                                      02A0 GR
+  0 _font_057                                                      02AC GR
+  0 _font_058                                                      02B8 GR
+  0 _font_059                                                      02C4 GR
+  0 _font_060                                                      02D0 GR
+  0 _font_061                                                      02DC GR
+  0 _font_062                                                      02E8 GR
+  0 _font_063                                                      02F4 GR
+  0 _font_064                                                      0300 GR
+  0 _font_065                                                      030C GR
+  0 _font_066                                                      0318 GR
+  0 _font_067                                                      0324 GR
+  0 _font_068                                                      0330 GR
+  0 _font_069                                                      033C GR
+  0 _font_070                                                      0348 GR
+  0 _font_071                                                      0354 GR
+  0 _font_072                                                      0360 GR
+  0 _font_073                                                      036C GR
+  0 _font_074                                                      0378 GR
+  0 _font_075                                                      0384 GR
+  0 _font_076                                                      0390 GR
+  0 _font_077                                                      039C GR
+  0 _font_078                                                      03A8 GR
+  0 _font_079                                                      03B4 GR
+  0 _font_080                                                      03C0 GR
+  0 _font_081                                                      03CC GR
+  0 _font_082                                                      03D8 GR
+  0 _font_083                                                      03E4 GR
+  0 _font_084                                                      03F0 GR
+  0 _font_085                                                      03FC GR
+  0 _font_086                                                      0408 GR
+  0 _font_087                                                      0414 GR
+  0 _font_088                                                      0420 GR
+  0 _font_089                                                      042C GR
+  0 _font_090                                                      0438 GR
+  0 _font_091                                                      0444 GR
+  0 _font_092                                                      0450 GR
+  0 _font_093                                                      045C GR
+  0 _font_094                                                      0468 GR
+  0 _font_095                                                      0474 GR
+  0 _font_096                                                      0480 GR
+  0 _font_097                                                      048C GR
+  0 _font_098                                                      0498 GR
+  0 _font_099                                                      04A4 GR
+  0 _font_100                                                      04B0 GR
+  0 _font_101                                                      04BC GR
+  0 _font_102                                                      04C8 GR
+  0 _font_103                                                      04D4 GR
+  0 _font_104                                                      04E0 GR
+  0 _font_105                                                      04EC GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+  0 _font_106                                                      04F8 GR
+  0 _font_107                                                      0504 GR
+  0 _font_108                                                      0510 GR
+  0 _font_109                                                      051C GR
+  0 _font_110                                                      0528 GR
+  0 _font_111                                                      0534 GR
+  0 _font_112                                                      0540 GR
+  0 _font_113                                                      054C GR
+  0 _font_114                                                      0558 GR
+  0 _font_115                                                      0564 GR
+  0 _font_116                                                      0570 GR
+  0 _font_117                                                      057C GR
+  0 _font_118                                                      0588 GR
+  0 _font_119                                                      0594 GR
+  0 _font_120                                                      05A0 GR
+  0 _font_121                                                      05AC GR
+  0 _font_122                                                      05B8 GR
+  0 _font_123                                                      05C4 GR
+  0 _font_124                                                      05D0 GR
+  0 _font_125                                                      05DC GR
+  0 _font_126                                                      05E8 GR
+  0 _font_127                                                      05F4 GR
+  0 _font_128                                                      0600 GR
+  0 _font_129                                                      060C GR
+  0 _font_130                                                      0618 GR
+  0 _font_131                                                      0624 GR
+  0 _font_132                                                      0630 GR
+  0 _font_133                                                      063C GR
+  0 _font_134                                                      0648 GR
+  0 _font_135                                                      0654 GR
+  0 _font_136                                                      0660 GR
+  0 _font_137                                                      066C GR
+  0 _font_138                                                      0678 GR
+  0 _font_139                                                      0684 GR
+  0 _font_140                                                      0690 GR
+  0 _font_141                                                      069C GR
+  0 _font_142                                                      06A8 GR
+  0 _font_143                                                      06B4 GR
+  0 _font_144                                                      06C0 GR
+  0 _font_145                                                      06CC GR
+  0 _font_146                                                      06D8 GR
+  0 _font_147                                                      06E4 GR
+  0 _font_148                                                      06F0 GR
+  0 _font_149                                                      06FC GR
+  0 _font_150                                                      0708 GR
+  0 _font_151                                                      0714 GR
+  0 _font_152                                                      0720 GR
+  0 _font_153                                                      072C GR
+  0 _font_154                                                      0738 GR
+  0 _font_155                                                      0744 GR
+  0 _font_156                                                      0750 GR
+  0 _font_157                                                      075C GR
+  0 _font_158                                                      0768 GR
+  0 _font_159                                                      0774 GR
+  0 _font_160                                                      0780 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 4.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+  0 _font_161                                                      078C GR
+  0 _font_162                                                      0798 GR
+  0 _font_163                                                      07A4 GR
+  0 _font_164                                                      07B0 GR
+  0 _font_165                                                      07BC GR
+  0 _font_166                                                      07C8 GR
+  0 _font_167                                                      07D4 GR
+  0 _font_168                                                      07E0 GR
+  0 _font_169                                                      07EC GR
+  0 _font_170                                                      07F8 GR
+  0 _font_171                                                      0804 GR
+  0 _font_172                                                      0810 GR
+  0 _font_173                                                      081C GR
+  0 _font_174                                                      0828 GR
+  0 _font_175                                                      0834 GR
+  0 _font_176                                                      0840 GR
+  0 _font_177                                                      084C GR
+  0 _font_178                                                      0858 GR
+  0 _font_179                                                      0864 GR
+  0 _font_180                                                      0870 GR
+  0 _font_181                                                      087C GR
+  0 _font_182                                                      0888 GR
+  0 _font_183                                                      0894 GR
+  0 _font_184                                                      08A0 GR
+  0 _font_185                                                      08AC GR
+  0 _font_186                                                      08B8 GR
+  0 _font_187                                                      08C4 GR
+  0 _font_188                                                      08D0 GR
+  0 _font_189                                                      08DC GR
+  0 _font_190                                                      08E8 GR
+  0 _font_191                                                      08F4 GR
+  0 _font_192                                                      0900 GR
+  0 _font_193                                                      090C GR
+  0 _font_194                                                      0918 GR
+  0 _font_195                                                      0924 GR
+  0 _font_196                                                      0930 GR
+  0 _font_197                                                      093C GR
+  0 _font_198                                                      0948 GR
+  0 _font_199                                                      0954 GR
+  0 _font_200                                                      0960 GR
+  0 _font_201                                                      096C GR
+  0 _font_202                                                      0978 GR
+  0 _font_203                                                      0984 GR
+  0 _font_204                                                      0990 GR
+  0 _font_205                                                      099C GR
+  0 _font_206                                                      09A8 GR
+  0 _font_207                                                      09B4 GR
+  0 _font_208                                                      09C0 GR
+  0 _font_209                                                      09CC GR
+  0 _font_210                                                      09D8 GR
+  0 _font_211                                                      09E4 GR
+  0 _font_212                                                      09F0 GR
+  0 _font_213                                                      09FC GR
+  0 _font_214                                                      0A08 GR
+  0 _font_215                                                      0A14 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 5.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+  0 _font_216                                                      0A20 GR
+  0 _font_217                                                      0A2C GR
+  0 _font_218                                                      0A38 GR
+  0 _font_219                                                      0A44 GR
+  0 _font_220                                                      0A50 GR
+  0 _font_221                                                      0A5C GR
+  0 _font_222                                                      0A68 GR
+  0 _font_223                                                      0A74 GR
+  0 _font_224                                                      0A80 GR
+  0 _font_225                                                      0A8C GR
+  0 _font_226                                                      0A98 GR
+  0 _font_227                                                      0AA4 GR
+  0 _font_228                                                      0AB0 GR
+  0 _font_229                                                      0ABC GR
+  0 _font_230                                                      0AC8 GR
+  0 _font_231                                                      0AD4 GR
+  0 _font_232                                                      0AE0 GR
+  0 _font_233                                                      0AEC GR
+  0 _font_234                                                      0AF8 GR
+  0 _font_235                                                      0B04 GR
+  0 _font_236                                                      0B10 GR
+  0 _font_237                                                      0B1C GR
+  0 _font_238                                                      0B28 GR
+  0 _font_239                                                      0B34 GR
+  0 _font_240                                                      0B40 GR
+  0 _font_241                                                      0B4C GR
+  0 _font_242                                                      0B58 GR
+  0 _font_243                                                      0B64 GR
+  0 _font_244                                                      0B70 GR
+  0 _font_245                                                      0B7C GR
+  0 _font_246                                                      0B88 GR
+  0 _font_247                                                      0B94 GR
+  0 _font_248                                                      0BA0 GR
+  0 _font_249                                                      0BAC GR
+  0 _font_250                                                      0BB8 GR
+  0 _font_251                                                      0BC4 GR
+  0 _font_252                                                      0BD0 GR
+  0 _font_253                                                      0BDC GR
+  0 _font_254                                                      0BE8 GR
+  0 _font_255                                                      0BF4 GR
+  0 _font_256                                                      0C00 GR
+  0 _font_257                                                      0C0C GR
+  0 _font_258                                                      0C18 GR
+  0 _font_259                                                      0C24 GR
+  0 _font_260                                                      0C30 GR
+  0 _font_261                                                      0C3C GR
+  0 _font_262                                                      0C48 GR
+  0 _font_263                                                      0C54 GR
+  0 _font_264                                                      0C60 GR
+  0 _font_265                                                      0C6C GR
+  0 _font_266                                                      0C78 GR
+  0 _font_267                                                      0C84 GR
+  0 _font_268                                                      0C90 GR
+  0 _font_269                                                      0C9C GR
+  0 _font_270                                                      0CA8 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 6.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+  0 _font_271                                                      0CB4 GR
+  0 _font_272                                                      0CC0 GR
+  0 _font_273                                                      0CCC GR
+  0 _font_274                                                      0CD8 GR
+  0 _font_275                                                      0CE4 GR
+  0 _font_276                                                      0CF0 GR
+  0 _font_277                                                      0CFC GR
+  0 _font_278                                                      0D08 GR
+  0 _font_279                                                      0D14 GR
+  0 _font_280                                                      0D20 GR
+  0 _font_281                                                      0D2C GR
+  0 _font_282                                                      0D38 GR
+  0 _font_283                                                      0D44 GR
+  0 _font_284                                                      0D50 GR
+  0 _font_285                                                      0D5C GR
+  0 _font_286                                                      0D68 GR
+  0 _font_287                                                      0D74 GR
+  0 _font_ts                                                       0D80 GR
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 7.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE                                      size  FC0   flags    0
+   1 _DATA                                      size    0   flags    0
+   2 _INITIALIZED                               size    0   flags    0
+   3 _DABS                                      size    0   flags    8
+   4 _HOME                                      size    0   flags    0
+   5 _GSINIT                                    size    0   flags    0
+   6 _GSFINAL                                   size    0   flags    0
+   7 _INITIALIZER                               size    0   flags    0
+   8 _CABS                                      size    0   flags    8
+

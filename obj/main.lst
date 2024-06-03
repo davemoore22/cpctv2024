@@ -1,0 +1,195 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.6.8 #9946 (Linux)
+                              4 ;--------------------------------------------------------
+                              5 	.module main
+                              6 	.optsdcc -mz80
+                              7 	
+                              8 ;--------------------------------------------------------
+                              9 ; Public variables in this module
+                             10 ;--------------------------------------------------------
+                             11 	.globl _main
+                             12 	.globl _t_stop
+                             13 	.globl _t_start
+                             14 	.globl _r_stop
+                             15 	.globl _r_start
+                             16 	.globl _i_stop
+                             17 	.globl _i_start
+                             18 	.globl _h_stop
+                             19 	.globl _h_start
+                             20 	.globl _g_stop
+                             21 	.globl _g_start
+                             22 	.globl _g_setup
+                             23 	.globl _v_init
+                             24 	.globl _InitSound
+                             25 ;--------------------------------------------------------
+                             26 ; special function registers
+                             27 ;--------------------------------------------------------
+                             28 ;--------------------------------------------------------
+                             29 ; ram data
+                             30 ;--------------------------------------------------------
+                             31 	.area _DATA
+                             32 ;--------------------------------------------------------
+                             33 ; ram data
+                             34 ;--------------------------------------------------------
+                             35 	.area _INITIALIZED
+                             36 ;--------------------------------------------------------
+                             37 ; absolute external ram data
+                             38 ;--------------------------------------------------------
+                             39 	.area _DABS (ABS)
+                             40 ;--------------------------------------------------------
+                             41 ; global & static initialisations
+                             42 ;--------------------------------------------------------
+                             43 	.area _HOME
+                             44 	.area _GSINIT
+                             45 	.area _GSFINAL
+                             46 	.area _GSINIT
+                             47 ;--------------------------------------------------------
+                             48 ; Home
+                             49 ;--------------------------------------------------------
+                             50 	.area _HOME
+                             51 	.area _HOME
+                             52 ;--------------------------------------------------------
+                             53 ; code
+                             54 ;--------------------------------------------------------
+                             55 	.area _CODE
+                             56 ;src/main.c:22: void main(void) {
+                             57 ;	---------------------------------
+                             58 ; Function main
+                             59 ; ---------------------------------
+   0000                      60 _main::
+   0000 3B            [ 6]   61 	dec	sp
+                             62 ;src/main.c:24: bool quit = false;
+   0001 FD 21 00 00   [14]   63 	ld	iy, #0
+   0005 FD 39         [15]   64 	add	iy, sp
+   0007 FD 36 00 00   [19]   65 	ld	0 (iy), #0x00
+                             66 ;src/main.c:28: g_setup();
+   000B CDr00r00      [17]   67 	call	_g_setup
+                             68 ;src/main.c:31: v_init();
+   000E CDr00r00      [17]   69 	call	_v_init
+                             70 ;src/main.c:34: InitSound();
+   0011 CDr00r00      [17]   71 	call	_InitSound
+                             72 ;src/main.c:40: key = t_start(false);
+   0014 AF            [ 4]   73 	xor	a, a
+   0015 F5            [11]   74 	push	af
+   0016 33            [ 6]   75 	inc	sp
+   0017 CDr00r00      [17]   76 	call	_t_start
+   001A 33            [ 6]   77 	inc	sp
+                             78 ;src/main.c:43: while (!quit) {
+   001B                      79 00112$:
+   001B FD 21 00 00   [14]   80 	ld	iy, #0
+   001F FD 39         [15]   81 	add	iy, sp
+   0021 FD CB 00 46   [20]   82 	bit	0, 0 (iy)
+   0025 C2rA8r00      [10]   83 	jp	NZ, 00114$
+                             84 ;src/main.c:44: quit = key == Key_0;
+   0028 7D            [ 4]   85 	ld	a, l
+   0029 D6 04         [ 7]   86 	sub	a, #0x04
+   002B 20 08         [12]   87 	jr	NZ,00147$
+   002D 7C            [ 4]   88 	ld	a, h
+   002E 3D            [ 4]   89 	dec	a
+   002F 20 04         [12]   90 	jr	NZ,00147$
+   0031 3E 01         [ 7]   91 	ld	a,#0x01
+   0033 18 01         [12]   92 	jr	00148$
+   0035                      93 00147$:
+   0035 AF            [ 4]   94 	xor	a,a
+   0036                      95 00148$:
+   0036 33            [ 6]   96 	inc	sp
+   0037 F5            [11]   97 	push	af
+   0038 33            [ 6]   98 	inc	sp
+                             99 ;src/main.c:46: if (key == Key_1) {
+   0039 7D            [ 4]  100 	ld	a, l
+   003A D6 08         [ 7]  101 	sub	a, #0x08
+   003C 20 16         [12]  102 	jr	NZ,00110$
+   003E 7C            [ 4]  103 	ld	a, h
+   003F 3D            [ 4]  104 	dec	a
+   0040 20 12         [12]  105 	jr	NZ,00110$
+                            106 ;src/main.c:49: t_stop();
+   0042 CDr00r00      [17]  107 	call	_t_stop
+                            108 ;src/main.c:50: r_start();
+   0045 CDr00r00      [17]  109 	call	_r_start
+                            110 ;src/main.c:51: r_stop();
+   0048 CDr00r00      [17]  111 	call	_r_stop
+                            112 ;src/main.c:54: key = t_start(false);
+   004B AF            [ 4]  113 	xor	a, a
+   004C F5            [11]  114 	push	af
+   004D 33            [ 6]  115 	inc	sp
+   004E CDr00r00      [17]  116 	call	_t_start
+   0051 33            [ 6]  117 	inc	sp
+   0052 18 C7         [12]  118 	jr	00112$
+   0054                     119 00110$:
+                            120 ;src/main.c:55: } else if (key == Key_3) {
+   0054 7D            [ 4]  121 	ld	a, l
+   0055 D6 07         [ 7]  122 	sub	a, #0x07
+   0057 20 17         [12]  123 	jr	NZ,00107$
+   0059 7C            [ 4]  124 	ld	a, h
+   005A D6 02         [ 7]  125 	sub	a, #0x02
+   005C 20 12         [12]  126 	jr	NZ,00107$
+                            127 ;src/main.c:58: t_stop();
+   005E CDr00r00      [17]  128 	call	_t_stop
+                            129 ;src/main.c:59: h_start();
+   0061 CDr00r00      [17]  130 	call	_h_start
+                            131 ;src/main.c:60: h_stop();
+   0064 CDr00r00      [17]  132 	call	_h_stop
+                            133 ;src/main.c:63: key = t_start(false);
+   0067 AF            [ 4]  134 	xor	a, a
+   0068 F5            [11]  135 	push	af
+   0069 33            [ 6]  136 	inc	sp
+   006A CDr00r00      [17]  137 	call	_t_start
+   006D 33            [ 6]  138 	inc	sp
+   006E 18 AB         [12]  139 	jr	00112$
+   0070                     140 00107$:
+                            141 ;src/main.c:64: } else if (key == Key_4) {
+   0070 7D            [ 4]  142 	ld	a, l
+   0071 D6 07         [ 7]  143 	sub	a, #0x07
+   0073 20 16         [12]  144 	jr	NZ,00104$
+   0075 7C            [ 4]  145 	ld	a, h
+   0076 3D            [ 4]  146 	dec	a
+   0077 20 12         [12]  147 	jr	NZ,00104$
+                            148 ;src/main.c:67: t_stop();
+   0079 CDr00r00      [17]  149 	call	_t_stop
+                            150 ;src/main.c:68: i_start();
+   007C CDr00r00      [17]  151 	call	_i_start
+                            152 ;src/main.c:69: i_stop();
+   007F CDr00r00      [17]  153 	call	_i_stop
+                            154 ;src/main.c:72: key = t_start(false);
+   0082 AF            [ 4]  155 	xor	a, a
+   0083 F5            [11]  156 	push	af
+   0084 33            [ 6]  157 	inc	sp
+   0085 CDr00r00      [17]  158 	call	_t_start
+   0088 33            [ 6]  159 	inc	sp
+   0089 18 90         [12]  160 	jr	00112$
+   008B                     161 00104$:
+                            162 ;src/main.c:73: } else if (key == Key_9) {
+   008B 7D            [ 4]  163 	ld	a, l
+   008C D6 04         [ 7]  164 	sub	a, #0x04
+   008E 20 8B         [12]  165 	jr	NZ,00112$
+   0090 7C            [ 4]  166 	ld	a, h
+   0091 D6 02         [ 7]  167 	sub	a, #0x02
+   0093 20 86         [12]  168 	jr	NZ,00112$
+                            169 ;src/main.c:76: t_stop();
+   0095 CDr00r00      [17]  170 	call	_t_stop
+                            171 ;src/main.c:77: g_start();
+   0098 CDr00r00      [17]  172 	call	_g_start
+                            173 ;src/main.c:78: g_stop();
+   009B CDr00r00      [17]  174 	call	_g_stop
+                            175 ;src/main.c:81: key = t_start(false);
+   009E AF            [ 4]  176 	xor	a, a
+   009F F5            [11]  177 	push	af
+   00A0 33            [ 6]  178 	inc	sp
+   00A1 CDr00r00      [17]  179 	call	_t_start
+   00A4 33            [ 6]  180 	inc	sp
+   00A5 C3r1Br00      [10]  181 	jp	00112$
+   00A8                     182 00114$:
+                            183 ;src/main.c:86: if (quit)
+   00A8 21 00 00      [10]  184 	ld	hl, #0+0
+   00AB 39            [11]  185 	add	hl, sp
+   00AC CB 46         [12]  186 	bit	0, (hl)
+   00AE 28 03         [12]  187 	jr	Z,00117$
+                            188 ;src/main.c:87: t_stop();
+   00B0 CDr00r00      [17]  189 	call	_t_stop
+   00B3                     190 00117$:
+   00B3 33            [ 6]  191 	inc	sp
+   00B4 C9            [10]  192 	ret
+                            193 	.area _CODE
+                            194 	.area _INITIALIZER
+                            195 	.area _CABS (ABS)

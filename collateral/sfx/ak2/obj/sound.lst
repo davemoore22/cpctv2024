@@ -1,0 +1,204 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.6.8 #9946 (Linux)
+                              4 ;--------------------------------------------------------
+                              5 	.module sound
+                              6 	.optsdcc -mz80
+                              7 	
+                              8 ;--------------------------------------------------------
+                              9 ; Public variables in this module
+                             10 ;--------------------------------------------------------
+                             11 	.globl _PLAYER_ARKOS_PLAY
+                             12 	.globl _PLAYER_ARKOS_INIT
+                             13 	.globl _PLAYER_ARKOS_PLAYSOUNDEFFECT
+                             14 	.globl _PLAYER_ARKOS_INITSOUNDEFFECTS
+                             15 	.globl __songNumber
+                             16 	.globl __songChanged
+                             17 	.globl __fxVolume
+                             18 	.globl __fxChannel
+                             19 	.globl __fxNumber
+                             20 	.globl __fxChanged
+                             21 	.globl __currentMusic
+                             22 	.globl _InitSound
+                             23 	.globl _InitSFX
+                             24 	.globl _InitMusic
+                             25 	.globl _PlaySFX
+                             26 	.globl _PlayMusic
+                             27 	.globl _PlaySound
+                             28 ;--------------------------------------------------------
+                             29 ; special function registers
+                             30 ;--------------------------------------------------------
+                             31 ;--------------------------------------------------------
+                             32 ; ram data
+                             33 ;--------------------------------------------------------
+                             34 	.area _DATA
+   0000                      35 __currentMusic::
+   0000                      36 	.ds 2
+   0002                      37 __fxChanged::
+   0002                      38 	.ds 1
+   0003                      39 __fxNumber::
+   0003                      40 	.ds 1
+   0004                      41 __fxChannel::
+   0004                      42 	.ds 1
+   0005                      43 __fxVolume::
+   0005                      44 	.ds 1
+   0006                      45 __songChanged::
+   0006                      46 	.ds 1
+   0007                      47 __songNumber::
+   0007                      48 	.ds 1
+                             49 ;--------------------------------------------------------
+                             50 ; ram data
+                             51 ;--------------------------------------------------------
+                             52 	.area _INITIALIZED
+                             53 ;--------------------------------------------------------
+                             54 ; absolute external ram data
+                             55 ;--------------------------------------------------------
+                             56 	.area _DABS (ABS)
+                             57 ;--------------------------------------------------------
+                             58 ; global & static initialisations
+                             59 ;--------------------------------------------------------
+                             60 	.area _HOME
+                             61 	.area _GSINIT
+                             62 	.area _GSFINAL
+                             63 	.area _GSINIT
+                             64 ;--------------------------------------------------------
+                             65 ; Home
+                             66 ;--------------------------------------------------------
+                             67 	.area _HOME
+                             68 	.area _HOME
+                             69 ;--------------------------------------------------------
+                             70 ; code
+                             71 ;--------------------------------------------------------
+                             72 	.area _CODE
+                             73 ;src/sound.c:48: void InitSound()
+                             74 ;	---------------------------------
+                             75 ; Function InitSound
+                             76 ; ---------------------------------
+   0000                      77 _InitSound::
+                             78 ;src/sound.c:50: _fxChanged = 0;
+   0000 21r02r00      [10]   79 	ld	hl,#__fxChanged + 0
+   0003 36 00         [10]   80 	ld	(hl), #0x00
+                             81 ;src/sound.c:51: _songChanged = 0;
+   0005 21r06r00      [10]   82 	ld	hl,#__songChanged + 0
+   0008 36 00         [10]   83 	ld	(hl), #0x00
+                             84 ;src/sound.c:53: InitSFX(&SOUNDEFFECTS_SOUNDEFFECTS);
+   000A 21r00r00      [10]   85 	ld	hl, #_SOUNDEFFECTS_SOUNDEFFECTS
+   000D E5            [11]   86 	push	hl
+   000E CDr1Ar00      [17]   87 	call	_InitSFX
+                             88 ;src/sound.c:54: InitMusic(&AHARMLESSGRENADE_START);
+   0011 21r00r00      [10]   89 	ld	hl, #_AHARMLESSGRENADE_START
+   0014 E3            [19]   90 	ex	(sp),hl
+   0015 CDr21r00      [17]   91 	call	_InitMusic
+   0018 F1            [10]   92 	pop	af
+   0019 C9            [10]   93 	ret
+                             94 ;src/sound.c:62: void InitSFX(void* sfx_SoundEffects)
+                             95 ;	---------------------------------
+                             96 ; Function InitSFX
+                             97 ; ---------------------------------
+   001A                      98 _InitSFX::
+                             99 ;src/sound.c:64: PLAYER_ARKOS_INITSOUNDEFFECTS(sfx_SoundEffects);
+   001A C1            [10]  100 	pop	bc
+   001B E1            [10]  101 	pop	hl
+   001C E5            [11]  102 	push	hl
+   001D C5            [11]  103 	push	bc
+   001E C3r00r00      [10]  104 	jp  _PLAYER_ARKOS_INITSOUNDEFFECTS
+                            105 ;src/sound.c:72: void InitMusic(void* music)
+                            106 ;	---------------------------------
+                            107 ; Function InitMusic
+                            108 ; ---------------------------------
+   0021                     109 _InitMusic::
+                            110 ;src/sound.c:74: _currentMusic = music;
+   0021 21 02 00      [10]  111 	ld	hl, #2+0
+   0024 39            [11]  112 	add	hl, sp
+   0025 7E            [ 7]  113 	ld	a, (hl)
+   0026 32r00r00      [13]  114 	ld	(#__currentMusic + 0),a
+   0029 21 03 00      [10]  115 	ld	hl, #2+1
+   002C 39            [11]  116 	add	hl, sp
+   002D 7E            [ 7]  117 	ld	a, (hl)
+   002E 32r01r00      [13]  118 	ld	(#__currentMusic + 1),a
+   0031 C9            [10]  119 	ret
+                            120 ;src/sound.c:82: void PlaySFX(u8 fxNumber, u8 channel, u8 volume)
+                            121 ;	---------------------------------
+                            122 ; Function PlaySFX
+                            123 ; ---------------------------------
+   0032                     124 _PlaySFX::
+                            125 ;src/sound.c:84: _fxNumber = fxNumber;
+   0032 21 02 00      [10]  126 	ld	hl, #2+0
+   0035 39            [11]  127 	add	hl, sp
+   0036 7E            [ 7]  128 	ld	a, (hl)
+   0037 32r03r00      [13]  129 	ld	(#__fxNumber + 0),a
+                            130 ;src/sound.c:85: _fxChannel = channel;
+   003A 21 03 00      [10]  131 	ld	hl, #3+0
+   003D 39            [11]  132 	add	hl, sp
+   003E 7E            [ 7]  133 	ld	a, (hl)
+   003F 32r04r00      [13]  134 	ld	(#__fxChannel + 0),a
+                            135 ;src/sound.c:86: _fxVolume = volume;
+   0042 21 04 00      [10]  136 	ld	hl, #4+0
+   0045 39            [11]  137 	add	hl, sp
+   0046 7E            [ 7]  138 	ld	a, (hl)
+   0047 32r05r00      [13]  139 	ld	(#__fxVolume + 0),a
+                            140 ;src/sound.c:88: _fxChanged = 1;
+   004A 21r02r00      [10]  141 	ld	hl,#__fxChanged + 0
+   004D 36 01         [10]  142 	ld	(hl), #0x01
+   004F C9            [10]  143 	ret
+                            144 ;src/sound.c:96: void PlayMusic(u8 songNumber)
+                            145 ;	---------------------------------
+                            146 ; Function PlayMusic
+                            147 ; ---------------------------------
+   0050                     148 _PlayMusic::
+                            149 ;src/sound.c:98: _songNumber = songNumber;
+   0050 21 02 00      [10]  150 	ld	hl, #2+0
+   0053 39            [11]  151 	add	hl, sp
+   0054 7E            [ 7]  152 	ld	a, (hl)
+   0055 32r07r00      [13]  153 	ld	(#__songNumber + 0),a
+                            154 ;src/sound.c:100: _songChanged = 1;
+   0058 21r06r00      [10]  155 	ld	hl,#__songChanged + 0
+   005B 36 01         [10]  156 	ld	(hl), #0x01
+   005D C9            [10]  157 	ret
+                            158 ;src/sound.c:108: void PlaySound()
+                            159 ;	---------------------------------
+                            160 ; Function PlaySound
+                            161 ; ---------------------------------
+   005E                     162 _PlaySound::
+                            163 ;src/sound.c:110: if (_fxChanged)
+   005E 3Ar02r00      [13]  164 	ld	a,(#__fxChanged + 0)
+   0061 B7            [ 4]  165 	or	a, a
+   0062 28 19         [12]  166 	jr	Z,00102$
+                            167 ;src/sound.c:112: PLAYER_ARKOS_PLAYSOUNDEFFECT(_fxNumber, _fxChannel, _fxVolume);
+   0064 21r03r00      [10]  168 	ld	hl,#__fxNumber + 0
+   0067 4E            [ 7]  169 	ld	c, (hl)
+   0068 06 00         [ 7]  170 	ld	b, #0x00
+   006A 3Ar05r00      [13]  171 	ld	a, (__fxVolume)
+   006D F5            [11]  172 	push	af
+   006E 33            [ 6]  173 	inc	sp
+   006F 3Ar04r00      [13]  174 	ld	a, (__fxChannel)
+   0072 F5            [11]  175 	push	af
+   0073 33            [ 6]  176 	inc	sp
+   0074 C5            [11]  177 	push	bc
+   0075 CDr00r00      [17]  178 	call	_PLAYER_ARKOS_PLAYSOUNDEFFECT
+                            179 ;src/sound.c:113: _fxChanged = 0;
+   0078 21r02r00      [10]  180 	ld	hl,#__fxChanged + 0
+   007B 36 00         [10]  181 	ld	(hl), #0x00
+   007D                     182 00102$:
+                            183 ;src/sound.c:116: if (_songChanged)
+   007D 3Ar06r00      [13]  184 	ld	a,(#__songChanged + 0)
+   0080 B7            [ 4]  185 	or	a, a
+   0081 28 13         [12]  186 	jr	Z,00104$
+                            187 ;src/sound.c:118: PLAYER_ARKOS_INIT(_currentMusic, _songNumber);
+   0083 21r07r00      [10]  188 	ld	hl,#__songNumber + 0
+   0086 4E            [ 7]  189 	ld	c, (hl)
+   0087 06 00         [ 7]  190 	ld	b, #0x00
+   0089 C5            [11]  191 	push	bc
+   008A 2Ar00r00      [16]  192 	ld	hl, (__currentMusic)
+   008D E5            [11]  193 	push	hl
+   008E CDr00r00      [17]  194 	call	_PLAYER_ARKOS_INIT
+                            195 ;src/sound.c:119: _songChanged = 0;
+   0091 21r06r00      [10]  196 	ld	hl,#__songChanged + 0
+   0094 36 00         [10]  197 	ld	(hl), #0x00
+   0096                     198 00104$:
+                            199 ;src/sound.c:122: PLAYER_ARKOS_PLAY();
+   0096 CDr00r00      [17]  200 	call	_PLAYER_ARKOS_PLAY
+   0099 C9            [10]  201 	ret
+                            202 	.area _CODE
+                            203 	.area _INITIALIZER
+                            204 	.area _CABS (ABS)

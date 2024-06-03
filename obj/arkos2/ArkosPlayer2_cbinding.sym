@@ -1,0 +1,134 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.=  2710 L   |     .__.ABS.=  0000 G   |     .__.CPU.=  0000 L
+    .__.H$L.=  0000 L   |   0 AHARMLES   0127 R   |   0 AHARMLES   012E R
+  0 AHARMLES   0123 R   |   0 AHARMLES   0030 R   |   0 AHARMLES   0031 R
+  0 AHARMLES   0035 R   |   0 AHARMLES   00B7 R   |   0 AHARMLES   00B8 R
+  0 AHARMLES   00BC R   |   0 AHARMLES   00BD R   |   0 AHARMLES   00C5 R
+  0 AHARMLES   00C6 R   |   0 AHARMLES   00CA R   |   0 AHARMLES   00CF R
+  0 AHARMLES   00D0 R   |   0 AHARMLES   00D4 R   |   0 AHARMLES   00D6 R
+  0 AHARMLES   00EB R   |   0 AHARMLES   00F9 R   |   0 AHARMLES   0107 R
+  0 AHARMLES   0115 R   |   0 AHARMLES   0047 R   |   0 AHARMLES   0065 R
+  0 AHARMLES   006F R   |   0 AHARMLES   0077 R   |   0 AHARMLES   0078 R
+  0 AHARMLES   0081 R   |   0 AHARMLES   0087 R   |   0 AHARMLES   0099 R
+  0 AHARMLES   009A R   |   0 AHARMLES   009E R   |   0 AHARMLES   0008 R
+  0 AHARMLES   0139 R   |   0 AHARMLES   0137 R   |   0 AHARMLES   0000 R
+  0 AHARMLES   0141 R   |   0 AHARMLES   014E R   |   0 AHARMLES   0407 R
+  0 AHARMLES   01D9 R   |   0 AHARMLES   01F3 R   |   0 AHARMLES   02FE R
+  0 AHARMLES   0305 R   |   0 AHARMLES   0309 R   |   0 AHARMLES   0312 R
+  0 AHARMLES   0324 R   |   0 AHARMLES   032E R   |   0 AHARMLES   0339 R
+  0 AHARMLES   034D R   |   0 AHARMLES   0367 R   |   0 AHARMLES   0372 R
+  0 AHARMLES   01F5 R   |   0 AHARMLES   039D R   |   0 AHARMLES   03B1 R
+  0 AHARMLES   03C8 R   |   0 AHARMLES   03CB R   |   0 AHARMLES   03D2 R
+  0 AHARMLES   03FD R   |   0 AHARMLES   0268 R   |   0 AHARMLES   0276 R
+  0 AHARMLES   0288 R   |   0 AHARMLES   028B R   |   0 AHARMLES   02B1 R
+  0 AHARMLES   02DA R   |   0 AHARMLES   02FB R   |   0 AHARMLES   01BF R
+  0 PLY_AKM_   0A4C R   |   0 PLY_AKM_   0A80 R   |   0 PLY_AKM_   05E6 R
+  0 PLY_AKM_   05E3 R   |   0 PLY_AKM_   05E5 R   |   0 PLY_AKM_   05E7 R
+  0 PLY_AKM_   05EB R   |   0 PLY_AKM_   05F3 R   |   0 PLY_AKM_   0008 R
+  0 PLY_AKM_   0796 R   |   0 PLY_AKM_   079F R   |   0 PLY_AKM_   07D5 R
+  0 PLY_AKM_   07BF R   |   0 PLY_AKM_=  0019 R   |   0 PLY_AKM_   001A R
+  0 PLY_AKM_   0006 R   |   0 PLY_AKM_=  001B R   |   0 PLY_AKM_   0022 R
+  0 PLY_AKM_   0008 R   |   0 PLY_AKM_=  0007 R   |   0 PLY_AKM_=  0009 R
+  0 PLY_AKM_   000C R   |   0 PLY_AKM_=  000D R   |   0 PLY_AKM_=  0015 R
+  0 PLY_AKM_   001C R   |   0 PLY_AKM_=  000F R   |   0 PLY_AKM_   0020 R
+  0 PLY_AKM_=  0021 R   |   0 PLY_AKM_   0018 R   |   0 PLY_AKM_   0016 R
+  0 PLY_AKM_   000A R   |   0 PLY_AKM_=  001F R   |   0 PLY_AKM_=  001D R
+  0 PLY_AKM_   0002 R   |   0 PLY_AKM_   0004 R   |   0 PLY_AKM_=  0009 R
+  0 PLY_AKM_   000E R   |   0 PLY_AKM_   0012 R   |   0 PLY_AKM_   0010 R
+  0 PLY_AKM_=  0013 R   |   0 PLY_AKM_=  0001 R   |   0 PLY_AKM_   0000 R
+  0 PLY_AKM_   06C2 R   |   0 PLY_AKM_   06B7 R   |   0 PLY_AKM_   06CD R
+  0 PLY_AKM_   0AD7 R   |   0 PLY_AKM_   0B02 R   |   0 PLY_AKM_   0B08 R
+  0 PLY_AKM_   0ABC R   |   0 PLY_AKM_   0AD0 R   |   0 PLY_AKM_   0B34 R
+  0 PLY_AKM_   0A95 R   |   0 PLY_AKM_   0AAE R   |   0 PLY_AKM_   0AA8 R
+  0 PLY_AKM_   0A73 R   |   0 PLY_AKM_   0A58 R   |   0 PLY_AKM_   0A6A R
+  0 PLY_AKM_   0A70 R   |   0 PLY_AKM_   07F8 R   |   0 PLY_AKM_   05FB R
+  0 PLY_AKM_   04F6 R   |   0 PLY_AKM_   0679 R   |   0 PLY_AKM_   061F R
+  0 PLY_AKM_   065F R   |   0 PLY_AKM_   06A6 R   |   0 PLY_AKM_   06E6 R
+  0 PLY_AKM_   06AD R   |   0 PLY_AKM_   06F1 R   |   0 PLY_AKM_   06F3 R
+  0 PLY_AKM_   06F1 R   |   0 PLY_AKM_   08E2 R   |   0 PLY_AKM_   0946 R
+  0 PLY_AKM_   0942 R   |   0 PLY_AKM_   095E R   |   0 PLY_AKM_   097C R
+  0 PLY_AKM_   0910 R   |   0 PLY_AKM_   0900 R   |   0 PLY_AKM_   08FB R
+  0 PLY_AKM_   0907 R   |   0 PLY_AKM_   0BCF R   |   0 PLY_AKM_   0BCB R
+  0 PLY_AKM_   0711 R   |   0 PLY_AKM_=  0001 R   |   0 PLY_AKM_   0002 R
+  0 PLY_AKM_   069B R   |   0 PLY_AKM_   0BDE R   |   0 PLY_AKM_   068F R
+  0 PLY_AKM_   04FA R   |   0 PLY_AKM_   0530 R   |   0 PLY_AKM_   0981 R
+  0 PLY_AKM_   084C R   |   0 PLY_AKM_   0896 R   |   0 PLY_AKM_   05D7 R
+  0 PLY_AKM_   05D9 R   |   0 PLY_AKM_   05DF R   |   0 PLY_AKM_   0589 R
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+  0 PLY_AKM_   055D R   |   0 PLY_AKM_   0566 R   |   0 PLY_AKM_   05C1 R
+  0 PLY_AKM_   05B9 R   |   0 PLY_AKM_   05CC R   |   0 PLY_AKM_   0576 R
+  0 PLY_AKM_   05A9 R   |   0 PLY_AKM_   059F R   |   0 PLY_AKM_   058D R
+  0 PLY_AKM_   056E R   |   0 PLY_AKM_   099F R   |   0 PLY_AKM_   0987 R
+  0 PLY_AKM_   0A44 R   |   0 PLY_AKM_   0A3C R   |   0 PLY_AKM_   0A1E R
+  0 PLY_AKM_   0A30 R   |   0 PLY_AKM_   09D6 R   |   0 PLY_AKM_   09ED R
+  0 PLY_AKM_   09AE R   |   0 PLY_AKM_   09FC R   |   0 PLY_AKM_   0A13 R
+  0 PLY_AKM_   0A09 R   |   0 PLY_AKM_   09C5 R   |   0 PLY_AKM_   09E2 R
+  0 PLY_AKM_   0AE4 R   |   0 PLY_AKM_   070E R   |   0 PLY_AKM_   06AA R
+  0 PLY_AKM_   0B16 R   |   0 PLY_AKM_   04FB R   |   0 PLY_AKM_   070E R
+  0 PLY_AKM_   0A89 R   |   0 PLY_AKM_   07E2 R   |   0 PLY_AKM_   0BD3 R
+  0 PLY_AKM_   0BD7 R   |   0 PLY_AKM_=  0005 R   |   0 PLY_AKM_=  0009 R
+  0 PLY_AKM_=  0001 R   |   0 PLY_AKM_   0BA6 R   |   0 PLY_AKM_   08A4 R
+  0 PLY_AKM_   0829 R   |   0 PLY_AKM_   08DB R   |   0 PLY_AKM_   07F3 R
+  0 PLY_AKM_   080B R   |   0 PLY_AKM_   07ED R   |   0 PLY_AKM_   0818 R
+  0 PLY_AKM_   0812 R   |   0 PLY_AKM_   0822 R   |   0 PLY_AKM_   084C R
+  0 PLY_AKM_   0896 R   |   0 PLY_AKM_   08AF R   |   0 PLY_AKM_   08AB R
+  0 PLY_AKM_   089F R   |   0 PLY_AKM_   08C6 R   |   0 PLY_AKM_   087D R
+  0 PLY_AKM_   0843 R   |   0 PLY_AKM_   0891 R   |   0 PLY_AKM_   0848 R
+  0 PLY_AKM_   089A R   |   0 PLY_AKM_   084E R   |   0 PLY_AKM_   089C R
+  0 PLY_AKM_   08CC R   |   0 PLY_AKM_   08D3 R   |   0 PLY_AKM_   0792 R
+  0 PLY_AKM_   0848 R   |   0 PLY_AKM_   089A R   |   0 PLY_AKM_   0766 R
+  0 PLY_AKM_   0773 R   |   0 PLY_AKM_   0774 R   |   0 PLY_AKM_   0792 R
+  0 PLY_AKM_   0783 R   |   0 PLY_AKM_   0783 R   |   0 PLY_AKM_   0785 R
+  0 PLY_AKM_=  0003 R   |   0 PLY_AKM_   0002 R   |   0 PLY_AKM_   0004 R
+  0 PLY_AKM_   0696 R   |   0 PLY_AKM_   04ED R   |   0 PLY_AKM_   0679 R
+  0 PLY_AKM_   0522 R   |   0 PLY_AKM_=  0001 R   |   0 PLY_AKM_   0693 R
+  0 PLY_AKM_   072B R   |   0 PLY_AKM_   0B53 R   |   0 PLY_AKM_   0B54 R
+  0 PLY_AKM_   0B40 R   |   0 PLY_AKM_   0B55 R   |   0 PLY_AKM_   0B5C R
+  0 PLY_AKM_   0B3A R   |   0 PLY_AKM_   0B5E R   |   0 PLY_AKM_   0024 R
+  0 PLY_AKM_   0B42 R   |   0 PLY_AKM_   0B41 R   |   0 PLY_AKM_   0B43 R
+  0 PLY_AKM_   0B46 R   |   0 PLY_AKM_   0B47 R   |   0 PLY_AKM_   0B4F R
+  0 PLY_AKM_   0B56 R   |   0 PLY_AKM_   0B49 R   |   0 PLY_AKM_   0B5A R
+  0 PLY_AKM_   0B5B R   |   0 PLY_AKM_   0B52 R   |   0 PLY_AKM_   0B50 R
+  0 PLY_AKM_   0B44 R   |   0 PLY_AKM_   0B59 R   |   0 PLY_AKM_   0B57 R
+  0 PLY_AKM_   0B3C R   |   0 PLY_AKM_   0B3E R   |   0 PLY_AKM_   0BA6 R
+  0 PLY_AKM_   0BAB R   |   0 PLY_AKM_   0BAF R   |   0 PLY_AKM_   0B48 R
+  0 PLY_AKM_   0B4C R   |   0 PLY_AKM_   0B4A R   |   0 PLY_AKM_   0B4D R
+  0 PLY_AKM_   0B3B R   |   0 PLY_AKM_   0BA7 R   |   0 PLY_AKM_   0B3A R
+  0 PLY_AKM_   0B5E R   |   0 PLY_AKM_   0B82 R   |   0 PLY_AKM_   0B66 R
+  0 PLY_AKM_   0B65 R   |   0 PLY_AKM_   0B67 R   |   0 PLY_AKM_   0B68 R
+  0 PLY_AKM_   0B62 R   |   0 PLY_AKM_   0BB2 R   |   0 PLY_AKM_   0BB7 R
+  0 PLY_AKM_   0BBB R   |   0 PLY_AKM_   0BB3 R   |   0 PLY_AKM_   0B5E R
+  0 PLY_AKM_   0B82 R   |   0 PLY_AKM_   0BA6 R   |   0 PLY_AKM_   0B8A R
+  0 PLY_AKM_   0B89 R   |   0 PLY_AKM_   0B8B R   |   0 PLY_AKM_   0B8C R
+  0 PLY_AKM_   0B86 R   |   0 PLY_AKM_   0BBE R   |   0 PLY_AKM_   0BC3 R
+  0 PLY_AKM_   0BC7 R   |   0 PLY_AKM_   0BBF R   |   0 PLY_AKM_   0B82 R
+  0 PLY_AKM_   06A6 R   |   0 PLY_AKM_=  0001 R   |   0 SOUNDEFF   0413 R
+  0 SOUNDEFF   041D R   |   0 SOUNDEFF   041E R   |   0 SOUNDEFF   042F R
+  0 SOUNDEFF   0430 R   |   0 SOUNDEFF   0455 R   |   0 SOUNDEFF   0456 R
+  0 SOUNDEFF   0494 R   |   0 SOUNDEFF   0495 R   |   0 SOUNDEFF   04AA R
+  0 SOUNDEFF   04AB R   |   0 _AHARMLE   0000 GR  |   0 _PLAYER_   0C05 GR
+  0 _PLAYER_   0BF6 GR  |   0 _PLAYER_   0C10 GR  |   0 _PLAYER_   0BF9 GR
+  0 _PLAYER_   0C0D GR  |   0 _PLAYER_   0C01 GR  |   0 _PLY_AKM   05FB GR
+  0 _PLY_AKM   04F6 GR  |   0 _PLY_AKM   068F GR  |   0 _PLY_AKM   04FA GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+  0 _PLY_AKM   0679 GR  |   0 _PLY_AKM   0522 GR  |   0 _SOUNDEF   0413 GR
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 4.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE      size  C13   flags    0
+

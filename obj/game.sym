@@ -1,0 +1,142 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  2710 L
+    .__.ABS.                                                    =  0000 G
+    .__.CPU.                                                    =  0000 L
+    .__.H$L.                                                    =  0000 L
+    _InitSound                                                     **** GX
+    _PlayMusic                                                     **** GX
+    _PlaySFX                                                       **** GX
+    _PlaySound                                                     **** GX
+    _StopMusic                                                     **** GX
+  0 ___str_0                                                       012F R
+    __moduchar                                                     **** GX
+    __moduschar                                                    **** GX
+    __mulint                                                       **** GX
+  7 __xinit__g_bolt_count                                          0002 R
+  7 __xinit__g_frame_c                                             0001 R
+  7 __xinit__g_int_idx                                             0000 R
+  1 _b_score                                                       0280 R
+    _b_scr_start                                                   **** GX
+    _b_scr_stop                                                    **** GX
+    _c_can_continue                                                **** GX
+    _c_scr_start                                                   **** GX
+    _c_scr_stop                                                    **** GX
+    _cpct_isAnyKeyPressed                                          **** GX
+    _cpct_isKeyPressed                                             **** GX
+    _cpct_memset                                                   **** GX
+    _cpct_removeInterruptHandler                                   **** GX
+    _cpct_scanKeyboard                                             **** GX
+    _cpct_scanKeyboard_if                                          **** GX
+    _cpct_setInterruptHandler                                      **** GX
+    _cpct_setPALColour                                             **** GX
+  2 _g_bolt_count                                                  0002 GR
+  1 _g_bolts                                                       0021 GR
+  0 _g_check_collision                                             0B22 R
+  0 _g_check_death                                                 0ACF R
+  0 _g_check_input_meta                                            0622 R
+  0 _g_check_input_movement                                        06B7 R
+  0 _g_check_launch_bolts                                          07BB R
+    _g_clock                                                       **** GX
+    _g_clock_on                                                    **** GX
+  1 _g_controls                                                    026A GR
+  1 _g_current_level                                               0203 GR
+  1 _g_current_round                                               0204 GR
+  1 _g_current_score                                               027C GR
+  0 _g_draw_HUD                                                    0306 R
+  0 _g_draw_pause                                                  15A0 R
+  0 _g_draw_score                                                  0552 R
+  0 _g_draw_stage_clear                                            15E4 R
+  0 _g_eat_pod                                                     1509 R
+  1 _g_enemies                                                     0001 GR
+  0 _g_explode_player                                              181B R
+  0 _g_fire_bolt                                                   13A1 R
+  2 _g_frame_c                                                     0001 GR
+    _g_game_grids                                                  **** GX
+  1 _g_hiscores                                                    0210 GR
+  2 _g_int_idx                                                     0000 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+  0 _g_interrupt                                                   1542 R
+  1 _g_level                                                       0059 GR
+  1 _g_lives_left                                                  0205 GR
+  0 _g_load_level                                                  024E R
+  0 _g_move_bolts                                                  117C R
+  0 _g_move_enemies                                                0F05 R
+  0 _g_move_player                                                 0BC6 R
+  1 _g_music_sfx                                                   0000 GR
+  0 _g_pause                                                       0BB7 R
+  0 _g_play_level                                                  07F7 R
+  1 _g_player                                                      0206 GR
+  1 _g_pods_left                                                   0202 GR
+  0 _g_reset_enemies                                               0C82 R
+  0 _g_reset_player                                                05DF R
+  0 _g_reset_timers                                                1595 R
+  0 _g_setup                                                       0000 GR
+  0 _g_stage_clear                                                 0B7B R
+  0 _g_start                                                       0133 GR
+  0 _g_stop                                                        023A GR
+    _g_strings                                                     **** GX
+    _h_enter_start                                                 **** GX
+    _h_insert                                                      **** GX
+    _h_stop                                                        **** GX
+  0 _hud_loc                                                       0127 R
+  0 _pa_sz                                                         012D R
+  0 _player_st                                                     0129 R
+  1 _r_px                                                          0284 R
+  1 _r_py                                                          0285 R
+  0 _sc_sz                                                         012B R
+    _u_bounds_check                                                **** GX
+    _u_bounds_delta_check                                          **** GX
+    _u_check_collide                                               **** GX
+    _u_clear_input                                                 **** GX
+    _u_clock_interrupt                                             **** GX
+    _u_get_delta                                                   **** GX
+    _u_get_width                                                   **** GX
+    _u_get_xy                                                      **** GX
+    _u_power_2                                                     **** GX
+    _u_reset_clock                                                 **** GX
+    _u_wait                                                        **** GX
+    _u_wait_for_key                                                **** GX
+    _v_blk_scr                                                     **** GX
+    _v_clr_scr                                                     **** GX
+    _v_draw_bolts                                                  **** GX
+    _v_draw_box                                                    **** GX
+    _v_draw_enemies                                                **** GX
+    _v_draw_grid                                                   **** GX
+    _v_draw_launch                                                 **** GX
+    _v_draw_player                                                 **** GX
+    _v_draw_player_bb                                              **** GX
+    _v_init_sprites                                                **** GX
+    _v_print                                                       **** GX
+    _v_print_c                                                     **** GX
+    _v_print_n                                                     **** GX
+    _v_reset_pal                                                   **** GX
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    _v_wipe_scr                                                    **** GX
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 4.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE                                      size 1884   flags    0
+   1 _DATA                                      size  286   flags    0
+   2 _INITIALIZED                               size    3   flags    0
+   3 _DABS                                      size    0   flags    8
+   4 _HOME                                      size    0   flags    0
+   5 _GSINIT                                    size    0   flags    0
+   6 _GSFINAL                                   size    0   flags    0
+   7 _INITIALIZER                               size    3   flags    0
+   8 _CABS                                      size    0   flags    8
+

@@ -1,0 +1,28 @@
+-mjwx
+-i obj/tv2024.ihx
+-b _CODE = 0x0040
+-b _DATA = 0x0000
+-u
+-k /home/dave/Development/Amstrad/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/bin/../share/sdcc/lib/z80
+-k /home/dave/Development/Amstrad/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/share/sdcc/lib/z80
+-l /home/dave/Development/Amstrad/cpctelera/cpctelera/cpctelera.lib
+-l z80
+obj/between.rel
+obj/game.rel
+obj/hiscore.rel
+obj/instruct.rel
+obj/main.rel
+obj/redefine.rel
+obj/titles.rel
+obj/victory.rel
+obj/lib/utilities.rel
+obj/lib/video.rel
+obj/data/fonts.rel
+obj/data/images.rel
+obj/data/levels.rel
+obj/data/sound.rel
+obj/data/strings.rel
+obj/data/tiles.rel
+obj/arkos2/ArkosPlayer2_cbinding.rel
+
+-e

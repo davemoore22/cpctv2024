@@ -1,0 +1,447 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.6.8 #9946 (Linux)
+                              4 ;--------------------------------------------------------
+                              5 	.module victory
+                              6 	.optsdcc -mz80
+                              7 	
+                              8 ;--------------------------------------------------------
+                              9 ; Public variables in this module
+                             10 ;--------------------------------------------------------
+                             11 	.globl _v_print
+                             12 	.globl _v_wipe_scr
+                             13 	.globl _v_clr_scr
+                             14 	.globl _v_reset_pal_v
+                             15 	.globl _v_reset_pal
+                             16 	.globl _v_blk_scr
+                             17 	.globl _StopMusic
+                             18 	.globl _cpct_zx7b_decrunch_s
+                             19 	.globl _cpct_isAnyKeyPressed
+                             20 	.globl _cpct_isKeyPressed
+                             21 	.globl _cpct_scanKeyboard
+                             22 	.globl _c_scr_start
+                             23 	.globl _c_can_continue
+                             24 	.globl _c_scr_stop
+                             25 ;--------------------------------------------------------
+                             26 ; special function registers
+                             27 ;--------------------------------------------------------
+                             28 ;--------------------------------------------------------
+                             29 ; ram data
+                             30 ;--------------------------------------------------------
+                             31 	.area _DATA
+   0000                      32 _music:
+   0000                      33 	.ds 1
+                             34 ;--------------------------------------------------------
+                             35 ; ram data
+                             36 ;--------------------------------------------------------
+                             37 	.area _INITIALIZED
+                             38 ;--------------------------------------------------------
+                             39 ; absolute external ram data
+                             40 ;--------------------------------------------------------
+                             41 	.area _DABS (ABS)
+                             42 ;--------------------------------------------------------
+                             43 ; global & static initialisations
+                             44 ;--------------------------------------------------------
+                             45 	.area _HOME
+                             46 	.area _GSINIT
+                             47 	.area _GSFINAL
+                             48 	.area _GSINIT
+                             49 ;--------------------------------------------------------
+                             50 ; Home
+                             51 ;--------------------------------------------------------
+                             52 	.area _HOME
+                             53 	.area _HOME
+                             54 ;--------------------------------------------------------
+                             55 ; code
+                             56 ;--------------------------------------------------------
+                             57 	.area _CODE
+                             58 ;src/victory.c:29: void c_scr_start(void) {
+                             59 ;	---------------------------------
+                             60 ; Function c_scr_start
+                             61 ; ---------------------------------
+   0000                      62 _c_scr_start::
+   0000 DD E5         [15]   63 	push	ix
+   0002 DD 21 00 00   [14]   64 	ld	ix,#0
+   0006 DD 39         [15]   65 	add	ix,sp
+   0008 F5            [11]   66 	push	af
+   0009 3B            [ 6]   67 	dec	sp
+                             68 ;src/victory.c:31: bool kp = false;
+   000A 0E 00         [ 7]   69 	ld	c, #0x00
+                             70 ;src/victory.c:34: music = g_music_sfx;
+   000C 3Ar00r00      [13]   71 	ld	a,(#_g_music_sfx + 0)
+   000F 32r00r00      [13]   72 	ld	(#_music + 0),a
+                             73 ;src/victory.c:35: g_music_sfx = false;
+   0012 21r00r00      [10]   74 	ld	hl,#_g_music_sfx + 0
+   0015 36 00         [10]   75 	ld	(hl), #0x00
+                             76 ;src/victory.c:36: StopMusic();
+   0017 C5            [11]   77 	push	bc
+   0018 CDr00r00      [17]   78 	call	_StopMusic
+   001B CDr00r00      [17]   79 	call	_v_clr_scr
+   001E CDr00r00      [17]   80 	call	_v_reset_pal
+   0021 CDr00r00      [17]   81 	call	_v_blk_scr
+   0024 CDr00r00      [17]   82 	call	_v_clr_scr
+   0027 CDr16r02      [17]   83 	call	_c_draw_victory
+   002A C1            [10]   84 	pop	bc
+                             85 ;src/victory.c:49: y = wd_loc.y;
+   002B 3ArE5r01      [13]   86 	ld	a,(#_wd_loc + 1)
+                             87 ;src/victory.c:50: v_print(g_strings[110], wd_loc.x, y * LINE_P_H, FONT_WHITE);
+   002E DD 77 FF      [19]   88 	ld	-1 (ix), a
+   0031 5F            [ 4]   89 	ld	e, a
+   0032 87            [ 4]   90 	add	a, a
+   0033 83            [ 4]   91 	add	a, e
+   0034 87            [ 4]   92 	add	a, a
+   0035 DD 77 FE      [19]   93 	ld	-2 (ix), a
+   0038 21rE4r01      [10]   94 	ld	hl, #_wd_loc + 0
+   003B 46            [ 7]   95 	ld	b, (hl)
+   003C ED 5BrDCr00   [20]   96 	ld	de, (#_g_strings + 220)
+   0040 C5            [11]   97 	push	bc
+   0041 3E 02         [ 7]   98 	ld	a, #0x02
+   0043 F5            [11]   99 	push	af
+   0044 33            [ 6]  100 	inc	sp
+   0045 DD 7E FE      [19]  101 	ld	a, -2 (ix)
+   0048 F5            [11]  102 	push	af
+   0049 33            [ 6]  103 	inc	sp
+   004A C5            [11]  104 	push	bc
+   004B 33            [ 6]  105 	inc	sp
+   004C D5            [11]  106 	push	de
+   004D CDr00r00      [17]  107 	call	_v_print
+   0050 F1            [10]  108 	pop	af
+   0051 F1            [10]  109 	pop	af
+   0052 33            [ 6]  110 	inc	sp
+   0053 C1            [10]  111 	pop	bc
+                            112 ;src/victory.c:51: y = y + 2;
+   0054 DD 5E FF      [19]  113 	ld	e, -1 (ix)
+   0057 1C            [ 4]  114 	inc	e
+   0058 1C            [ 4]  115 	inc	e
+                            116 ;src/victory.c:52: v_print(g_strings[111], wd_loc.x, y * LINE_P_H, FONT_WHITE);
+   0059 7B            [ 4]  117 	ld	a, e
+   005A 87            [ 4]  118 	add	a, a
+   005B 83            [ 4]  119 	add	a, e
+   005C 87            [ 4]  120 	add	a, a
+   005D DD 77 FE      [19]  121 	ld	-2 (ix), a
+   0060 21rE4r01      [10]  122 	ld	hl, #_wd_loc + 0
+   0063 46            [ 7]  123 	ld	b, (hl)
+   0064 ED 5BrDEr00   [20]  124 	ld	de, (#_g_strings + 222)
+   0068 C5            [11]  125 	push	bc
+   0069 3E 02         [ 7]  126 	ld	a, #0x02
+   006B F5            [11]  127 	push	af
+   006C 33            [ 6]  128 	inc	sp
+   006D DD 7E FE      [19]  129 	ld	a, -2 (ix)
+   0070 F5            [11]  130 	push	af
+   0071 33            [ 6]  131 	inc	sp
+   0072 C5            [11]  132 	push	bc
+   0073 33            [ 6]  133 	inc	sp
+   0074 D5            [11]  134 	push	de
+   0075 CDr00r00      [17]  135 	call	_v_print
+   0078 F1            [10]  136 	pop	af
+   0079 F1            [10]  137 	pop	af
+   007A 33            [ 6]  138 	inc	sp
+   007B C1            [10]  139 	pop	bc
+                            140 ;src/victory.c:54: y = yh_loc.y;
+   007C 3ArE7r01      [13]  141 	ld	a,(#_yh_loc + 1)
+                            142 ;src/victory.c:55: v_print(g_strings[112], yh_loc.x, y * LINE_P_H, FONT_WHITE);
+   007F DD 77 FE      [19]  143 	ld	-2 (ix), a
+   0082 5F            [ 4]  144 	ld	e, a
+   0083 87            [ 4]  145 	add	a, a
+   0084 83            [ 4]  146 	add	a, e
+   0085 87            [ 4]  147 	add	a, a
+   0086 DD 77 FF      [19]  148 	ld	-1 (ix), a
+   0089 21rE6r01      [10]  149 	ld	hl, #_yh_loc + 0
+   008C 46            [ 7]  150 	ld	b, (hl)
+   008D ED 5BrE0r00   [20]  151 	ld	de, (#_g_strings + 224)
+   0091 C5            [11]  152 	push	bc
+   0092 3E 02         [ 7]  153 	ld	a, #0x02
+   0094 F5            [11]  154 	push	af
+   0095 33            [ 6]  155 	inc	sp
+   0096 DD 7E FF      [19]  156 	ld	a, -1 (ix)
+   0099 F5            [11]  157 	push	af
+   009A 33            [ 6]  158 	inc	sp
+   009B C5            [11]  159 	push	bc
+   009C 33            [ 6]  160 	inc	sp
+   009D D5            [11]  161 	push	de
+   009E CDr00r00      [17]  162 	call	_v_print
+   00A1 F1            [10]  163 	pop	af
+   00A2 F1            [10]  164 	pop	af
+   00A3 33            [ 6]  165 	inc	sp
+   00A4 C1            [10]  166 	pop	bc
+                            167 ;src/victory.c:56: y = y + 2;
+   00A5 DD 34 FE      [23]  168 	inc	-2 (ix)
+   00A8 DD 34 FE      [23]  169 	inc	-2 (ix)
+                            170 ;src/victory.c:57: v_print(g_strings[113], yh_loc.x, y * LINE_P_H, FONT_WHITE);
+   00AB DD 7E FE      [19]  171 	ld	a, -2 (ix)
+   00AE 5F            [ 4]  172 	ld	e, a
+   00AF 87            [ 4]  173 	add	a, a
+   00B0 83            [ 4]  174 	add	a, e
+   00B1 87            [ 4]  175 	add	a, a
+   00B2 DD 77 FF      [19]  176 	ld	-1 (ix), a
+   00B5 21rE6r01      [10]  177 	ld	hl, #_yh_loc + 0
+   00B8 46            [ 7]  178 	ld	b, (hl)
+   00B9 ED 5BrE2r00   [20]  179 	ld	de, (#_g_strings + 226)
+   00BD C5            [11]  180 	push	bc
+   00BE 3E 02         [ 7]  181 	ld	a, #0x02
+   00C0 F5            [11]  182 	push	af
+   00C1 33            [ 6]  183 	inc	sp
+   00C2 DD 7E FF      [19]  184 	ld	a, -1 (ix)
+   00C5 F5            [11]  185 	push	af
+   00C6 33            [ 6]  186 	inc	sp
+   00C7 C5            [11]  187 	push	bc
+   00C8 33            [ 6]  188 	inc	sp
+   00C9 D5            [11]  189 	push	de
+   00CA CDr00r00      [17]  190 	call	_v_print
+   00CD F1            [10]  191 	pop	af
+   00CE F1            [10]  192 	pop	af
+   00CF 33            [ 6]  193 	inc	sp
+   00D0 C1            [10]  194 	pop	bc
+                            195 ;src/victory.c:58: y = y + 2;
+   00D1 DD 34 FE      [23]  196 	inc	-2 (ix)
+   00D4 DD 34 FE      [23]  197 	inc	-2 (ix)
+                            198 ;src/victory.c:59: v_print(g_strings[114], yh_loc.x, y * LINE_P_H, FONT_WHITE);
+   00D7 DD 7E FE      [19]  199 	ld	a, -2 (ix)
+   00DA 5F            [ 4]  200 	ld	e, a
+   00DB 87            [ 4]  201 	add	a, a
+   00DC 83            [ 4]  202 	add	a, e
+   00DD 87            [ 4]  203 	add	a, a
+   00DE DD 77 FF      [19]  204 	ld	-1 (ix), a
+   00E1 21rE6r01      [10]  205 	ld	hl, #_yh_loc + 0
+   00E4 46            [ 7]  206 	ld	b, (hl)
+   00E5 ED 5BrE4r00   [20]  207 	ld	de, (#_g_strings + 228)
+   00E9 C5            [11]  208 	push	bc
+   00EA 3E 02         [ 7]  209 	ld	a, #0x02
+   00EC F5            [11]  210 	push	af
+   00ED 33            [ 6]  211 	inc	sp
+   00EE DD 7E FF      [19]  212 	ld	a, -1 (ix)
+   00F1 F5            [11]  213 	push	af
+   00F2 33            [ 6]  214 	inc	sp
+   00F3 C5            [11]  215 	push	bc
+   00F4 33            [ 6]  216 	inc	sp
+   00F5 D5            [11]  217 	push	de
+   00F6 CDr00r00      [17]  218 	call	_v_print
+   00F9 F1            [10]  219 	pop	af
+   00FA F1            [10]  220 	pop	af
+   00FB 33            [ 6]  221 	inc	sp
+   00FC C1            [10]  222 	pop	bc
+                            223 ;src/victory.c:60: y = y + 2;
+   00FD DD 7E FE      [19]  224 	ld	a, -2 (ix)
+   0100 C6 02         [ 7]  225 	add	a, #0x02
+                            226 ;src/victory.c:61: v_print(g_strings[115], yh_loc.x, y * LINE_P_H, FONT_WHITE);
+   0102 DD 77 FD      [19]  227 	ld	-3 (ix), a
+   0105 5F            [ 4]  228 	ld	e, a
+   0106 87            [ 4]  229 	add	a, a
+   0107 83            [ 4]  230 	add	a, e
+   0108 87            [ 4]  231 	add	a, a
+   0109 DD 77 FE      [19]  232 	ld	-2 (ix), a
+   010C 21rE6r01      [10]  233 	ld	hl, #_yh_loc + 0
+   010F 46            [ 7]  234 	ld	b, (hl)
+   0110 ED 5BrE6r00   [20]  235 	ld	de, (#_g_strings + 230)
+   0114 C5            [11]  236 	push	bc
+   0115 3E 02         [ 7]  237 	ld	a, #0x02
+   0117 F5            [11]  238 	push	af
+   0118 33            [ 6]  239 	inc	sp
+   0119 DD 7E FE      [19]  240 	ld	a, -2 (ix)
+   011C F5            [11]  241 	push	af
+   011D 33            [ 6]  242 	inc	sp
+   011E C5            [11]  243 	push	bc
+   011F 33            [ 6]  244 	inc	sp
+   0120 D5            [11]  245 	push	de
+   0121 CDr00r00      [17]  246 	call	_v_print
+   0124 F1            [10]  247 	pop	af
+   0125 F1            [10]  248 	pop	af
+   0126 33            [ 6]  249 	inc	sp
+   0127 C1            [10]  250 	pop	bc
+                            251 ;src/victory.c:62: y = y + 4;
+   0128 DD 7E FD      [19]  252 	ld	a, -3 (ix)
+   012B C6 04         [ 7]  253 	add	a, #0x04
+                            254 ;src/victory.c:63: v_print(g_strings[116], yh_loc.x, y * LINE_P_H, FONT_WHITE);
+   012D DD 77 FE      [19]  255 	ld	-2 (ix), a
+   0130 5F            [ 4]  256 	ld	e, a
+   0131 87            [ 4]  257 	add	a, a
+   0132 83            [ 4]  258 	add	a, e
+   0133 87            [ 4]  259 	add	a, a
+   0134 DD 77 FF      [19]  260 	ld	-1 (ix), a
+   0137 21rE6r01      [10]  261 	ld	hl, #_yh_loc + 0
+   013A 46            [ 7]  262 	ld	b, (hl)
+   013B ED 5BrE8r00   [20]  263 	ld	de, (#_g_strings + 232)
+   013F C5            [11]  264 	push	bc
+   0140 3E 02         [ 7]  265 	ld	a, #0x02
+   0142 F5            [11]  266 	push	af
+   0143 33            [ 6]  267 	inc	sp
+   0144 DD 7E FF      [19]  268 	ld	a, -1 (ix)
+   0147 F5            [11]  269 	push	af
+   0148 33            [ 6]  270 	inc	sp
+   0149 C5            [11]  271 	push	bc
+   014A 33            [ 6]  272 	inc	sp
+   014B D5            [11]  273 	push	de
+   014C CDr00r00      [17]  274 	call	_v_print
+   014F F1            [10]  275 	pop	af
+   0150 F1            [10]  276 	pop	af
+   0151 33            [ 6]  277 	inc	sp
+   0152 C1            [10]  278 	pop	bc
+                            279 ;src/victory.c:64: y = y + 2;
+   0153 DD 5E FE      [19]  280 	ld	e, -2 (ix)
+   0156 1C            [ 4]  281 	inc	e
+   0157 1C            [ 4]  282 	inc	e
+                            283 ;src/victory.c:65: v_print(g_strings[117], yh_loc.x, y * LINE_P_H, FONT_WHITE);
+   0158 7B            [ 4]  284 	ld	a, e
+   0159 87            [ 4]  285 	add	a, a
+   015A 83            [ 4]  286 	add	a, e
+   015B 87            [ 4]  287 	add	a, a
+   015C DD 77 FE      [19]  288 	ld	-2 (ix), a
+   015F 21rE6r01      [10]  289 	ld	hl, #_yh_loc + 0
+   0162 46            [ 7]  290 	ld	b, (hl)
+   0163 ED 5BrEAr00   [20]  291 	ld	de, (#_g_strings + 234)
+   0167 C5            [11]  292 	push	bc
+   0168 3E 02         [ 7]  293 	ld	a, #0x02
+   016A F5            [11]  294 	push	af
+   016B 33            [ 6]  295 	inc	sp
+   016C DD 7E FE      [19]  296 	ld	a, -2 (ix)
+   016F F5            [11]  297 	push	af
+   0170 33            [ 6]  298 	inc	sp
+   0171 C5            [11]  299 	push	bc
+   0172 33            [ 6]  300 	inc	sp
+   0173 D5            [11]  301 	push	de
+   0174 CDr00r00      [17]  302 	call	_v_print
+   0177 F1            [10]  303 	pop	af
+   0178 F1            [10]  304 	pop	af
+   0179 33            [ 6]  305 	inc	sp
+   017A C1            [10]  306 	pop	bc
+                            307 ;src/victory.c:67: y = co_loc.y;
+   017B 3ArE9r01      [13]  308 	ld	a, (#_co_loc+1)
+                            309 ;src/victory.c:68: v_print(g_strings[118], yh_loc.x, y * LINE_P_H, FONT_WHITE);
+   017E DD 77 FE      [19]  310 	ld	-2 (ix), a
+   0181 5F            [ 4]  311 	ld	e, a
+   0182 87            [ 4]  312 	add	a, a
+   0183 83            [ 4]  313 	add	a, e
+   0184 87            [ 4]  314 	add	a, a
+   0185 DD 77 FF      [19]  315 	ld	-1 (ix), a
+   0188 21rE6r01      [10]  316 	ld	hl, #_yh_loc + 0
+   018B 46            [ 7]  317 	ld	b, (hl)
+   018C ED 5BrECr00   [20]  318 	ld	de, (#_g_strings + 236)
+   0190 C5            [11]  319 	push	bc
+   0191 3E 02         [ 7]  320 	ld	a, #0x02
+   0193 F5            [11]  321 	push	af
+   0194 33            [ 6]  322 	inc	sp
+   0195 DD 7E FF      [19]  323 	ld	a, -1 (ix)
+   0198 F5            [11]  324 	push	af
+   0199 33            [ 6]  325 	inc	sp
+   019A C5            [11]  326 	push	bc
+   019B 33            [ 6]  327 	inc	sp
+   019C D5            [11]  328 	push	de
+   019D CDr00r00      [17]  329 	call	_v_print
+   01A0 F1            [10]  330 	pop	af
+   01A1 F1            [10]  331 	pop	af
+   01A2 33            [ 6]  332 	inc	sp
+   01A3 C1            [10]  333 	pop	bc
+                            334 ;src/victory.c:69: y = y + 2;
+   01A4 DD 5E FE      [19]  335 	ld	e, -2 (ix)
+   01A7 1C            [ 4]  336 	inc	e
+   01A8 1C            [ 4]  337 	inc	e
+                            338 ;src/victory.c:70: v_print(g_strings[119], yh_loc.x, y * LINE_P_H, FONT_WHITE);
+   01A9 7B            [ 4]  339 	ld	a, e
+   01AA 87            [ 4]  340 	add	a, a
+   01AB 83            [ 4]  341 	add	a, e
+   01AC 87            [ 4]  342 	add	a, a
+   01AD DD 77 FE      [19]  343 	ld	-2 (ix), a
+   01B0 21rE6r01      [10]  344 	ld	hl, #_yh_loc + 0
+   01B3 46            [ 7]  345 	ld	b, (hl)
+   01B4 ED 5BrEEr00   [20]  346 	ld	de, (#_g_strings + 238)
+   01B8 C5            [11]  347 	push	bc
+   01B9 3E 02         [ 7]  348 	ld	a, #0x02
+   01BB F5            [11]  349 	push	af
+   01BC 33            [ 6]  350 	inc	sp
+   01BD DD 7E FE      [19]  351 	ld	a, -2 (ix)
+   01C0 F5            [11]  352 	push	af
+   01C1 33            [ 6]  353 	inc	sp
+   01C2 C5            [11]  354 	push	bc
+   01C3 33            [ 6]  355 	inc	sp
+   01C4 D5            [11]  356 	push	de
+   01C5 CDr00r00      [17]  357 	call	_v_print
+   01C8 F1            [10]  358 	pop	af
+   01C9 F1            [10]  359 	pop	af
+   01CA 33            [ 6]  360 	inc	sp
+   01CB CDr00r00      [17]  361 	call	_v_reset_pal_v
+   01CE C1            [10]  362 	pop	bc
+                            363 ;src/victory.c:76: while (!kp) {
+   01CF                     364 00101$:
+   01CF CB 41         [ 8]  365 	bit	0, c
+   01D1 20 0C         [12]  366 	jr	NZ,00104$
+                            367 ;src/victory.c:79: cpct_scanKeyboard();
+   01D3 CDr00r00      [17]  368 	call	_cpct_scanKeyboard
+                            369 ;src/victory.c:80: kp = cpct_isAnyKeyPressed();
+   01D6 CDr00r00      [17]  370 	call	_cpct_isAnyKeyPressed
+   01D9 AF            [ 4]  371 	xor	a, a
+   01DA BD            [ 4]  372 	cp	a, l
+   01DB 17            [ 4]  373 	rla
+   01DC 4F            [ 4]  374 	ld	c, a
+   01DD 18 F0         [12]  375 	jr	00101$
+   01DF                     376 00104$:
+   01DF DD F9         [10]  377 	ld	sp, ix
+   01E1 DD E1         [14]  378 	pop	ix
+   01E3 C9            [10]  379 	ret
+   01E4                     380 _wd_loc:
+   01E4 36                  381 	.db #0x36	; 54	'6'
+   01E5 04                  382 	.db #0x04	; 4
+   01E6                     383 _yh_loc:
+   01E6 36                  384 	.db #0x36	; 54	'6'
+   01E7 0B                  385 	.db #0x0b	; 11
+   01E8                     386 _co_loc:
+   01E8 36                  387 	.db #0x36	; 54	'6'
+   01E9 1C                  388 	.db #0x1c	; 28
+                            389 ;src/victory.c:85: bool c_can_continue(void) {
+                            390 ;	---------------------------------
+                            391 ; Function c_can_continue
+                            392 ; ---------------------------------
+   01EA                     393 _c_can_continue::
+                            394 ;src/victory.c:89: while (!proceed) {
+   01EA                     395 00105$:
+                            396 ;src/victory.c:91: cpct_scanKeyboard();
+   01EA CDr00r00      [17]  397 	call	_cpct_scanKeyboard
+                            398 ;src/victory.c:92: if (cpct_isKeyPressed(Key_Y))
+   01ED 21 05 08      [10]  399 	ld	hl, #0x0805
+   01F0 CDr00r00      [17]  400 	call	_cpct_isKeyPressed
+   01F3 7D            [ 4]  401 	ld	a, l
+   01F4 B7            [ 4]  402 	or	a, a
+   01F5 28 03         [12]  403 	jr	Z,00102$
+                            404 ;src/victory.c:93: return true;
+   01F7 2E 01         [ 7]  405 	ld	l, #0x01
+   01F9 C9            [10]  406 	ret
+   01FA                     407 00102$:
+                            408 ;src/victory.c:94: if (cpct_isKeyPressed(Key_N))
+   01FA 21 05 40      [10]  409 	ld	hl, #0x4005
+   01FD CDr00r00      [17]  410 	call	_cpct_isKeyPressed
+   0200 7D            [ 4]  411 	ld	a, l
+   0201 B7            [ 4]  412 	or	a, a
+   0202 28 E6         [12]  413 	jr	Z,00105$
+                            414 ;src/victory.c:95: return false;
+   0204 2E 00         [ 7]  415 	ld	l, #0x00
+                            416 ;src/victory.c:98: return false;
+   0206 C9            [10]  417 	ret
+                            418 ;src/victory.c:102: void c_scr_stop(void) {
+                            419 ;	---------------------------------
+                            420 ; Function c_scr_stop
+                            421 ; ---------------------------------
+   0207                     422 _c_scr_stop::
+                            423 ;src/victory.c:104: v_wipe_scr(true);
+   0207 3E 01         [ 7]  424 	ld	a, #0x01
+   0209 F5            [11]  425 	push	af
+   020A 33            [ 6]  426 	inc	sp
+   020B CDr00r00      [17]  427 	call	_v_wipe_scr
+   020E 33            [ 6]  428 	inc	sp
+                            429 ;src/victory.c:106: g_music_sfx = music;
+   020F 3Ar00r00      [13]  430 	ld	a,(#_music + 0)
+   0212 32r00r00      [13]  431 	ld	(#_g_music_sfx + 0),a
+   0215 C9            [10]  432 	ret
+                            433 ;src/victory.c:110: static void c_draw_victory(void) {
+                            434 ;	---------------------------------
+                            435 ; Function c_draw_victory
+                            436 ; ---------------------------------
+   0216                     437 _c_draw_victory:
+                            438 ;src/victory.c:113: cpct_zx7b_decrunch_s(VIDEO_MEM_END, img_victory_end);
+   0216 21r50r11      [10]  439 	ld	hl, #(_img_victory + 0x1150)
+   0219 E5            [11]  440 	push	hl
+   021A 21 FF FF      [10]  441 	ld	hl, #0xffff
+   021D E5            [11]  442 	push	hl
+   021E CDr00r00      [17]  443 	call	_cpct_zx7b_decrunch_s
+   0221 C9            [10]  444 	ret
+                            445 	.area _CODE
+                            446 	.area _INITIALIZER
+                            447 	.area _CABS (ABS)

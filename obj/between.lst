@@ -1,0 +1,357 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.6.8 #9946 (Linux)
+                              4 ;--------------------------------------------------------
+                              5 	.module between
+                              6 	.optsdcc -mz80
+                              7 	
+                              8 ;--------------------------------------------------------
+                              9 ; Public variables in this module
+                             10 ;--------------------------------------------------------
+                             11 	.globl _v_print_n
+                             12 	.globl _v_print
+                             13 	.globl _v_print_c
+                             14 	.globl _v_wipe_scr
+                             15 	.globl _v_clr_scr
+                             16 	.globl _v_reset_pal
+                             17 	.globl _v_blk_scr
+                             18 	.globl _u_reset_clock
+                             19 	.globl _u_clock_interrupt
+                             20 	.globl _cpct_zx7b_decrunch_s
+                             21 	.globl _cpct_isAnyKeyPressed
+                             22 	.globl _cpct_scanKeyboard
+                             23 	.globl _cpct_removeInterruptHandler
+                             24 	.globl _cpct_setInterruptHandler
+                             25 	.globl _b_scr_start
+                             26 	.globl _b_scr_stop
+                             27 ;--------------------------------------------------------
+                             28 ; special function registers
+                             29 ;--------------------------------------------------------
+                             30 ;--------------------------------------------------------
+                             31 ; ram data
+                             32 ;--------------------------------------------------------
+                             33 	.area _DATA
+                             34 ;--------------------------------------------------------
+                             35 ; ram data
+                             36 ;--------------------------------------------------------
+                             37 	.area _INITIALIZED
+                             38 ;--------------------------------------------------------
+                             39 ; absolute external ram data
+                             40 ;--------------------------------------------------------
+                             41 	.area _DABS (ABS)
+                             42 ;--------------------------------------------------------
+                             43 ; global & static initialisations
+                             44 ;--------------------------------------------------------
+                             45 	.area _HOME
+                             46 	.area _GSINIT
+                             47 	.area _GSFINAL
+                             48 	.area _GSINIT
+                             49 ;--------------------------------------------------------
+                             50 ; Home
+                             51 ;--------------------------------------------------------
+                             52 	.area _HOME
+                             53 	.area _HOME
+                             54 ;--------------------------------------------------------
+                             55 ; code
+                             56 ;--------------------------------------------------------
+                             57 	.area _CODE
+                             58 ;src/between.c:28: void b_scr_start(const screen_t type) {
+                             59 ;	---------------------------------
+                             60 ; Function b_scr_start
+                             61 ; ---------------------------------
+   0000                      62 _b_scr_start::
+   0000 DD E5         [15]   63 	push	ix
+   0002 DD 21 00 00   [14]   64 	ld	ix,#0
+   0006 DD 39         [15]   65 	add	ix,sp
+   0008 21 F7 FF      [10]   66 	ld	hl, #-9
+   000B 39            [11]   67 	add	hl, sp
+   000C F9            [ 6]   68 	ld	sp, hl
+                             69 ;src/between.c:31: bool kp = false;
+   000D DD 36 F7 00   [19]   70 	ld	-9 (ix), #0x00
+                             71 ;src/between.c:33: v_clr_scr();
+   0011 CDr00r00      [17]   72 	call	_v_clr_scr
+                             73 ;src/between.c:34: v_reset_pal();
+   0014 CDr00r00      [17]   74 	call	_v_reset_pal
+                             75 ;src/between.c:38: v_blk_scr();
+   0017 CDr00r00      [17]   76 	call	_v_blk_scr
+                             77 ;src/between.c:39: v_clr_scr();
+   001A CDr00r00      [17]   78 	call	_v_clr_scr
+                             79 ;src/between.c:42: g_clock_on = false;
+   001D 21r00r00      [10]   80 	ld	hl,#_g_clock_on + 0
+   0020 36 00         [10]   81 	ld	(hl), #0x00
+                             82 ;src/between.c:44: if (type == SCR_GET_READY) {
+   0022 DD 7E 04      [19]   83 	ld	a, 4 (ix)
+   0025 B7            [ 4]   84 	or	a, a
+   0026 C2r33r01      [10]   85 	jp	NZ, 00104$
+                             86 ;src/between.c:47: b_draw_transition();
+   0029 CDrCEr01      [17]   87 	call	_b_draw_transition
+                             88 ;src/between.c:50: v_print(g_strings[70], pg_loc.x, pg_loc.y * LINE_P_H,
+   002C 3ArBEr01      [13]   89 	ld	a, (#(_pg_loc + 0x0001) + 0)
+   002F 4F            [ 4]   90 	ld	c, a
+   0030 87            [ 4]   91 	add	a, a
+   0031 81            [ 4]   92 	add	a, c
+   0032 87            [ 4]   93 	add	a, a
+   0033 57            [ 4]   94 	ld	d, a
+   0034 21rBDr01      [10]   95 	ld	hl, #_pg_loc + 0
+   0037 5E            [ 7]   96 	ld	e, (hl)
+   0038 ED 4Br8Cr00   [20]   97 	ld	bc, (#_g_strings + 140)
+   003C 3E 01         [ 7]   98 	ld	a, #0x01
+   003E F5            [11]   99 	push	af
+   003F 33            [ 6]  100 	inc	sp
+   0040 D5            [11]  101 	push	de
+   0041 C5            [11]  102 	push	bc
+   0042 CDr00r00      [17]  103 	call	_v_print
+   0045 F1            [10]  104 	pop	af
+   0046 F1            [10]  105 	pop	af
+   0047 33            [ 6]  106 	inc	sp
+                            107 ;src/between.c:52: v_print(g_strings[71], pg_loc.x + 18, pg_loc.y * LINE_P_H,
+   0048 3ArBEr01      [13]  108 	ld	a, (#(_pg_loc + 0x0001) + 0)
+   004B 4F            [ 4]  109 	ld	c, a
+   004C 87            [ 4]  110 	add	a, a
+   004D 81            [ 4]  111 	add	a, c
+   004E 87            [ 4]  112 	add	a, a
+   004F 57            [ 4]  113 	ld	d, a
+   0050 3ArBDr01      [13]  114 	ld	a, (#_pg_loc + 0)
+   0053 C6 12         [ 7]  115 	add	a, #0x12
+   0055 5F            [ 4]  116 	ld	e, a
+   0056 ED 4Br8Er00   [20]  117 	ld	bc, (#_g_strings + 142)
+   005A 3E 01         [ 7]  118 	ld	a, #0x01
+   005C F5            [11]  119 	push	af
+   005D 33            [ 6]  120 	inc	sp
+   005E D5            [11]  121 	push	de
+   005F C5            [11]  122 	push	bc
+   0060 CDr00r00      [17]  123 	call	_v_print
+   0063 F1            [10]  124 	pop	af
+   0064 F1            [10]  125 	pop	af
+   0065 33            [ 6]  126 	inc	sp
+                            127 ;src/between.c:54: v_print_n(g_current_round, pg_loc.x + 12, pg_loc.y * LINE_P_H, FONT_BLUE);
+   0066 3ArBEr01      [13]  128 	ld	a, (#(_pg_loc + 0x0001) + 0)
+   0069 4F            [ 4]  129 	ld	c, a
+   006A 87            [ 4]  130 	add	a, a
+   006B 81            [ 4]  131 	add	a, c
+   006C 87            [ 4]  132 	add	a, a
+   006D 57            [ 4]  133 	ld	d, a
+   006E 3ArBDr01      [13]  134 	ld	a, (#_pg_loc + 0)
+   0071 C6 0C         [ 7]  135 	add	a, #0x0c
+   0073 47            [ 4]  136 	ld	b, a
+   0074 3Ar00r00      [13]  137 	ld	a,(#_g_current_round + 0)
+   0077 DD 77 F8      [19]  138 	ld	-8 (ix), a
+   007A DD 36 F9 00   [19]  139 	ld	-7 (ix), #0x00
+   007E DD 36 FA 00   [19]  140 	ld	-6 (ix), #0x00
+   0082 DD 36 FB 00   [19]  141 	ld	-5 (ix), #0x00
+   0086 DD 36 FC 00   [19]  142 	ld	-4 (ix), #0x00
+   008A DD 36 FD 00   [19]  143 	ld	-3 (ix), #0x00
+   008E DD 36 FE 00   [19]  144 	ld	-2 (ix), #0x00
+   0092 DD 36 FF 00   [19]  145 	ld	-1 (ix), #0x00
+   0096 3E 01         [ 7]  146 	ld	a, #0x01
+   0098 F5            [11]  147 	push	af
+   0099 33            [ 6]  148 	inc	sp
+   009A 58            [ 4]  149 	ld	e, b
+   009B D5            [11]  150 	push	de
+   009C DD 66 FF      [19]  151 	ld	h, -1 (ix)
+   009F DD 6E FE      [19]  152 	ld	l, -2 (ix)
+   00A2 E5            [11]  153 	push	hl
+   00A3 DD 66 FD      [19]  154 	ld	h, -3 (ix)
+   00A6 DD 6E FC      [19]  155 	ld	l, -4 (ix)
+   00A9 E5            [11]  156 	push	hl
+   00AA DD 66 FB      [19]  157 	ld	h, -5 (ix)
+   00AD DD 6E FA      [19]  158 	ld	l, -6 (ix)
+   00B0 E5            [11]  159 	push	hl
+   00B1 DD 66 F9      [19]  160 	ld	h, -7 (ix)
+   00B4 DD 6E F8      [19]  161 	ld	l, -8 (ix)
+   00B7 E5            [11]  162 	push	hl
+   00B8 CDr00r00      [17]  163 	call	_v_print_n
+   00BB 21 0B 00      [10]  164 	ld	hl, #11
+   00BE 39            [11]  165 	add	hl, sp
+   00BF F9            [ 6]  166 	ld	sp, hl
+                            167 ;src/between.c:55: v_print_n(g_current_level, pg_loc.x + 29, pg_loc.y * LINE_P_H, FONT_BLUE);
+   00C0 3ArBEr01      [13]  168 	ld	a, (#(_pg_loc + 0x0001) + 0)
+   00C3 4F            [ 4]  169 	ld	c, a
+   00C4 87            [ 4]  170 	add	a, a
+   00C5 81            [ 4]  171 	add	a, c
+   00C6 87            [ 4]  172 	add	a, a
+   00C7 57            [ 4]  173 	ld	d, a
+   00C8 3ArBDr01      [13]  174 	ld	a, (#_pg_loc + 0)
+   00CB C6 1D         [ 7]  175 	add	a, #0x1d
+   00CD 47            [ 4]  176 	ld	b, a
+   00CE 3Ar00r00      [13]  177 	ld	a,(#_g_current_level + 0)
+   00D1 DD 77 F8      [19]  178 	ld	-8 (ix), a
+   00D4 DD 36 F9 00   [19]  179 	ld	-7 (ix), #0x00
+   00D8 DD 36 FA 00   [19]  180 	ld	-6 (ix), #0x00
+   00DC DD 36 FB 00   [19]  181 	ld	-5 (ix), #0x00
+   00E0 DD 36 FC 00   [19]  182 	ld	-4 (ix), #0x00
+   00E4 DD 36 FD 00   [19]  183 	ld	-3 (ix), #0x00
+   00E8 DD 36 FE 00   [19]  184 	ld	-2 (ix), #0x00
+   00EC DD 36 FF 00   [19]  185 	ld	-1 (ix), #0x00
+   00F0 3E 01         [ 7]  186 	ld	a, #0x01
+   00F2 F5            [11]  187 	push	af
+   00F3 33            [ 6]  188 	inc	sp
+   00F4 58            [ 4]  189 	ld	e, b
+   00F5 D5            [11]  190 	push	de
+   00F6 DD 66 FF      [19]  191 	ld	h, -1 (ix)
+   00F9 DD 6E FE      [19]  192 	ld	l, -2 (ix)
+   00FC E5            [11]  193 	push	hl
+   00FD DD 66 FD      [19]  194 	ld	h, -3 (ix)
+   0100 DD 6E FC      [19]  195 	ld	l, -4 (ix)
+   0103 E5            [11]  196 	push	hl
+   0104 DD 66 FB      [19]  197 	ld	h, -5 (ix)
+   0107 DD 6E FA      [19]  198 	ld	l, -6 (ix)
+   010A E5            [11]  199 	push	hl
+   010B DD 66 F9      [19]  200 	ld	h, -7 (ix)
+   010E DD 6E F8      [19]  201 	ld	l, -8 (ix)
+   0111 E5            [11]  202 	push	hl
+   0112 CDr00r00      [17]  203 	call	_v_print_n
+   0115 21 0B 00      [10]  204 	ld	hl, #11
+   0118 39            [11]  205 	add	hl, sp
+   0119 F9            [ 6]  206 	ld	sp, hl
+                            207 ;src/between.c:56: v_print_c(g_strings[72], gr_loc.y * LINE_P_H, FONT_RED);
+   011A 3ArC0r01      [13]  208 	ld	a, (#(_gr_loc + 0x0001) + 0)
+   011D 4F            [ 4]  209 	ld	c, a
+   011E 87            [ 4]  210 	add	a, a
+   011F 81            [ 4]  211 	add	a, c
+   0120 87            [ 4]  212 	add	a, a
+   0121 57            [ 4]  213 	ld	d, a
+   0122 ED 4Br90r00   [20]  214 	ld	bc, (#_g_strings + 144)
+   0126 AF            [ 4]  215 	xor	a, a
+   0127 F5            [11]  216 	push	af
+   0128 33            [ 6]  217 	inc	sp
+   0129 D5            [11]  218 	push	de
+   012A 33            [ 6]  219 	inc	sp
+   012B C5            [11]  220 	push	bc
+   012C CDr00r00      [17]  221 	call	_v_print_c
+   012F F1            [10]  222 	pop	af
+   0130 F1            [10]  223 	pop	af
+   0131 18 38         [12]  224 	jr	00105$
+   0133                     225 00104$:
+                            226 ;src/between.c:58: } else if (type == SCR_GAME_OVER) {
+   0133 DD 7E 04      [19]  227 	ld	a, 4 (ix)
+   0136 3D            [ 4]  228 	dec	a
+   0137 20 32         [12]  229 	jr	NZ,00105$
+                            230 ;src/between.c:61: b_draw_transition();
+   0139 CDrCEr01      [17]  231 	call	_b_draw_transition
+                            232 ;src/between.c:64: v_print_c(g_strings[75], pg_loc.y * LINE_P_H, FONT_BLUE);
+   013C 3ArBEr01      [13]  233 	ld	a, (#(_pg_loc + 0x0001) + 0)
+   013F 4F            [ 4]  234 	ld	c, a
+   0140 87            [ 4]  235 	add	a, a
+   0141 81            [ 4]  236 	add	a, c
+   0142 87            [ 4]  237 	add	a, a
+   0143 57            [ 4]  238 	ld	d, a
+   0144 ED 4Br96r00   [20]  239 	ld	bc, (#_g_strings + 150)
+   0148 3E 01         [ 7]  240 	ld	a, #0x01
+   014A F5            [11]  241 	push	af
+   014B 33            [ 6]  242 	inc	sp
+   014C D5            [11]  243 	push	de
+   014D 33            [ 6]  244 	inc	sp
+   014E C5            [11]  245 	push	bc
+   014F CDr00r00      [17]  246 	call	_v_print_c
+   0152 F1            [10]  247 	pop	af
+   0153 F1            [10]  248 	pop	af
+                            249 ;src/between.c:65: v_print_c(g_strings[73], gr_loc.y * LINE_P_H, FONT_RED);
+   0154 3ArC0r01      [13]  250 	ld	a, (#(_gr_loc + 0x0001) + 0)
+   0157 4F            [ 4]  251 	ld	c, a
+   0158 87            [ 4]  252 	add	a, a
+   0159 81            [ 4]  253 	add	a, c
+   015A 87            [ 4]  254 	add	a, a
+   015B 57            [ 4]  255 	ld	d, a
+   015C ED 4Br92r00   [20]  256 	ld	bc, (#_g_strings + 146)
+   0160 AF            [ 4]  257 	xor	a, a
+   0161 F5            [11]  258 	push	af
+   0162 33            [ 6]  259 	inc	sp
+   0163 D5            [11]  260 	push	de
+   0164 33            [ 6]  261 	inc	sp
+   0165 C5            [11]  262 	push	bc
+   0166 CDr00r00      [17]  263 	call	_v_print_c
+   0169 F1            [10]  264 	pop	af
+   016A F1            [10]  265 	pop	af
+   016B                     266 00105$:
+                            267 ;src/between.c:69: v_reset_pal();
+   016B CDr00r00      [17]  268 	call	_v_reset_pal
+                            269 ;src/between.c:71: g_clock_on = false;
+   016E 21r00r00      [10]  270 	ld	hl,#_g_clock_on + 0
+   0171 36 00         [10]  271 	ld	(hl), #0x00
+                            272 ;src/between.c:72: u_reset_clock();
+   0173 CDr00r00      [17]  273 	call	_u_reset_clock
+                            274 ;src/between.c:73: cpct_setInterruptHandler(u_clock_interrupt);
+   0176 21r00r00      [10]  275 	ld	hl, #_u_clock_interrupt
+   0179 CDr00r00      [17]  276 	call	_cpct_setInterruptHandler
+                            277 ;src/between.c:76: duration = type == SCR_GET_READY ? 5 : 10;
+   017C DD 7E 04      [19]  278 	ld	a, 4 (ix)
+   017F B7            [ 4]  279 	or	a, a
+   0180 20 04         [12]  280 	jr	NZ,00112$
+   0182 0E 05         [ 7]  281 	ld	c, #0x05
+   0184 18 02         [12]  282 	jr	00113$
+   0186                     283 00112$:
+   0186 0E 0A         [ 7]  284 	ld	c, #0x0a
+   0188                     285 00113$:
+   0188 06 00         [ 7]  286 	ld	b, #0x00
+                            287 ;src/between.c:77: g_clock_on = true;
+   018A 21r00r00      [10]  288 	ld	hl,#_g_clock_on + 0
+   018D 36 01         [10]  289 	ld	(hl), #0x01
+                            290 ;src/between.c:80: while ((!kp) && (g_clock.s < duration)) {
+   018F                     291 00107$:
+   018F DD CB F7 46   [20]  292 	bit	0, -9 (ix)
+   0193 20 18         [12]  293 	jr	NZ,00109$
+   0195 2Ar02r00      [16]  294 	ld	hl, (#(_g_clock + 0x0002) + 0)
+   0198 BF            [ 4]  295 	cp	a, a
+   0199 ED 42         [15]  296 	sbc	hl, bc
+   019B 30 10         [12]  297 	jr	NC,00109$
+                            298 ;src/between.c:83: cpct_scanKeyboard();
+   019D C5            [11]  299 	push	bc
+   019E CDr00r00      [17]  300 	call	_cpct_scanKeyboard
+   01A1 CDr00r00      [17]  301 	call	_cpct_isAnyKeyPressed
+   01A4 C1            [10]  302 	pop	bc
+   01A5 AF            [ 4]  303 	xor	a, a
+   01A6 BD            [ 4]  304 	cp	a, l
+   01A7 17            [ 4]  305 	rla
+   01A8 DD 77 F7      [19]  306 	ld	-9 (ix), a
+   01AB 18 E2         [12]  307 	jr	00107$
+   01AD                     308 00109$:
+                            309 ;src/between.c:88: g_clock_on = false;
+   01AD 21r00r00      [10]  310 	ld	hl,#_g_clock_on + 0
+   01B0 36 00         [10]  311 	ld	(hl), #0x00
+                            312 ;src/between.c:89: cpct_removeInterruptHandler();
+   01B2 CDr00r00      [17]  313 	call	_cpct_removeInterruptHandler
+                            314 ;src/between.c:90: u_reset_clock();
+   01B5 CDr00r00      [17]  315 	call	_u_reset_clock
+   01B8 DD F9         [10]  316 	ld	sp, ix
+   01BA DD E1         [14]  317 	pop	ix
+   01BC C9            [10]  318 	ret
+   01BD                     319 _pg_loc:
+   01BD 18                  320 	.db #0x18	; 24
+   01BE 04                  321 	.db #0x04	; 4
+   01BF                     322 _gr_loc:
+   01BF 00                  323 	.db #0x00	; 0
+   01C0 1C                  324 	.db #0x1c	; 28
+   01C1                     325 _go_loc:
+   01C1 00                  326 	.db #0x00	; 0
+   01C2 0B                  327 	.db #0x0b	; 11
+   01C3                     328 _wd_loc:
+   01C3 00                  329 	.db #0x00	; 0
+   01C4 0B                  330 	.db #0x0b	; 11
+                            331 ;src/between.c:94: void b_scr_stop(void) {
+                            332 ;	---------------------------------
+                            333 ; Function b_scr_stop
+                            334 ; ---------------------------------
+   01C5                     335 _b_scr_stop::
+                            336 ;src/between.c:96: v_wipe_scr(true);
+   01C5 3E 01         [ 7]  337 	ld	a, #0x01
+   01C7 F5            [11]  338 	push	af
+   01C8 33            [ 6]  339 	inc	sp
+   01C9 CDr00r00      [17]  340 	call	_v_wipe_scr
+   01CC 33            [ 6]  341 	inc	sp
+   01CD C9            [10]  342 	ret
+                            343 ;src/between.c:100: static void b_draw_transition(void) {
+                            344 ;	---------------------------------
+                            345 ; Function b_draw_transition
+                            346 ; ---------------------------------
+   01CE                     347 _b_draw_transition:
+                            348 ;src/between.c:103: cpct_zx7b_decrunch_s(VIDEO_MEM_END, img_transition_end);
+   01CE 21r63r02      [10]  349 	ld	hl, #(_img_transition + 0x0263)
+   01D1 E5            [11]  350 	push	hl
+   01D2 21 FF FF      [10]  351 	ld	hl, #0xffff
+   01D5 E5            [11]  352 	push	hl
+   01D6 CDr00r00      [17]  353 	call	_cpct_zx7b_decrunch_s
+   01D9 C9            [10]  354 	ret
+                            355 	.area _CODE
+                            356 	.area _INITIALIZER
+                            357 	.area _CABS (ABS)
