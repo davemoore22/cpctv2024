@@ -29,8 +29,8 @@
                              29 ; ram data
                              30 ;--------------------------------------------------------
                              31 	.area _DATA
-   9E5B                      32 _music:
-   9E5B                      33 	.ds 1
+   9E57                      32 _music:
+   9E57                      33 	.ds 1
                              34 ;--------------------------------------------------------
                              35 ; ram data
                              36 ;--------------------------------------------------------
@@ -68,10 +68,10 @@
                              68 ;src/victory.c:31: bool kp = false;
    26B4 0E 00         [ 7]   69 	ld	c, #0x00
                              70 ;src/victory.c:34: music = g_music_sfx;
-   26B6 3A C2 9B      [13]   71 	ld	a,(#_g_music_sfx + 0)
-   26B9 32 5B 9E      [13]   72 	ld	(#_music + 0),a
+   26B6 3A BE 9B      [13]   71 	ld	a,(#_g_music_sfx + 0)
+   26B9 32 57 9E      [13]   72 	ld	(#_music + 0),a
                              73 ;src/victory.c:35: g_music_sfx = false;
-   26BC 21 C2 9B      [10]   74 	ld	hl,#_g_music_sfx + 0
+   26BC 21 BE 9B      [10]   74 	ld	hl,#_g_music_sfx + 0
    26BF 36 00         [10]   75 	ld	(hl), #0x00
                              76 ;src/victory.c:36: StopMusic();
    26C1 C5            [11]   77 	push	bc
@@ -365,9 +365,9 @@
    2879 CB 41         [ 8]  365 	bit	0, c
    287B 20 0C         [12]  366 	jr	NZ,00104$
                             367 ;src/victory.c:79: cpct_scanKeyboard();
-   287D CD 04 90      [17]  368 	call	_cpct_scanKeyboard
+   287D CD 00 90      [17]  368 	call	_cpct_scanKeyboard
                             369 ;src/victory.c:80: kp = cpct_isAnyKeyPressed();
-   2880 CD 38 8E      [17]  370 	call	_cpct_isAnyKeyPressed
+   2880 CD 34 8E      [17]  370 	call	_cpct_isAnyKeyPressed
    2883 AF            [ 4]  371 	xor	a, a
    2884 BD            [ 4]  372 	cp	a, l
    2885 17            [ 4]  373 	rla
@@ -394,10 +394,10 @@
                             394 ;src/victory.c:89: while (!proceed) {
    2894                     395 00105$:
                             396 ;src/victory.c:91: cpct_scanKeyboard();
-   2894 CD 04 90      [17]  397 	call	_cpct_scanKeyboard
+   2894 CD 00 90      [17]  397 	call	_cpct_scanKeyboard
                             398 ;src/victory.c:92: if (cpct_isKeyPressed(Key_Y))
    2897 21 05 08      [10]  399 	ld	hl, #0x0805
-   289A CD EE 8A      [17]  400 	call	_cpct_isKeyPressed
+   289A CD EA 8A      [17]  400 	call	_cpct_isKeyPressed
    289D 7D            [ 4]  401 	ld	a, l
    289E B7            [ 4]  402 	or	a, a
    289F 28 03         [12]  403 	jr	Z,00102$
@@ -407,7 +407,7 @@
    28A4                     407 00102$:
                             408 ;src/victory.c:94: if (cpct_isKeyPressed(Key_N))
    28A4 21 05 40      [10]  409 	ld	hl, #0x4005
-   28A7 CD EE 8A      [17]  410 	call	_cpct_isKeyPressed
+   28A7 CD EA 8A      [17]  410 	call	_cpct_isKeyPressed
    28AA 7D            [ 4]  411 	ld	a, l
    28AB B7            [ 4]  412 	or	a, a
    28AC 28 E6         [12]  413 	jr	Z,00105$
@@ -427,8 +427,8 @@
    28B5 CD 9B 30      [17]  427 	call	_v_wipe_scr
    28B8 33            [ 6]  428 	inc	sp
                             429 ;src/victory.c:106: g_music_sfx = music;
-   28B9 3A 5B 9E      [13]  430 	ld	a,(#_music + 0)
-   28BC 32 C2 9B      [13]  431 	ld	(#_g_music_sfx + 0),a
+   28B9 3A 57 9E      [13]  430 	ld	a,(#_music + 0)
+   28BC 32 BE 9B      [13]  431 	ld	(#_g_music_sfx + 0),a
    28BF C9            [10]  432 	ret
                             433 ;src/victory.c:110: static void c_draw_victory(void) {
                             434 ;	---------------------------------
@@ -440,7 +440,7 @@
    28C3 E5            [11]  440 	push	hl
    28C4 21 FF FF      [10]  441 	ld	hl, #0xffff
    28C7 E5            [11]  442 	push	hl
-   28C8 CD C3 8E      [17]  443 	call	_cpct_zx7b_decrunch_s
+   28C8 CD BF 8E      [17]  443 	call	_cpct_zx7b_decrunch_s
    28CB C9            [10]  444 	ret
                             445 	.area _CODE
                             446 	.area _INITIALIZER

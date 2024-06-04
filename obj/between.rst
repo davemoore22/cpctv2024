@@ -77,7 +77,7 @@
                              77 ;src/between.c:39: v_clr_scr();
    005A CD F2 30      [17]   78 	call	_v_clr_scr
                              79 ;src/between.c:42: g_clock_on = false;
-   005D 21 5C 9E      [10]   80 	ld	hl,#_g_clock_on + 0
+   005D 21 58 9E      [10]   80 	ld	hl,#_g_clock_on + 0
    0060 36 00         [10]   81 	ld	(hl), #0x00
                              82 ;src/between.c:44: if (type == SCR_GET_READY) {
    0062 DD 7E 04      [19]   83 	ld	a, 4 (ix)
@@ -134,7 +134,7 @@
    00AE 3A FD 01      [13]  134 	ld	a, (#_pg_loc + 0)
    00B1 C6 0C         [ 7]  135 	add	a, #0x0c
    00B3 47            [ 4]  136 	ld	b, a
-   00B4 3A C6 9D      [13]  137 	ld	a,(#_g_current_round + 0)
+   00B4 3A C2 9D      [13]  137 	ld	a,(#_g_current_round + 0)
    00B7 DD 77 F8      [19]  138 	ld	-8 (ix), a
    00BA DD 36 F9 00   [19]  139 	ld	-7 (ix), #0x00
    00BE DD 36 FA 00   [19]  140 	ld	-6 (ix), #0x00
@@ -174,7 +174,7 @@
    0108 3A FD 01      [13]  174 	ld	a, (#_pg_loc + 0)
    010B C6 1D         [ 7]  175 	add	a, #0x1d
    010D 47            [ 4]  176 	ld	b, a
-   010E 3A C5 9D      [13]  177 	ld	a,(#_g_current_level + 0)
+   010E 3A C1 9D      [13]  177 	ld	a,(#_g_current_level + 0)
    0111 DD 77 F8      [19]  178 	ld	-8 (ix), a
    0114 DD 36 F9 00   [19]  179 	ld	-7 (ix), #0x00
    0118 DD 36 FA 00   [19]  180 	ld	-6 (ix), #0x00
@@ -267,13 +267,13 @@
                             267 ;src/between.c:69: v_reset_pal();
    01AB CD 2D 32      [17]  268 	call	_v_reset_pal
                             269 ;src/between.c:71: g_clock_on = false;
-   01AE 21 5C 9E      [10]  270 	ld	hl,#_g_clock_on + 0
+   01AE 21 58 9E      [10]  270 	ld	hl,#_g_clock_on + 0
    01B1 36 00         [10]  271 	ld	(hl), #0x00
                             272 ;src/between.c:72: u_reset_clock();
    01B3 CD 9E 2D      [17]  273 	call	_u_reset_clock
                             274 ;src/between.c:73: cpct_setInterruptHandler(u_clock_interrupt);
    01B6 21 54 2D      [10]  275 	ld	hl, #_u_clock_interrupt
-   01B9 CD 59 90      [17]  276 	call	_cpct_setInterruptHandler
+   01B9 CD 55 90      [17]  276 	call	_cpct_setInterruptHandler
                             277 ;src/between.c:76: duration = type == SCR_GET_READY ? 5 : 10;
    01BC DD 7E 04      [19]  278 	ld	a, 4 (ix)
    01BF B7            [ 4]  279 	or	a, a
@@ -285,20 +285,20 @@
    01C8                     285 00113$:
    01C8 06 00         [ 7]  286 	ld	b, #0x00
                             287 ;src/between.c:77: g_clock_on = true;
-   01CA 21 5C 9E      [10]  288 	ld	hl,#_g_clock_on + 0
+   01CA 21 58 9E      [10]  288 	ld	hl,#_g_clock_on + 0
    01CD 36 01         [10]  289 	ld	(hl), #0x01
                             290 ;src/between.c:80: while ((!kp) && (g_clock.s < duration)) {
    01CF                     291 00107$:
    01CF DD CB F7 46   [20]  292 	bit	0, -9 (ix)
    01D3 20 18         [12]  293 	jr	NZ,00109$
-   01D5 2A 6D A0      [16]  294 	ld	hl, (#(_g_clock + 0x0002) + 0)
+   01D5 2A 69 A0      [16]  294 	ld	hl, (#(_g_clock + 0x0002) + 0)
    01D8 BF            [ 4]  295 	cp	a, a
    01D9 ED 42         [15]  296 	sbc	hl, bc
    01DB 30 10         [12]  297 	jr	NC,00109$
                             298 ;src/between.c:83: cpct_scanKeyboard();
    01DD C5            [11]  299 	push	bc
-   01DE CD 04 90      [17]  300 	call	_cpct_scanKeyboard
-   01E1 CD 38 8E      [17]  301 	call	_cpct_isAnyKeyPressed
+   01DE CD 00 90      [17]  300 	call	_cpct_scanKeyboard
+   01E1 CD 34 8E      [17]  301 	call	_cpct_isAnyKeyPressed
    01E4 C1            [10]  302 	pop	bc
    01E5 AF            [ 4]  303 	xor	a, a
    01E6 BD            [ 4]  304 	cp	a, l
@@ -307,10 +307,10 @@
    01EB 18 E2         [12]  307 	jr	00107$
    01ED                     308 00109$:
                             309 ;src/between.c:88: g_clock_on = false;
-   01ED 21 5C 9E      [10]  310 	ld	hl,#_g_clock_on + 0
+   01ED 21 58 9E      [10]  310 	ld	hl,#_g_clock_on + 0
    01F0 36 00         [10]  311 	ld	(hl), #0x00
                             312 ;src/between.c:89: cpct_removeInterruptHandler();
-   01F2 CD 5D 8A      [17]  313 	call	_cpct_removeInterruptHandler
+   01F2 CD 59 8A      [17]  313 	call	_cpct_removeInterruptHandler
                             314 ;src/between.c:90: u_reset_clock();
    01F5 CD 9E 2D      [17]  315 	call	_u_reset_clock
    01F8 DD F9         [10]  316 	ld	sp, ix
@@ -350,7 +350,7 @@
    0211 E5            [11]  350 	push	hl
    0212 21 FF FF      [10]  351 	ld	hl, #0xffff
    0215 E5            [11]  352 	push	hl
-   0216 CD C3 8E      [17]  353 	call	_cpct_zx7b_decrunch_s
+   0216 CD BF 8E      [17]  353 	call	_cpct_zx7b_decrunch_s
    0219 C9            [10]  354 	ret
                             355 	.area _CODE
                             356 	.area _INITIALIZER

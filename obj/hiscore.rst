@@ -85,10 +85,10 @@
                              85 ;src/hiscore.c:43: v_reset_timers();
    1AB8 CD CB 32      [17]   86 	call	_v_reset_timers
                              87 ;src/hiscore.c:44: cpct_waitVSYNC();
-   1ABB CD BB 8E      [17]   88 	call	_cpct_waitVSYNC
+   1ABB CD B7 8E      [17]   88 	call	_cpct_waitVSYNC
                              89 ;src/hiscore.c:45: cpct_setInterruptHandler(v_interrupt);
    1ABE 21 DB 32      [10]   90 	ld	hl, #_v_interrupt
-   1AC1 CD 59 90      [17]   91 	call	_cpct_setInterruptHandler
+   1AC1 CD 55 90      [17]   91 	call	_cpct_setInterruptHandler
                              92 ;src/hiscore.c:48: while (!kp)
    1AC4                      93 00101$:
    1AC4 21 00 00      [10]   94 	ld	hl, #0+0
@@ -96,7 +96,7 @@
    1AC8 CB 46         [12]   96 	bit	0, (hl)
    1ACA 20 0B         [12]   97 	jr	NZ,00104$
                              98 ;src/hiscore.c:49: kp = cpct_isAnyKeyPressed();
-   1ACC CD 38 8E      [17]   99 	call	_cpct_isAnyKeyPressed
+   1ACC CD 34 8E      [17]   99 	call	_cpct_isAnyKeyPressed
    1ACF AF            [ 4]  100 	xor	a, a
    1AD0 BD            [ 4]  101 	cp	a, l
    1AD1 17            [ 4]  102 	rla
@@ -172,10 +172,10 @@
    1B35 DD 36 F7 00   [19]  172 	ld	-9 (ix), #0x00
    1B39 DD 36 F8 00   [19]  173 	ld	-8 (ix), #0x00
                             174 ;src/hiscore.c:61: if (g_current_score > g_hiscores[0].score) {
-   1B3D ED 4B D6 9D   [20]  175 	ld	bc, (#(_g_hiscores + 0x0004) + 0)
-   1B41 ED 5B D8 9D   [20]  176 	ld	de, (#(_g_hiscores + 0x0004) + 2)
+   1B3D ED 4B D2 9D   [20]  175 	ld	bc, (#(_g_hiscores + 0x0004) + 0)
+   1B41 ED 5B D4 9D   [20]  176 	ld	de, (#(_g_hiscores + 0x0004) + 2)
    1B45 79            [ 4]  177 	ld	a, c
-   1B46 FD 21 3E 9E   [14]  178 	ld	iy, #_g_current_score
+   1B46 FD 21 3A 9E   [14]  178 	ld	iy, #_g_current_score
    1B4A FD 96 00      [19]  179 	sub	a, 0 (iy)
    1B4D 78            [ 4]  180 	ld	a, b
    1B4E FD 9E 01      [19]  181 	sbc	a, 1 (iy)
@@ -189,7 +189,7 @@
                             189 ;src/hiscore.c:65: v_clr_scr();
    1B5F CD F2 30      [17]  190 	call	_v_clr_scr
                             191 ;src/hiscore.c:67: cpct_waitVSYNC();
-   1B62 CD BB 8E      [17]  192 	call	_cpct_waitVSYNC
+   1B62 CD B7 8E      [17]  192 	call	_cpct_waitVSYNC
                             193 ;src/hiscore.c:69: v_print_c(g_strings[100], y, FONT_RED);
    1B65 ED 4B EF 67   [20]  194 	ld	bc, (#_g_strings + 200)
    1B69 AF            [ 4]  195 	xor	a, a
@@ -257,7 +257,7 @@
    1BC9 DD 6E F7      [19]  257 	ld	l,-9 (ix)
    1BCC DD 66 F8      [19]  258 	ld	h,-8 (ix)
    1BCF E5            [11]  259 	push	hl
-   1BD0 CD 20 8C      [17]  260 	call	__moduint
+   1BD0 CD 1C 8C      [17]  260 	call	__moduint
    1BD3 F1            [10]  261 	pop	af
    1BD4 F1            [10]  262 	pop	af
    1BD5 5D            [ 4]  263 	ld	e, l
@@ -265,7 +265,7 @@
    1BD7 B3            [ 4]  265 	or	a,e
    1BD8 20 79         [12]  266 	jr	NZ,00110$
                             267 ;src/hiscore.c:80: cpct_waitVSYNC();
-   1BDA CD BB 8E      [17]  268 	call	_cpct_waitVSYNC
+   1BDA CD B7 8E      [17]  268 	call	_cpct_waitVSYNC
                             269 ;src/hiscore.c:81: v_print(g_strings[103], 36, y, FONT_WHITE);
    1BDD ED 4B F5 67   [20]  270 	ld	bc, (#_g_strings + 206)
    1BE1 3E 02         [ 7]  271 	ld	a, #0x02
@@ -294,10 +294,10 @@
    1C07 F1            [10]  294 	pop	af
    1C08 33            [ 6]  295 	inc	sp
                             296 ;src/hiscore.c:85: cpct_scanKeyboard();
-   1C09 CD 04 90      [17]  297 	call	_cpct_scanKeyboard
+   1C09 CD 00 90      [17]  297 	call	_cpct_scanKeyboard
                             298 ;src/hiscore.c:88: if (cpct_isKeyPressed(Key_Del) && (len > 0)) {
    1C0C 21 09 80      [10]  299 	ld	hl, #0x8009
-   1C0F CD EE 8A      [17]  300 	call	_cpct_isKeyPressed
+   1C0F CD EA 8A      [17]  300 	call	_cpct_isKeyPressed
    1C12 7D            [ 4]  301 	ld	a, l
    1C13 B7            [ 4]  302 	or	a, a
    1C14 28 1A         [12]  303 	jr	Z,00106$
@@ -318,7 +318,7 @@
    1C2E 18 23         [12]  318 	jr	00110$
    1C30                     319 00106$:
                             320 ;src/hiscore.c:92: key = cpct_getKeypressedAsASCII();
-   1C30 CD 0A 8D      [17]  321 	call	_cpct_getKeypressedAsASCII
+   1C30 CD 06 8D      [17]  321 	call	_cpct_getKeypressedAsASCII
    1C33 4D            [ 4]  322 	ld	c, l
                             323 ;src/hiscore.c:93: if ((key != 0) && (key >= 65) &&
    1C34 79            [ 4]  324 	ld	a, c
@@ -363,10 +363,10 @@
    1C76 DD 66 FC      [19]  363 	ld	h,-4 (ix)
    1C79 36 00         [10]  364 	ld	(hl), #0x00
                             365 ;src/hiscore.c:114: if (g_current_score > g_hiscores[0].score) {
-   1C7B ED 4B D6 9D   [20]  366 	ld	bc, (#(_g_hiscores + 0x0004) + 0)
-   1C7F ED 5B D8 9D   [20]  367 	ld	de, (#(_g_hiscores + 0x0004) + 2)
+   1C7B ED 4B D2 9D   [20]  366 	ld	bc, (#(_g_hiscores + 0x0004) + 0)
+   1C7F ED 5B D4 9D   [20]  367 	ld	de, (#(_g_hiscores + 0x0004) + 2)
    1C83 79            [ 4]  368 	ld	a, c
-   1C84 FD 21 3E 9E   [14]  369 	ld	iy, #_g_current_score
+   1C84 FD 21 3A 9E   [14]  369 	ld	iy, #_g_current_score
    1C88 FD 96 00      [19]  370 	sub	a, 0 (iy)
    1C8B 78            [ 4]  371 	ld	a, b
    1C8C FD 9E 01      [19]  372 	sbc	a, 1 (iy)
@@ -381,9 +381,9 @@
    1C9F AF            [ 4]  381 	xor	a, a
    1CA0 F5            [11]  382 	push	af
    1CA1 33            [ 6]  383 	inc	sp
-   1CA2 2A 40 9E      [16]  384 	ld	hl, (_g_current_score + 2)
+   1CA2 2A 3C 9E      [16]  384 	ld	hl, (_g_current_score + 2)
    1CA5 E5            [11]  385 	push	hl
-   1CA6 2A 3E 9E      [16]  386 	ld	hl, (_g_current_score)
+   1CA6 2A 3A 9E      [16]  386 	ld	hl, (_g_current_score)
    1CA9 E5            [11]  387 	push	hl
    1CAA C5            [11]  388 	push	bc
    1CAB CD D6 1C      [17]  389 	call	_h_insert
@@ -417,7 +417,7 @@
                             417 ;src/hiscore.c:128: v_clr_scr();
    1CCD CD F2 30      [17]  418 	call	_v_clr_scr
                             419 ;src/hiscore.c:129: cpct_removeInterruptHandler();
-   1CD0 CD 5D 8A      [17]  420 	call	_cpct_removeInterruptHandler
+   1CD0 CD 59 8A      [17]  420 	call	_cpct_removeInterruptHandler
                             421 ;src/hiscore.c:130: v_reset_timers();
    1CD3 C3 CB 32      [10]  422 	jp  _v_reset_timers
                             423 ;src/hiscore.c:134: void h_insert(const char *initials, const u32 score, const u8 pos) {
@@ -429,7 +429,7 @@
    1CD8 DD 21 00 00   [14]  429 	ld	ix,#0
    1CDC DD 39         [15]  430 	add	ix,sp
                             431 ;src/hiscore.c:136: g_hiscores[pos].score = score;
-   1CDE 01 D2 9D      [10]  432 	ld	bc, #_g_hiscores+0
+   1CDE 01 CE 9D      [10]  432 	ld	bc, #_g_hiscores+0
    1CE1 DD 5E 0A      [19]  433 	ld	e,10 (ix)
    1CE4 16 00         [ 7]  434 	ld	d,#0x00
    1CE6 6B            [ 4]  435 	ld	l, e
@@ -492,8 +492,8 @@
    1D36 F5            [11]  492 	push	af
    1D37 3B            [ 6]  493 	dec	sp
                             494 ;src/hiscore.c:144: u32 min = g_hiscores[0].score;
-   1D38 ED 4B D6 9D   [20]  495 	ld	bc, (#_g_hiscores + 4)
-   1D3C ED 5B D8 9D   [20]  496 	ld	de, (#_g_hiscores + 6)
+   1D38 ED 4B D2 9D   [20]  495 	ld	bc, (#_g_hiscores + 4)
+   1D3C ED 5B D4 9D   [20]  496 	ld	de, (#_g_hiscores + 6)
                             497 ;src/hiscore.c:147: for (u8 i = 1; i < 10; i++) {
    1D40 DD 36 FB 01   [19]  498 	ld	-5 (ix), #0x01
    1D44                     499 00105$:
@@ -511,7 +511,7 @@
    1D55 29            [11]  511 	add	hl, hl
    1D56 19            [11]  512 	add	hl, de
    1D57 D1            [10]  513 	pop	de
-   1D58 FD 21 D2 9D   [14]  514 	ld	iy, #_g_hiscores
+   1D58 FD 21 CE 9D   [14]  514 	ld	iy, #_g_hiscores
    1D5C C5            [11]  515 	push	bc
    1D5D 4D            [ 4]  516 	ld	c, l
    1D5E 44            [ 4]  517 	ld	b, h
@@ -546,7 +546,7 @@
    1D9D                     546 00103$:
                             547 ;src/hiscore.c:152: return g_current_score > min;
    1D9D 79            [ 4]  548 	ld	a, c
-   1D9E FD 21 3E 9E   [14]  549 	ld	iy, #_g_current_score
+   1D9E FD 21 3A 9E   [14]  549 	ld	iy, #_g_current_score
    1DA2 FD 96 00      [19]  550 	sub	a, 0 (iy)
    1DA5 78            [ 4]  551 	ld	a, b
    1DA6 FD 9E 01      [19]  552 	sbc	a, 1 (iy)
@@ -615,7 +615,7 @@
    1DFD 29            [11]  615 	add	hl, hl
    1DFE 19            [11]  616 	add	hl, de
    1DFF EB            [ 4]  617 	ex	de,hl
-   1E00 21 D2 9D      [10]  618 	ld	hl, #_g_hiscores
+   1E00 21 CE 9D      [10]  618 	ld	hl, #_g_hiscores
    1E03 19            [11]  619 	add	hl,de
    1E04 DD 75 F8      [19]  620 	ld	-8 (ix), l
    1E07 DD 74 F9      [19]  621 	ld	-7 (ix), h

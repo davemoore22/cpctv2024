@@ -23,7 +23,7 @@ const char *const g_strings[] = {
 	/* Title Screen 0-9 */
 	"A REMAKE BY", "    DAVE MOORE (C) 2024   ", "BASED ON TRANSVERSION BY",
 	"C. F. URQUHART AND N. PIERPOINT", "(C) OCEAN SOFTWARE LTD 1983",
-	"MUSIC/SFX BY", "JULIAN NEVO", "MADE WITH CPCTELERA", "", "",
+	"MUSIC/SFX BY", "TARGHAN", "MADE WITH CPCTELERA", "", "",
 	/* Title Screen 10-29 */
 	"1.", "2.", "3.", "4.", "9.", "0.", "REDEFINE KEYS", "MUSIC/SFX ON/OFF",
 	"SHOW HISCORES", "VIEW INSTRUCTIONS", "PLAY GAME", "QUIT", "", "", "",

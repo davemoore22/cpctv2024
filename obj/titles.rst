@@ -32,18 +32,18 @@
                              32 ; ram data
                              33 ;--------------------------------------------------------
                              34 	.area _DATA
-   9E5A                      35 _t_in_titles::
-   9E5A                      36 	.ds 1
+   9E56                      35 _t_in_titles::
+   9E56                      36 	.ds 1
                              37 ;--------------------------------------------------------
                              38 ; ram data
                              39 ;--------------------------------------------------------
                              40 	.area _INITIALIZED
-   A067                      41 _int_idx:
-   A067                      42 	.ds 1
-   A068                      43 _pal_idx:
-   A068                      44 	.ds 1
-   A069                      45 _frame_c:
-   A069                      46 	.ds 2
+   A063                      41 _int_idx:
+   A063                      42 	.ds 1
+   A064                      43 _pal_idx:
+   A064                      44 	.ds 1
+   A065                      45 _frame_c:
+   A065                      46 	.ds 2
                              47 ;--------------------------------------------------------
                              48 ; absolute external ram data
                              49 ;--------------------------------------------------------
@@ -78,7 +78,7 @@
                              78 ;src/titles.c:44: v_clr_scr();
    2428 CD F2 30      [17]   79 	call	_v_clr_scr
                              80 ;src/titles.c:46: t_in_titles = true;
-   242B 21 5A 9E      [10]   81 	ld	hl,#_t_in_titles + 0
+   242B 21 56 9E      [10]   81 	ld	hl,#_t_in_titles + 0
    242E 36 01         [10]   82 	ld	(hl), #0x01
                              83 ;src/titles.c:49: PlayMusic(0);
    2430 AF            [ 4]   84 	xor	a, a
@@ -103,7 +103,7 @@
    244C CD CB 32      [17]  103 	call	_v_reset_timers
                             104 ;src/titles.c:61: cpct_setInterruptHandler(v_interrupt);
    244F 21 DB 32      [10]  105 	ld	hl, #_v_interrupt
-   2452 CD 59 90      [17]  106 	call	_cpct_setInterruptHandler
+   2452 CD 55 90      [17]  106 	call	_cpct_setInterruptHandler
                             107 ;src/titles.c:67: while (1) {
    2455                     108 00125$:
                             109 ;src/titles.c:68: ++count;
@@ -121,7 +121,7 @@
    2469 E5            [11]  121 	push	hl
    246A C5            [11]  122 	push	bc
    246B E5            [11]  123 	push	hl
-   246C CD 20 8C      [17]  124 	call	__moduint
+   246C CD 1C 8C      [17]  124 	call	__moduint
    246F F1            [10]  125 	pop	af
    2470 F1            [10]  126 	pop	af
    2471 7C            [ 4]  127 	ld	a, h
@@ -129,7 +129,7 @@
    2473 20 6D         [12]  129 	jr	NZ,00121$
                             130 ;src/titles.c:72: if (cpct_isKeyPressed(Key_0)) {
    2475 21 04 01      [10]  131 	ld	hl, #0x0104
-   2478 CD EE 8A      [17]  132 	call	_cpct_isKeyPressed
+   2478 CD EA 8A      [17]  132 	call	_cpct_isKeyPressed
    247B 7D            [ 4]  133 	ld	a, l
    247C B7            [ 4]  134 	or	a, a
    247D 28 06         [12]  135 	jr	Z,00118$
@@ -139,7 +139,7 @@
    2485                     139 00118$:
                             140 ;src/titles.c:77: } else if (cpct_isKeyPressed(Key_1)) {
    2485 21 08 01      [10]  141 	ld	hl, #0x0108
-   2488 CD EE 8A      [17]  142 	call	_cpct_isKeyPressed
+   2488 CD EA 8A      [17]  142 	call	_cpct_isKeyPressed
    248B 7D            [ 4]  143 	ld	a, l
    248C B7            [ 4]  144 	or	a, a
    248D 28 05         [12]  145 	jr	Z,00115$
@@ -149,12 +149,12 @@
    2494                     149 00115$:
                             150 ;src/titles.c:82: } else if (cpct_isKeyPressed(Key_2)) {
    2494 21 08 02      [10]  151 	ld	hl, #0x0208
-   2497 CD EE 8A      [17]  152 	call	_cpct_isKeyPressed
+   2497 CD EA 8A      [17]  152 	call	_cpct_isKeyPressed
    249A 7D            [ 4]  153 	ld	a, l
    249B B7            [ 4]  154 	or	a, a
    249C 28 17         [12]  155 	jr	Z,00112$
                             156 ;src/titles.c:85: g_music_sfx = !g_music_sfx;
-   249E FD 21 C2 9B   [14]  157 	ld	iy, #_g_music_sfx
+   249E FD 21 BE 9B   [14]  157 	ld	iy, #_g_music_sfx
    24A2 FD 7E 00      [19]  158 	ld	a, 0 (iy)
    24A5 EE 01         [ 7]  159 	xor	a, #0x01
    24A7 FD 77 00      [19]  160 	ld	0 (iy), a
@@ -167,7 +167,7 @@
    24B5                     167 00112$:
                             168 ;src/titles.c:89: } else if (cpct_isKeyPressed(Key_3)) {
    24B5 21 07 02      [10]  169 	ld	hl, #0x0207
-   24B8 CD EE 8A      [17]  170 	call	_cpct_isKeyPressed
+   24B8 CD EA 8A      [17]  170 	call	_cpct_isKeyPressed
    24BB 7D            [ 4]  171 	ld	a, l
    24BC B7            [ 4]  172 	or	a, a
    24BD 28 05         [12]  173 	jr	Z,00109$
@@ -177,7 +177,7 @@
    24C4                     177 00109$:
                             178 ;src/titles.c:94: } else if (cpct_isKeyPressed(Key_4)) {
    24C4 21 07 01      [10]  179 	ld	hl, #0x0107
-   24C7 CD EE 8A      [17]  180 	call	_cpct_isKeyPressed
+   24C7 CD EA 8A      [17]  180 	call	_cpct_isKeyPressed
    24CA 7D            [ 4]  181 	ld	a, l
    24CB B7            [ 4]  182 	or	a, a
    24CC 28 05         [12]  183 	jr	Z,00106$
@@ -187,7 +187,7 @@
    24D3                     187 00106$:
                             188 ;src/titles.c:99: } else if (cpct_isKeyPressed(Key_9)) {
    24D3 21 04 02      [10]  189 	ld	hl, #0x0204
-   24D6 CD EE 8A      [17]  190 	call	_cpct_isKeyPressed
+   24D6 CD EA 8A      [17]  190 	call	_cpct_isKeyPressed
    24D9 7D            [ 4]  191 	ld	a, l
    24DA B7            [ 4]  192 	or	a, a
    24DB 28 05         [12]  193 	jr	Z,00121$
@@ -242,11 +242,11 @@
                             242 ;src/titles.c:121: v_clr_scr();
    2514 CD F2 30      [17]  243 	call	_v_clr_scr
                             244 ;src/titles.c:122: cpct_removeInterruptHandler();
-   2517 CD 5D 8A      [17]  245 	call	_cpct_removeInterruptHandler
+   2517 CD 59 8A      [17]  245 	call	_cpct_removeInterruptHandler
                             246 ;src/titles.c:123: StopMusic();
    251A CD 24 67      [17]  247 	call	_StopMusic
                             248 ;src/titles.c:124: t_in_titles = false;
-   251D 21 5A 9E      [10]  249 	ld	hl,#_t_in_titles + 0
+   251D 21 56 9E      [10]  249 	ld	hl,#_t_in_titles + 0
    2520 36 00         [10]  250 	ld	(hl), #0x00
                             251 ;src/titles.c:125: v_reset_timers();
    2522 C3 CB 32      [10]  252 	jp  _v_reset_timers
@@ -529,10 +529,10 @@
    26A9 C9            [10]  529 	ret
                             530 	.area _CODE
                             531 	.area _INITIALIZER
-   A0FB                     532 __xinit__int_idx:
-   A0FB 00                  533 	.db #0x00	; 0
-   A0FC                     534 __xinit__pal_idx:
-   A0FC 00                  535 	.db #0x00	; 0
-   A0FD                     536 __xinit__frame_c:
-   A0FD 00 00               537 	.dw #0x0000
+   A0F7                     532 __xinit__int_idx:
+   A0F7 00                  533 	.db #0x00	; 0
+   A0F8                     534 __xinit__pal_idx:
+   A0F8 00                  535 	.db #0x00	; 0
+   A0F9                     536 __xinit__frame_c:
+   A0F9 00 00               537 	.dw #0x0000
                             538 	.area _CABS (ABS)

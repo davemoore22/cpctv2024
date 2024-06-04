@@ -181,7 +181,7 @@ __str_5:
 	.ascii "MUSIC/SFX BY"
 	.db 0x00
 __str_6:
-	.ascii "JULIAN NEVO"
+	.ascii "TARGHAN"
 	.db 0x00
 __str_7:
 	.ascii "MADE WITH CPCTELERA"

@@ -41,16 +41,16 @@
                              41 ; ram data
                              42 ;--------------------------------------------------------
                              43 	.area _DATA
-   9E5C                      44 _g_clock_on::
-   9E5C                      45 	.ds 1
-   9E5D                      46 _u_clock_interrupt_count_1_315:
-   9E5D                      47 	.ds 1
+   9E58                      44 _g_clock_on::
+   9E58                      45 	.ds 1
+   9E59                      46 _u_clock_interrupt_count_1_315:
+   9E59                      47 	.ds 1
                              48 ;--------------------------------------------------------
                              49 ; ram data
                              50 ;--------------------------------------------------------
                              51 	.area _INITIALIZED
-   A06B                      52 _g_clock::
-   A06B                      53 	.ds 4
+   A067                      52 _g_clock::
+   A067                      53 	.ds 4
                              54 ;--------------------------------------------------------
                              55 ; absolute external ram data
                              56 ;--------------------------------------------------------
@@ -63,8 +63,8 @@
                              63 	.area _GSFINAL
                              64 	.area _GSINIT
                              65 ;src/lib/utilities.c:276: static u8 count = 0;
-   A0F0 FD 21 5D 9E   [14]   66 	ld	iy, #_u_clock_interrupt_count_1_315
-   A0F4 FD 36 00 00   [19]   67 	ld	0 (iy), #0x00
+   A0EC FD 21 59 9E   [14]   66 	ld	iy, #_u_clock_interrupt_count_1_315
+   A0F0 FD 36 00 00   [19]   67 	ld	0 (iy), #0x00
                              68 ;--------------------------------------------------------
                              69 ; Home
                              70 ;--------------------------------------------------------
@@ -86,9 +86,9 @@
    28CE CB 47         [ 8]   86 	bit	0, a
    28D0 C0            [11]   87 	ret	NZ
                              88 ;src/lib/utilities.c:32: cpct_scanKeyboard();
-   28D1 CD 04 90      [17]   89 	call	_cpct_scanKeyboard
+   28D1 CD 00 90      [17]   89 	call	_cpct_scanKeyboard
                              90 ;src/lib/utilities.c:33: kp = cpct_isAnyKeyPressed();
-   28D4 CD 38 8E      [17]   91 	call	_cpct_isAnyKeyPressed
+   28D4 CD 34 8E      [17]   91 	call	_cpct_isAnyKeyPressed
    28D7 AF            [ 4]   92 	xor	a, a
    28D8 BD            [ 4]   93 	cp	a, l
    28D9 17            [ 4]   94 	rla
@@ -124,26 +124,26 @@
                             124 ;src/lib/utilities.c:52: do
    28EE                     125 00101$:
                             126 ;src/lib/utilities.c:53: cpct_scanKeyboard_f();
-   28EE CD 84 8A      [17]  127 	call	_cpct_scanKeyboard_f
+   28EE CD 80 8A      [17]  127 	call	_cpct_scanKeyboard_f
                             128 ;src/lib/utilities.c:54: while(!cpct_isKeyPressed(key));
    28F1 C1            [10]  129 	pop	bc
    28F2 E1            [10]  130 	pop	hl
    28F3 E5            [11]  131 	push	hl
    28F4 C5            [11]  132 	push	bc
-   28F5 CD EE 8A      [17]  133 	call	_cpct_isKeyPressed
+   28F5 CD EA 8A      [17]  133 	call	_cpct_isKeyPressed
    28F8 7D            [ 4]  134 	ld	a, l
    28F9 B7            [ 4]  135 	or	a, a
    28FA 28 F2         [12]  136 	jr	Z,00101$
                             137 ;src/lib/utilities.c:56: do
    28FC                     138 00104$:
                             139 ;src/lib/utilities.c:57: cpct_scanKeyboard_f();
-   28FC CD 84 8A      [17]  140 	call	_cpct_scanKeyboard_f
+   28FC CD 80 8A      [17]  140 	call	_cpct_scanKeyboard_f
                             141 ;src/lib/utilities.c:58: while(cpct_isKeyPressed(key));
    28FF C1            [10]  142 	pop	bc
    2900 E1            [10]  143 	pop	hl
    2901 E5            [11]  144 	push	hl
    2902 C5            [11]  145 	push	bc
-   2903 CD EE 8A      [17]  146 	call	_cpct_isKeyPressed
+   2903 CD EA 8A      [17]  146 	call	_cpct_isKeyPressed
    2906 7D            [ 4]  147 	ld	a, l
    2907 B7            [ 4]  148 	or	a, a
    2908 20 F2         [12]  149 	jr	NZ,00104$
@@ -193,7 +193,7 @@
    293C E5            [11]  193 	push	hl
    293D D5            [11]  194 	push	de
    293E C5            [11]  195 	push	bc
-   293F CD 74 A0      [17]  196 	call	__divulong
+   293F CD 70 A0      [17]  196 	call	__divulong
    2942 F1            [10]  197 	pop	af
    2943 F1            [10]  198 	pop	af
    2944 F1            [10]  199 	pop	af
@@ -229,8 +229,8 @@
    295F CB 40         [ 8]  229 	bit	0, b
    2961 20 13         [12]  230 	jr	NZ,00103$
                             231 ;src/lib/utilities.c:89: num = cpct_getRandom_lcg_u8(cpct_getRandom_glfsr16_u8());
-   2963 CD 23 8F      [17]  232 	call	_cpct_getRandom_glfsr16_u8
-   2966 CD 27 8E      [17]  233 	call	_cpct_getRandom_lcg_u8
+   2963 CD 1F 8F      [17]  232 	call	_cpct_getRandom_glfsr16_u8
+   2966 CD 23 8E      [17]  233 	call	_cpct_getRandom_lcg_u8
    2969 4D            [ 4]  234 	ld	c, l
                             235 ;src/lib/utilities.c:90: finished = num < max;
    296A 21 02 00      [10]  236 	ld	hl, #2
@@ -973,9 +973,9 @@
    2D48 3E FF         [ 7]  973 	ld	a, #0xff
    2D4A F5            [11]  974 	push	af
    2D4B 33            [ 6]  975 	inc	sp
-   2D4C 21 2B 8C      [10]  976 	ld	hl, #_cpct_keyboardStatusBuffer
+   2D4C 21 27 8C      [10]  976 	ld	hl, #_cpct_keyboardStatusBuffer
    2D4F E5            [11]  977 	push	hl
-   2D50 CD 06 8F      [17]  978 	call	_cpct_memset
+   2D50 CD 02 8F      [17]  978 	call	_cpct_memset
    2D53 C9            [10]  979 	ret
                             980 ;src/lib/utilities.c:274: void u_clock_interrupt(void) {
                             981 ;	---------------------------------
@@ -983,33 +983,33 @@
                             983 ; ---------------------------------
    2D54                     984 _u_clock_interrupt::
                             985 ;src/lib/utilities.c:279: if (g_clock_on) {
-   2D54 21 5C 9E      [10]  986 	ld	hl,#_g_clock_on+0
+   2D54 21 58 9E      [10]  986 	ld	hl,#_g_clock_on+0
    2D57 CB 46         [12]  987 	bit	0, (hl)
    2D59 C8            [11]  988 	ret	Z
                             989 ;src/lib/utilities.c:286: count = ++count % 6;
-   2D5A 21 5D 9E      [10]  990 	ld	hl, #_u_clock_interrupt_count_1_315+0
+   2D5A 21 59 9E      [10]  990 	ld	hl, #_u_clock_interrupt_count_1_315+0
    2D5D 34            [11]  991 	inc	(hl)
    2D5E 3E 06         [ 7]  992 	ld	a, #0x06
    2D60 F5            [11]  993 	push	af
    2D61 33            [ 6]  994 	inc	sp
-   2D62 3A 5D 9E      [13]  995 	ld	a, (_u_clock_interrupt_count_1_315)
+   2D62 3A 59 9E      [13]  995 	ld	a, (_u_clock_interrupt_count_1_315)
    2D65 F5            [11]  996 	push	af
    2D66 33            [ 6]  997 	inc	sp
-   2D67 CD 14 8C      [17]  998 	call	__moduchar
+   2D67 CD 10 8C      [17]  998 	call	__moduchar
    2D6A F1            [10]  999 	pop	af
-   2D6B FD 21 5D 9E   [14] 1000 	ld	iy, #_u_clock_interrupt_count_1_315
+   2D6B FD 21 59 9E   [14] 1000 	ld	iy, #_u_clock_interrupt_count_1_315
    2D6F FD 75 00      [19] 1001 	ld	0 (iy), l
                            1002 ;src/lib/utilities.c:287: if (count == 5) {
    2D72 FD 7E 00      [19] 1003 	ld	a, 0 (iy)
    2D75 D6 05         [ 7] 1004 	sub	a, #0x05
    2D77 C0            [11] 1005 	ret	NZ
                            1006 ;src/lib/utilities.c:288: g_clock.ms += 20;
-   2D78 ED 4B 6B A0   [20] 1007 	ld	bc, (#_g_clock + 0)
+   2D78 ED 4B 67 A0   [20] 1007 	ld	bc, (#_g_clock + 0)
    2D7C 21 14 00      [10] 1008 	ld	hl, #0x0014
    2D7F 09            [11] 1009 	add	hl,bc
    2D80 4D            [ 4] 1010 	ld	c, l
    2D81 44            [ 4] 1011 	ld	b, h
-   2D82 ED 43 6B A0   [20] 1012 	ld	(_g_clock), bc
+   2D82 ED 43 67 A0   [20] 1012 	ld	(_g_clock), bc
                            1013 ;src/lib/utilities.c:289: if (g_clock.ms == 1000) {
    2D86 79            [ 4] 1014 	ld	a, c
    2D87 D6 E8         [ 7] 1015 	sub	a, #0xe8
@@ -1018,12 +1018,12 @@
    2D8B D6 03         [ 7] 1018 	sub	a, #0x03
    2D8D C0            [11] 1019 	ret	NZ
                            1020 ;src/lib/utilities.c:290: ++g_clock.s;
-   2D8E ED 4B 6D A0   [20] 1021 	ld	bc, (#(_g_clock + 0x0002) + 0)
+   2D8E ED 4B 69 A0   [20] 1021 	ld	bc, (#(_g_clock + 0x0002) + 0)
    2D92 03            [ 6] 1022 	inc	bc
-   2D93 ED 43 6D A0   [20] 1023 	ld	((_g_clock + 0x0002)), bc
+   2D93 ED 43 69 A0   [20] 1023 	ld	((_g_clock + 0x0002)), bc
                            1024 ;src/lib/utilities.c:291: g_clock.ms = 0;
    2D97 21 00 00      [10] 1025 	ld	hl, #0x0000
-   2D9A 22 6B A0      [16] 1026 	ld	(_g_clock), hl
+   2D9A 22 67 A0      [16] 1026 	ld	(_g_clock), hl
    2D9D C9            [10] 1027 	ret
                            1028 ;src/lib/utilities.c:304: void u_reset_clock(void) {
                            1029 ;	---------------------------------
@@ -1032,9 +1032,9 @@
    2D9E                    1032 _u_reset_clock::
                            1033 ;src/lib/utilities.c:306: g_clock.ms = g_clock.s = 0;
    2D9E 21 00 00      [10] 1034 	ld	hl, #0x0000
-   2DA1 22 6D A0      [16] 1035 	ld	((_g_clock + 0x0002)), hl
+   2DA1 22 69 A0      [16] 1035 	ld	((_g_clock + 0x0002)), hl
    2DA4 2E 00         [ 7] 1036 	ld	l, #0x00
-   2DA6 22 6B A0      [16] 1037 	ld	(_g_clock), hl
+   2DA6 22 67 A0      [16] 1037 	ld	(_g_clock), hl
    2DA9 C9            [10] 1038 	ret
                            1039 ;src/lib/utilities.c:310: inline bool u_check_collide(const i8 x1, const i8 y1, const i8 x2,
                            1040 ;	---------------------------------
@@ -1071,7 +1071,7 @@
    2DD0 3E 0A         [ 7] 1071 	ld	a, #0x0a
    2DD2 F5            [11] 1072 	push	af
    2DD3 33            [ 6] 1073 	inc	sp
-   2DD4 21 D2 9D      [10] 1074 	ld	hl, #_g_hiscores
+   2DD4 21 CE 9D      [10] 1074 	ld	hl, #_g_hiscores
    2DD7 E5            [11] 1075 	push	hl
    2DD8 CD DE 2D      [17] 1076 	call	_u_quicksort
    2DDB F1            [10] 1077 	pop	af
@@ -1414,7 +1414,7 @@
    3032 C9            [10] 1414 	ret
                            1415 	.area _CODE
                            1416 	.area _INITIALIZER
-   A0FF                    1417 __xinit__g_clock:
-   A0FF 00 00              1418 	.dw #0x0000
-   A101 00 00              1419 	.dw #0x0000
+   A0FB                    1417 __xinit__g_clock:
+   A0FB 00 00              1418 	.dw #0x0000
+   A0FD 00 00              1419 	.dw #0x0000
                            1420 	.area _CABS (ABS)

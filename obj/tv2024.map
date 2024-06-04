@@ -19,20 +19,20 @@ Area                                    Addr        Size        Decimal Bytes (A
      00000040  s__CODE                         
      0000007C  l__HOME                         
      000004A2  l__DATA                         
-     00009B82  l__CODE                         
-     00009BC2  s__DATA                         
-     0000A064  s__INITIALIZED                  
-     0000A074  s__HOME                         
-     0000A0F0  s__GSINIT                       
-     0000A0F8  s__GSFINAL                      
-     0000A0F8  s__INITIALIZER                  
+     00009B7E  l__CODE                         
+     00009BBE  s__DATA                         
+     0000A060  s__INITIALIZED                  
+     0000A070  s__HOME                         
+     0000A0EC  s__GSINIT                       
+     0000A0F4  s__GSFINAL                      
+     0000A0F4  s__INITIALIZER                  
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+_CODE                               00000040    00009B7E =       39806. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -91,7 +91,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+_CODE                               00000040    00009B7E =       39806. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -151,7 +151,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+_CODE                               00000040    00009B7E =       39806. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -211,7 +211,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+_CODE                               00000040    00009B7E =       39806. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -271,7 +271,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+_CODE                               00000040    00009B7E =       39806. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -331,7 +331,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+_CODE                               00000040    00009B7E =       39806. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -391,7 +391,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+_CODE                               00000040    00009B7E =       39806. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -451,7 +451,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+_CODE                               00000040    00009B7E =       39806. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -470,258 +470,258 @@ _CODE                               00000040    00009B82 =       39810. bytes (R
      000066E8  _PlaySound                         sound
      00006724  _StopMusic                         sound
      00006727  _g_strings                         strings
-     00006D18  _grid_bg_ts                        tiles
-     00006D26  _grid_bg_00                        tiles
-     00006D44  _grid_bg_01                        tiles
-     00006D62  _grid_bg_02                        tiles
-     00006D80  _grid_bg_03                        tiles
-     00006D9E  _grid_bg_04                        tiles
-     00006DBC  _grid_bg_05                        tiles
-     00006DDA  _grid_bg_06                        tiles
-     00006DF8  _grid_fg_ts                        tiles
-     00006E14  _grid_fg_00                        tiles
-     00006E50  _grid_fg_01                        tiles
-     00006E8C  _grid_fg_02                        tiles
-     00006EC8  _grid_fg_03                        tiles
-     00006F04  _grid_fg_04                        tiles
-     00006F40  _grid_fg_05                        tiles
-     00006F7C  _grid_fg_06                        tiles
-     00006FB8  _grid_fg_07                        tiles
-     00006FF4  _grid_fg_08                        tiles
-     00007030  _grid_fg_09                        tiles
-     0000706C  _grid_fg_10                        tiles
-     000070A8  _grid_fg_11                        tiles
-     000070E4  _grid_fg_12                        tiles
-     00007120  _grid_fg_13                        tiles
-     0000715C  _player_ts                         tiles
-     0000716E  _player_00                         tiles
-     00007236  _player_01                         tiles
-     000072FE  _player_02                         tiles
-     000073C6  _player_03                         tiles
-     0000748E  _player_04                         tiles
-     00007556  _player_05                         tiles
-     0000761E  _player_06                         tiles
-     000076E6  _player_07                         tiles
-     000077AE  _player_08                         tiles
-     00007876  _gui_ts                            tiles
-     00007888  _gui_0                             tiles
-     000078C4  _gui_1                             tiles
+     00006D14  _grid_bg_ts                        tiles
+     00006D22  _grid_bg_00                        tiles
+     00006D40  _grid_bg_01                        tiles
+     00006D5E  _grid_bg_02                        tiles
+     00006D7C  _grid_bg_03                        tiles
+     00006D9A  _grid_bg_04                        tiles
+     00006DB8  _grid_bg_05                        tiles
+     00006DD6  _grid_bg_06                        tiles
+     00006DF4  _grid_fg_ts                        tiles
+     00006E10  _grid_fg_00                        tiles
+     00006E4C  _grid_fg_01                        tiles
+     00006E88  _grid_fg_02                        tiles
+     00006EC4  _grid_fg_03                        tiles
+     00006F00  _grid_fg_04                        tiles
+     00006F3C  _grid_fg_05                        tiles
+     00006F78  _grid_fg_06                        tiles
+     00006FB4  _grid_fg_07                        tiles
+     00006FF0  _grid_fg_08                        tiles
+     0000702C  _grid_fg_09                        tiles
+     00007068  _grid_fg_10                        tiles
+     000070A4  _grid_fg_11                        tiles
+     000070E0  _grid_fg_12                        tiles
+     0000711C  _grid_fg_13                        tiles
+     00007158  _player_ts                         tiles
+     0000716A  _player_00                         tiles
+     00007232  _player_01                         tiles
+     000072FA  _player_02                         tiles
+     000073C2  _player_03                         tiles
+     0000748A  _player_04                         tiles
+     00007552  _player_05                         tiles
+     0000761A  _player_06                         tiles
+     000076E2  _player_07                         tiles
+     000077AA  _player_08                         tiles
+     00007872  _gui_ts                            tiles
+     00007884  _gui_0                             tiles
+     000078C0  _gui_1                             tiles
 ASxxxx Linker V03.00 + NoICE + sdld,  page 10.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+_CODE                               00000040    00009B7E =       39806. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00007900  _gui_2                             tiles
-     0000793C  _gui_3                             tiles
-     00007978  _gui_4                             tiles
-     000079B4  _gui_5                             tiles
-     000079F0  _gui_6                             tiles
-     00007A2C  _gui_7                             tiles
-     00007A68  _gui_8                             tiles
-     00007AA4  _explode_ts                        tiles
-     00007AAE  _explode_0                         tiles
-     00007AEA  _explode_1                         tiles
-     00007B26  _explode_2                         tiles
-     00007B62  _explode_3                         tiles
-     00007B9E  _explode_4                         tiles
-     00007BDA  _enemies_v_ts                      tiles
-     00007BF2  _enemies_h_ts                      tiles
-     00007C0A  _enemies_v_00                      tiles
-     00007C22  _enemies_v_01                      tiles
-     00007C3A  _enemies_v_02                      tiles
-     00007C52  _enemies_v_03                      tiles
-     00007C6A  _enemies_v_04                      tiles
-     00007C82  _enemies_v_05                      tiles
-     00007C9A  _enemies_v_06                      tiles
-     00007CB2  _enemies_v_07                      tiles
-     00007CCA  _enemies_v_08                      tiles
-     00007CE2  _enemies_v_09                      tiles
-     00007CFA  _enemies_v_10                      tiles
-     00007D12  _enemies_v_11                      tiles
-     00007D2A  _enemies_h_00                      tiles
-     00007D42  _enemies_h_01                      tiles
-     00007D5A  _enemies_h_02                      tiles
-     00007D72  _enemies_h_03                      tiles
-     00007D8A  _enemies_h_04                      tiles
-     00007DA2  _enemies_h_05                      tiles
-     00007DBA  _enemies_h_06                      tiles
-     00007DD2  _enemies_h_07                      tiles
-     00007DEA  _enemies_h_08                      tiles
-     00007E02  _enemies_h_09                      tiles
-     00007E1A  _enemies_h_10                      tiles
-     00007E32  _enemies_h_11                      tiles
-     00007E4A  _AHARMLESSGRENADE_START            arkos2
-     0000825D  _SOUNDEFFECTS_SOUNDEFFECTS         arkos2
-     00008340  _PLY_AKM_INITSOUNDEFFECTS          arkos2
-     00008344  _PLY_AKM_PLAYSOUNDEFFECT           arkos2
-     0000836C  _PLY_AKM_STOPSOUNDEFFECTFROMCHAN   arkos2
-     00008445  _PLY_AKM_INIT                      arkos2
-     000084C3  _PLY_AKM_STOP                      arkos2
-     000084D9  _PLY_AKM_PLAY                      arkos2
-     00008A40  _PLAYER_ARKOS_INITSOUNDEFFECTS     arkos2
-     00008A43  _PLAYER_ARKOS_PLAYSOUNDEFFECT      arkos2
-     00008A4B  _PLAYER_ARKOS_STOPSOUNDEFFECTFRO   arkos2
-     00008A4F  _PLAYER_ARKOS_INIT                 arkos2
+     000078FC  _gui_2                             tiles
+     00007938  _gui_3                             tiles
+     00007974  _gui_4                             tiles
+     000079B0  _gui_5                             tiles
+     000079EC  _gui_6                             tiles
+     00007A28  _gui_7                             tiles
+     00007A64  _gui_8                             tiles
+     00007AA0  _explode_ts                        tiles
+     00007AAA  _explode_0                         tiles
+     00007AE6  _explode_1                         tiles
+     00007B22  _explode_2                         tiles
+     00007B5E  _explode_3                         tiles
+     00007B9A  _explode_4                         tiles
+     00007BD6  _enemies_v_ts                      tiles
+     00007BEE  _enemies_h_ts                      tiles
+     00007C06  _enemies_v_00                      tiles
+     00007C1E  _enemies_v_01                      tiles
+     00007C36  _enemies_v_02                      tiles
+     00007C4E  _enemies_v_03                      tiles
+     00007C66  _enemies_v_04                      tiles
+     00007C7E  _enemies_v_05                      tiles
+     00007C96  _enemies_v_06                      tiles
+     00007CAE  _enemies_v_07                      tiles
+     00007CC6  _enemies_v_08                      tiles
+     00007CDE  _enemies_v_09                      tiles
+     00007CF6  _enemies_v_10                      tiles
+     00007D0E  _enemies_v_11                      tiles
+     00007D26  _enemies_h_00                      tiles
+     00007D3E  _enemies_h_01                      tiles
+     00007D56  _enemies_h_02                      tiles
+     00007D6E  _enemies_h_03                      tiles
+     00007D86  _enemies_h_04                      tiles
+     00007D9E  _enemies_h_05                      tiles
+     00007DB6  _enemies_h_06                      tiles
+     00007DCE  _enemies_h_07                      tiles
+     00007DE6  _enemies_h_08                      tiles
+     00007DFE  _enemies_h_09                      tiles
+     00007E16  _enemies_h_10                      tiles
+     00007E2E  _enemies_h_11                      tiles
+     00007E46  _AHARMLESSGRENADE_START            arkos2
+     00008259  _SOUNDEFFECTS_SOUNDEFFECTS         arkos2
+     0000833C  _PLY_AKM_INITSOUNDEFFECTS          arkos2
+     00008340  _PLY_AKM_PLAYSOUNDEFFECT           arkos2
+     00008368  _PLY_AKM_STOPSOUNDEFFECTFROMCHAN   arkos2
+     00008441  _PLY_AKM_INIT                      arkos2
+     000084BF  _PLY_AKM_STOP                      arkos2
+     000084D5  _PLY_AKM_PLAY                      arkos2
+     00008A3C  _PLAYER_ARKOS_INITSOUNDEFFECTS     arkos2
+     00008A3F  _PLAYER_ARKOS_PLAYSOUNDEFFECT      arkos2
+     00008A47  _PLAYER_ARKOS_STOPSOUNDEFFECTFRO   arkos2
+     00008A4B  _PLAYER_ARKOS_INIT                 arkos2
 ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+_CODE                               00000040    00009B7E =       39806. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00008A57  _PLAYER_ARKOS_STOP                 arkos2
-     00008A5A  _PLAYER_ARKOS_PLAY                 arkos2
-     00008A5D  _cpct_disableFirmware              cpct_firmware
-     00008A5D  _cpct_removeInterruptHandler       cpct_firmware
-     00008A5D  cpct_disableFirmware_asm           cpct_firmware
-     00008A5D  cpct_removeInterruptHandler_asm    cpct_firmware
-     00008A6D  _cpct_setPalette                   cpct_video
-     00008A84  _cpct_scanKeyboard_f               cpct_keyboard
-     00008A84  cpct_scanKeyboard_f_asm            cpct_keyboard
-     00008AEE  _cpct_isKeyPressed                 cpct_keyboard
-     00008AEE  cpct_isKeyPressed_asm              cpct_keyboard
-     00008AFA  __modsuchar                        
-     00008B09  __moduschar                        
-     00008B1B  _cpct_setPALColour                 cpct_video
-     00008B27  __divsint                          
-     00008B30  __divschar                         
-     00008B37  __div8                             
-     00008B3B  __div_signexte                     
-     00008B3F  __div16                            
-     00008B65  __get_remainder                    
-     00008B6F  _cpct_drawSprite                   cpct_sprites
-     00008C14  __moduchar                         
-     00008C20  __moduint                          
-     00008C2B  _cpct_keyboardStatusBuffer         cpct_keyboard
-     00008C35  __mulint                           
-     00008C3B  __mul16                            
-     00008C4F  __divuint                          
-     00008C57  __divuchar                         
-     00008C5E  __divu8                            
-     00008C61  __divu16                           
-     00008C90  _cpct_drawSpriteMasked             cpct_sprites
-     00008CBF  _cpct_memset_f64                   cpct_memutils
-     00008D0A  _cpct_getKeypressedAsASCII         cpct_keyboard
-     00008D18  _cpct_keyID_to_ASCII_table         cpct_keyboard
-     00008D9F  _vsprintf                          sprintf
-     00008DD4  _sprintf                           sprintf
-     00008E09  _cpct_drawToSpriteBuffer           cpct_sprites
-     00008E27  _cpct_getRandom_lcg_u8             cpct_random
-     00008E27  cpct_getRandom_lcg_u8_asm          cpct_random
-     00008E28  cpct_randlcgu8_seed                cpct_random
-     00008E38  _cpct_isAnyKeyPressed              cpct_keyboard
-     00008E38  cpct_isAnyKeyPressed_asm           cpct_keyboard
-     00008E45  _cpct_scanKeyboard_if              cpct_keyboard
-     00008E45  cpct_scanKeyboard_if_asm           cpct_keyboard
-     00008EAD  _cpct_setVideoMode                 cpct_video
-     00008EBB  _cpct_waitVSYNC                    cpct_video
-     00008EBB  cpct_waitVSYNC_asm                 cpct_video
-     00008EC3  _cpct_zx7b_decrunch_s              cpct_compression
-     00008F06  _cpct_memset                       cpct_memutils
-     00008F14  _strlen                            
-     00008F23  _cpct_getRandom_glfsr16_u16        cpct_random
+     00008A53  _PLAYER_ARKOS_STOP                 arkos2
+     00008A56  _PLAYER_ARKOS_PLAY                 arkos2
+     00008A59  _cpct_disableFirmware              cpct_firmware
+     00008A59  _cpct_removeInterruptHandler       cpct_firmware
+     00008A59  cpct_disableFirmware_asm           cpct_firmware
+     00008A59  cpct_removeInterruptHandler_asm    cpct_firmware
+     00008A69  _cpct_setPalette                   cpct_video
+     00008A80  _cpct_scanKeyboard_f               cpct_keyboard
+     00008A80  cpct_scanKeyboard_f_asm            cpct_keyboard
+     00008AEA  _cpct_isKeyPressed                 cpct_keyboard
+     00008AEA  cpct_isKeyPressed_asm              cpct_keyboard
+     00008AF6  __modsuchar                        
+     00008B05  __moduschar                        
+     00008B17  _cpct_setPALColour                 cpct_video
+     00008B23  __divsint                          
+     00008B2C  __divschar                         
+     00008B33  __div8                             
+     00008B37  __div_signexte                     
+     00008B3B  __div16                            
+     00008B61  __get_remainder                    
+     00008B6B  _cpct_drawSprite                   cpct_sprites
+     00008C10  __moduchar                         
+     00008C1C  __moduint                          
+     00008C27  _cpct_keyboardStatusBuffer         cpct_keyboard
+     00008C31  __mulint                           
+     00008C37  __mul16                            
+     00008C4B  __divuint                          
+     00008C53  __divuchar                         
+     00008C5A  __divu8                            
+     00008C5D  __divu16                           
+     00008C8C  _cpct_drawSpriteMasked             cpct_sprites
+     00008CBB  _cpct_memset_f64                   cpct_memutils
+     00008D06  _cpct_getKeypressedAsASCII         cpct_keyboard
+     00008D14  _cpct_keyID_to_ASCII_table         cpct_keyboard
+     00008D9B  _vsprintf                          sprintf
+     00008DD0  _sprintf                           sprintf
+     00008E05  _cpct_drawToSpriteBuffer           cpct_sprites
+     00008E23  _cpct_getRandom_lcg_u8             cpct_random
+     00008E23  cpct_getRandom_lcg_u8_asm          cpct_random
+     00008E24  cpct_randlcgu8_seed                cpct_random
+     00008E34  _cpct_isAnyKeyPressed              cpct_keyboard
+     00008E34  cpct_isAnyKeyPressed_asm           cpct_keyboard
+     00008E41  _cpct_scanKeyboard_if              cpct_keyboard
+     00008E41  cpct_scanKeyboard_if_asm           cpct_keyboard
+     00008EA9  _cpct_setVideoMode                 cpct_video
+     00008EB7  _cpct_waitVSYNC                    cpct_video
+     00008EB7  cpct_waitVSYNC_asm                 cpct_video
+     00008EBF  _cpct_zx7b_decrunch_s              cpct_compression
+     00008F02  _cpct_memset                       cpct_memutils
+     00008F10  _strlen                            
+     00008F1F  _cpct_getRandom_glfsr16_u16        cpct_random
 ASxxxx Linker V03.00 + NoICE + sdld,  page 12.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000040    00009B82 =       39810. bytes (REL,CON)
+_CODE                               00000040    00009B7E =       39806. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00008F23  _cpct_getRandom_glfsr16_u8         cpct_random
-     00008F23  cpct_getRandom_glfsr16_u16_asm     cpct_random
-     00008F23  cpct_getRandom_glfsr16_u8_asm      cpct_random
-     00008F24  cpct_randUnif_glfsr16_seed         cpct_random
-     00008F2F  cpct_randUnif_glfsr16_hightaps     cpct_random
-     00008F33  cpct_randUnif_glfsr16_lowtaps      cpct_random
-     00008F39  _cpct_drawSolidBox                 cpct_sprites
-     00008FE0  _cpct_mode_rom_status              cpct_firmware
-     00008FE1  _cpct_getScreenPtr                 cpct_video
-     00008FF7  _cpct_waitVSYNCStart               cpct_video
-     00008FF7  cpct_waitVSYNCStart_asm            cpct_video
-     00009004  _cpct_scanKeyboard                 cpct_keyboard
-     00009004  cpct_scanKeyboard_asm              cpct_keyboard
-     00009035  _cpct_drawToSpriteBufferMasked     cpct_sprites
-     00009059  _cpct_setInterruptHandler          cpct_firmware
-     00009059  cpct_setInterruptHandler_asm       cpct_firmware
-     0000906A  cpct_safeInterruptHandlerHook      cpct_firmware
-     0000917F  __print_format                     printf_large
-     00009BC1  ___sdcc_call_hl                    
+     00008F1F  _cpct_getRandom_glfsr16_u8         cpct_random
+     00008F1F  cpct_getRandom_glfsr16_u16_asm     cpct_random
+     00008F1F  cpct_getRandom_glfsr16_u8_asm      cpct_random
+     00008F20  cpct_randUnif_glfsr16_seed         cpct_random
+     00008F2B  cpct_randUnif_glfsr16_hightaps     cpct_random
+     00008F2F  cpct_randUnif_glfsr16_lowtaps      cpct_random
+     00008F35  _cpct_drawSolidBox                 cpct_sprites
+     00008FDC  _cpct_mode_rom_status              cpct_firmware
+     00008FDD  _cpct_getScreenPtr                 cpct_video
+     00008FF3  _cpct_waitVSYNCStart               cpct_video
+     00008FF3  cpct_waitVSYNCStart_asm            cpct_video
+     00009000  _cpct_scanKeyboard                 cpct_keyboard
+     00009000  cpct_scanKeyboard_asm              cpct_keyboard
+     00009031  _cpct_drawToSpriteBufferMasked     cpct_sprites
+     00009055  _cpct_setInterruptHandler          cpct_firmware
+     00009055  cpct_setInterruptHandler_asm       cpct_firmware
+     00009066  cpct_safeInterruptHandlerHook      cpct_firmware
+     0000917B  __print_format                     printf_large
+     00009BBD  ___sdcc_call_hl                    
 ASxxxx Linker V03.00 + NoICE + sdld,  page 13.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_DATA                               00009BC2    000004A2 =        1186. bytes (REL,CON)
+_DATA                               00009BBE    000004A2 =        1186. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00009BC2  _g_music_sfx                       game
-     00009BC3  _g_enemies                         game
-     00009BE3  _g_bolts                           game
-     00009C1B  _g_level                           game
-     00009DC4  _g_pods_left                       game
-     00009DC5  _g_current_level                   game
-     00009DC6  _g_current_round                   game
-     00009DC7  _g_lives_left                      game
-     00009DC8  _g_player                          game
-     00009DD2  _g_hiscores                        game
-     00009E2C  _g_controls                        game
-     00009E3E  _g_current_score                   game
-     00009E48  _controls                          redefine
-     00009E5A  _t_in_titles                       titles
-     00009E5C  _g_clock_on                        utilities
-     00009E5E  _v_player_buf                      video
-     0000A05C  __currentMusic                     sound
-     0000A05E  __fxChanged                        sound
-     0000A05F  __fxNumber                         sound
-     0000A060  __fxChannel                        sound
-     0000A061  __fxVolume                         sound
-     0000A062  __songChanged                      sound
-     0000A063  __songNumber                       sound
+     00009BBE  _g_music_sfx                       game
+     00009BBF  _g_enemies                         game
+     00009BDF  _g_bolts                           game
+     00009C17  _g_level                           game
+     00009DC0  _g_pods_left                       game
+     00009DC1  _g_current_level                   game
+     00009DC2  _g_current_round                   game
+     00009DC3  _g_lives_left                      game
+     00009DC4  _g_player                          game
+     00009DCE  _g_hiscores                        game
+     00009E28  _g_controls                        game
+     00009E3A  _g_current_score                   game
+     00009E44  _controls                          redefine
+     00009E56  _t_in_titles                       titles
+     00009E58  _g_clock_on                        utilities
+     00009E5A  _v_player_buf                      video
+     0000A058  __currentMusic                     sound
+     0000A05A  __fxChanged                        sound
+     0000A05B  __fxNumber                         sound
+     0000A05C  __fxChannel                        sound
+     0000A05D  __fxVolume                         sound
+     0000A05E  __songChanged                      sound
+     0000A05F  __songNumber                       sound
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 14.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_INITIALIZED                        0000A064    00000010 =          16. bytes (REL,CON)
+_INITIALIZED                        0000A060    00000010 =          16. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     0000A064  _g_int_idx                         game
-     0000A065  _g_frame_c                         game
-     0000A066  _g_bolt_count                      game
-     0000A06B  _g_clock                           utilities
-     0000A06F  _v_int_idx                         video
-     0000A070  _v_pal_idx                         video
-     0000A071  _v_frame_c                         video
-     0000A072  _v_cycle_c                         video
+     0000A060  _g_int_idx                         game
+     0000A061  _g_frame_c                         game
+     0000A062  _g_bolt_count                      game
+     0000A067  _g_clock                           utilities
+     0000A06B  _v_int_idx                         video
+     0000A06C  _v_pal_idx                         video
+     0000A06D  _v_frame_c                         video
+     0000A06E  _v_cycle_c                         video
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 15.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_HOME                               0000A074    0000007C =         124. bytes (REL,CON)
+_HOME                               0000A070    0000007C =         124. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     0000A074  __divulong                         _divulong
+     0000A070  __divulong                         _divulong
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 16.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_GSINIT                             0000A0F0    00000008 =           8. bytes (REL,CON)
+_GSINIT                             0000A0EC    00000008 =           8. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -730,7 +730,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_INITIALIZER                        0000A0F8    00000010 =          16. bytes (REL,CON)
+_INITIALIZER                        0000A0F4    00000010 =          16. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------

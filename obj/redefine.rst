@@ -36,8 +36,8 @@
                              36 ; ram data
                              37 ;--------------------------------------------------------
                              38 	.area _DATA
-   9E48                      39 _controls::
-   9E48                      40 	.ds 18
+   9E44                      39 _controls::
+   9E44                      40 	.ds 18
                              41 ;--------------------------------------------------------
                              42 ; ram data
                              43 ;--------------------------------------------------------
@@ -76,7 +76,7 @@
                              76 ;src/redefine.c:39: v_clr_scr();
    2067 CD F2 30      [17]   77 	call	_v_clr_scr
                              78 ;src/redefine.c:42: for (u8 i = 0; i < 9; i++)
-   206A 01 48 9E      [10]   79 	ld	bc, #_controls+0
+   206A 01 44 9E      [10]   79 	ld	bc, #_controls+0
    206D 1E 00         [ 7]   80 	ld	e, #0x00
    206F                      81 00132$:
    206F 7B            [ 4]   82 	ld	a, e
@@ -89,7 +89,7 @@
    2078 E5            [11]   89 	push	hl
    2079 FD E1         [14]   90 	pop	iy
    207B FD 09         [15]   91 	add	iy, bc
-   207D 3E 2C         [ 7]   92 	ld	a, #<(_g_controls)
+   207D 3E 28         [ 7]   92 	ld	a, #<(_g_controls)
    207F 85            [ 4]   93 	add	a, l
    2080 6F            [ 4]   94 	ld	l, a
    2081 3E 9E         [ 7]   95 	ld	a, #>(_g_controls)
@@ -114,9 +114,9 @@
    209B 33            [ 6]  114 	inc	sp
    209C CD 2D 32      [17]  115 	call	_v_reset_pal
    209F CD CB 32      [17]  116 	call	_v_reset_timers
-   20A2 CD BB 8E      [17]  117 	call	_cpct_waitVSYNC
+   20A2 CD B7 8E      [17]  117 	call	_cpct_waitVSYNC
    20A5 21 DB 32      [10]  118 	ld	hl, #_v_interrupt
-   20A8 CD 59 90      [17]  119 	call	_cpct_setInterruptHandler
+   20A8 CD 55 90      [17]  119 	call	_cpct_setInterruptHandler
    20AB C1            [10]  120 	pop	bc
                             121 ;src/redefine.c:55: while (current <= KEY_PAUSE) {
    20AC 1E 00         [ 7]  122 	ld	e, #0x00
@@ -127,8 +127,8 @@
                             127 ;src/redefine.c:58: cpct_scanKeyboard_f();
    20B4 C5            [11]  128 	push	bc
    20B5 D5            [11]  129 	push	de
-   20B6 CD 84 8A      [17]  130 	call	_cpct_scanKeyboard_f
-   20B9 CD 0A 8D      [17]  131 	call	_cpct_getKeypressedAsASCII
+   20B6 CD 80 8A      [17]  130 	call	_cpct_scanKeyboard_f
+   20B9 CD 06 8D      [17]  131 	call	_cpct_getKeypressedAsASCII
    20BC D1            [10]  132 	pop	de
    20BD C1            [10]  133 	pop	bc
    20BE 55            [ 4]  134 	ld	d, l
@@ -172,7 +172,7 @@
    20EC C5            [11]  172 	push	bc
    20ED D5            [11]  173 	push	de
    20EE 21 08 04      [10]  174 	ld	hl, #0x0408
-   20F1 CD EE 8A      [17]  175 	call	_cpct_isKeyPressed
+   20F1 CD EA 8A      [17]  175 	call	_cpct_isKeyPressed
    20F4 D1            [10]  176 	pop	de
    20F5 C1            [10]  177 	pop	bc
    20F6 7D            [ 4]  178 	ld	a, l
@@ -183,7 +183,7 @@
    20FB C5            [11]  183 	push	bc
    20FC D5            [11]  184 	push	de
    20FD 21 01 01      [10]  185 	ld	hl, #0x0101
-   2100 CD EE 8A      [17]  186 	call	_cpct_isKeyPressed
+   2100 CD EA 8A      [17]  186 	call	_cpct_isKeyPressed
    2103 D1            [10]  187 	pop	de
    2104 C1            [10]  188 	pop	bc
    2105 7D            [ 4]  189 	ld	a, l
@@ -197,7 +197,7 @@
    210E C5            [11]  197 	push	bc
    210F D5            [11]  198 	push	de
    2110 21 00 02      [10]  199 	ld	hl, #0x0200
-   2113 CD EE 8A      [17]  200 	call	_cpct_isKeyPressed
+   2113 CD EA 8A      [17]  200 	call	_cpct_isKeyPressed
    2116 D1            [10]  201 	pop	de
    2117 C1            [10]  202 	pop	bc
    2118 7D            [ 4]  203 	ld	a, l
@@ -211,7 +211,7 @@
    2121 C5            [11]  211 	push	bc
    2122 D5            [11]  212 	push	de
    2123 21 00 01      [10]  213 	ld	hl, #0x0100
-   2126 CD EE 8A      [17]  214 	call	_cpct_isKeyPressed
+   2126 CD EA 8A      [17]  214 	call	_cpct_isKeyPressed
    2129 D1            [10]  215 	pop	de
    212A C1            [10]  216 	pop	bc
    212B 7D            [ 4]  217 	ld	a, l
@@ -225,7 +225,7 @@
    2134 C5            [11]  225 	push	bc
    2135 D5            [11]  226 	push	de
    2136 21 00 04      [10]  227 	ld	hl, #0x0400
-   2139 CD EE 8A      [17]  228 	call	_cpct_isKeyPressed
+   2139 CD EA 8A      [17]  228 	call	_cpct_isKeyPressed
    213C D1            [10]  229 	pop	de
    213D C1            [10]  230 	pop	bc
    213E 7D            [ 4]  231 	ld	a, l
@@ -236,7 +236,7 @@
    2145 18 03         [12]  236 	jr	00122$
    2147                     237 00106$:
                             238 ;src/redefine.c:82: key = controls[0];
-   2147 2A 48 9E      [16]  239 	ld	hl, (#_controls + 0)
+   2147 2A 44 9E      [16]  239 	ld	hl, (#_controls + 0)
    214A                     240 00122$:
                             241 ;src/redefine.c:85: if (!r_is_control_used(key)) {
    214A E5            [11]  242 	push	hl
@@ -256,7 +256,7 @@
    215E DD 36 FF 00   [19]  256 	ld	-1 (ix), #0x00
    2162 DD CB FE 26   [23]  257 	sla	-2 (ix)
    2166 DD CB FF 16   [23]  258 	rl	-1 (ix)
-   216A FD 21 48 9E   [14]  259 	ld	iy, #_controls
+   216A FD 21 44 9E   [14]  259 	ld	iy, #_controls
    216E C5            [11]  260 	push	bc
    216F DD 4E FE      [19]  261 	ld	c,-2 (ix)
    2172 DD 46 FF      [19]  262 	ld	b,-1 (ix)
@@ -269,7 +269,7 @@
                             269 ;src/redefine.c:88: cpct_waitVSYNC();
    217F C5            [11]  270 	push	bc
    2180 D5            [11]  271 	push	de
-   2181 CD BB 8E      [17]  272 	call	_cpct_waitVSYNC
+   2181 CD B7 8E      [17]  272 	call	_cpct_waitVSYNC
    2184 D1            [10]  273 	pop	de
    2185 D5            [11]  274 	push	de
    2186 7B            [ 4]  275 	ld	a, e
@@ -303,9 +303,9 @@
    21AC 26 00         [ 7]  303 	ld	h, #0x00
    21AE 29            [11]  304 	add	hl, hl
    21AF EB            [ 4]  305 	ex	de,hl
-   21B0 FD 21 2C 9E   [14]  306 	ld	iy, #_g_controls
+   21B0 FD 21 28 9E   [14]  306 	ld	iy, #_g_controls
    21B4 FD 19         [15]  307 	add	iy, de
-   21B6 21 48 9E      [10]  308 	ld	hl, #_controls
+   21B6 21 44 9E      [10]  308 	ld	hl, #_controls
    21B9 19            [11]  309 	add	hl, de
    21BA 5E            [ 7]  310 	ld	e, (hl)
    21BB 23            [ 6]  311 	inc	hl
@@ -342,7 +342,7 @@
                             342 ;src/redefine.c:104: v_clr_scr();
    21D9 CD F2 30      [17]  343 	call	_v_clr_scr
                             344 ;src/redefine.c:105: cpct_removeInterruptHandler();
-   21DC CD 5D 8A      [17]  345 	call	_cpct_removeInterruptHandler
+   21DC CD 59 8A      [17]  345 	call	_cpct_removeInterruptHandler
                             346 ;src/redefine.c:106: v_reset_timers();
    21DF C3 CB 32      [10]  347 	jp  _v_reset_timers
                             348 ;src/redefine.c:110: static void h_draw_redefine(const control_t current) {
@@ -466,7 +466,7 @@
    22AB DD 6E FC      [19]  466 	ld	l,-4 (ix)
    22AE DD 66 FD      [19]  467 	ld	h,-3 (ix)
    22B1 29            [11]  468 	add	hl, hl
-   22B2 11 48 9E      [10]  469 	ld	de, #_controls
+   22B2 11 44 9E      [10]  469 	ld	de, #_controls
    22B5 19            [11]  470 	add	hl, de
    22B6 7E            [ 7]  471 	ld	a, (hl)
    22B7 DD 77 FC      [19]  472 	ld	-4 (ix), a
@@ -676,7 +676,7 @@
    23FD 69            [ 4]  676 	ld	l, c
    23FE 26 00         [ 7]  677 	ld	h, #0x00
    2400 29            [11]  678 	add	hl, hl
-   2401 11 48 9E      [10]  679 	ld	de, #_controls
+   2401 11 44 9E      [10]  679 	ld	de, #_controls
    2404 19            [11]  680 	add	hl, de
    2405 5E            [ 7]  681 	ld	e, (hl)
    2406 23            [ 6]  682 	inc	hl

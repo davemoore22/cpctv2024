@@ -68,36 +68,36 @@
                              68 ; ram data
                              69 ;--------------------------------------------------------
                              70 	.area _DATA
-   9E5E                      71 _v_player_buf::
-   9E5E                      72 	.ds 270
-   9F6C                      73 _v_cell_buf_0:
-   9F6C                      74 	.ds 30
-   9F8A                      75 _v_cell_buf_1:
-   9F8A                      76 	.ds 30
-   9FA8                      77 _v_cell_buf_2:
-   9FA8                      78 	.ds 30
-   9FC6                      79 _v_cell_buf_3:
-   9FC6                      80 	.ds 30
-   9FE4                      81 _v_cell_buf_4:
-   9FE4                      82 	.ds 30
-   A002                      83 _v_cell_buf_5:
-   A002                      84 	.ds 30
-   A020                      85 _v_cell_buf_6:
-   A020                      86 	.ds 30
-   A03E                      87 _v_cell_buf_7:
-   A03E                      88 	.ds 30
+   9E5A                      71 _v_player_buf::
+   9E5A                      72 	.ds 270
+   9F68                      73 _v_cell_buf_0:
+   9F68                      74 	.ds 30
+   9F86                      75 _v_cell_buf_1:
+   9F86                      76 	.ds 30
+   9FA4                      77 _v_cell_buf_2:
+   9FA4                      78 	.ds 30
+   9FC2                      79 _v_cell_buf_3:
+   9FC2                      80 	.ds 30
+   9FE0                      81 _v_cell_buf_4:
+   9FE0                      82 	.ds 30
+   9FFE                      83 _v_cell_buf_5:
+   9FFE                      84 	.ds 30
+   A01C                      85 _v_cell_buf_6:
+   A01C                      86 	.ds 30
+   A03A                      87 _v_cell_buf_7:
+   A03A                      88 	.ds 30
                              89 ;--------------------------------------------------------
                              90 ; ram data
                              91 ;--------------------------------------------------------
                              92 	.area _INITIALIZED
-   A06F                      93 _v_int_idx::
-   A06F                      94 	.ds 1
-   A070                      95 _v_pal_idx::
-   A070                      96 	.ds 1
-   A071                      97 _v_frame_c::
-   A071                      98 	.ds 1
-   A072                      99 _v_cycle_c::
-   A072                     100 	.ds 2
+   A06B                      93 _v_int_idx::
+   A06B                      94 	.ds 1
+   A06C                      95 _v_pal_idx::
+   A06C                      96 	.ds 1
+   A06D                      97 _v_frame_c::
+   A06D                      98 	.ds 1
+   A06E                      99 _v_cycle_c::
+   A06E                     100 	.ds 2
                             101 ;--------------------------------------------------------
                             102 ; absolute external ram data
                             103 ;--------------------------------------------------------
@@ -128,17 +128,17 @@
    3036 E5            [11]  128 	push	hl
    3037 21 FF FF      [10]  129 	ld	hl, #0xffff
    303A E5            [11]  130 	push	hl
-   303B CD C3 8E      [17]  131 	call	_cpct_zx7b_decrunch_s
+   303B CD BF 8E      [17]  131 	call	_cpct_zx7b_decrunch_s
    303E C9            [10]  132 	ret
    303F                     133 _v_cells:
-   303F 6C 9F               134 	.dw _v_cell_buf_0
-   3041 8A 9F               135 	.dw _v_cell_buf_1
-   3043 A8 9F               136 	.dw _v_cell_buf_2
-   3045 C6 9F               137 	.dw _v_cell_buf_3
-   3047 E4 9F               138 	.dw _v_cell_buf_4
-   3049 02 A0               139 	.dw _v_cell_buf_5
-   304B 20 A0               140 	.dw _v_cell_buf_6
-   304D 3E A0               141 	.dw _v_cell_buf_7
+   303F 68 9F               134 	.dw _v_cell_buf_0
+   3041 86 9F               135 	.dw _v_cell_buf_1
+   3043 A4 9F               136 	.dw _v_cell_buf_2
+   3045 C2 9F               137 	.dw _v_cell_buf_3
+   3047 E0 9F               138 	.dw _v_cell_buf_4
+   3049 FE 9F               139 	.dw _v_cell_buf_5
+   304B 1C A0               140 	.dw _v_cell_buf_6
+   304D 3A A0               141 	.dw _v_cell_buf_7
    304F                     142 _v_spr_map:
    304F 01                  143 	.db #0x01	; 1
    3050 03                  144 	.db #0x03	; 3
@@ -157,12 +157,12 @@
                             157 ; ---------------------------------
    3059                     158 _v_init::
                             159 ;src/lib/video.c:67: cpct_disableFirmware();
-   3059 CD 5D 8A      [17]  160 	call	_cpct_disableFirmware
+   3059 CD 59 8A      [17]  160 	call	_cpct_disableFirmware
                             161 ;src/lib/video.c:68: cpct_setVideoMode(0);
    305C 2E 00         [ 7]  162 	ld	l, #0x00
-   305E CD AD 8E      [17]  163 	call	_cpct_setVideoMode
+   305E CD A9 8E      [17]  163 	call	_cpct_setVideoMode
                             164 ;src/lib/video.c:69: cpct_waitVSYNCStart();
-   3061 CD F7 8F      [17]  165 	call	_cpct_waitVSYNCStart
+   3061 CD F3 8F      [17]  165 	call	_cpct_waitVSYNCStart
                             166 ;src/lib/video.c:70: cpct_clearScreen_f64(0);
    3064 21 00 40      [10]  167 	ld	hl, #0x4000
    3067 E5            [11]  168 	push	hl
@@ -170,7 +170,7 @@
    306A E5            [11]  170 	push	hl
    306B 26 C0         [ 7]  171 	ld	h, #0xc0
    306D E5            [11]  172 	push	hl
-   306E CD BF 8C      [17]  173 	call	_cpct_memset_f64
+   306E CD BB 8C      [17]  173 	call	_cpct_memset_f64
    3071 C9            [10]  174 	ret
                             175 ;src/lib/video.c:74: void v_blk_scr(void) {
                             176 ;	---------------------------------
@@ -178,19 +178,19 @@
                             178 ; ---------------------------------
    3072                     179 _v_blk_scr::
                             180 ;src/lib/video.c:80: cpct_removeInterruptHandler();
-   3072 CD 5D 8A      [17]  181 	call	_cpct_removeInterruptHandler
+   3072 CD 59 8A      [17]  181 	call	_cpct_removeInterruptHandler
                             182 ;src/lib/video.c:81: cpct_waitVSYNC();
-   3075 CD BB 8E      [17]  183 	call	_cpct_waitVSYNC
+   3075 CD B7 8E      [17]  183 	call	_cpct_waitVSYNC
                             184 ;src/lib/video.c:82: cpct_setPalette(blank_pal, sizeof(blank_pal));
    3078 21 10 00      [10]  185 	ld	hl, #0x0010
    307B E5            [11]  186 	push	hl
    307C 21 8B 30      [10]  187 	ld	hl, #_v_blk_scr_blank_pal_1_285
    307F E5            [11]  188 	push	hl
-   3080 CD 6D 8A      [17]  189 	call	_cpct_setPalette
+   3080 CD 69 8A      [17]  189 	call	_cpct_setPalette
                             190 ;src/lib/video.c:83: cpct_setBorder(HW_BLACK);
    3083 21 10 14      [10]  191 	ld	hl, #0x1410
    3086 E5            [11]  192 	push	hl
-   3087 CD 1B 8B      [17]  193 	call	_cpct_setPALColour
+   3087 CD 17 8B      [17]  193 	call	_cpct_setPALColour
    308A C9            [10]  194 	ret
    308B                     195 _v_blk_scr_blank_pal_1_285:
    308B 14                  196 	.db #0x14	; 20
@@ -230,7 +230,7 @@
    30AB 20 1C         [12]  230 	jr	NZ,00112$
                             231 ;src/lib/video.c:96: cpct_waitVSYNC();
    30AD C5            [11]  232 	push	bc
-   30AE CD BB 8E      [17]  233 	call	_cpct_waitVSYNC
+   30AE CD B7 8E      [17]  233 	call	_cpct_waitVSYNC
    30B1 C1            [10]  234 	pop	bc
                             235 ;src/lib/video.c:97: v_pos = v_get_pos(x, 0);
    30B2 C5            [11]  236 	push	bc
@@ -246,7 +246,7 @@
    30C0 11 00 00      [10]  246 	ld	de, #0x0000
    30C3 D5            [11]  247 	push	de
    30C4 E5            [11]  248 	push	hl
-   30C5 CD 39 8F      [17]  249 	call	_cpct_drawSolidBox
+   30C5 CD 35 8F      [17]  249 	call	_cpct_drawSolidBox
    30C8 C1            [10]  250 	pop	bc
    30C9                     251 00112$:
                             252 ;src/lib/video.c:94: for (u8 x = 0; x < 80; x++) {
@@ -264,7 +264,7 @@
    30D3 20 1A         [12]  264 	jr	NZ,00115$
                             265 ;src/lib/video.c:106: cpct_waitVSYNC();
    30D5 C5            [11]  266 	push	bc
-   30D6 CD BB 8E      [17]  267 	call	_cpct_waitVSYNC
+   30D6 CD B7 8E      [17]  267 	call	_cpct_waitVSYNC
    30D9 C1            [10]  268 	pop	bc
                             269 ;src/lib/video.c:107: v_pos = v_get_pos(x, 0);
    30DA C5            [11]  270 	push	bc
@@ -278,7 +278,7 @@
    30E6 11 00 00      [10]  278 	ld	de, #0x0000
    30E9 D5            [11]  279 	push	de
    30EA E5            [11]  280 	push	hl
-   30EB CD 39 8F      [17]  281 	call	_cpct_drawSolidBox
+   30EB CD 35 8F      [17]  281 	call	_cpct_drawSolidBox
    30EE C1            [10]  282 	pop	bc
    30EF                     283 00115$:
                             284 ;src/lib/video.c:104: for (u8 x = 78; x > 0; x--) {
@@ -290,7 +290,7 @@
                             290 ; ---------------------------------
    30F2                     291 _v_clr_scr::
                             292 ;src/lib/video.c:117: cpct_waitVSYNCStart();
-   30F2 CD F7 8F      [17]  293 	call	_cpct_waitVSYNCStart
+   30F2 CD F3 8F      [17]  293 	call	_cpct_waitVSYNCStart
                             294 ;src/lib/video.c:118: cpct_clearScreen_f64(0);
    30F5 21 00 40      [10]  295 	ld	hl, #0x4000
    30F8 E5            [11]  296 	push	hl
@@ -298,7 +298,7 @@
    30FB E5            [11]  298 	push	hl
    30FC 26 C0         [ 7]  299 	ld	h, #0xc0
    30FE E5            [11]  300 	push	hl
-   30FF CD BF 8C      [17]  301 	call	_cpct_memset_f64
+   30FF CD BB 8C      [17]  301 	call	_cpct_memset_f64
    3102 C9            [10]  302 	ret
                             303 ;src/lib/video.c:122: void v_print_c(const char *str, const u8 y, const pen_t pen) {
                             304 ;	---------------------------------
@@ -311,7 +311,7 @@
    3105 E5            [11]  311 	push	hl
    3106 C5            [11]  312 	push	bc
    3107 E5            [11]  313 	push	hl
-   3108 CD 14 8F      [17]  314 	call	_strlen
+   3108 CD 10 8F      [17]  314 	call	_strlen
    310B F1            [10]  315 	pop	af
    310C 29            [11]  316 	add	hl, hl
    310D 4D            [ 4]  317 	ld	c, l
@@ -378,7 +378,7 @@
    3167 21 8A 31      [10]  378 	ld	hl, #___str_0
    316A E5            [11]  379 	push	hl
    316B D5            [11]  380 	push	de
-   316C CD D4 8D      [17]  381 	call	_sprintf
+   316C CD D0 8D      [17]  381 	call	_sprintf
    316F 21 0C 00      [10]  382 	ld	hl, #12
    3172 39            [11]  383 	add	hl, sp
    3173 F9            [ 6]  384 	ld	sp, hl
@@ -503,7 +503,7 @@
    3217 E5            [11]  503 	push	hl
    3218 FD E5         [15]  504 	push	iy
    321A C5            [11]  505 	push	bc
-   321B CD 6F 8B      [17]  506 	call	_cpct_drawSprite
+   321B CD 6B 8B      [17]  506 	call	_cpct_drawSprite
    321E D1            [10]  507 	pop	de
                             508 ;src/lib/video.c:169: cx = cx + LINE_P_W;
    321F DD 34 FF      [23]  509 	inc	-1 (ix)
@@ -521,17 +521,17 @@
                             521 ; ---------------------------------
    322D                     522 _v_reset_pal::
                             523 ;src/lib/video.c:183: cpct_waitVSYNC();
-   322D CD BB 8E      [17]  524 	call	_cpct_waitVSYNC
+   322D CD B7 8E      [17]  524 	call	_cpct_waitVSYNC
                             525 ;src/lib/video.c:184: cpct_setPalette(normal_pal, sizeof(normal_pal));
    3230 21 10 00      [10]  526 	ld	hl, #0x0010
    3233 E5            [11]  527 	push	hl
    3234 21 43 32      [10]  528 	ld	hl, #_v_reset_pal_normal_pal_1_307
    3237 E5            [11]  529 	push	hl
-   3238 CD 6D 8A      [17]  530 	call	_cpct_setPalette
+   3238 CD 69 8A      [17]  530 	call	_cpct_setPalette
                             531 ;src/lib/video.c:185: cpct_setBorder(HW_BLACK);
    323B 21 10 14      [10]  532 	ld	hl, #0x1410
    323E E5            [11]  533 	push	hl
-   323F CD 1B 8B      [17]  534 	call	_cpct_setPALColour
+   323F CD 17 8B      [17]  534 	call	_cpct_setPALColour
    3242 C9            [10]  535 	ret
    3243                     536 _v_reset_pal_normal_pal_1_307:
    3243 14                  537 	.db #0x14	; 20
@@ -556,17 +556,17 @@
                             556 ; ---------------------------------
    3253                     557 _v_reset_pal_v::
                             558 ;src/lib/video.c:196: cpct_waitVSYNC();
-   3253 CD BB 8E      [17]  559 	call	_cpct_waitVSYNC
+   3253 CD B7 8E      [17]  559 	call	_cpct_waitVSYNC
                             560 ;src/lib/video.c:197: cpct_setPalette(victory_pal, sizeof(victory_pal));
    3256 21 10 00      [10]  561 	ld	hl, #0x0010
    3259 E5            [11]  562 	push	hl
    325A 21 69 32      [10]  563 	ld	hl, #_v_reset_pal_v_victory_pal_1_309
    325D E5            [11]  564 	push	hl
-   325E CD 6D 8A      [17]  565 	call	_cpct_setPalette
+   325E CD 69 8A      [17]  565 	call	_cpct_setPalette
                             566 ;src/lib/video.c:198: cpct_setBorder(HW_BLACK);
    3261 21 10 14      [10]  567 	ld	hl, #0x1410
    3264 E5            [11]  568 	push	hl
-   3265 CD 1B 8B      [17]  569 	call	_cpct_setPALColour
+   3265 CD 17 8B      [17]  569 	call	_cpct_setPALColour
    3268 C9            [10]  570 	ret
    3269                     571 _v_reset_pal_v_victory_pal_1_309:
    3269 14                  572 	.db #0x14	; 20
@@ -597,7 +597,7 @@
    327E                     597 00103$:
                             598 ;src/lib/video.c:206: cpct_waitVSYNC();
    327E C5            [11]  599 	push	bc
-   327F CD BB 8E      [17]  600 	call	_cpct_waitVSYNC
+   327F CD B7 8E      [17]  600 	call	_cpct_waitVSYNC
    3282 C1            [10]  601 	pop	bc
                             602 ;src/lib/video.c:207: if (--n) {
    3283 0D            [ 4]  603 	dec	c
@@ -632,7 +632,7 @@
    329C 33            [ 6]  632 	inc	sp
    329D 21 00 C0      [10]  633 	ld	hl, #0xc000
    32A0 E5            [11]  634 	push	hl
-   32A1 CD E1 8F      [17]  635 	call	_cpct_getScreenPtr
+   32A1 CD DD 8F      [17]  635 	call	_cpct_getScreenPtr
    32A4 C9            [10]  636 	ret
                             637 ;src/lib/video.c:221: void v_flash_brd(u8 col, u16 n) {
                             638 ;	---------------------------------
@@ -645,7 +645,7 @@
    32A9 56            [ 7]  645 	ld	d, (hl)
    32AA 1E 10         [ 7]  646 	ld	e,#0x10
    32AC D5            [11]  647 	push	de
-   32AD CD 1B 8B      [17]  648 	call	_cpct_setPALColour
+   32AD CD 17 8B      [17]  648 	call	_cpct_setPALColour
                             649 ;src/lib/video.c:224: u_wait(n * 15);
    32B0 21 03 00      [10]  650 	ld	hl, #3
    32B3 39            [11]  651 	add	hl, sp
@@ -665,7 +665,7 @@
                             665 ;src/lib/video.c:225: cpct_setPALColour(16, HW_BLACK);
    32C3 21 10 14      [10]  666 	ld	hl, #0x1410
    32C6 E3            [19]  667 	ex	(sp),hl
-   32C7 CD 1B 8B      [17]  668 	call	_cpct_setPALColour
+   32C7 CD 17 8B      [17]  668 	call	_cpct_setPALColour
    32CA C9            [10]  669 	ret
                             670 ;src/lib/video.c:229: void v_reset_timers(void) {
                             671 ;	---------------------------------
@@ -673,13 +673,13 @@
                             673 ; ---------------------------------
    32CB                     674 _v_reset_timers::
                             675 ;src/lib/video.c:231: v_int_idx = 0;
-   32CB 21 6F A0      [10]  676 	ld	hl,#_v_int_idx + 0
+   32CB 21 6B A0      [10]  676 	ld	hl,#_v_int_idx + 0
    32CE 36 00         [10]  677 	ld	(hl), #0x00
                             678 ;src/lib/video.c:232: v_pal_idx = 0;
-   32D0 21 70 A0      [10]  679 	ld	hl,#_v_pal_idx + 0
+   32D0 21 6C A0      [10]  679 	ld	hl,#_v_pal_idx + 0
    32D3 36 00         [10]  680 	ld	(hl), #0x00
                             681 ;src/lib/video.c:233: v_frame_c = 0;
-   32D5 21 71 A0      [10]  682 	ld	hl,#_v_frame_c + 0
+   32D5 21 6D A0      [10]  682 	ld	hl,#_v_frame_c + 0
    32D8 36 00         [10]  683 	ld	(hl), #0x00
    32DA C9            [10]  684 	ret
                             685 ;src/lib/video.c:237: void v_interrupt(void) {
@@ -688,12 +688,12 @@
                             688 ; ---------------------------------
    32DB                     689 _v_interrupt::
                             690 ;src/lib/video.c:271: if (v_int_idx == 0)
-   32DB 3A 6F A0      [13]  691 	ld	a,(#_v_int_idx + 0)
+   32DB 3A 6B A0      [13]  691 	ld	a,(#_v_int_idx + 0)
    32DE B7            [ 4]  692 	or	a, a
    32DF 20 1A         [12]  693 	jr	NZ,00104$
                             694 ;src/lib/video.c:272: cpct_setPalette(anim_pal[v_pal_idx], 9);
    32E1 01 96 33      [10]  695 	ld	bc, #_v_interrupt_anim_pal_1_321+0
-   32E4 ED 5B 70 A0   [20]  696 	ld	de, (_v_pal_idx)
+   32E4 ED 5B 6C A0   [20]  696 	ld	de, (_v_pal_idx)
    32E8 16 00         [ 7]  697 	ld	d, #0x00
    32EA 6B            [ 4]  698 	ld	l, e
    32EB 62            [ 4]  699 	ld	h, d
@@ -705,11 +705,11 @@
    32F1 01 09 00      [10]  705 	ld	bc, #0x0009
    32F4 C5            [11]  706 	push	bc
    32F5 E5            [11]  707 	push	hl
-   32F6 CD 6D 8A      [17]  708 	call	_cpct_setPalette
+   32F6 CD 69 8A      [17]  708 	call	_cpct_setPalette
    32F9 18 11         [12]  709 	jr	00105$
    32FB                     710 00104$:
                             711 ;src/lib/video.c:273: else if (v_int_idx == 1)
-   32FB 3A 6F A0      [13]  712 	ld	a,(#_v_int_idx + 0)
+   32FB 3A 6B A0      [13]  712 	ld	a,(#_v_int_idx + 0)
    32FE 3D            [ 4]  713 	dec	a
    32FF 20 0B         [12]  714 	jr	NZ,00105$
                             715 ;src/lib/video.c:274: cpct_setPalette(fixed_pal, 16);
@@ -717,87 +717,87 @@
    3304 E5            [11]  717 	push	hl
    3305 21 D5 33      [10]  718 	ld	hl, #_v_interrupt_fixed_pal_1_321
    3308 E5            [11]  719 	push	hl
-   3309 CD 6D 8A      [17]  720 	call	_cpct_setPalette
+   3309 CD 69 8A      [17]  720 	call	_cpct_setPalette
    330C                     721 00105$:
                             722 ;src/lib/video.c:276: if (v_frame_c == 0)
-   330C 3A 71 A0      [13]  723 	ld	a,(#_v_frame_c + 0)
+   330C 3A 6D A0      [13]  723 	ld	a,(#_v_frame_c + 0)
    330F B7            [ 4]  724 	or	a, a
    3310 20 18         [12]  725 	jr	NZ,00107$
                             726 ;src/lib/video.c:277: v_pal_idx = ++v_pal_idx % 7;
-   3312 21 70 A0      [10]  727 	ld	hl, #_v_pal_idx+0
+   3312 21 6C A0      [10]  727 	ld	hl, #_v_pal_idx+0
    3315 34            [11]  728 	inc	(hl)
    3316 3E 07         [ 7]  729 	ld	a, #0x07
    3318 F5            [11]  730 	push	af
    3319 33            [ 6]  731 	inc	sp
-   331A 3A 70 A0      [13]  732 	ld	a, (_v_pal_idx)
+   331A 3A 6C A0      [13]  732 	ld	a, (_v_pal_idx)
    331D F5            [11]  733 	push	af
    331E 33            [ 6]  734 	inc	sp
-   331F CD 14 8C      [17]  735 	call	__moduchar
+   331F CD 10 8C      [17]  735 	call	__moduchar
    3322 F1            [10]  736 	pop	af
-   3323 FD 21 70 A0   [14]  737 	ld	iy, #_v_pal_idx
+   3323 FD 21 6C A0   [14]  737 	ld	iy, #_v_pal_idx
    3327 FD 75 00      [19]  738 	ld	0 (iy), l
    332A                     739 00107$:
                             740 ;src/lib/video.c:280: if (v_int_idx == 2)
-   332A 3A 6F A0      [13]  741 	ld	a,(#_v_int_idx + 0)
+   332A 3A 6B A0      [13]  741 	ld	a,(#_v_int_idx + 0)
    332D D6 02         [ 7]  742 	sub	a, #0x02
    332F 20 03         [12]  743 	jr	NZ,00109$
                             744 ;src/lib/video.c:281: cpct_scanKeyboard_if();
-   3331 CD 45 8E      [17]  745 	call	_cpct_scanKeyboard_if
+   3331 CD 41 8E      [17]  745 	call	_cpct_scanKeyboard_if
    3334                     746 00109$:
                             747 ;src/lib/video.c:284: if (t_in_titles && g_music_sfx)
-   3334 21 5A 9E      [10]  748 	ld	hl,#_t_in_titles+0
+   3334 21 56 9E      [10]  748 	ld	hl,#_t_in_titles+0
    3337 CB 46         [12]  749 	bit	0, (hl)
    3339 28 11         [12]  750 	jr	Z,00113$
-   333B 21 C2 9B      [10]  751 	ld	hl,#_g_music_sfx+0
+   333B 21 BE 9B      [10]  751 	ld	hl,#_g_music_sfx+0
    333E CB 46         [12]  752 	bit	0, (hl)
    3340 28 0A         [12]  753 	jr	Z,00113$
                             754 ;src/lib/video.c:285: if (v_int_idx == 3)
-   3342 3A 6F A0      [13]  755 	ld	a,(#_v_int_idx + 0)
+   3342 3A 6B A0      [13]  755 	ld	a,(#_v_int_idx + 0)
    3345 D6 03         [ 7]  756 	sub	a, #0x03
    3347 20 03         [12]  757 	jr	NZ,00113$
                             758 ;src/lib/video.c:286: PlaySound();
    3349 CD E8 66      [17]  759 	call	_PlaySound
    334C                     760 00113$:
                             761 ;src/lib/video.c:289: v_int_idx = ++v_int_idx % 6;
-   334C 21 6F A0      [10]  762 	ld	hl, #_v_int_idx+0
+   334C 21 6B A0      [10]  762 	ld	hl, #_v_int_idx+0
    334F 34            [11]  763 	inc	(hl)
    3350 3E 06         [ 7]  764 	ld	a, #0x06
    3352 F5            [11]  765 	push	af
    3353 33            [ 6]  766 	inc	sp
-   3354 3A 6F A0      [13]  767 	ld	a, (_v_int_idx)
+   3354 3A 6B A0      [13]  767 	ld	a, (_v_int_idx)
    3357 F5            [11]  768 	push	af
    3358 33            [ 6]  769 	inc	sp
-   3359 CD 14 8C      [17]  770 	call	__moduchar
+   3359 CD 10 8C      [17]  770 	call	__moduchar
    335C F1            [10]  771 	pop	af
-   335D FD 21 6F A0   [14]  772 	ld	iy, #_v_int_idx
+   335D FD 21 6B A0   [14]  772 	ld	iy, #_v_int_idx
    3361 FD 75 00      [19]  773 	ld	0 (iy), l
                             774 ;src/lib/video.c:290: v_frame_c = ++v_frame_c % 50;
-   3364 21 71 A0      [10]  775 	ld	hl, #_v_frame_c+0
+   3364 21 6D A0      [10]  775 	ld	hl, #_v_frame_c+0
    3367 34            [11]  776 	inc	(hl)
    3368 3E 32         [ 7]  777 	ld	a, #0x32
    336A F5            [11]  778 	push	af
    336B 33            [ 6]  779 	inc	sp
-   336C 3A 71 A0      [13]  780 	ld	a, (_v_frame_c)
+   336C 3A 6D A0      [13]  780 	ld	a, (_v_frame_c)
    336F F5            [11]  781 	push	af
    3370 33            [ 6]  782 	inc	sp
-   3371 CD 14 8C      [17]  783 	call	__moduchar
+   3371 CD 10 8C      [17]  783 	call	__moduchar
                             784 ;src/lib/video.c:291: v_cycle_c = ++v_cycle_c % 12000;
    3374 7D            [ 4]  785 	ld	a,l
-   3375 32 71 A0      [13]  786 	ld	(#_v_frame_c + 0),a
+   3375 32 6D A0      [13]  786 	ld	(#_v_frame_c + 0),a
    3378 F1            [10]  787 	pop	af
-   3379 FD 21 72 A0   [14]  788 	ld	iy,#_v_cycle_c
+   3379 FD 21 6E A0   [14]  788 	ld	iy,#_v_cycle_c
    337D FD 34 00      [23]  789 	inc	0 (iy)
    3380 20 03         [12]  790 	jr	NZ,00151$
    3382 FD 34 01      [23]  791 	inc	1 (iy)
    3385                     792 00151$:
    3385 21 E0 2E      [10]  793 	ld	hl, #0x2ee0
    3388 E5            [11]  794 	push	hl
-   3389 2A 72 A0      [16]  795 	ld	hl, (_v_cycle_c)
+   3389 2A 6E A0      [16]  795 	ld	hl, (_v_cycle_c)
    338C E5            [11]  796 	push	hl
-   338D CD 20 8C      [17]  797 	call	__moduint
+   338D CD 1C 8C      [17]  797 	call	__moduint
    3390 F1            [10]  798 	pop	af
    3391 F1            [10]  799 	pop	af
-   3392 22 72 A0      [16]  800 	ld	(_v_cycle_c), hl
+   3392 22 6E A0      [16]  800 	ld	(_v_cycle_c), hl
    3395 C9            [10]  801 	ret
    3396                     802 _v_interrupt_anim_pal_1_321:
    3396 14                  803 	.db #0x14	; 20
@@ -904,7 +904,7 @@
    33F7 D5            [11]  904 	push	de
    33F8 21 00 C0      [10]  905 	ld	hl, #0xc000
    33FB E5            [11]  906 	push	hl
-   33FC CD E1 8F      [17]  907 	call	_cpct_getScreenPtr
+   33FC CD DD 8F      [17]  907 	call	_cpct_getScreenPtr
                             908 ;src/lib/video.c:300: GRID_LOC_Y + (launch_st.y * GRID_P_H) + 4);
                             909 ;src/lib/video.c:302: cpct_drawSpriteMasked(img_launch, v_pos, 7, 20);
    33FF 01 44 64      [10]  910 	ld	bc, #_img_launch+0
@@ -912,7 +912,7 @@
    3405 D5            [11]  912 	push	de
    3406 E5            [11]  913 	push	hl
    3407 C5            [11]  914 	push	bc
-   3408 CD 90 8C      [17]  915 	call	_cpct_drawSpriteMasked
+   3408 CD 8C 8C      [17]  915 	call	_cpct_drawSpriteMasked
    340B C9            [10]  916 	ret
                             917 ;src/lib/video.c:307: void v_draw_player(void) {
                             918 ;	---------------------------------
@@ -926,12 +926,12 @@
    3417 39            [11]  926 	add	hl, sp
    3418 F9            [ 6]  927 	ld	sp, hl
                             928 ;src/lib/video.c:316: if (!g_player.explode) {
-   3419 3A D0 9D      [13]  929 	ld	a,(#_g_player + 8)
+   3419 3A CC 9D      [13]  929 	ld	a,(#_g_player + 8)
    341C DD 77 FD      [19]  930 	ld	-3 (ix), a
                             931 ;src/lib/video.c:317: v_pos = v_get_pos(g_player.sx, g_player.sy);
-   341F 3A CD 9D      [13]  932 	ld	a,(#_g_player + 5)
+   341F 3A C9 9D      [13]  932 	ld	a,(#_g_player + 5)
    3422 DD 77 F9      [19]  933 	ld	-7 (ix), a
-   3425 3A CC 9D      [13]  934 	ld	a,(#_g_player + 4)
+   3425 3A C8 9D      [13]  934 	ld	a,(#_g_player + 4)
    3428 DD 77 FC      [19]  935 	ld	-4 (ix), a
                             936 ;src/lib/video.c:316: if (!g_player.explode) {
    342B DD CB FD 46   [20]  937 	bit	0, -3 (ix)
@@ -943,14 +943,14 @@
    3437 D5            [11]  943 	push	de
    3438 21 00 C0      [10]  944 	ld	hl, #0xc000
    343B E5            [11]  945 	push	hl
-   343C CD E1 8F      [17]  946 	call	_cpct_getScreenPtr
+   343C CD DD 8F      [17]  946 	call	_cpct_getScreenPtr
    343F 4D            [ 4]  947 	ld	c, l
    3440 44            [ 4]  948 	ld	b, h
                             949 ;src/lib/video.c:317: v_pos = v_get_pos(g_player.sx, g_player.sy);
                             950 ;src/lib/video.c:318: idx = g_player.boost ? spr_idx[g_player.dir] : b_spr_idx[g_player.dir];
-   3441 21 CF 9D      [10]  951 	ld	hl, #_g_player + 7
+   3441 21 CB 9D      [10]  951 	ld	hl, #_g_player + 7
    3444 5E            [ 7]  952 	ld	e, (hl)
-   3445 3A CE 9D      [13]  953 	ld	a, (#_g_player + 6)
+   3445 3A CA 9D      [13]  953 	ld	a, (#_g_player + 6)
    3448 6F            [ 4]  954 	ld	l, a
    3449 17            [ 4]  955 	rla
    344A 9F            [ 4]  956 	sbc	a, a
@@ -969,7 +969,7 @@
    345D 6F            [ 4]  969 	ld	l, a
    345E                     970 00112$:
                             971 ;src/lib/video.c:319: cpct_drawSpriteMasked(player_ts[idx], v_pos, SZ_PLAYER_PX, 
-   345E 11 5C 71      [10]  972 	ld	de, #_player_ts+0
+   345E 11 58 71      [10]  972 	ld	de, #_player_ts+0
    3461 26 00         [ 7]  973 	ld	h, #0x00
    3463 29            [11]  974 	add	hl, hl
    3464 19            [11]  975 	add	hl, de
@@ -980,7 +980,7 @@
    346B E5            [11]  980 	push	hl
    346C C5            [11]  981 	push	bc
    346D D5            [11]  982 	push	de
-   346E CD 90 8C      [17]  983 	call	_cpct_drawSpriteMasked
+   346E CD 8C 8C      [17]  983 	call	_cpct_drawSpriteMasked
    3471 C3 2E 36      [10]  984 	jp	00109$
    3474                     985 00102$:
                             986 ;src/lib/video.c:322: ex = g_player.sx;
@@ -991,20 +991,20 @@
    347A E5            [11]  991 	push	hl
    347B 21 00 C0      [10]  992 	ld	hl, #0xc000
    347E E5            [11]  993 	push	hl
-   347F CD E1 8F      [17]  994 	call	_cpct_getScreenPtr
+   347F CD DD 8F      [17]  994 	call	_cpct_getScreenPtr
    3482 DD 74 F4      [19]  995 	ld	-12 (ix), h
    3485 DD 75 F3      [19]  996 	ld	-13 (ix), l
    3488 DD 75 FA      [19]  997 	ld	-6 (ix), l
    348B DD 7E F4      [19]  998 	ld	a, -12 (ix)
    348E DD 77 FB      [19]  999 	ld	-5 (ix), a
                            1000 ;src/lib/video.c:325: cpct_drawSpriteMasked(explode_ts[g_player.explode_f], e_pos,
-   3491 3A D1 9D      [13] 1001 	ld	a,(#(_g_player + 0x0009) + 0)
+   3491 3A CD 9D      [13] 1001 	ld	a,(#(_g_player + 0x0009) + 0)
    3494 DD 77 FD      [19] 1002 	ld	-3 (ix), a
    3497 DD 77 FE      [19] 1003 	ld	-2 (ix), a
    349A DD 36 FF 00   [19] 1004 	ld	-1 (ix), #0x00
    349E DD CB FE 26   [23] 1005 	sla	-2 (ix)
    34A2 DD CB FF 16   [23] 1006 	rl	-1 (ix)
-   34A6 3E A4         [ 7] 1007 	ld	a, #<(_explode_ts)
+   34A6 3E A0         [ 7] 1007 	ld	a, #<(_explode_ts)
    34A8 DD 86 FE      [19] 1008 	add	a, -2 (ix)
    34AB DD 77 FE      [19] 1009 	ld	-2 (ix), a
    34AE 3E 7A         [ 7] 1010 	ld	a, #>(_explode_ts)
@@ -1025,7 +1025,7 @@
    34D0 DD 6E FE      [19] 1025 	ld	l,-2 (ix)
    34D3 DD 66 FF      [19] 1026 	ld	h,-1 (ix)
    34D6 E5            [11] 1027 	push	hl
-   34D7 CD 90 8C      [17] 1028 	call	_cpct_drawSpriteMasked
+   34D7 CD 8C 8C      [17] 1028 	call	_cpct_drawSpriteMasked
                            1029 ;src/lib/video.c:327: ex += SZ_GRID_PX;
    34DA DD 7E FC      [19] 1030 	ld	a, -4 (ix)
    34DD C6 03         [ 7] 1031 	add	a, #0x03
@@ -1036,20 +1036,20 @@
    34E8 E5            [11] 1036 	push	hl
    34E9 21 00 C0      [10] 1037 	ld	hl, #0xc000
    34EC E5            [11] 1038 	push	hl
-   34ED CD E1 8F      [17] 1039 	call	_cpct_getScreenPtr
+   34ED CD DD 8F      [17] 1039 	call	_cpct_getScreenPtr
    34F0 DD 74 F2      [19] 1040 	ld	-14 (ix), h
    34F3 DD 75 F1      [19] 1041 	ld	-15 (ix), l
    34F6 DD 75 FE      [19] 1042 	ld	-2 (ix), l
    34F9 DD 7E F2      [19] 1043 	ld	a, -14 (ix)
    34FC DD 77 FF      [19] 1044 	ld	-1 (ix), a
                            1045 ;src/lib/video.c:329: cpct_drawSpriteMasked(explode_ts[g_player.explode_f], e_pos,
-   34FF 3A D1 9D      [13] 1046 	ld	a,(#(_g_player + 0x0009) + 0)
+   34FF 3A CD 9D      [13] 1046 	ld	a,(#(_g_player + 0x0009) + 0)
    3502 DD 77 FA      [19] 1047 	ld	-6 (ix), a
    3505 DD 77 FA      [19] 1048 	ld	-6 (ix), a
    3508 DD 36 FB 00   [19] 1049 	ld	-5 (ix), #0x00
    350C DD CB FA 26   [23] 1050 	sla	-6 (ix)
    3510 DD CB FB 16   [23] 1051 	rl	-5 (ix)
-   3514 3E A4         [ 7] 1052 	ld	a, #<(_explode_ts)
+   3514 3E A0         [ 7] 1052 	ld	a, #<(_explode_ts)
    3516 DD 86 FA      [19] 1053 	add	a, -6 (ix)
    3519 DD 77 FA      [19] 1054 	ld	-6 (ix), a
    351C 3E 7A         [ 7] 1055 	ld	a, #>(_explode_ts)
@@ -1070,7 +1070,7 @@
    353E DD 6E FA      [19] 1070 	ld	l,-6 (ix)
    3541 DD 66 FB      [19] 1071 	ld	h,-5 (ix)
    3544 E5            [11] 1072 	push	hl
-   3545 CD 90 8C      [17] 1073 	call	_cpct_drawSpriteMasked
+   3545 CD 8C 8C      [17] 1073 	call	_cpct_drawSpriteMasked
                            1074 ;src/lib/video.c:331: ey += SZ_GRID_PY;
    3548 DD 7E F9      [19] 1075 	ld	a, -7 (ix)
    354B C6 0A         [ 7] 1076 	add	a, #0x0a
@@ -1083,7 +1083,7 @@
    3556 33            [ 6] 1083 	inc	sp
    3557 21 00 C0      [10] 1084 	ld	hl, #0xc000
    355A E5            [11] 1085 	push	hl
-   355B CD E1 8F      [17] 1086 	call	_cpct_getScreenPtr
+   355B CD DD 8F      [17] 1086 	call	_cpct_getScreenPtr
    355E DD 74 F6      [19] 1087 	ld	-10 (ix), h
                            1088 ;src/lib/video.c:332: e_pos = v_get_pos(ex, ey);
    3561 DD 75 F5      [19] 1089 	ld	-11 (ix), l
@@ -1095,13 +1095,13 @@
    3570 DD 77 FE      [19] 1095 	ld	-2 (ix), a
    3573 DD 7E EE      [19] 1096 	ld	a, -18 (ix)
    3576 DD 77 FF      [19] 1097 	ld	-1 (ix), a
-   3579 3A D1 9D      [13] 1098 	ld	a,(#(_g_player + 0x0009) + 0)
+   3579 3A CD 9D      [13] 1098 	ld	a,(#(_g_player + 0x0009) + 0)
    357C DD 77 FA      [19] 1099 	ld	-6 (ix), a
    357F DD 77 FA      [19] 1100 	ld	-6 (ix), a
    3582 DD 36 FB 00   [19] 1101 	ld	-5 (ix), #0x00
    3586 DD CB FA 26   [23] 1102 	sla	-6 (ix)
    358A DD CB FB 16   [23] 1103 	rl	-5 (ix)
-   358E 3E A4         [ 7] 1104 	ld	a, #<(_explode_ts)
+   358E 3E A0         [ 7] 1104 	ld	a, #<(_explode_ts)
    3590 DD 86 FA      [19] 1105 	add	a, -6 (ix)
    3593 DD 77 FA      [19] 1106 	ld	-6 (ix), a
    3596 3E 7A         [ 7] 1107 	ld	a, #>(_explode_ts)
@@ -1122,7 +1122,7 @@
    35B8 DD 6E FA      [19] 1122 	ld	l,-6 (ix)
    35BB DD 66 FB      [19] 1123 	ld	h,-5 (ix)
    35BE E5            [11] 1124 	push	hl
-   35BF CD 90 8C      [17] 1125 	call	_cpct_drawSpriteMasked
+   35BF CD 8C 8C      [17] 1125 	call	_cpct_drawSpriteMasked
                            1126 ;src/lib/video.c:335: ex -= SZ_GRID_PX;
    35C2 DD 7E F0      [19] 1127 	ld	a, -16 (ix)
    35C5 C6 FD         [ 7] 1128 	add	a, #0xfd
@@ -1135,20 +1135,20 @@
    35CE 33            [ 6] 1135 	inc	sp
    35CF 21 00 C0      [10] 1136 	ld	hl, #0xc000
    35D2 E5            [11] 1137 	push	hl
-   35D3 CD E1 8F      [17] 1138 	call	_cpct_getScreenPtr
+   35D3 CD DD 8F      [17] 1138 	call	_cpct_getScreenPtr
    35D6 DD 74 F8      [19] 1139 	ld	-8 (ix), h
    35D9 DD 75 F7      [19] 1140 	ld	-9 (ix), l
    35DC DD 75 FE      [19] 1141 	ld	-2 (ix), l
    35DF DD 7E F8      [19] 1142 	ld	a, -8 (ix)
    35E2 DD 77 FF      [19] 1143 	ld	-1 (ix), a
                            1144 ;src/lib/video.c:337: cpct_drawSpriteMasked(explode_ts[g_player.explode_f], e_pos,
-   35E5 3A D1 9D      [13] 1145 	ld	a,(#(_g_player + 0x0009) + 0)
+   35E5 3A CD 9D      [13] 1145 	ld	a,(#(_g_player + 0x0009) + 0)
    35E8 DD 77 FA      [19] 1146 	ld	-6 (ix), a
    35EB DD 77 FA      [19] 1147 	ld	-6 (ix), a
    35EE DD 36 FB 00   [19] 1148 	ld	-5 (ix), #0x00
    35F2 DD CB FA 26   [23] 1149 	sla	-6 (ix)
    35F6 DD CB FB 16   [23] 1150 	rl	-5 (ix)
-   35FA 3E A4         [ 7] 1151 	ld	a, #<(_explode_ts)
+   35FA 3E A0         [ 7] 1151 	ld	a, #<(_explode_ts)
    35FC DD 86 FA      [19] 1152 	add	a, -6 (ix)
    35FF DD 77 FA      [19] 1153 	ld	-6 (ix), a
    3602 3E 7A         [ 7] 1154 	ld	a, #>(_explode_ts)
@@ -1169,7 +1169,7 @@
    3624 DD 6E FA      [19] 1169 	ld	l,-6 (ix)
    3627 DD 66 FB      [19] 1170 	ld	h,-5 (ix)
    362A E5            [11] 1171 	push	hl
-   362B CD 90 8C      [17] 1172 	call	_cpct_drawSpriteMasked
+   362B CD 8C 8C      [17] 1172 	call	_cpct_drawSpriteMasked
    362E                    1173 00109$:
    362E DD F9         [10] 1174 	ld	sp, ix
    3630 DD E1         [14] 1175 	pop	ix
@@ -1215,7 +1215,7 @@
    3664 29            [11] 1215 	add	hl, hl
    3665 29            [11] 1216 	add	hl, hl
    3666 29            [11] 1217 	add	hl, hl
-   3667 3E C3         [ 7] 1218 	ld	a, #<(_g_enemies)
+   3667 3E BF         [ 7] 1218 	ld	a, #<(_g_enemies)
    3669 85            [ 4] 1219 	add	a, l
    366A DD 77 FE      [19] 1220 	ld	-2 (ix), a
    366D 3E 9B         [ 7] 1221 	ld	a, #>(_g_enemies)
@@ -1251,7 +1251,7 @@
    36A0 F5            [11] 1251 	push	af
    36A1 33            [ 6] 1252 	inc	sp
                            1253 ;src/lib/video.c:362: px = GRID_LOC_X + ((loc - 1) * GRID_P_W);
-   36A2 CD 09 8B      [17] 1254 	call	__moduschar
+   36A2 CD 05 8B      [17] 1254 	call	__moduschar
    36A5 F1            [10] 1255 	pop	af
    36A6 DD 75 FE      [19] 1256 	ld	-2 (ix), l
    36A9 C1            [10] 1257 	pop	bc
@@ -1374,7 +1374,7 @@
    3775 33            [ 6] 1374 	inc	sp
    3776 21 00 C0      [10] 1375 	ld	hl, #0xc000
    3779 E5            [11] 1376 	push	hl
-   377A CD E1 8F      [17] 1377 	call	_cpct_getScreenPtr
+   377A CD DD 8F      [17] 1377 	call	_cpct_getScreenPtr
    377D D1            [10] 1378 	pop	de
    377E C1            [10] 1379 	pop	bc
                            1380 ;src/lib/video.c:384: cpct_drawSolidBox(v_pos, 0, 1, 8);
@@ -1387,7 +1387,7 @@
    3788 21 00 00      [10] 1387 	ld	hl, #0x0000
    378B E5            [11] 1388 	push	hl
    378C FD E5         [15] 1389 	push	iy
-   378E CD 39 8F      [17] 1390 	call	_cpct_drawSolidBox
+   378E CD 35 8F      [17] 1390 	call	_cpct_drawSolidBox
    3791 D1            [10] 1391 	pop	de
    3792 C1            [10] 1392 	pop	bc
                            1393 ;src/lib/video.c:385: v_pos = v_get_pos(px, py);
@@ -1401,13 +1401,13 @@
    3799 33            [ 6] 1401 	inc	sp
    379A 21 00 C0      [10] 1402 	ld	hl, #0xc000
    379D E5            [11] 1403 	push	hl
-   379E CD E1 8F      [17] 1404 	call	_cpct_getScreenPtr
+   379E CD DD 8F      [17] 1404 	call	_cpct_getScreenPtr
    37A1 D1            [10] 1405 	pop	de
    37A2 C1            [10] 1406 	pop	bc
                            1407 ;src/lib/video.c:386: cpct_drawSprite(enemies_h_ts[spr_st], v_pos, 3, 8);
    37A3 E5            [11] 1408 	push	hl
    37A4 FD E1         [14] 1409 	pop	iy
-   37A6 21 F2 7B      [10] 1410 	ld	hl, #_enemies_h_ts
+   37A6 21 EE 7B      [10] 1410 	ld	hl, #_enemies_h_ts
    37A9 19            [11] 1411 	add	hl, de
    37AA 5E            [ 7] 1412 	ld	e, (hl)
    37AB 23            [ 6] 1413 	inc	hl
@@ -1417,7 +1417,7 @@
    37B1 E5            [11] 1417 	push	hl
    37B2 FD E5         [15] 1418 	push	iy
    37B4 D5            [11] 1419 	push	de
-   37B5 CD 6F 8B      [17] 1420 	call	_cpct_drawSprite
+   37B5 CD 6B 8B      [17] 1420 	call	_cpct_drawSprite
    37B8 C1            [10] 1421 	pop	bc
                            1422 ;src/lib/video.c:387: v_pos = v_get_pos(px + 3, py);
    37B9 DD 46 FA      [19] 1423 	ld	b, -6 (ix)
@@ -1433,7 +1433,7 @@
    37C4 33            [ 6] 1433 	inc	sp
    37C5 21 00 C0      [10] 1434 	ld	hl, #0xc000
    37C8 E5            [11] 1435 	push	hl
-   37C9 CD E1 8F      [17] 1436 	call	_cpct_getScreenPtr
+   37C9 CD DD 8F      [17] 1436 	call	_cpct_getScreenPtr
    37CC C1            [10] 1437 	pop	bc
                            1438 ;src/lib/video.c:388: cpct_drawSprite(enemies_h_ts[spr_st + 1], v_pos, 3, 8);
    37CD E5            [11] 1439 	push	hl
@@ -1442,7 +1442,7 @@
    37D3 2C            [ 4] 1442 	inc	l
    37D4 26 00         [ 7] 1443 	ld	h, #0x00
    37D6 29            [11] 1444 	add	hl, hl
-   37D7 11 F2 7B      [10] 1445 	ld	de, #_enemies_h_ts
+   37D7 11 EE 7B      [10] 1445 	ld	de, #_enemies_h_ts
    37DA 19            [11] 1446 	add	hl, de
    37DB 5E            [ 7] 1447 	ld	e, (hl)
    37DC 23            [ 6] 1448 	inc	hl
@@ -1452,7 +1452,7 @@
    37E2 E5            [11] 1452 	push	hl
    37E3 FD E5         [15] 1453 	push	iy
    37E5 D5            [11] 1454 	push	de
-   37E6 CD 6F 8B      [17] 1455 	call	_cpct_drawSprite
+   37E6 CD 6B 8B      [17] 1455 	call	_cpct_drawSprite
    37E9 C1            [10] 1456 	pop	bc
                            1457 ;src/lib/video.c:389: v_pos = v_get_pos(px + 6, py);
    37EA DD 7E FA      [19] 1458 	ld	a, -6 (ix)
@@ -1467,7 +1467,7 @@
    37F5 33            [ 6] 1467 	inc	sp
    37F6 21 00 C0      [10] 1468 	ld	hl, #0xc000
    37F9 E5            [11] 1469 	push	hl
-   37FA CD E1 8F      [17] 1470 	call	_cpct_getScreenPtr
+   37FA CD DD 8F      [17] 1470 	call	_cpct_getScreenPtr
    37FD C1            [10] 1471 	pop	bc
                            1472 ;src/lib/video.c:390: cpct_drawSprite(enemies_h_ts[spr_st + 2], v_pos, 3, 8);
    37FE E5            [11] 1473 	push	hl
@@ -1477,7 +1477,7 @@
    3805 2C            [ 4] 1477 	inc	l
    3806 26 00         [ 7] 1478 	ld	h, #0x00
    3808 29            [11] 1479 	add	hl, hl
-   3809 11 F2 7B      [10] 1480 	ld	de, #_enemies_h_ts
+   3809 11 EE 7B      [10] 1480 	ld	de, #_enemies_h_ts
    380C 19            [11] 1481 	add	hl, de
    380D 5E            [ 7] 1482 	ld	e, (hl)
    380E 23            [ 6] 1483 	inc	hl
@@ -1487,7 +1487,7 @@
    3814 E5            [11] 1487 	push	hl
    3815 FD E5         [15] 1488 	push	iy
    3817 D5            [11] 1489 	push	de
-   3818 CD 6F 8B      [17] 1490 	call	_cpct_drawSprite
+   3818 CD 6B 8B      [17] 1490 	call	_cpct_drawSprite
    381B C1            [10] 1491 	pop	bc
                            1492 ;src/lib/video.c:391: v_pos = v_get_pos(px + 9, py);
    381C DD 7E FA      [19] 1493 	ld	a, -6 (ix)
@@ -1501,7 +1501,7 @@
    3826 33            [ 6] 1501 	inc	sp
    3827 21 00 C0      [10] 1502 	ld	hl, #0xc000
    382A E5            [11] 1503 	push	hl
-   382B CD E1 8F      [17] 1504 	call	_cpct_getScreenPtr
+   382B CD DD 8F      [17] 1504 	call	_cpct_getScreenPtr
                            1505 ;src/lib/video.c:391: v_pos = v_get_pos(px + 9, py);
                            1506 ;src/lib/video.c:392: cpct_drawSolidBox(v_pos, 0, 1, 8);
    382E 01 01 08      [10] 1507 	ld	bc, #0x0801
@@ -1509,7 +1509,7 @@
    3832 01 00 00      [10] 1509 	ld	bc, #0x0000
    3835 C5            [11] 1510 	push	bc
    3836 E5            [11] 1511 	push	hl
-   3837 CD 39 8F      [17] 1512 	call	_cpct_drawSolidBox
+   3837 CD 35 8F      [17] 1512 	call	_cpct_drawSolidBox
    383A C3 BC 38      [10] 1513 	jp	00126$
    383D                    1514 00113$:
                            1515 ;src/lib/video.c:396: v_pos = v_get_pos(px, py);
@@ -1524,13 +1524,13 @@
    3844 33            [ 6] 1524 	inc	sp
    3845 21 00 C0      [10] 1525 	ld	hl, #0xc000
    3848 E5            [11] 1526 	push	hl
-   3849 CD E1 8F      [17] 1527 	call	_cpct_getScreenPtr
+   3849 CD DD 8F      [17] 1527 	call	_cpct_getScreenPtr
    384C D1            [10] 1528 	pop	de
    384D C1            [10] 1529 	pop	bc
                            1530 ;src/lib/video.c:397: cpct_drawSprite(enemies_v_ts[spr_st], v_pos, 2, 12);
    384E E5            [11] 1531 	push	hl
    384F FD E1         [14] 1532 	pop	iy
-   3851 21 DA 7B      [10] 1533 	ld	hl, #_enemies_v_ts
+   3851 21 D6 7B      [10] 1533 	ld	hl, #_enemies_v_ts
    3854 19            [11] 1534 	add	hl, de
    3855 5E            [ 7] 1535 	ld	e, (hl)
    3856 23            [ 6] 1536 	inc	hl
@@ -1540,7 +1540,7 @@
    385C E5            [11] 1540 	push	hl
    385D FD E5         [15] 1541 	push	iy
    385F D5            [11] 1542 	push	de
-   3860 CD 6F 8B      [17] 1543 	call	_cpct_drawSprite
+   3860 CD 6B 8B      [17] 1543 	call	_cpct_drawSprite
    3863 C1            [10] 1544 	pop	bc
                            1545 ;src/lib/video.c:398: v_pos = v_get_pos(px, py + 12);
    3864 DD 4E F6      [19] 1546 	ld	c, -10 (ix)
@@ -1553,7 +1553,7 @@
    386D D5            [11] 1553 	push	de
    386E 21 00 C0      [10] 1554 	ld	hl, #0xc000
    3871 E5            [11] 1555 	push	hl
-   3872 CD E1 8F      [17] 1556 	call	_cpct_getScreenPtr
+   3872 CD DD 8F      [17] 1556 	call	_cpct_getScreenPtr
    3875 C1            [10] 1557 	pop	bc
                            1558 ;src/lib/video.c:399: cpct_drawSprite(enemies_v_ts[spr_st + 4], v_pos, 2, 12);
    3876 E5            [11] 1559 	push	hl
@@ -1563,7 +1563,7 @@
    387E 6F            [ 4] 1563 	ld	l, a
    387F 26 00         [ 7] 1564 	ld	h, #0x00
    3881 29            [11] 1565 	add	hl, hl
-   3882 11 DA 7B      [10] 1566 	ld	de, #_enemies_v_ts
+   3882 11 D6 7B      [10] 1566 	ld	de, #_enemies_v_ts
    3885 19            [11] 1567 	add	hl, de
    3886 5E            [ 7] 1568 	ld	e, (hl)
    3887 23            [ 6] 1569 	inc	hl
@@ -1573,7 +1573,7 @@
    388D E5            [11] 1573 	push	hl
    388E FD E5         [15] 1574 	push	iy
    3890 D5            [11] 1575 	push	de
-   3891 CD 6F 8B      [17] 1576 	call	_cpct_drawSprite
+   3891 CD 6B 8B      [17] 1576 	call	_cpct_drawSprite
    3894 C1            [10] 1577 	pop	bc
                            1578 ;src/lib/video.c:400: v_pos = v_get_pos(px, py + 24);
    3895 79            [ 4] 1579 	ld	a, c
@@ -1584,7 +1584,7 @@
    389A D5            [11] 1584 	push	de
    389B 21 00 C0      [10] 1585 	ld	hl, #0xc000
    389E E5            [11] 1586 	push	hl
-   389F CD E1 8F      [17] 1587 	call	_cpct_getScreenPtr
+   389F CD DD 8F      [17] 1587 	call	_cpct_getScreenPtr
    38A2 EB            [ 4] 1588 	ex	de,hl
                            1589 ;src/lib/video.c:401: cpct_drawSprite(enemies_v_ts[spr_st + 8], v_pos, 2, 12);
    38A3 DD 7E F5      [19] 1590 	ld	a, -11 (ix)
@@ -1592,7 +1592,7 @@
    38A8 6F            [ 4] 1592 	ld	l, a
    38A9 26 00         [ 7] 1593 	ld	h, #0x00
    38AB 29            [11] 1594 	add	hl, hl
-   38AC 01 DA 7B      [10] 1595 	ld	bc, #_enemies_v_ts
+   38AC 01 D6 7B      [10] 1595 	ld	bc, #_enemies_v_ts
    38AF 09            [11] 1596 	add	hl, bc
    38B0 4E            [ 7] 1597 	ld	c, (hl)
    38B1 23            [ 6] 1598 	inc	hl
@@ -1601,7 +1601,7 @@
    38B6 E5            [11] 1601 	push	hl
    38B7 D5            [11] 1602 	push	de
    38B8 C5            [11] 1603 	push	bc
-   38B9 CD 6F 8B      [17] 1604 	call	_cpct_drawSprite
+   38B9 CD 6B 8B      [17] 1604 	call	_cpct_drawSprite
    38BC                    1605 00126$:
                            1606 ;src/lib/video.c:352: for (dir_t i = DIR_NORTH; i <= DIR_WEST; i++) {
    38BC DD 34 F4      [23] 1607 	inc	-12 (ix)
@@ -1631,7 +1631,7 @@
    38D7 F5            [11] 1631 	push	af
    38D8 3B            [ 6] 1632 	dec	sp
                            1633 ;src/lib/video.c:409: if (g_bolt_count == 0)
-   38D9 3A 66 A0      [13] 1634 	ld	a,(#_g_bolt_count + 0)
+   38D9 3A 62 A0      [13] 1634 	ld	a,(#_g_bolt_count + 0)
    38DC B7            [ 4] 1635 	or	a, a
                            1636 ;src/lib/video.c:410: return;
                            1637 ;src/lib/video.c:412: for (dir_t i = DIR_NORTH; i <= DIR_WEST; i++) {
@@ -1661,7 +1661,7 @@
    3901 44            [ 4] 1661 	ld	b, h
    3902 DD CB 04 46   [20] 1662 	bit	0, 4 (ix)
    3906 20 0C         [12] 1663 	jr	NZ,00107$
-   3908 21 E3 9B      [10] 1664 	ld	hl, #_g_bolts
+   3908 21 DF 9B      [10] 1664 	ld	hl, #_g_bolts
    390B 09            [11] 1665 	add	hl, bc
    390C 11 05 00      [10] 1666 	ld	de, #0x0005
    390F 19            [11] 1667 	add	hl, de
@@ -1669,7 +1669,7 @@
    3912 28 54         [12] 1669 	jr	Z,00113$
    3914                    1670 00107$:
                            1671 ;src/lib/video.c:414: if (g_bolts[i].dc) {
-   3914 21 E3 9B      [10] 1672 	ld	hl, #_g_bolts
+   3914 21 DF 9B      [10] 1672 	ld	hl, #_g_bolts
    3917 09            [11] 1673 	add	hl,bc
    3918 4D            [ 4] 1674 	ld	c, l
    3919 44            [ 4] 1675 	ld	b, h
@@ -1809,7 +1809,7 @@
    39DD D5            [11] 1809 	push	de
    39DE 21 00 C0      [10] 1810 	ld	hl, #0xc000
    39E1 E5            [11] 1811 	push	hl
-   39E2 CD E1 8F      [17] 1812 	call	_cpct_getScreenPtr
+   39E2 CD DD 8F      [17] 1812 	call	_cpct_getScreenPtr
    39E5 4D            [ 4] 1813 	ld	c, l
    39E6 44            [ 4] 1814 	ld	b, h
    39E7 D1            [10] 1815 	pop	de
@@ -1826,7 +1826,7 @@
    39F4 21 00 00      [10] 1826 	ld	hl, #0x0000
    39F7 E5            [11] 1827 	push	hl
    39F8 C5            [11] 1828 	push	bc
-   39F9 CD 39 8F      [17] 1829 	call	_cpct_drawSolidBox
+   39F9 CD 35 8F      [17] 1829 	call	_cpct_drawSolidBox
                            1830 ;src/lib/video.c:449: gy = y;
    39FC DD 46 F6      [19] 1831 	ld	b, -10 (ix)
                            1832 ;src/lib/video.c:217: return cpct_getScreenPtr(CPCT_VMEM_START, x, y);
@@ -1836,11 +1836,11 @@
    3A06 E5            [11] 1836 	push	hl
    3A07 21 00 C0      [10] 1837 	ld	hl, #0xc000
    3A0A E5            [11] 1838 	push	hl
-   3A0B CD E1 8F      [17] 1839 	call	_cpct_getScreenPtr
+   3A0B CD DD 8F      [17] 1839 	call	_cpct_getScreenPtr
    3A0E EB            [ 4] 1840 	ex	de,hl
    3A0F C1            [10] 1841 	pop	bc
                            1842 ;src/lib/video.c:452: gui_ts[GUI_NORTH_WEST], v_pos, GRID_P_W, GRID_P_H);
-   3A10 2A 78 78      [16] 1843 	ld	hl, (#_gui_ts + 2)
+   3A10 2A 74 78      [16] 1843 	ld	hl, (#_gui_ts + 2)
    3A13 E5            [11] 1844 	push	hl
    3A14 FD E1         [14] 1845 	pop	iy
    3A16 C5            [11] 1846 	push	bc
@@ -1848,7 +1848,7 @@
    3A1A E5            [11] 1848 	push	hl
    3A1B D5            [11] 1849 	push	de
    3A1C FD E5         [15] 1850 	push	iy
-   3A1E CD 90 8C      [17] 1851 	call	_cpct_drawSpriteMasked
+   3A1E CD 8C 8C      [17] 1851 	call	_cpct_drawSpriteMasked
    3A21 C1            [10] 1852 	pop	bc
                            1853 ;src/lib/video.c:453: gx += GRID_P_W;
    3A22 DD 7E F7      [19] 1854 	ld	a, -9 (ix)
@@ -1868,18 +1868,18 @@
    3A3C C5            [11] 1868 	push	bc
    3A3D 21 00 C0      [10] 1869 	ld	hl, #0xc000
    3A40 E5            [11] 1870 	push	hl
-   3A41 CD E1 8F      [17] 1871 	call	_cpct_getScreenPtr
+   3A41 CD DD 8F      [17] 1871 	call	_cpct_getScreenPtr
    3A44 C1            [10] 1872 	pop	bc
                            1873 ;src/lib/video.c:457: gui_ts[GUI_NORTH], v_pos, GRID_P_W, GRID_P_H);
    3A45 E5            [11] 1874 	push	hl
    3A46 FD E1         [14] 1875 	pop	iy
-   3A48 2A 7A 78      [16] 1876 	ld	hl, (#_gui_ts + 4)
+   3A48 2A 76 78      [16] 1876 	ld	hl, (#_gui_ts + 4)
    3A4B C5            [11] 1877 	push	bc
    3A4C 11 03 0A      [10] 1878 	ld	de, #0x0a03
    3A4F D5            [11] 1879 	push	de
    3A50 FD E5         [15] 1880 	push	iy
    3A52 E5            [11] 1881 	push	hl
-   3A53 CD 90 8C      [17] 1882 	call	_cpct_drawSpriteMasked
+   3A53 CD 8C 8C      [17] 1882 	call	_cpct_drawSpriteMasked
    3A56 C1            [10] 1883 	pop	bc
                            1884 ;src/lib/video.c:458: gx += GRID_P_W;
    3A57 0C            [ 4] 1885 	inc	c
@@ -1894,18 +1894,18 @@
    3A60 C5            [11] 1894 	push	bc
    3A61 21 00 C0      [10] 1895 	ld	hl, #0xc000
    3A64 E5            [11] 1896 	push	hl
-   3A65 CD E1 8F      [17] 1897 	call	_cpct_getScreenPtr
+   3A65 CD DD 8F      [17] 1897 	call	_cpct_getScreenPtr
    3A68 C1            [10] 1898 	pop	bc
                            1899 ;src/lib/video.c:462: gui_ts[GUI_NORTH_EAST], v_pos, GRID_P_W, GRID_P_H);
    3A69 E5            [11] 1900 	push	hl
    3A6A FD E1         [14] 1901 	pop	iy
-   3A6C 2A 7C 78      [16] 1902 	ld	hl, (#_gui_ts + 6)
+   3A6C 2A 78 78      [16] 1902 	ld	hl, (#_gui_ts + 6)
    3A6F C5            [11] 1903 	push	bc
    3A70 11 03 0A      [10] 1904 	ld	de, #0x0a03
    3A73 D5            [11] 1905 	push	de
    3A74 FD E5         [15] 1906 	push	iy
    3A76 E5            [11] 1907 	push	hl
-   3A77 CD 90 8C      [17] 1908 	call	_cpct_drawSpriteMasked
+   3A77 CD 8C 8C      [17] 1908 	call	_cpct_drawSpriteMasked
    3A7A C1            [10] 1909 	pop	bc
                            1910 ;src/lib/video.c:463: r = gx;
                            1911 ;src/lib/video.c:467: gy = y + ph;
@@ -1920,14 +1920,14 @@
    3A88 D5            [11] 1920 	push	de
    3A89 21 00 C0      [10] 1921 	ld	hl, #0xc000
    3A8C E5            [11] 1922 	push	hl
-   3A8D CD E1 8F      [17] 1923 	call	_cpct_getScreenPtr
+   3A8D CD DD 8F      [17] 1923 	call	_cpct_getScreenPtr
    3A90 D1            [10] 1924 	pop	de
    3A91 C1            [10] 1925 	pop	bc
                            1926 ;src/lib/video.c:468: v_pos = v_get_pos(gx, gy);
    3A92 45            [ 4] 1927 	ld	b, l
    3A93 54            [ 4] 1928 	ld	d, h
                            1929 ;src/lib/video.c:470: gui_ts[GUI_SOUTH_WEST], v_pos, GRID_P_W, GRID_P_H);
-   3A94 2A 82 78      [16] 1930 	ld	hl, (#_gui_ts + 12)
+   3A94 2A 7E 78      [16] 1930 	ld	hl, (#_gui_ts + 12)
    3A97 E5            [11] 1931 	push	hl
    3A98 FD E1         [14] 1932 	pop	iy
    3A9A C5            [11] 1933 	push	bc
@@ -1937,7 +1937,7 @@
    3AA0 58            [ 4] 1937 	ld	e,b
    3AA1 D5            [11] 1938 	push	de
    3AA2 FD E5         [15] 1939 	push	iy
-   3AA4 CD 90 8C      [17] 1940 	call	_cpct_drawSpriteMasked
+   3AA4 CD 8C 8C      [17] 1940 	call	_cpct_drawSpriteMasked
    3AA7 D1            [10] 1941 	pop	de
    3AA8 C1            [10] 1942 	pop	bc
                            1943 ;src/lib/video.c:471: gx += GRID_P_W;
@@ -1961,13 +1961,13 @@
    3AC3 33            [ 6] 1961 	inc	sp
    3AC4 21 00 C0      [10] 1962 	ld	hl, #0xc000
    3AC7 E5            [11] 1963 	push	hl
-   3AC8 CD E1 8F      [17] 1964 	call	_cpct_getScreenPtr
+   3AC8 CD DD 8F      [17] 1964 	call	_cpct_getScreenPtr
    3ACB D1            [10] 1965 	pop	de
    3ACC C1            [10] 1966 	pop	bc
                            1967 ;src/lib/video.c:475: gui_ts[GUI_SOUTH], v_pos, GRID_P_W, GRID_P_H);
    3ACD E5            [11] 1968 	push	hl
    3ACE FD E1         [14] 1969 	pop	iy
-   3AD0 2A 84 78      [16] 1970 	ld	hl, (#_gui_ts + 14)
+   3AD0 2A 80 78      [16] 1970 	ld	hl, (#_gui_ts + 14)
    3AD3 DD 75 FE      [19] 1971 	ld	-2 (ix), l
    3AD6 DD 74 FF      [19] 1972 	ld	-1 (ix), h
    3AD9 C5            [11] 1973 	push	bc
@@ -1978,7 +1978,7 @@
    3AE1 DD 6E FE      [19] 1978 	ld	l,-2 (ix)
    3AE4 DD 66 FF      [19] 1979 	ld	h,-1 (ix)
    3AE7 E5            [11] 1980 	push	hl
-   3AE8 CD 90 8C      [17] 1981 	call	_cpct_drawSpriteMasked
+   3AE8 CD 8C 8C      [17] 1981 	call	_cpct_drawSpriteMasked
    3AEB D1            [10] 1982 	pop	de
    3AEC C1            [10] 1983 	pop	bc
                            1984 ;src/lib/video.c:476: gx += GRID_P_W;
@@ -1998,18 +1998,18 @@
    3AFA 33            [ 6] 1998 	inc	sp
    3AFB 21 00 C0      [10] 1999 	ld	hl, #0xc000
    3AFE E5            [11] 2000 	push	hl
-   3AFF CD E1 8F      [17] 2001 	call	_cpct_getScreenPtr
+   3AFF CD DD 8F      [17] 2001 	call	_cpct_getScreenPtr
    3B02 C1            [10] 2002 	pop	bc
                            2003 ;src/lib/video.c:480: gui_ts[GUI_SOUTH_EAST], v_pos, GRID_P_W, GRID_P_H);
    3B03 E5            [11] 2004 	push	hl
    3B04 FD E1         [14] 2005 	pop	iy
-   3B06 2A 86 78      [16] 2006 	ld	hl, (#_gui_ts + 16)
+   3B06 2A 82 78      [16] 2006 	ld	hl, (#_gui_ts + 16)
    3B09 C5            [11] 2007 	push	bc
    3B0A 11 03 0A      [10] 2008 	ld	de, #0x0a03
    3B0D D5            [11] 2009 	push	de
    3B0E FD E5         [15] 2010 	push	iy
    3B10 E5            [11] 2011 	push	hl
-   3B11 CD 90 8C      [17] 2012 	call	_cpct_drawSpriteMasked
+   3B11 CD 8C 8C      [17] 2012 	call	_cpct_drawSpriteMasked
    3B14 C1            [10] 2013 	pop	bc
                            2014 ;src/lib/video.c:483: gx = x;
    3B15 DD 7E F7      [19] 2015 	ld	a, -9 (ix)
@@ -2036,13 +2036,13 @@
    3B3D E5            [11] 2036 	push	hl
    3B3E 21 00 C0      [10] 2037 	ld	hl, #0xc000
    3B41 E5            [11] 2038 	push	hl
-   3B42 CD E1 8F      [17] 2039 	call	_cpct_getScreenPtr
+   3B42 CD DD 8F      [17] 2039 	call	_cpct_getScreenPtr
    3B45 D1            [10] 2040 	pop	de
    3B46 C1            [10] 2041 	pop	bc
                            2042 ;src/lib/video.c:488: gui_ts[GUI_WEST], v_pos, GRID_P_W, GRID_P_H);
    3B47 E5            [11] 2043 	push	hl
    3B48 FD E1         [14] 2044 	pop	iy
-   3B4A 2A 7E 78      [16] 2045 	ld	hl, (#_gui_ts + 8)
+   3B4A 2A 7A 78      [16] 2045 	ld	hl, (#_gui_ts + 8)
    3B4D 45            [ 4] 2046 	ld	b, l
    3B4E 54            [ 4] 2047 	ld	d, h
    3B4F C5            [11] 2048 	push	bc
@@ -2052,7 +2052,7 @@
    3B55 FD E5         [15] 2052 	push	iy
    3B57 58            [ 4] 2053 	ld	e,b
    3B58 D5            [11] 2054 	push	de
-   3B59 CD 90 8C      [17] 2055 	call	_cpct_drawSpriteMasked
+   3B59 CD 8C 8C      [17] 2055 	call	_cpct_drawSpriteMasked
    3B5C D1            [10] 2056 	pop	de
    3B5D C1            [10] 2057 	pop	bc
                            2058 ;src/lib/video.c:489: gy += GRID_P_H;
@@ -2081,12 +2081,12 @@
    3B83 D5            [11] 2081 	push	de
    3B84 21 00 C0      [10] 2082 	ld	hl, #0xc000
    3B87 E5            [11] 2083 	push	hl
-   3B88 CD E1 8F      [17] 2084 	call	_cpct_getScreenPtr
+   3B88 CD DD 8F      [17] 2084 	call	_cpct_getScreenPtr
    3B8B 4D            [ 4] 2085 	ld	c, l
    3B8C 44            [ 4] 2086 	ld	b, h
    3B8D D1            [10] 2087 	pop	de
                            2088 ;src/lib/video.c:498: gui_ts[GUI_EAST], v_pos, GRID_P_W, GRID_P_H);
-   3B8E 2A 80 78      [16] 2089 	ld	hl, (#_gui_ts + 10)
+   3B8E 2A 7C 78      [16] 2089 	ld	hl, (#_gui_ts + 10)
    3B91 E5            [11] 2090 	push	hl
    3B92 FD E1         [14] 2091 	pop	iy
    3B94 D5            [11] 2092 	push	de
@@ -2094,7 +2094,7 @@
    3B98 E5            [11] 2094 	push	hl
    3B99 C5            [11] 2095 	push	bc
    3B9A FD E5         [15] 2096 	push	iy
-   3B9C CD 90 8C      [17] 2097 	call	_cpct_drawSpriteMasked
+   3B9C CD 8C 8C      [17] 2097 	call	_cpct_drawSpriteMasked
    3B9F D1            [10] 2098 	pop	de
                            2099 ;src/lib/video.c:499: gy += GRID_P_H;
    3BA0 7B            [ 4] 2100 	ld	a, e
@@ -2143,7 +2143,7 @@
    3BD5 F5            [11] 2143 	push	af
    3BD6 33            [ 6] 2144 	inc	sp
    3BD7 FD E5         [15] 2145 	push	iy
-   3BD9 CD 06 8F      [17] 2146 	call	_cpct_memset
+   3BD9 CD 02 8F      [17] 2146 	call	_cpct_memset
    3BDC D1            [10] 2147 	pop	de
    3BDD C1            [10] 2148 	pop	bc
                            2149 ;src/lib/video.c:508: v_generate_sprite(v_cells[i], v_spr_map[i], level);
@@ -2271,9 +2271,9 @@
    3C7E AF            [ 4] 2271 	xor	a, a
    3C7F F5            [11] 2272 	push	af
    3C80 33            [ 6] 2273 	inc	sp
-   3C81 21 5E 9E      [10] 2274 	ld	hl, #_v_player_buf
+   3C81 21 5A 9E      [10] 2274 	ld	hl, #_v_player_buf
    3C84 E5            [11] 2275 	push	hl
-   3C85 CD 06 8F      [17] 2276 	call	_cpct_memset
+   3C85 CD 02 8F      [17] 2276 	call	_cpct_memset
                            2277 ;src/lib/video.c:553: for (i8 j = x; j < x + PLAYER_BUF_W; j++) {
    3C88 DD 7E 04      [19] 2278 	ld	a, 4 (ix)
    3C8B DD 77 F7      [19] 2279 	ld	-9 (ix), a
@@ -2367,7 +2367,7 @@
    3D37 29            [11] 2367 	add	hl, hl
    3D38 29            [11] 2368 	add	hl, hl
    3D39 09            [11] 2369 	add	hl, bc
-   3D3A 11 5E 9E      [10] 2370 	ld	de, #_v_player_buf
+   3D3A 11 5A 9E      [10] 2370 	ld	de, #_v_player_buf
    3D3D 19            [11] 2371 	add	hl, de
    3D3E DD 7E FA      [19] 2372 	ld	a, -6 (ix)
    3D41 85            [ 4] 2373 	add	a, l
@@ -2387,7 +2387,7 @@
    3D59 F1            [10] 2387 	pop	af
    3D5A F1            [10] 2388 	pop	af
    3D5B C1            [10] 2389 	pop	bc
-   3D5C 11 1B 9C      [10] 2390 	ld	de, #_g_level
+   3D5C 11 17 9C      [10] 2390 	ld	de, #_g_level
    3D5F 19            [11] 2391 	add	hl, de
    3D60 7E            [ 7] 2392 	ld	a, (hl)
                            2393 ;src/lib/video.c:515: switch (value) {
@@ -2462,7 +2462,7 @@
    3DB3 C5            [11] 2462 	push	bc
    3DB4 21 09 00      [10] 2463 	ld	hl, #0x0009
    3DB7 E5            [11] 2464 	push	hl
-   3DB8 CD 09 8E      [17] 2465 	call	_cpct_drawToSpriteBuffer
+   3DB8 CD 05 8E      [17] 2465 	call	_cpct_drawToSpriteBuffer
    3DBB                    2466 00103$:
                            2467 ;src/lib/video.c:554: for (i8 k = y; k < y + PLAYER_BUF_H; k++) {
    3DBB DD 34 FB      [23] 2468 	inc	-5 (ix)
@@ -2506,15 +2506,15 @@
    3DE9 D5            [11] 2506 	push	de
    3DEA 21 00 C0      [10] 2507 	ld	hl, #0xc000
    3DED E5            [11] 2508 	push	hl
-   3DEE CD E1 8F      [17] 2509 	call	_cpct_getScreenPtr
+   3DEE CD DD 8F      [17] 2509 	call	_cpct_getScreenPtr
                            2510 ;src/lib/video.c:575: v_pos = v_get_pos(GRID_LOC_X + px, GRID_LOC_Y + py);
                            2511 ;src/lib/video.c:576: cpct_drawSprite(v_player_buf, v_pos, PLAYER_BUF_PW, PLAYER_BUF_PH);
    3DF1 01 09 1E      [10] 2512 	ld	bc, #0x1e09
    3DF4 C5            [11] 2513 	push	bc
    3DF5 E5            [11] 2514 	push	hl
-   3DF6 21 5E 9E      [10] 2515 	ld	hl, #_v_player_buf
+   3DF6 21 5A 9E      [10] 2515 	ld	hl, #_v_player_buf
    3DF9 E5            [11] 2516 	push	hl
-   3DFA CD 6F 8B      [17] 2517 	call	_cpct_drawSprite
+   3DFA CD 6B 8B      [17] 2517 	call	_cpct_drawSprite
    3DFD DD F9         [10] 2518 	ld	sp, ix
    3DFF DD E1         [14] 2519 	pop	ix
    3E01 C9            [10] 2520 	ret
@@ -2558,7 +2558,7 @@
    3E37 6B            [ 4] 2558 	ld	l, e
    3E38 26 00         [ 7] 2559 	ld	h, #0x00
    3E3A 29            [11] 2560 	add	hl, hl
-   3E3B 11 18 6D      [10] 2561 	ld	de, #_grid_bg_ts
+   3E3B 11 14 6D      [10] 2561 	ld	de, #_grid_bg_ts
    3E3E 19            [11] 2562 	add	hl, de
    3E3F 5E            [ 7] 2563 	ld	e, (hl)
    3E40 23            [ 6] 2564 	inc	hl
@@ -2570,14 +2570,14 @@
    3E48 C5            [11] 2570 	push	bc
    3E49 26 00         [ 7] 2571 	ld	h, #0x00
    3E4B E5            [11] 2572 	push	hl
-   3E4C CD 09 8E      [17] 2573 	call	_cpct_drawToSpriteBuffer
+   3E4C CD 05 8E      [17] 2573 	call	_cpct_drawToSpriteBuffer
    3E4F C1            [10] 2574 	pop	bc
    3E50                    2575 00102$:
                            2576 ;src/lib/video.c:592: if (mask & FLAG_POD)
    3E50 DD CB 06 4E   [20] 2577 	bit	1, 6 (ix)
    3E54 28 1B         [12] 2578 	jr	Z,00104$
                            2579 ;src/lib/video.c:594: CELL_BUF_PW, spr, CELL_BUF_PW, CELL_BUF_PH, grid_fg_ts[fg]);
-   3E56 11 F8 6D      [10] 2580 	ld	de, #_grid_fg_ts+0
+   3E56 11 F4 6D      [10] 2580 	ld	de, #_grid_fg_ts+0
    3E59 DD 6E FE      [19] 2581 	ld	l, -2 (ix)
    3E5C 26 00         [ 7] 2582 	ld	h, #0x00
    3E5E 29            [11] 2583 	add	hl, hl
@@ -2592,14 +2592,14 @@
    3E69 C5            [11] 2592 	push	bc
    3E6A 26 00         [ 7] 2593 	ld	h, #0x00
    3E6C E5            [11] 2594 	push	hl
-   3E6D CD 35 90      [17] 2595 	call	_cpct_drawToSpriteBufferMasked
+   3E6D CD 31 90      [17] 2595 	call	_cpct_drawToSpriteBufferMasked
    3E70 C1            [10] 2596 	pop	bc
    3E71                    2597 00104$:
                            2598 ;src/lib/video.c:595: if (mask & FLAG_V_BOLT)
    3E71 DD CB 06 56   [20] 2599 	bit	2, 6 (ix)
    3E75 28 1D         [12] 2600 	jr	Z,00106$
                            2601 ;src/lib/video.c:597: CELL_BUF_PW, spr, CELL_BUF_PW, CELL_BUF_PH, grid_fg_ts[bt + 2]);
-   3E77 11 F8 6D      [10] 2602 	ld	de, #_grid_fg_ts+0
+   3E77 11 F4 6D      [10] 2602 	ld	de, #_grid_fg_ts+0
    3E7A DD 6E FF      [19] 2603 	ld	l, -1 (ix)
    3E7D 2C            [ 4] 2604 	inc	l
    3E7E 2C            [ 4] 2605 	inc	l
@@ -2616,14 +2616,14 @@
    3E8C C5            [11] 2616 	push	bc
    3E8D 26 00         [ 7] 2617 	ld	h, #0x00
    3E8F E5            [11] 2618 	push	hl
-   3E90 CD 35 90      [17] 2619 	call	_cpct_drawToSpriteBufferMasked
+   3E90 CD 31 90      [17] 2619 	call	_cpct_drawToSpriteBufferMasked
    3E93 C1            [10] 2620 	pop	bc
    3E94                    2621 00106$:
                            2622 ;src/lib/video.c:598: if (mask & FLAG_H_BOLT)
    3E94 DD CB 06 5E   [20] 2623 	bit	3, 6 (ix)
    3E98 28 19         [12] 2624 	jr	Z,00109$
                            2625 ;src/lib/video.c:600: CELL_BUF_PW, spr, CELL_BUF_PW, CELL_BUF_PH, grid_fg_ts[bt]);
-   3E9A 11 F8 6D      [10] 2626 	ld	de, #_grid_fg_ts+0
+   3E9A 11 F4 6D      [10] 2626 	ld	de, #_grid_fg_ts+0
    3E9D DD 6E FF      [19] 2627 	ld	l, -1 (ix)
    3EA0 26 00         [ 7] 2628 	ld	h, #0x00
    3EA2 29            [11] 2629 	add	hl, hl
@@ -2637,7 +2637,7 @@
    3EAC C5            [11] 2637 	push	bc
    3EAD 26 00         [ 7] 2638 	ld	h, #0x00
    3EAF E5            [11] 2639 	push	hl
-   3EB0 CD 35 90      [17] 2640 	call	_cpct_drawToSpriteBufferMasked
+   3EB0 CD 31 90      [17] 2640 	call	_cpct_drawToSpriteBufferMasked
    3EB3                    2641 00109$:
    3EB3 DD F9         [10] 2642 	ld	sp, ix
    3EB5 DD E1         [14] 2643 	pop	ix
@@ -2663,7 +2663,7 @@
    3ED1 4D            [ 4] 2663 	ld	c, l
    3ED2 44            [ 4] 2664 	ld	b, h
                            2665 ;src/lib/video.c:612: cell = g_level[idx];
-   3ED3 21 1B 9C      [10] 2666 	ld	hl, #_g_level+0
+   3ED3 21 17 9C      [10] 2666 	ld	hl, #_g_level+0
    3ED6 09            [11] 2667 	add	hl, bc
    3ED7 7E            [ 7] 2668 	ld	a, (hl)
                            2669 ;src/lib/video.c:515: switch (value) {
@@ -2761,7 +2761,7 @@
    3F4D E5            [11] 2761 	push	hl
    3F4E 21 00 C0      [10] 2762 	ld	hl, #0xc000
    3F51 E5            [11] 2763 	push	hl
-   3F52 CD E1 8F      [17] 2764 	call	_cpct_getScreenPtr
+   3F52 CD DD 8F      [17] 2764 	call	_cpct_getScreenPtr
    3F55 C1            [10] 2765 	pop	bc
                            2766 ;src/lib/video.c:619: v_pos = v_get_pos(GRID_LOC_X + px, GRID_LOC_Y + py);
                            2767 ;src/lib/video.c:620: cpct_drawSprite(spr, v_pos, GRID_P_W, GRID_P_H);
@@ -2769,7 +2769,7 @@
    3F59 D5            [11] 2769 	push	de
    3F5A E5            [11] 2770 	push	hl
    3F5B C5            [11] 2771 	push	bc
-   3F5C CD 6F 8B      [17] 2772 	call	_cpct_drawSprite
+   3F5C CD 6B 8B      [17] 2772 	call	_cpct_drawSprite
    3F5F DD E1         [14] 2773 	pop	ix
    3F61 C9            [10] 2774 	ret
                            2775 ;src/lib/video.c:624: void v_draw_grid(void) {
@@ -2821,12 +2821,12 @@
    3F8F 18 D4         [12] 2821 	jr	00107$
                            2822 	.area _CODE
                            2823 	.area _INITIALIZER
-   A103                    2824 __xinit__v_int_idx:
-   A103 00                 2825 	.db #0x00	; 0
-   A104                    2826 __xinit__v_pal_idx:
-   A104 00                 2827 	.db #0x00	; 0
-   A105                    2828 __xinit__v_frame_c:
-   A105 00                 2829 	.db #0x00	; 0
-   A106                    2830 __xinit__v_cycle_c:
-   A106 00 00              2831 	.dw #0x0000
+   A0FF                    2824 __xinit__v_int_idx:
+   A0FF 00                 2825 	.db #0x00	; 0
+   A100                    2826 __xinit__v_pal_idx:
+   A100 00                 2827 	.db #0x00	; 0
+   A101                    2828 __xinit__v_frame_c:
+   A101 00                 2829 	.db #0x00	; 0
+   A102                    2830 __xinit__v_cycle_c:
+   A102 00 00              2831 	.dw #0x0000
                            2832 	.area _CABS (ABS)

@@ -76,10 +76,10 @@
                              76 ;src/instruct.c:40: v_reset_timers();
    1F08 CD CB 32      [17]   77 	call	_v_reset_timers
                              78 ;src/instruct.c:41: cpct_waitVSYNC();
-   1F0B CD BB 8E      [17]   79 	call	_cpct_waitVSYNC
+   1F0B CD B7 8E      [17]   79 	call	_cpct_waitVSYNC
                              80 ;src/instruct.c:42: cpct_setInterruptHandler(v_interrupt);
    1F0E 21 DB 32      [10]   81 	ld	hl, #_v_interrupt
-   1F11 CD 59 90      [17]   82 	call	_cpct_setInterruptHandler
+   1F11 CD 55 90      [17]   82 	call	_cpct_setInterruptHandler
                              83 ;src/instruct.c:45: while (!kp)
    1F14                      84 00101$:
    1F14 21 00 00      [10]   85 	ld	hl, #0+0
@@ -87,7 +87,7 @@
    1F18 CB 46         [12]   87 	bit	0, (hl)
    1F1A 20 0B         [12]   88 	jr	NZ,00104$
                              89 ;src/instruct.c:46: kp = cpct_isAnyKeyPressed();
-   1F1C CD 38 8E      [17]   90 	call	_cpct_isAnyKeyPressed
+   1F1C CD 34 8E      [17]   90 	call	_cpct_isAnyKeyPressed
    1F1F AF            [ 4]   91 	xor	a, a
    1F20 BD            [ 4]   92 	cp	a, l
    1F21 17            [ 4]   93 	rla
@@ -123,7 +123,7 @@
                             123 ;src/instruct.c:54: v_clr_scr();
    1F3A CD F2 30      [17]  124 	call	_v_clr_scr
                             125 ;src/instruct.c:55: cpct_removeInterruptHandler();
-   1F3D CD 5D 8A      [17]  126 	call	_cpct_removeInterruptHandler
+   1F3D CD 59 8A      [17]  126 	call	_cpct_removeInterruptHandler
                             127 ;src/instruct.c:56: v_reset_timers();
    1F40 C3 CB 32      [10]  128 	jp  _v_reset_timers
                             129 ;src/instruct.c:60: static void i_draw_instructions() {
